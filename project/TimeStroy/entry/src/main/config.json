@@ -17,7 +17,7 @@
     "package": "com.example.timestroy",
     "name": ".MyApplication",
     "deviceType": [
-      "phone"
+      "phone","tablet","tv"
     ],
     "distro": {
       "deliveryWithInstall": true,
