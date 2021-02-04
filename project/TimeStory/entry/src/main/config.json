@@ -1,0 +1,120 @@
+{
+  "app": {
+    "bundleName": "com.example.timestory",
+    "vendor": "example",
+    "version": {
+      "code": 1,
+      "name": "1.0"
+    },
+    "apiVersion": {
+      "compatible": 3,
+      "target": 4,
+      "releaseType": "Beta1"
+    }
+  },
+  "deviceConfig": {},
+  "module": {
+    "package": "com.example.timestory",
+    "name": ".MyApplication",
+    "deviceType": [
+      "phone","tablet","tv"
+    ],
+    "distro": {
+      "deliveryWithInstall": true,
+      "moduleName": "entry",
+      "moduleType": "entry"
+    },
+    "abilities": [
+      {
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "action.system.home"
+            ]
+          }
+        ],
+        "orientation": "unspecified",
+        "name": "com.example.timestory.MainAbility",
+        "icon": "$media:icon",
+        "description": "$string:mainability_description",
+        "label": "TimeStroy",
+        "type": "page",
+        "launchType": "standard"
+      },{
+        "orientation": "unspecified",
+        "name": "com.example.timestory.ability.card.DrawCardAbility",
+        "icon": "$media:icon",
+        "description": "$string:mainability_description",
+        "label": "TimeStroy",
+        "type": "page",
+        "launchType": "standard"
+      },
+      {
+        "orientation": "unspecified",
+        "name": "com.example.timestory.ability.card.MyCardAbility",
+        "icon": "$media:icon",
+        "description": "$string:mainability_description",
+        "label": "TimeStroy",
+        "type": "page",
+        "launchType": "standard"
+      },
+      {
+        "orientation": "unspecified",
+        "name": "com.example.timestory.ability.dynasty.DynastyIntroduceActivity",
+        "icon": "$media:icon",
+        "description": "$string:mainability_description",
+        "label": "TimeStroy",
+        "type": "page",
+        "launchType": "standard"
+      },
+      {
+        "orientation": "unspecified",
+        "name": "com.example.timestory.ability.dynasty.HomePageAbility",
+        "icon": "$media:icon",
+        "description": "$string:mainability_description",
+        "label": "TimeStroy",
+        "type": "page",
+        "launchType": "standard"
+      },
+      {
+        "orientation": "unspecified",
+        "name": "com.example.timestory.ability.problem.ProblemCollectionActivity",
+        "icon": "$media:icon",
+        "description": "$string:mainability_description",
+        "label": "TimeStroy",
+        "type": "page",
+        "launchType": "standard"
+      },
+      {
+        "orientation": "unspecified",
+        "name": "com.example.timestory.ability.problem.SelectProblemTypeAbility",
+        "icon": "$media:icon",
+        "description": "$string:mainability_description",
+        "label": "TimeStroy",
+        "type": "page",
+        "launchType": "standard"
+      },
+      {
+        "orientation": "unspecified",
+        "name": "com.example.timestory.ability.user.LoginAbility",
+        "icon": "$media:icon",
+        "description": "$string:mainability_description",
+        "label": "TimeStroy",
+        "type": "page",
+        "launchType": "standard"
+      },
+      {
+        "orientation": "unspecified",
+        "name": "com.example.timestory.ability.user.UserCenterAbility",
+        "icon": "$media:icon",
+        "description": "$string:mainability_description",
+        "label": "TimeStroy",
+        "type": "page",
+        "launchType": "standard"
+      }
+    ]
+  }
+}
