@@ -14,7 +14,7 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "com.example.timestroy",
+    "package": "com.example.timestory",
     "name": ".MyApplication",
     "deviceType": [
       "phone","tablet","tv"
@@ -37,7 +37,7 @@
           }
         ],
         "orientation": "unspecified",
-        "name": "com.example.timestroy.MainAbility",
+        "name": "com.example.timestory.MainAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "TimeStroy",
@@ -45,7 +45,7 @@
         "launchType": "standard"
       },{
         "orientation": "unspecified",
-        "name": "com.example.timestroy.ability.card.DrawCardAbility",
+        "name": "com.example.timestory.ability.card.DrawCardAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "TimeStroy",
@@ -54,7 +54,7 @@
       },
       {
         "orientation": "unspecified",
-        "name": "com.example.timestroy.ability.card.MyCardAbility",
+        "name": "com.example.timestory.ability.card.MyCardAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "TimeStroy",
@@ -63,7 +63,7 @@
       },
       {
         "orientation": "unspecified",
-        "name": "com.example.timestroy.ability.dynasty.DynastyIntroduceActivity",
+        "name": "com.example.timestory.ability.dynasty.DynastyIntroduceActivity",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "TimeStroy",
@@ -72,7 +72,7 @@
       },
       {
         "orientation": "unspecified",
-        "name": "com.example.timestroy.ability.dynasty.HomePageAbility",
+        "name": "com.example.timestory.ability.dynasty.HomePageAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "TimeStroy",
@@ -81,7 +81,7 @@
       },
       {
         "orientation": "unspecified",
-        "name": "com.example.timestroy.ability.problem.ProblemCollectionActivity",
+        "name": "com.example.timestory.ability.problem.ProblemCollectionActivity",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "TimeStroy",
@@ -90,7 +90,7 @@
       },
       {
         "orientation": "unspecified",
-        "name": "com.example.timestroy.ability.problem.SelectProblemTypeAbility",
+        "name": "com.example.timestory.ability.problem.SelectProblemTypeAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "TimeStroy",
@@ -99,7 +99,7 @@
       },
       {
         "orientation": "unspecified",
-        "name": "com.example.timestroy.ability.user.LoginAbility",
+        "name": "com.example.timestory.ability.user.LoginAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "TimeStroy",
@@ -108,7 +108,7 @@
       },
       {
         "orientation": "unspecified",
-        "name": "com.example.timestroy.ability.user.UserCenterAbility",
+        "name": "com.example.timestory.ability.user.UserCenterAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "TimeStroy",
