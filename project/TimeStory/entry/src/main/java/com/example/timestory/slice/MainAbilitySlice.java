@@ -3,6 +3,7 @@ package com.example.timestory.slice;
 import com.example.timestory.ResourceTable;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
+import ohos.aafwk.content.Operation;
 import ohos.agp.components.Component;
 import ohos.agp.components.Text;
 
@@ -57,6 +58,14 @@ public class MainAbilitySlice extends AbilitySlice {
                     break;
                 case ResourceTable.Id_module_dynasty:
 //                    跳转
+                    Intent dynastyIntent = new Intent();
+                    Operation dynastyOperation = new Intent.OperationBuilder()
+                            .withDeviceId("")
+                            .withBundleName("com.example.timestory")
+                            .withAbilityName("com.example.timestory.ability.dynasty.HomePageAbility")
+                            .build();
+                    dynastyIntent.setOperation(dynastyOperation);
+                    startAbility(dynastyIntent);
                     break;
                 case ResourceTable.Id_module_card:
 //                    跳转

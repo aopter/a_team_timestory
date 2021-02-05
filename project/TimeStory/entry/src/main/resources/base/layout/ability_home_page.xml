@@ -1,17 +1,255 @@
 <?xml version="1.0" encoding="utf-8"?>
-<DirectionalLayout
+<DependentLayout
     xmlns:ohos="http://schemas.huawei.com/res/ohos"
     ohos:height="match_parent"
-    ohos:width="match_parent"
-    ohos:orientation="vertical">
+    ohos:width="match_parent">
 
-    <Text
-        ohos:id="$+id:text_helloworld"
-        ohos:height="match_content"
-        ohos:width="match_content"
-        ohos:layout_alignment="horizontal_center"
-        ohos:text="Hello World"
-        ohos:text_size="50"
-        />
+<!--    用户信息-->
+    <DirectionalLayout
+        ohos:id="$+id:user"
+        ohos:height="110fp"
+        ohos:width="match_parent"
+        ohos:orientation="horizontal"
+        ohos:background_element="$media:headbackground.png">
 
-</DirectionalLayout>
+<!--        头像，进度条-->
+        <DirectionalLayout
+            ohos:height="match_parent"
+            ohos:width="match_content"
+            ohos:alignment="vertical_center"
+            ohos:top_margin="15fp"
+            ohos:left_margin="20fp"
+            ohos:orientation="vertical">
+
+            <Image
+                ohos:id="$+id:user_header"
+                ohos:height="60fp"
+                ohos:width="60fp"
+                ohos:background_element="$media:test_header.png"/>
+
+            <ProgressBar
+                ohos:height="match_content"
+                ohos:width="50fp"
+                ohos:top_margin="8fp"
+                ohos:progress_color="blue"
+                ohos:progress="50"
+                ohos:min="0"
+                ohos:max="100"/>
+
+
+        </DirectionalLayout>
+
+<!--        等级，经验-->
+        <DirectionalLayout
+            ohos:height="match_parent"
+            ohos:width="match_content"
+            ohos:top_margin="15fp"
+            ohos:left_margin="35fp"
+            ohos:orientation="vertical"
+            ohos:alignment="center">
+
+            <Text
+                ohos:height="35fp"
+                ohos:width="80fp"
+                ohos:text="秀才"
+                ohos:text_size="12fp"
+                ohos:text_alignment="center"
+                ohos:background_element="$media:button"
+                ohos:padding="5fp"
+                ohos:alpha="0.9"
+                ohos:text_color="#AE5B41"/>
+
+
+        </DirectionalLayout>
+
+<!--        抽卡-->
+        <DirectionalLayout
+            ohos:height="match_parent"
+            ohos:width="match_content"
+            ohos:top_margin="15fp"
+            ohos:left_margin="25fp"
+            ohos:orientation="vertical"
+            ohos:alignment="center">
+
+            <Text
+                ohos:height="35fp"
+                ohos:width="75fp"
+                ohos:text="抽卡"
+                ohos:text_size="12fp"
+                ohos:text_alignment="center"
+                ohos:background_element="$media:button"
+                ohos:padding="5fp"
+                ohos:alpha="0.9"
+                ohos:text_color="#AE5B41"/>
+
+
+        </DirectionalLayout>
+
+<!--        我的卡片-->
+        <DirectionalLayout
+            ohos:height="match_parent"
+            ohos:width="match_content"
+            ohos:top_margin="15fp"
+            ohos:left_margin="25fp"
+            ohos:orientation="vertical"
+            ohos:alignment="center">
+
+            <Text
+                ohos:height="35fp"
+                ohos:width="80fp"
+                ohos:text="我的卡片"
+                ohos:text_size="12fp"
+                ohos:text_alignment="center"
+                ohos:background_element="$media:button"
+                ohos:padding="5fp"
+                ohos:alpha="0.9"
+                ohos:text_color="#AE5B41"/>
+
+
+        </DirectionalLayout>
+
+<!--        我的收藏-->
+        <DirectionalLayout
+            ohos:height="match_parent"
+            ohos:width="match_content"
+            ohos:top_margin="15fp"
+            ohos:left_margin="25fp"
+            ohos:orientation="vertical"
+            ohos:alignment="center">
+
+            <Text
+                ohos:height="35fp"
+                ohos:width="80fp"
+                ohos:text="我的收藏"
+                ohos:text_size="12fp"
+                ohos:text_alignment="center"
+                ohos:background_element="$media:button"
+                ohos:padding="5fp"
+                ohos:alpha="0.9"
+                ohos:text_color="#AE5B41"/>
+
+
+        </DirectionalLayout>
+
+<!--        积分-->
+        <DirectionalLayout
+            ohos:height="match_parent"
+            ohos:width="match_content"
+            ohos:top_margin="15fp"
+            ohos:left_margin="25fp"
+            ohos:orientation="horizontal"
+            ohos:alignment="vertical_center">
+
+            <DirectionalLayout
+                ohos:height="35fp"
+                ohos:width="80fp"
+                ohos:text_alignment="center"
+                ohos:background_element="$media:button"
+                ohos:padding="5fp"
+                ohos:alpha="0.9"
+                ohos:orientation="horizontal"
+                ohos:text_color="#AE5B41">
+
+                <Text
+                    ohos:height="match_parent"
+                    ohos:width="0fp"
+                    ohos:weight="3"
+                    ohos:text="积分:"
+                    ohos:text_size="9fp"
+                    ohos:text_alignment="center"
+                    ohos:text_color="#AE5B41"
+                    ohos:left_margin="2fp"/>
+
+                <Text
+                    ohos:id="$+id:user_count"
+                    ohos:height="match_parent"
+                    ohos:width="0fp"
+                    ohos:weight="5"
+                    ohos:text="800"
+                    ohos:text_size="9fp"
+                    ohos:text_alignment="center"
+                    ohos:text_color="#AE5B41"/>
+
+                <Image
+                    ohos:height="18fp"
+                    ohos:width="0fp"
+                    ohos:weight="3"
+                    ohos:layout_alignment="vertical_center"
+                    ohos:background_element="$media:plust.png"/>
+
+            </DirectionalLayout>
+
+
+        </DirectionalLayout>
+
+<!--        音量、设置-->
+        <DirectionalLayout
+            ohos:height="match_content"
+            ohos:width="match_parent"
+            ohos:alignment="right"
+            ohos:layout_alignment="vertical_center"
+            ohos:margin="20fp"
+            ohos:orientation="horizontal">
+
+            <Button
+                ohos:height="30fp"
+                ohos:width="30fp"
+                ohos:margin="5fp"
+                ohos:background_element="$media:novoice.png"/>
+
+            <Button
+                ohos:height="30fp"
+                ohos:width="30fp"
+                ohos:margin="5fp"
+                ohos:background_element="$media:settings.png"/>
+
+
+
+        </DirectionalLayout>
+
+    </DirectionalLayout>
+
+
+<!--    朝代信息-->
+    <ScrollView
+        ohos:height="match_parent"
+        ohos:width="match_parent"
+        ohos:below="$id:user">
+        <DependentLayout
+            ohos:height="match_parent"
+            ohos:width="3939px"
+            ohos:background_element="$media:homebackground.png">
+
+            <DirectionalLayout
+                ohos:id="$+id:dynasty_top"
+                ohos:height="match_content"
+                ohos:width="match_parent"
+                ohos:left_margin="15fp"
+                ohos:orientation="horizontal">
+
+                <Text
+                    ohos:height="match_content"
+                    ohos:width="match_content"
+                    ohos:text="fdsaf"/>
+
+            </DirectionalLayout>
+
+            <DirectionalLayout
+                ohos:id="$+id:dynasty_bottom"
+                ohos:below="$id:dynasty_top"
+                ohos:height="match_content"
+                ohos:width="match_parent"
+                ohos:left_margin="30fp"
+                ohos:orientation="horizontal">
+
+                <Text
+                    ohos:height="match_content"
+                    ohos:width="match_content"
+                    ohos:text="fddsagdsgsdgsaf"/>
+
+            </DirectionalLayout>
+
+        </DependentLayout>
+    </ScrollView>
+
+</DependentLayout>
