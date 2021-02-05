@@ -1,0 +1,84 @@
+{
+  "color": [
+    {
+      "name": "ourDynastyRed",
+      "value": "#AE5B41"
+    },
+    {
+      "name": "back_color",
+      "value": "#b0000000"
+    },
+    {
+      "name": "white",
+      "value": "#ffffff"
+    },
+    {
+      "name": "orange",
+      "value": "#FFB90F"
+    },
+    {
+      "name": "colorDropdown",
+      "value": "#CCFFFAFA"
+    },
+    {
+      "name": "colorSearch",
+      "value": "#F5F5F5"
+    },
+    {
+      "name": "colorBorder",
+      "value": "#CCC"
+    },
+    {
+      "name": "ourTimeLine",
+      "value": "#DA70D0"
+    },
+    {
+      "name": "colorTitle",
+      "value": "#FFFAF0"
+    },
+    {
+      "name": "answer_right",
+      "value": "#ff00deab"
+    },
+    {
+      "name": "answer_wrong",
+      "value": "#ffff7c64"
+    },
+    {
+      "name": "dialog_all",
+      "value": "#fde1a8"
+    },
+    {
+      "name": "black",
+      "value": "#ff000000"
+    },
+    {
+      "name": "dialog_title",
+      "value": "#f2ca80"
+    },
+    {
+      "name": "dialog_container",
+      "value": "#f0d19b"
+    },
+    {
+      "name": "dialog_content",
+      "value": "#eed3a4"
+    },
+    {
+      "name": "dialog_button",
+      "value": "#e3891a"
+    },
+    {
+      "name": "button_container",
+      "value": "#e9d284"
+    },
+    {
+      "name": "content_border",
+      "value": "#f0d7aa"
+    },
+    {
+      "name": "recharge_color",
+      "value": "#e8b48c"
+    }
+  ]
+}

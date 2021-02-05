@@ -17,7 +17,9 @@
     "package": "com.example.timestory",
     "name": ".MyApplication",
     "deviceType": [
-      "phone","tablet","tv"
+      "phone",
+      "tablet",
+      "tv"
     ],
     "distro": {
       "deliveryWithInstall": true,
@@ -43,7 +45,8 @@
         "label": "TimeStroy",
         "type": "page",
         "launchType": "standard"
-      },{
+      },
+      {
         "orientation": "unspecified",
         "name": "com.example.timestory.ability.card.DrawCardAbility",
         "icon": "$media:icon",

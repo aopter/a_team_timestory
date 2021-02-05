@@ -3,15 +3,83 @@
     xmlns:ohos="http://schemas.huawei.com/res/ohos"
     ohos:height="match_parent"
     ohos:width="match_parent"
+    ohos:top_padding="30vp"
+    ohos:background_element="$media:bg_user_select_lkl"
     ohos:orientation="vertical">
 
     <Text
-        ohos:id="$+id:text_helloworld"
+        ohos:top_margin="10vp"
         ohos:height="match_content"
         ohos:width="match_content"
         ohos:layout_alignment="horizontal_center"
-        ohos:text="Hello World"
-        ohos:text_size="50"
+        ohos:text="我来考考你"
+        ohos:text_weight="600"
+        ohos:text_size="36fp"
+        ohos:text_font="serif"
+        ohos:text_color="$color:ourDynastyRed"
         />
+
+    <DirectionalLayout
+        ohos:orientation="vertical"
+        ohos:height="match_parent"
+        ohos:width="match_parent">
+        <DirectionalLayout
+            ohos:height="match_parent"
+            ohos:width="match_parent"
+            ohos:weight="1"/>
+        <DirectionalLayout
+            ohos:height="match_parent"
+            ohos:width="match_parent"
+            ohos:orientation="horizontal"
+            ohos:weight="7">
+            <DirectionalLayout
+                ohos:layout_alignment="horizontal_center"
+                ohos:background_element="$media:bg_select"
+                ohos:height="match_parent"
+                ohos:width="match_parent"
+                ohos:orientation="vertical"
+                ohos:padding="10vp"
+                ohos:weight="1">
+                <Image
+                    ohos:image_src="$media:select_xuan"
+                    ohos:height="match_parent"
+                    ohos:width="match_parent"
+                    ohos:weight="9"/>
+                <Text
+                    ohos:layout_alignment="center"
+                    ohos:text="选一选"
+                    ohos:height="match_parent"
+                    ohos:width="match_parent"
+                    ohos:weight="1"/>
+
+            </DirectionalLayout>
+            <DirectionalLayout
+                ohos:height="match_parent"
+                ohos:width="match_parent"
+                ohos:orientation="vertical"
+                ohos:weight="1">
+
+            </DirectionalLayout>
+            <DirectionalLayout
+                ohos:height="match_parent"
+                ohos:width="match_parent"
+                ohos:orientation="vertical"
+                ohos:weight="1">
+
+            </DirectionalLayout>
+            <DirectionalLayout
+                ohos:height="match_parent"
+                ohos:width="match_parent"
+                ohos:orientation="vertical"
+                ohos:weight="1">
+
+            </DirectionalLayout>
+        </DirectionalLayout>
+        <DirectionalLayout
+            ohos:height="match_parent"
+            ohos:width="match_parent"
+            ohos:weight="2"/>
+    </DirectionalLayout>
+
 
 </DirectionalLayout>

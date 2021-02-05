@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="ourDynastyRed">#AE5B41</color>
+    <color name="back_color">#b0000000</color>
+    <color name="white">#ffffff</color>
+    <color name="orange">#FFB90F</color>
+    <color name="colorDropdown">#CCFFFAFA</color>
+    <color name="colorSearch">#F5F5F5</color>
+    <color name="colorBorder">#CCC</color>
+    <color name="ourTimeLine">#DA70D0</color>
+    <color name="colorTitle">#FFFAF0</color>
+    <color name="answer_right">#ff00deab</color>
+    <color name="answer_wrong">#ffff7c64</color>
+    <color name="black">#ff000000</color>
+    <color name="dialog_all">#fde1a8</color>
+    <color name="dialog_title">#f2ca80</color>
+    <color name="dialog_container">#f0d19b</color>
+    <color name="dialog_content">#eed3a4</color>
+    <color name="dialog_button">#e3891a</color>
+    <color name="button_container">#e9d284</color>
+    <color name="content_border">#f0d7aa</color>
+    <color name="recharge_color">#e8b48c</color>
+</resources>
