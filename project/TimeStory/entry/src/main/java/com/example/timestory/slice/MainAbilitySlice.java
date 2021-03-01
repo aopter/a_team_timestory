@@ -1,6 +1,7 @@
 package com.example.timestory.slice;
 
 import com.example.timestory.ResourceTable;
+import com.example.timestory.ability.user.slice.LoginAbilitySlice;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
 import ohos.aafwk.content.Operation;
@@ -22,7 +23,7 @@ public class MainAbilitySlice extends AbilitySlice {
         setClickListener();
     }
 
-//    点击事件绑定监听
+    //    点击事件绑定监听
     private void setClickListener() {
 
         MyListener myListener = new MyListener();
@@ -32,12 +33,13 @@ public class MainAbilitySlice extends AbilitySlice {
         tvProblem.setClickedListener(myListener);
     }
 
-    private void findViews(){
+    private void findViews() {
         tvUser = (Text) findComponentById(ResourceTable.Id_module_user);
         tvDynasty = (Text) findComponentById(ResourceTable.Id_module_dynasty);
         tvCard = (Text) findComponentById(ResourceTable.Id_module_card);
         tvProblem = (Text) findComponentById(ResourceTable.Id_module_problem);
     }
+
     @Override
     public void onActive() {
         super.onActive();
@@ -48,13 +50,14 @@ public class MainAbilitySlice extends AbilitySlice {
         super.onForeground(intent);
     }
 
-    class MyListener implements Component.ClickedListener{
+    class MyListener implements Component.ClickedListener {
 
         @Override
         public void onClick(Component component) {
-            switch (component.getId()){
+            switch (component.getId()) {
                 case ResourceTable.Id_module_user:
 //                    跳转
+                    present(new LoginAbilitySlice(), new Intent());
                     break;
                 case ResourceTable.Id_module_dynasty:
 //                    跳转

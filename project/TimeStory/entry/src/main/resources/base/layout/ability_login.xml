@@ -1,17 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<DirectionalLayout
+<DependentLayout
     xmlns:ohos="http://schemas.huawei.com/res/ohos"
     ohos:height="match_parent"
     ohos:width="match_parent"
-    ohos:orientation="vertical">
+    ohos:background_element="$media:bg_login">
 
-    <Text
-        ohos:id="$+id:text_helloworld"
+    <!--gif动图无法显示，先写上，如果解决了再修改-->
+    <Image
+        ohos:height="300vp"
+        ohos:width="300vp"
+        ohos:image_src="$media:gif_login"
+        ohos:align_parent_bottom="true"
+        ohos:align_parent_right="true"/>
+
+    <DirectionalLayout
         ohos:height="match_content"
         ohos:width="match_content"
-        ohos:layout_alignment="horizontal_center"
-        ohos:text="Hello World"
-        ohos:text_size="50"
-        />
+        ohos:center_in_parent="true"
+        ohos:orientation="vertical">
+        <!--账号-->
+        <TextField
+            ohos:id="$+id:tf_phone"
+            ohos:height="40vp"
+            ohos:width="500vp"
+            ohos:background_element="$graphic:login_textfield"
+            ohos:hint="手机号"
+            ohos:text_alignment="center"
+            ohos:text_size="10fp"/>
+        <!--密码-->
+        <TextField
+            ohos:id="$+id:tf_password"
+            ohos:height="40vp"
+            ohos:width="500vp"
+            ohos:background_element="$graphic:login_textfield"
+            ohos:hint="密码"
+            ohos:text_alignment="center"
+            ohos:text_size="10fp"
+            ohos:top_margin="20vp"/>
+        <!--记住密码-->
+        <DirectionalLayout
+            ohos:height="match_content"
+            ohos:width="500vp"
+            ohos:orientation="horizontal"
+            ohos:top_margin="20vp">
+            <!--记住密码单选框，原始rb有点丑，加个边框-->
+            <DirectionalLayout
+                ohos:height="20vp"
+                ohos:width="20vp"
+                ohos:left_margin="15vp"
+                ohos:background_element="$graphic:rb_save_password">
 
-</DirectionalLayout>
+                <RadioButton
+                    ohos:id="$+id:btn_switch"
+                    ohos:height="20vp"
+                    ohos:width="20vp"
+                    ohos:layout_alignment="center"/>
+            </DirectionalLayout>
+
+            <Text
+                ohos:height="match_content"
+                ohos:width="match_content"
+                ohos:layout_alignment="vertical_center"
+                ohos:left_margin="10vp"
+                ohos:text="记住密码"
+                ohos:text_size="10fp"/>
+        </DirectionalLayout>
+        <!--登陆注册-->
+        <DirectionalLayout
+            ohos:height="match_content"
+            ohos:width="match_content"
+            ohos:layout_alignment="horizontal_center"
+            ohos:orientation="horizontal"
+            ohos:top_margin="20vp">
+
+            <Button
+                ohos:id="$+id:btn_registry"
+                ohos:height="40vp"
+                ohos:width="100vp"
+                ohos:background_element="$media:login_button"
+                ohos:layout_alignment="vertical_center"
+                ohos:text="注册"
+                ohos:text_color="#AE5B41"
+                ohos:text_size="10fp"/>
+
+            <Button
+                ohos:id="$+id:btn_login"
+                ohos:height="40vp"
+                ohos:width="100vp"
+                ohos:background_element="$media:login_button"
+                ohos:layout_alignment="vertical_center"
+                ohos:left_margin="20vp"
+                ohos:text="登录"
+                ohos:text_color="#AE5B41"
+                ohos:text_size="10fp"/>
+        </DirectionalLayout>
+        <!--其他登录方式以及忘记密码-->
+        <DirectionalLayout
+            ohos:height="match_content"
+            ohos:width="match_content"
+            ohos:layout_alignment="horizontal_center"
+            ohos:orientation="horizontal"
+            ohos:top_margin="20vp">
+
+            <Text
+                ohos:height="match_content"
+                ohos:width="match_content"
+                ohos:layout_alignment="vertical_center"
+                ohos:text="其他登录方式"/>
+
+            <Image
+                ohos:id="$+id:btn_weixin"
+                ohos:clickable="true"
+                ohos:height="30vp"
+                ohos:width="30vp"
+                ohos:image_src="$media:weixin"
+                ohos:left_margin="20vp"
+                ohos:scale_mode="zoom_center"/>
+
+            <Image
+                ohos:id="$+id:btn_qq"
+                ohos:height="30vp"
+                ohos:width="30vp"
+                ohos:clickable="true"
+                ohos:image_src="$media:qq"
+                ohos:left_margin="20vp"
+                ohos:scale_mode="zoom_center"/>
+
+            <Text
+                ohos:height="match_content"
+                ohos:width="match_content"
+                ohos:layout_alignment="vertical_center"
+                ohos:left_margin="20vp"
+                ohos:text="忘记密码？"/>
+        </DirectionalLayout>
+    </DirectionalLayout>
+</DependentLayout>
