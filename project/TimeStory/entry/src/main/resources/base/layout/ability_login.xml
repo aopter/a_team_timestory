@@ -9,9 +9,9 @@
     <Image
         ohos:height="300vp"
         ohos:width="300vp"
-        ohos:image_src="$media:gif_login"
         ohos:align_parent_bottom="true"
-        ohos:align_parent_right="true"/>
+        ohos:align_parent_right="true"
+        ohos:image_src="$media:gif_login"/>
 
     <DirectionalLayout
         ohos:height="match_content"
@@ -47,8 +47,8 @@
             <DirectionalLayout
                 ohos:height="20vp"
                 ohos:width="20vp"
-                ohos:left_margin="15vp"
-                ohos:background_element="$graphic:rb_save_password">
+                ohos:background_element="$graphic:rb_save_password"
+                ohos:left_margin="15vp">
 
                 <RadioButton
                     ohos:id="$+id:btn_switch"
@@ -110,9 +110,9 @@
 
             <Image
                 ohos:id="$+id:btn_weixin"
-                ohos:clickable="true"
                 ohos:height="30vp"
                 ohos:width="30vp"
+                ohos:clickable="true"
                 ohos:image_src="$media:weixin"
                 ohos:left_margin="20vp"
                 ohos:scale_mode="zoom_center"/>

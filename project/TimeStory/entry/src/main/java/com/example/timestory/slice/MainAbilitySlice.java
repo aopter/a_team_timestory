@@ -1,19 +1,20 @@
 package com.example.timestory.slice;
 
 import com.example.timestory.ResourceTable;
-import com.example.timestory.ability.user.slice.LoginAbilitySlice;
+import com.example.timestory.Util;
+import com.example.timestory.ability.dynasty.HomePageAbility;
+import com.example.timestory.ability.user.LoginAbility;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
-import ohos.aafwk.content.Operation;
 import ohos.agp.components.Component;
 import ohos.agp.components.Text;
 
 public class MainAbilitySlice extends AbilitySlice {
 
-    Text tvUser;
-    Text tvDynasty;
-    Text tvCard;
-    Text tvProblem;
+    private Text tvUser;
+    private Text tvDynasty;
+    private Text tvCard;
+    private Text tvProblem;
 
     @Override
     public void onStart(Intent intent) {
@@ -57,18 +58,11 @@ public class MainAbilitySlice extends AbilitySlice {
             switch (component.getId()) {
                 case ResourceTable.Id_module_user:
 //                    跳转
-                    present(new LoginAbilitySlice(), new Intent());
+                    startAbility(Util.generatePageNavigationIntent(LoginAbility.class.getName()));
                     break;
                 case ResourceTable.Id_module_dynasty:
 //                    跳转
-                    Intent dynastyIntent = new Intent();
-                    Operation dynastyOperation = new Intent.OperationBuilder()
-                            .withDeviceId("")
-                            .withBundleName("com.example.timestory")
-                            .withAbilityName("com.example.timestory.ability.dynasty.HomePageAbility")
-                            .build();
-                    dynastyIntent.setOperation(dynastyOperation);
-                    startAbility(dynastyIntent);
+                    startAbility(Util.generatePageNavigationIntent(HomePageAbility.class.getName()));
                     break;
                 case ResourceTable.Id_module_card:
 //                    跳转
@@ -77,7 +71,6 @@ public class MainAbilitySlice extends AbilitySlice {
                     System.out.println("选中了：题目模块");
 //                    跳转
                     break;
-
             }
         }
     }
