@@ -5,12 +5,12 @@
     ohos:width="match_parent"
     ohos:background_element="$media:bg_login">
 
-    <!--gif动图无法显示，先写上，如果解决了再修改-->
-    <Image
+    <com.example.timestory.slice.Utils.Gif
         ohos:height="300vp"
         ohos:width="300vp"
         ohos:align_parent_bottom="true"
         ohos:align_parent_right="true"
+        ohos:scale_mode="zoom_center"
         ohos:image_src="$media:gif_login"/>
 
     <DirectionalLayout
