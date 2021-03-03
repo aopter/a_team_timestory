@@ -1,4 +1,4 @@
-package com.example.timestory.slice.Utils.decoder;
+package com.example.timestory.Utils.decoder;
 
 final class SimpleBitmapProvider implements GifDecoder.BitmapProvider {
 //  @Override public Bitmap obtain(int width, int height, Bitmap.Config config) {

@@ -1,6 +1,6 @@
-package com.example.timestory.slice.Utils;
+package com.example.timestory.Utils;
 
-import com.example.timestory.slice.Utils.decoder.GifDecoder;
+import com.example.timestory.Utils.decoder.GifDecoder;
 import ohos.agp.animation.Animator;
 import ohos.agp.animation.AnimatorValue;
 import ohos.agp.components.AttrSet;
@@ -100,7 +100,6 @@ public class Gif extends Image {
         animatorValue.setCurveType(Animator.CurveType.LINEAR);
         animatorValue.setLoopedCount(Animator.INFINITE);
         animatorValue.setDelay(0);
-        //Gif动画有些时间长，有些时间短，这里这个duration是个死的，就是持续时长是个死的，可能体验很不好，后面改进
         animatorValue.setDuration(duration == 0 ? 100000 : duration);
         animatorValue.setValueUpdateListener(mAnimatorUpdateListener);
         animatorValue.start();

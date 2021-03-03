@@ -5,7 +5,7 @@
     ohos:width="match_parent"
     ohos:background_element="$media:bg_login">
 
-    <com.example.timestory.slice.Utils.Gif
+    <com.example.timestory.Utils.Gif
         ohos:height="300vp"
         ohos:width="300vp"
         ohos:align_parent_bottom="true"

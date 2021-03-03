@@ -1,4 +1,4 @@
-package com.example.timestory.slice.Utils;
+package com.example.timestory.Utils;
 
 import ohos.aafwk.content.Intent;
 import ohos.aafwk.content.Operation;

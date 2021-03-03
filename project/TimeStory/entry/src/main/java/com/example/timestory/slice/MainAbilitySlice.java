@@ -2,9 +2,8 @@ package com.example.timestory.slice;
 
 import com.example.timestory.ResourceTable;
 import com.example.timestory.ability.user.LoginAbility;
-import com.example.timestory.slice.Utils.Util;
+import com.example.timestory.Utils.Util;
 import com.example.timestory.ability.dynasty.HomePageAbility;
-import com.example.timestory.ability.user.UserCenterAbility;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
 import ohos.agp.components.Component;
