@@ -4,15 +4,15 @@
     ohos:height="match_parent"
     ohos:width="match_parent">
 
-<!--    用户信息-->
+    <!--    用户信息-->
     <DirectionalLayout
         ohos:id="$+id:user"
-        ohos:height="110fp"
+        ohos:height="90fp"
         ohos:width="match_parent"
         ohos:orientation="horizontal"
-        ohos:background_element="$media:headbackground.png">
+        ohos:background_element="$media:headbackground">
 
-<!--        头像，进度条-->
+        <!--        头像，进度条-->
         <DirectionalLayout
             ohos:height="match_parent"
             ohos:width="match_content"
@@ -23,23 +23,25 @@
 
             <Image
                 ohos:id="$+id:user_header"
-                ohos:height="60fp"
-                ohos:width="60fp"
-                ohos:background_element="$media:test_header.png"/>
+                ohos:height="50fp"
+                ohos:width="50fp"
+                ohos:scale_mode="inside"
+                ohos:image_src="$media:test_header"/>
 
             <ProgressBar
+                ohos:id="$+id:progress_bar"
                 ohos:height="match_content"
                 ohos:width="50fp"
-                ohos:top_margin="8fp"
+                ohos:top_margin="3fp"
                 ohos:progress_color="blue"
-                ohos:progress="50"
+                ohos:background_element="$color:orange"
                 ohos:min="0"
                 ohos:max="100"/>
 
 
         </DirectionalLayout>
 
-<!--        等级，经验-->
+        <!--        等级，经验-->
         <DirectionalLayout
             ohos:height="match_parent"
             ohos:width="match_content"
@@ -49,9 +51,9 @@
             ohos:alignment="center">
 
             <Text
+                ohos:id="$+id:experience"
                 ohos:height="35fp"
                 ohos:width="80fp"
-                ohos:text="秀才"
                 ohos:text_size="12fp"
                 ohos:text_alignment="center"
                 ohos:background_element="$media:button"
@@ -62,7 +64,7 @@
 
         </DirectionalLayout>
 
-<!--        抽卡-->
+        <!--        抽卡-->
         <DirectionalLayout
             ohos:height="match_parent"
             ohos:width="match_content"
@@ -72,6 +74,7 @@
             ohos:alignment="center">
 
             <Text
+                ohos:id="$+id:draw_card"
                 ohos:height="35fp"
                 ohos:width="75fp"
                 ohos:text="抽卡"
@@ -85,7 +88,7 @@
 
         </DirectionalLayout>
 
-<!--        我的卡片-->
+        <!--        我的卡片-->
         <DirectionalLayout
             ohos:height="match_parent"
             ohos:width="match_content"
@@ -95,6 +98,7 @@
             ohos:alignment="center">
 
             <Text
+                ohos:id="$+id:user_card"
                 ohos:height="35fp"
                 ohos:width="80fp"
                 ohos:text="我的卡片"
@@ -108,7 +112,7 @@
 
         </DirectionalLayout>
 
-<!--        我的收藏-->
+        <!--        我的收藏-->
         <DirectionalLayout
             ohos:height="match_parent"
             ohos:width="match_content"
@@ -118,6 +122,7 @@
             ohos:alignment="center">
 
             <Text
+                ohos:id="$+id:user_collection"
                 ohos:height="35fp"
                 ohos:width="80fp"
                 ohos:text="我的收藏"
@@ -131,7 +136,7 @@
 
         </DirectionalLayout>
 
-<!--        积分-->
+        <!--        积分-->
         <DirectionalLayout
             ohos:height="match_parent"
             ohos:width="match_content"
@@ -165,24 +170,24 @@
                     ohos:height="match_parent"
                     ohos:width="0fp"
                     ohos:weight="5"
-                    ohos:text="800"
                     ohos:text_size="9fp"
                     ohos:text_alignment="center"
                     ohos:text_color="#AE5B41"/>
 
                 <Image
+                    ohos:id="$+id:recharge"
                     ohos:height="18fp"
                     ohos:width="0fp"
                     ohos:weight="3"
                     ohos:layout_alignment="vertical_center"
-                    ohos:background_element="$media:plust.png"/>
+                    ohos:background_element="$media:plust"/>
 
             </DirectionalLayout>
 
 
         </DirectionalLayout>
 
-<!--        音量、设置-->
+        <!--        音量、设置-->
         <DirectionalLayout
             ohos:height="match_content"
             ohos:width="match_parent"
@@ -195,13 +200,13 @@
                 ohos:height="30fp"
                 ohos:width="30fp"
                 ohos:margin="5fp"
-                ohos:background_element="$media:novoice.png"/>
+                ohos:background_element="$media:novoice"/>
 
             <Button
                 ohos:height="30fp"
                 ohos:width="30fp"
                 ohos:margin="5fp"
-                ohos:background_element="$media:settings.png"/>
+                ohos:background_element="$media:settings"/>
 
 
 
@@ -210,15 +215,15 @@
     </DirectionalLayout>
 
 
-<!--    朝代信息-->
+    <!--    朝代信息-->
     <ScrollView
         ohos:height="match_parent"
         ohos:width="match_parent"
         ohos:below="$id:user">
         <DependentLayout
             ohos:height="match_parent"
-            ohos:width="3939px"
-            ohos:background_element="$media:homebackground.png">
+            ohos:width="5200px"
+            ohos:background_element="$media:homebackground">
 
             <DirectionalLayout
                 ohos:id="$+id:dynasty_top"
@@ -226,11 +231,6 @@
                 ohos:width="match_parent"
                 ohos:left_margin="15fp"
                 ohos:orientation="horizontal">
-
-                <Text
-                    ohos:height="match_content"
-                    ohos:width="match_content"
-                    ohos:text="fdsaf"/>
 
             </DirectionalLayout>
 
@@ -241,11 +241,6 @@
                 ohos:width="match_parent"
                 ohos:left_margin="30fp"
                 ohos:orientation="horizontal">
-
-                <Text
-                    ohos:height="match_content"
-                    ohos:width="match_content"
-                    ohos:text="fddsagdsgsdgsaf"/>
 
             </DirectionalLayout>
 

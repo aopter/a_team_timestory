@@ -4,9 +4,12 @@ package com.example.timestory.constant;
 
 
 import com.example.timestory.entity.*;
+import ohos.media.image.PixelMap;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 安卓用到的常量 全局对象等等
@@ -46,6 +49,9 @@ public class Constant {
 
 
     public static int  descCount = 60;
+
+    public static Map<String, PixelMap> eventPics = new HashMap<>();
+
 ////    积分不足提示
 //    public static void showCountDialog(Context context) {
 //        CustomDialog.Builder builder = new CustomDialog.Builder(context);

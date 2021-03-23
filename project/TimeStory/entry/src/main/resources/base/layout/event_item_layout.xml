@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:height="match_content"
+    ohos:width="match_content"
+    ohos:orientation="vertical"
+    ohos:alignment="center">
+
+    <DirectionalLayout
+        ohos:height="match_content"
+        ohos:width="match_content"
+        ohos:orientation="horizontal"
+        ohos:alignment="center">
+        
+        <Text
+            ohos:id="$+id:left"
+            ohos:height="5vp"
+            ohos:width="50vp"
+            ohos:background_element="$color:ourDynastyRed"/>
+        <Text
+            ohos:id="$+id:dot"
+            ohos:height="20vp"
+            ohos:width="20vp"
+            ohos:background_element="$graphic:dot"/>
+        <Text
+            ohos:id="$+id:right"
+            ohos:height="5vp"
+            ohos:width="50vp"
+            ohos:background_element="$color:ourDynastyRed"/>
+        
+    </DirectionalLayout>
+    <DirectionalLayout
+        ohos:height="match_content"
+        ohos:width="match_content"
+        ohos:alignment="center">
+
+        <Text
+            ohos:height="65vp"
+            ohos:width="5vp"
+            ohos:background_element="$color:ourDynastyRed"/>
+        
+        <Text
+            ohos:id="$+id:event_name"
+            ohos:height="match_content"
+            ohos:width="80vp"
+            ohos:top_margin="10vp"
+            ohos:multiple_lines="true"
+            ohos:text_alignment="center"
+            ohos:text_size="20fp"/>
+        
+        <Image
+            ohos:id="$+id:event_img"
+            ohos:height="90vp"
+            ohos:width="100vp"
+            ohos:scale_mode="inside"/>
+
+
+    </DirectionalLayout>
+
+</DirectionalLayout>

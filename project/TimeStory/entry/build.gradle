@@ -1,10 +1,29 @@
 apply plugin: 'com.huawei.ohos.hap'
 ohos {
+    signingConfigs {
+        debug {
+            storeFile file('D:/learningMaterials/Future/my-deveco-studio/MyKeyStory/timestory/Timestory.p12')
+            storePassword '0000001BAEE9CFFCBDB658B3ED1C2A0DE16B035605F81282A1BC2D03FA536DE60E96E6ADD20F579C79F772'
+            keyAlias 'Timestory'
+            keyPassword '0000001BAD8BDFFA9B27B3B142A51958D1B83F867E713F6F095BB059A50620A08A759EFEE4FE5086A3494B'
+            signAlg 'SHA256withECDSA'
+            profile file('D:/learningMaterials/Future/my-deveco-studio/MyKeyStory/timestory/timestoryDebug.p7b')
+            certpath file('D:/learningMaterials/Future/my-deveco-studio/MyKeyStory/timestory/Timestory.cer')
+        }
+        release {
+            storeFile file('D:/learningMaterials/Future/my-deveco-studio/MyKeyStory/timestory/Timestory.p12')
+            storePassword '0000001B82547441DA64FB0C20EC771E69A919D7AC998573D783B0204004BFA1258E18CB09F1391BF58394'
+            keyAlias 'Timestory'
+            keyPassword '0000001BB5CBEE7C180310D28611126D3417746A0166AD752C959754EA1327FF9FA316BC65D2173F235C51'
+            signAlg 'SHA256withECDSA'
+            profile file('D:/learningMaterials/Future/my-deveco-studio/MyKeyStory/timestory/timestoryDebug.p7b')
+            certpath file('D:/learningMaterials/Future/my-deveco-studio/MyKeyStory/timestory/Timestory.cer')
+        }
+    }
     compileSdkVersion 4
     defaultConfig {
         compatibleSdkVersion 3
     }
-    
 }
 
 dependencies {

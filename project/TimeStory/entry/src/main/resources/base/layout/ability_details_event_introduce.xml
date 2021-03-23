@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:height="match_parent"
+    ohos:width="match_parent"
+    ohos:orientation="horizontal"
+    ohos:background_element="$media:intro">
+
+<!--    标题部分-->
+    <DependentLayout
+        ohos:id="$+id:title"
+        ohos:height="match_parent"
+        ohos:width="match_content">
+
+        <Button
+            ohos:id="$+id:back"
+            ohos:height="25fp"
+            ohos:width="25fp"
+            ohos:background_element="$media:back"
+            ohos:align_parent_top="true"
+            ohos:margin="28fp"/>
+
+        <Text
+            ohos:id="$+id:event_name"
+            ohos:height="match_content"
+            ohos:width="35vp"
+            ohos:text_size="25fp"
+            ohos:center_in_parent="true"
+            ohos:multiple_lines="true"
+            ohos:margin="20fp"
+            ohos:text_color="$color:ourDynastyRed"
+            ohos:text_alignment="center"/>
+
+    </DependentLayout>
+
+<!--    人物叙述部分-->
+    <DependentLayout
+        ohos:height="match_parent"
+        ohos:width="260fp">
+
+<!--        灯笼图片-->
+<!--        简介框-->
+        <DirectionalLayout
+            ohos:height="210fp"
+            ohos:width="230fp"
+            ohos:alignment="center"
+            ohos:background_element="$media:bg_pangbai"
+            ohos:horizontal_center="true"
+            ohos:above="$id:pic_pangbai"
+            ohos:bottom_margin="-90fp">
+
+            <Text
+                ohos:id="$+id:event_introduce"
+                ohos:height="match_parent"
+                ohos:width="match_parent"
+                ohos:text_size="14fp"
+                ohos:multiple_lines="true"
+                ohos:scrollable="true"
+                ohos:clickable="false"
+                ohos:top_padding="20fp"
+                ohos:bottom_padding="20fp"
+                ohos:left_padding="15fp"
+                ohos:right_padding="12fp"/>
+
+        </DirectionalLayout>
+<!--        人物图片-->
+        <Image
+            ohos:id="$+id:pic_pangbai"
+            ohos:height="130fp"
+            ohos:width="130fp"
+            ohos:bottom_margin="5fp"
+            ohos:align_parent_bottom="true"
+            ohos:scale_mode="inside"/>
+    </DependentLayout>
+
+<!--    人物动画部分-->
+    <DirectionalLayout
+        ohos:height="match_content"
+        ohos:width="match_parent"
+        ohos:orientation="vertical">
+
+<!--        滚动-->
+        <ScrollView
+            ohos:height="200fp"
+            ohos:width="match_parent">
+
+            <DirectionalLayout
+                ohos:id="$+id:dialog_box"
+                ohos:height="match_content"
+                ohos:width="match_parent"
+                ohos:orientation="vertical"
+                ohos:layout_alignment="bottom"
+                ohos:alignment="horizontal_center">
+
+            </DirectionalLayout>
+        </ScrollView>
+
+<!--        人物-->
+        <DependentLayout
+            ohos:id="$+id:dialogue"
+            ohos:height="match_parent"
+            ohos:width="match_parent"
+            ohos:clickable="true">
+
+            <Image
+                ohos:id="$+id:pic_one"
+                ohos:height="150fp"
+                ohos:width="150fp"
+                ohos:background_element="$media:tangtwo"
+                ohos:align_parent_left="true"
+                ohos:left_margin="35fp"
+                ohos:clickable="false"/>
+            <Image
+                ohos:id="$+id:pic_two"
+                ohos:height="150fp"
+                ohos:width="150fp"
+                ohos:background_element="$media:tangOne"
+                ohos:align_parent_right="true"
+                ohos:right_margin="35fp"
+                ohos:clickable="false"/>
+
+        </DependentLayout>
+    </DirectionalLayout>
+
+</DirectionalLayout>

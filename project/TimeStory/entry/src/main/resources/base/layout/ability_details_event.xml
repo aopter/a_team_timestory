@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DependentLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:height="match_parent"
+    ohos:width="match_parent"
+    ohos:orientation="vertical"
+    ohos:background_element="$media:info">
+
+    <DependentLayout
+        ohos:id="$+id:title"
+        ohos:height="match_content"
+        ohos:width="match_parent">
+
+        <Text
+            ohos:id="$+id:dynasty_name"
+            ohos:height="match_content"
+            ohos:width="match_content"
+            ohos:margin="5fp"
+            ohos:text_size="30fp"
+            ohos:center_in_parent="true"/>
+
+    </DependentLayout>
+
+
+<!--    事件信息列表-->
+    <ScrollView
+        ohos:height="match_parent"
+        ohos:width="match_parent"
+        ohos:below="$id:title">
+
+        <DirectionalLayout
+            ohos:id="$+id:incidents_list"
+            ohos:height="match_parent"
+            ohos:width="match_content"
+            ohos:top_margin="30vp"
+            ohos:orientation="horizontal">
+
+        </DirectionalLayout>
+    </ScrollView>
+
+
+</DependentLayout>
