@@ -16,10 +16,18 @@
             ohos:height="match_content"
             ohos:width="match_content"
             ohos:margin="5fp"
-            ohos:text_size="30fp"
+            ohos:text_size="35fp"
             ohos:center_in_parent="true"/>
 
     </DependentLayout>
+
+    <Text
+        ohos:id="$+id:dialog"
+        ohos:height="match_parent"
+        ohos:width="match_content"
+        ohos:text_alignment="center"
+        ohos:text_size="20vp"
+        ohos:center_in_parent="true"/>
 
 
 <!--    事件信息列表-->

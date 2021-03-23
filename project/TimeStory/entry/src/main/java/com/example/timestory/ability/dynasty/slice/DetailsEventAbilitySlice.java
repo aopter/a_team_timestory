@@ -2,7 +2,6 @@ package com.example.timestory.ability.dynasty.slice;
 
 import com.example.timestory.ResourceTable;
 import com.example.timestory.Utils.HmOSImageLoader;
-import com.example.timestory.ability.dynasty.adapter.EventItemProvider;
 import com.example.timestory.constant.Constant;
 import com.example.timestory.constant.ServiceConfig;
 import com.example.timestory.entity.Incident;
@@ -11,9 +10,13 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import ohos.aafwk.ability.AbilitySlice;
+import ohos.aafwk.ability.delegation.TestRunner;
 import ohos.aafwk.content.Intent;
 import ohos.aafwk.content.Operation;
+import ohos.agp.colors.RgbColor;
 import ohos.agp.components.*;
+import ohos.agp.utils.Color;
+import ohos.agp.utils.TextAlignment;
 import ohos.agp.window.dialog.ToastDialog;
 import ohos.app.dispatcher.TaskDispatcher;
 import ohos.app.dispatcher.task.TaskPriority;
@@ -27,17 +30,22 @@ import okhttp3.Response;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DetailsEventAbilitySlice extends AbilitySlice {
+    private Map<Integer,Text> textMap = new HashMap<>();
     private AbilitySlice abilitySlice = this;
 
     private DirectionalLayout directionalLayout;
+    private Text dialog;
 
     private int dynastyId;
     private String dynastyNameStr;
 
-    private List<Incident> incidentList;
+    private List<Incident> incidentList = new ArrayList<>();
 
     private Text dynastyName;
     private ListContainer eventList;
@@ -56,12 +64,17 @@ public class DetailsEventAbilitySlice extends AbilitySlice {
                     downloadUnlockDynastyIncidents();
                     break;
                 case ServiceConfig.UNLOCK_INCIDENT_URL_THREAD:
-                    //加载页面
-//                    EventItemProvider eventItemProvider = new EventItemProvider(abilitySlice,getContext(),incidentList,dynastyId);
-//                    eventList.setItemProvider(eventItemProvider);
-                    for(int i=0;i < incidentList.size();i++){
-                        addIncident(incidentList.get(i));
+                    //有事件
+                    if(incidentList.size() != 0){
+                        //加载页面
+                        for(int i=0;i < incidentList.size();i++){
+                            addIncident(incidentList.get(i));
+                        }
+                    }else{
+                        //无事件
+                        showToast();
                     }
+
                     break;
             }
         }
@@ -93,6 +106,23 @@ public class DetailsEventAbilitySlice extends AbilitySlice {
 
     }
 
+    public void showToast(){
+//        Text text = new Text(getContext());
+//        text.setText("暂未添加事件，先去唐朝看看吧");
+//        text.setTextSize(50);
+//        text.setTextAlignment(TextAlignment.CENTER);
+//        text.setLayoutConfig(new DirectionalLayout.LayoutConfig(DirectionalLayout.LayoutConfig.MATCH_PARENT, DirectionalLayout.LayoutConfig.MATCH_PARENT));
+//        directionalLayout.addComponent(text);
+
+        dialog.setText("暂未添加事件，先去唐朝看看吧");
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        terminate();
+    }
+
 
     //初始化Gson
     private void initGson(){
@@ -108,6 +138,7 @@ public class DetailsEventAbilitySlice extends AbilitySlice {
         dynastyName = (Text) findComponentById(ResourceTable.Id_dynasty_name);
 //        eventList = (ListContainer) findComponentById(ResourceTable.Id_event_list);
         directionalLayout = (DirectionalLayout) findComponentById(ResourceTable.Id_incidents_list);
+        dialog = (Text) findComponentById(ResourceTable.Id_dialog);
     }
 
     //网络获取朝代全部的事件
@@ -181,16 +212,16 @@ public class DetailsEventAbilitySlice extends AbilitySlice {
         Component component = LayoutScatter.getInstance(getContext()).parse(ResourceTable.Layout_event_item_layout,null,false);
         Text eventName = (Text) component.findComponentById(ResourceTable.Id_event_name);
         Image eventImg = (Image) component.findComponentById(ResourceTable.Id_event_img);
+
+        //加入map
+        textMap.put(incident.getIncidentId(),eventName);
+
         if(isUnlock(incident.getIncidentId())){
             //放入深颜色
-//            viewHolder.eventName.setTextColor(new Color(595959));
+            eventName.setTextColor(Color.BLACK);
         }else{
             //放入浅颜色
-//            viewHolder.eventName.setTextColor(new Color(500000));
-
-            ToastDialog toastDialog = new ToastDialog(getContext());
-            toastDialog.setText("事件未完成");
-            toastDialog.show();
+            eventName.setTextColor(Color.GRAY);
         }
         //放入名称
         eventName.setText(incident.getIncidentName());
@@ -232,6 +263,14 @@ public class DetailsEventAbilitySlice extends AbilitySlice {
     @Override
     public void onActive() {
         super.onActive();
+        if(incidentList != null){
+            //加载页面
+            for(int i=0;i < incidentList.size();i++){
+                if(isUnlock(incidentList.get(i).getIncidentId())){
+                    textMap.get(incidentList.get(i).getIncidentId()).setTextColor(Color.BLACK);
+                }
+            }
+        }
     }
 
     @Override

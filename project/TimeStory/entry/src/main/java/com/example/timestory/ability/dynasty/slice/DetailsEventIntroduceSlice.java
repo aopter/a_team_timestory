@@ -7,6 +7,7 @@ import com.example.timestory.constant.ServiceConfig;
 import com.example.timestory.entity.Incident;
 import com.example.timestory.entity.Result;
 import com.example.timestory.entity.UserUnlockDynasty;
+import com.example.timestory.entity.UserUnlockDynastyIncident;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -25,8 +26,6 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.List;
 
 public class DetailsEventIntroduceSlice extends AbilitySlice {
     private int dynastyId;//朝代Id
@@ -228,6 +227,12 @@ public class DetailsEventIntroduceSlice extends AbilitySlice {
                         experience = experience + 15;
                         Constant.User.setUserExperience(experience);
                     }
+                    //添加到解锁事件列表
+                    UserUnlockDynastyIncident userUnlockDynastyIncident = new UserUnlockDynastyIncident();
+                    userUnlockDynastyIncident.setIncidentId(incident.getIncidentId());
+                    userUnlockDynastyIncident.setIncidentName(incident.getIncidentName());
+                    userUnlockDynastyIncident.setIncidentPicture(incident.getIncidentPicture());
+                    Constant.UnlockDynastyIncident.add(userUnlockDynastyIncident);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
