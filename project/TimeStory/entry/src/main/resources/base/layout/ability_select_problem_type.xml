@@ -23,62 +23,165 @@
         ohos:orientation="vertical"
         ohos:height="match_parent"
         ohos:width="match_parent">
+
         <DirectionalLayout
             ohos:height="match_parent"
             ohos:width="match_parent"
             ohos:weight="1"/>
+
+
         <DirectionalLayout
+            ohos:left_margin="10vp"
+            ohos:right_margin="10vp"
             ohos:height="match_parent"
             ohos:width="match_parent"
             ohos:orientation="horizontal"
             ohos:weight="7">
+
+<!--            1-->
             <DirectionalLayout
+                ohos:id="$+id:type_problem_xuan"
                 ohos:layout_alignment="horizontal_center"
-                ohos:background_element="$media:bg_select"
                 ohos:height="match_parent"
                 ohos:width="match_parent"
                 ohos:orientation="vertical"
                 ohos:padding="10vp"
                 ohos:weight="1">
-                <Image
-                    ohos:image_src="$media:select_xuan"
+                <DirectionalLayout
+                    ohos:top_padding="10vp"
+                    ohos:background_element="$media:bg_select"
                     ohos:height="match_parent"
                     ohos:width="match_parent"
-                    ohos:weight="9"/>
+                    ohos:weight="8">
+                    <Image
+                        ohos:image_src="$media:select_xuan"
+                        ohos:height="match_parent"
+                        ohos:width="match_parent"
+                        />
+                </DirectionalLayout>
                 <Text
+                    ohos:text_font="serif"
+                    ohos:text_weight="800"
+                    ohos:text_alignment="center"
+                    ohos:theme="blod"
+                    ohos:text_color="$color:ourDynastyRed"
+                    ohos:text_size="20fp"
                     ohos:layout_alignment="center"
                     ohos:text="选一选"
                     ohos:height="match_parent"
                     ohos:width="match_parent"
                     ohos:weight="1"/>
-
             </DirectionalLayout>
+<!--            2-->
             <DirectionalLayout
+                ohos:padding="10vp"
+                ohos:id="$+id:type_problem_lian"
                 ohos:height="match_parent"
                 ohos:width="match_parent"
                 ohos:orientation="vertical"
                 ohos:weight="1">
-
+                <DirectionalLayout
+                    ohos:top_padding="10vp"
+                    ohos:background_element="$media:bg_select"
+                    ohos:height="match_parent"
+                    ohos:width="match_parent"
+                    ohos:weight="8">
+                    <Image
+                        ohos:image_src="$media:select_lian"
+                        ohos:height="match_parent"
+                        ohos:width="match_parent"
+                        />
+                </DirectionalLayout>
+                <Text
+                    ohos:text_font="serif"
+                    ohos:text_weight="800"
+                    ohos:text_alignment="center"
+                    ohos:theme="blod"
+                    ohos:text_color="$color:ourDynastyRed"
+                    ohos:text_size="20fp"
+                    ohos:layout_alignment="center"
+                    ohos:text="连一连"
+                    ohos:height="match_parent"
+                    ohos:width="match_parent"
+                    ohos:weight="1"/>
             </DirectionalLayout>
+
+
+<!--            3-->
             <DirectionalLayout
+                ohos:padding="10vp"
+                ohos:id="$+id:type_problem_pai"
                 ohos:height="match_parent"
                 ohos:width="match_parent"
                 ohos:orientation="vertical"
                 ohos:weight="1">
-
+                <DirectionalLayout
+                    ohos:top_padding="10vp"
+                    ohos:background_element="$media:bg_select"
+                    ohos:height="match_parent"
+                    ohos:width="match_parent"
+                    ohos:weight="8">
+                    <Image
+                        ohos:image_src="$media:select_pai"
+                        ohos:height="match_parent"
+                        ohos:width="match_parent"
+                        />
+                </DirectionalLayout>
+                <Text
+                    ohos:text_font="serif"
+                    ohos:text_weight="800"
+                    ohos:text_alignment="center"
+                    ohos:theme="blod"
+                    ohos:text_color="$color:ourDynastyRed"
+                    ohos:text_size="20fp"
+                    ohos:layout_alignment="center"
+                    ohos:text="排一排"
+                    ohos:height="match_parent"
+                    ohos:width="match_parent"
+                    ohos:weight="1"/>
             </DirectionalLayout>
+
+
+<!--            4-->
             <DirectionalLayout
+                ohos:padding="10vp"
+                ohos:id="$+id:type_problem_kuai"
                 ohos:height="match_parent"
                 ohos:width="match_parent"
                 ohos:orientation="vertical"
                 ohos:weight="1">
-
+                <DirectionalLayout
+                    ohos:top_padding="10vp"
+                    ohos:background_element="$media:bg_select"
+                    ohos:height="match_parent"
+                    ohos:width="match_parent"
+                    ohos:weight="8">
+                    <Image
+                        ohos:image_src="$media:select_kuai"
+                        ohos:height="match_parent"
+                        ohos:width="match_parent"
+                        />
+                </DirectionalLayout>
+                <Text
+                    ohos:text_font="serif"
+                    ohos:text_weight="800"
+                    ohos:text_alignment="center"
+                    ohos:theme="blod"
+                    ohos:text_color="$color:ourDynastyRed"
+                    ohos:text_size="20fp"
+                    ohos:layout_alignment="center"
+                    ohos:text="快速开始"
+                    ohos:height="match_parent"
+                    ohos:width="match_parent"
+                    ohos:weight="1"/>
             </DirectionalLayout>
         </DirectionalLayout>
+
+
         <DirectionalLayout
             ohos:height="match_parent"
             ohos:width="match_parent"
-            ohos:weight="2"/>
+            ohos:weight="3"/>
     </DirectionalLayout>
 
 
