@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: ohos_ivi">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/AppData/Local/Huawei/Sdk/java/2.1.0.5/api/car/ohos_ivi.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
