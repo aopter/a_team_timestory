@@ -41,7 +41,8 @@ public class ServiceConfig {
      */
     public static final String REGISTRY_URL = "/user/register";
     /**
-     * 手机号长度
+     * 用户登录URL
      */
-    public static final int PHONE_LENGTH = 11;
+    public static final String LOGIN_URL = "/user/login";
+
 }

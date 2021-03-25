@@ -60,7 +60,7 @@ public class MainAbilitySlice extends AbilitySlice {
             switch (component.getId()) {
                 case ResourceTable.Id_module_user:
 //                    跳转
-                    startAbility(Util.generatePageNavigationIntent(RegistryAbility.class.getName()));
+                    startAbility(Util.generatePageNavigationIntent(LoginAbility.class.getName()));
                     break;
                 case ResourceTable.Id_module_dynasty:
 //                    跳转

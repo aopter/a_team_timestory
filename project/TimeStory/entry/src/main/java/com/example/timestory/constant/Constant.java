@@ -1,8 +1,6 @@
 package com.example.timestory.constant;
 
 
-
-
 import com.example.timestory.entity.*;
 import ohos.media.image.PixelMap;
 
@@ -45,10 +43,13 @@ public class Constant {
     public static int ChangeHeader;
 
     public static long Random;
+    /**
+     * 手机号长度
+     */
+    public static final int PHONE_LENGTH = 11;
 
 
-
-    public static int  descCount = 60;
+    public static int descCount = 60;
 
     public static Map<String, PixelMap> eventPics = new HashMap<>();
 

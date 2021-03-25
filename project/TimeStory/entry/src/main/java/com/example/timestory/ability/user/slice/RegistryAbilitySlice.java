@@ -1,17 +1,14 @@
 package com.example.timestory.ability.user.slice;
 
 import com.example.timestory.ResourceTable;
+import com.example.timestory.constant.Constant;
 import com.example.timestory.constant.ServiceConfig;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
 import ohos.agp.components.Button;
-import ohos.agp.components.Text;
+import ohos.agp.components.TextField;
 import ohos.agp.window.dialog.ToastDialog;
-import ohos.hiviewdfx.HiLog;
-import ohos.hiviewdfx.HiLogLabel;
 import okhttp3.*;
 
 import java.io.IOException;
@@ -24,17 +21,16 @@ import java.io.IOException;
  * @description 注册页面
  */
 public class RegistryAbilitySlice extends AbilitySlice {
-    private Text phoneTx;
-    private Text passwordTx;
+    private TextField phoneTx;
+    private TextField passwordTx;
     private Button registryBtn;
-    private static HiLogLabel label = new HiLogLabel(3, 1, "RegistryAbilitySlice");
 
     @Override
     protected void onStart(Intent intent) {
         super.onStart(intent);
         super.setUIContent(ResourceTable.Layout_ability_user_registry);
         initView();
-        setListener();
+        setClickListener();
     }
 
     /**
@@ -42,7 +38,7 @@ public class RegistryAbilitySlice extends AbilitySlice {
      * @date 2021/3/25 15:34
      * @description 绑定监听器
      */
-    private void setListener() {
+    private void setClickListener() {
         registryBtn.setClickedListener(component -> {
             String phoneNum = phoneTx.getText().trim();
             String password = passwordTx.getText().trim();
@@ -58,7 +54,7 @@ public class RegistryAbilitySlice extends AbilitySlice {
      * @description 根据手机号密码进行注册操作
      */
     private void registry(String phoneNum, String password) {
-        if (phoneNum == null || password == null || phoneNum.length() != ServiceConfig.PHONE_LENGTH || "".equals(password)) {
+        if (phoneNum == null || password == null || phoneNum.length() != Constant.PHONE_LENGTH || "".equals(password)) {
             new ToastDialog(RegistryAbilitySlice.this)
                     .setText("手机号格式不正确或密码为空")
                     .setDuration(4000)
@@ -124,8 +120,8 @@ public class RegistryAbilitySlice extends AbilitySlice {
      * @description 初始化控件以及获取UI线程
      */
     private void initView() {
-        phoneTx = (Text) findComponentById(ResourceTable.Id_registry_phone);
-        passwordTx = (Text) findComponentById(ResourceTable.Id_registry_password);
+        phoneTx = (TextField) findComponentById(ResourceTable.Id_registry_phone);
+        passwordTx = (TextField) findComponentById(ResourceTable.Id_registry_password);
         registryBtn = (Button) findComponentById(ResourceTable.Id_btn_registry);
     }
 }

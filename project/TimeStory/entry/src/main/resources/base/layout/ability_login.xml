@@ -20,7 +20,7 @@
         ohos:orientation="vertical">
         <!--账号-->
         <TextField
-            ohos:id="$+id:tf_phone"
+            ohos:id="$+id:login_phone"
             ohos:height="40vp"
             ohos:width="500vp"
             ohos:background_element="$graphic:login_textfield"
@@ -29,7 +29,7 @@
             ohos:text_size="10fp"/>
         <!--密码-->
         <TextField
-            ohos:id="$+id:tf_password"
+            ohos:id="$+id:login_password"
             ohos:height="40vp"
             ohos:width="500vp"
             ohos:background_element="$graphic:login_textfield"
@@ -52,13 +52,14 @@
                 ohos:left_margin="15vp">
 
                 <RadioButton
-                    ohos:id="$+id:btn_switch"
+                    ohos:id="$+id:save_user"
                     ohos:height="20vp"
                     ohos:width="20vp"
                     ohos:layout_alignment="center"/>
             </DirectionalLayout>
 
             <Text
+                ohos:clickable="true"
                 ohos:height="match_content"
                 ohos:width="match_content"
                 ohos:layout_alignment="vertical_center"
@@ -75,7 +76,7 @@
             ohos:top_margin="20vp">
 
             <Button
-                ohos:id="$+id:btn_registry"
+                ohos:id="$+id:login_btn_registry"
                 ohos:height="40vp"
                 ohos:width="100vp"
                 ohos:background_element="$media:login_button"
@@ -85,7 +86,7 @@
                 ohos:text_size="10fp"/>
 
             <Button
-                ohos:id="$+id:btn_login"
+                ohos:id="$+id:login_btn_login"
                 ohos:height="40vp"
                 ohos:width="100vp"
                 ohos:background_element="$media:login_button"
