@@ -11,6 +11,10 @@
     {
       "name": "detailseventability_description",
       "value": "hap sample empty provider"
+    },
+    {
+      "name": "rechargeability_description",
+      "value": "hap sample empty service"
     }
   ]
 }

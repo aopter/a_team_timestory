@@ -79,6 +79,10 @@
     {
       "name": "recharge_color",
       "value": "#e8b48c"
+    },
+    {
+      "name": "holo_red_dark",
+      "value": "#ffcc0000"
     }
   ]
 }

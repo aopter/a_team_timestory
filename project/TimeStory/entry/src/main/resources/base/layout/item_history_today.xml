@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:height="match_parent"
+    ohos:width="match_parent"
+    ohos:background_element="$media:background"
+    ohos:orientation="vertical">
+
+    <Text
+        ohos:height="50vp"
+        ohos:width="match_parent"
+        ohos:alpha="0.8"
+        ohos:background_element="$color:white"
+        ohos:text="title"
+        ohos:text_alignment="center"
+        ohos:text_color="#AE5B41"
+        ohos:text_size="24fp"/>
+
+    <DirectionalLayout
+        ohos:height="match_parent"
+        ohos:width="match_parent"
+        ohos:alpha="0.8"
+        ohos:background_element="#AE5B41"
+        ohos:orientation="vertical">
+
+        <DependentLayout
+            ohos:height="50vp"
+            ohos:width="match_parent"
+            ohos:background_element="$color:colorBorder">
+
+            <Text
+                ohos:height="match_parent"
+                ohos:width="match_content"
+                ohos:alpha="0.8"
+                ohos:left_of="$id:history_today_time"
+                ohos:text="时间:"
+                ohos:text_color="$color:white"
+                ohos:text_size="24fp"
+                ohos:top_padding="20vp"/>
+
+            <Text
+                ohos:id="$+id:history_today_time"
+                ohos:height="match_parent"
+                ohos:width="match_content"
+                ohos:align_parent_end="true"
+                ohos:alpha="0.8"
+                ohos:right_padding="20vp"
+                ohos:text="时间"
+                ohos:text_color="$color:white"
+                ohos:text_size="24fp"
+                ohos:top_padding="20vp"/>
+        </DependentLayout>
+
+        <Text
+            ohos:height="match_parent"
+            ohos:width="match_parent"
+            ohos:left_padding="20vp"
+            ohos:right_padding="20vp"
+            ohos:text="内容"
+            ohos:text_alignment="horizontal_center"
+            ohos:text_color="$color:white"
+            ohos:text_size="24fp"
+            ohos:top_padding="20vp"/>
+    </DirectionalLayout>
+</DirectionalLayout>

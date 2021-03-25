@@ -148,6 +148,24 @@
         "launchType": "standard"
       },
       {
+        "orientation": "unspecified",
+        "name": "com.example.timestory.ability.user.SettingAbility",
+        "icon": "$media:icon",
+        "description": "$string:mainability_description",
+        "label": "TimeStroy",
+        "type": "page",
+        "launchType": "standard"
+      },
+      {
+        "orientation": "unspecified",
+        "name": "com.example.timestory.ability.user.RechargeAbility",
+        "icon": "$media:icon",
+        "description": "$string:mainability_description",
+        "label": "TimeStroy",
+        "type": "page",
+        "launchType": "standard"
+      },
+      {
         "orientation": "landscape",
         "name": "com.example.timestory.ability.dynasty.DetailsEventAbility",
         "icon": "$media:icon",
@@ -182,6 +200,12 @@
             }
           ]
         }
+      },
+      {
+        "name": "com.example.timestory.ability.user.RechargeAbility",
+        "icon": "$media:icon",
+        "description": "$string:rechargeability_description",
+        "type": "service"
       }
     ]
   }
