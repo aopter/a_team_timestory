@@ -1,12 +1,248 @@
 <?xml version="1.0" encoding="utf-8"?>
-<DependentLayout
+<DirectionalLayout
     xmlns:ohos="http://schemas.huawei.com/res/ohos"
     ohos:height="match_parent"
     ohos:width="match_parent"
     ohos:background_element="$media:bg_user_center"
     ohos:orientation="vertical">
 
+    <!--横向模块-->
     <DirectionalLayout
-        ohos:height="80vp"
-        ohos:width="match_parent"/>
-</DependentLayout>
+        ohos:height="match_content"
+        ohos:width="match_parent"
+        ohos:left_margin="30vp"
+        ohos:orientation="horizontal"
+        ohos:top_margin="30vp">
+
+        <DirectionalLayout
+            ohos:height="match_content"
+            ohos:width="match_content"
+            ohos:orientation="vertical">
+
+            <Image
+                ohos:height="60vp"
+                ohos:width="60vp"
+                ohos:image_src="$media:test_header"/>
+
+            <ProgressBar
+                ohos:height="5vp"
+                ohos:width="60vp"
+                ohos:max="100"
+                ohos:min="0"
+                ohos:progress="60"
+                ohos:progress_color="#AE5B41"
+                ohos:progress_width="10vp"
+                ohos:top_margin="10vp"/>
+        </DirectionalLayout>
+
+        <DependentLayout
+            ohos:height="match_content"
+            ohos:width="match_content"
+            ohos:background_element="$media:button"
+            ohos:layout_alignment="vertical_center"
+            ohos:left_margin="30vp">
+
+            <Text
+                ohos:height="40vp"
+                ohos:width="90vp"
+                ohos:alpha="0.9"
+                ohos:padding="5vp"
+                ohos:text="秀才"
+                ohos:text_alignment="center"
+                ohos:text_color="#AE5B41"
+                ohos:text_size="12fp"/>
+        </DependentLayout>
+
+        <DependentLayout
+            ohos:height="match_content"
+            ohos:width="match_content"
+            ohos:background_element="$media:button"
+            ohos:layout_alignment="vertical_center"
+            ohos:left_margin="30vp">
+
+            <Text
+                ohos:height="40vp"
+                ohos:width="90vp"
+                ohos:alpha="0.9"
+                ohos:padding="5vp"
+                ohos:text="抽卡"
+                ohos:text_alignment="center"
+                ohos:text_color="#AE5B41"
+                ohos:text_size="12fp"/>
+        </DependentLayout>
+
+        <DependentLayout
+            ohos:height="match_content"
+            ohos:width="match_content"
+            ohos:background_element="$media:button"
+            ohos:layout_alignment="vertical_center"
+            ohos:left_margin="30vp">
+
+            <Text
+                ohos:height="40vp"
+                ohos:width="90vp"
+                ohos:alpha="0.9"
+                ohos:padding="5vp"
+                ohos:text="出行"
+                ohos:text_alignment="center"
+                ohos:text_color="#AE5B41"
+                ohos:text_size="12fp"/>
+        </DependentLayout>
+
+        <DependentLayout
+            ohos:height="match_content"
+            ohos:width="match_content"
+            ohos:background_element="$media:button"
+            ohos:layout_alignment="vertical_center"
+            ohos:left_margin="30vp">
+
+            <Text
+                ohos:id="$+id:str_rl"
+                ohos:height="40vp"
+                ohos:width="match_content"
+                ohos:alpha="0.9"
+                ohos:left_padding="10vp"
+                ohos:text="积分:"
+                ohos:text_alignment="center"
+                ohos:text_color="#AE5B41"
+                ohos:text_size="12fp"/>
+
+            <Text
+                ohos:id="$+id:tx_rl"
+                ohos:height="40vp"
+                ohos:width="match_content"
+                ohos:alpha="0.9"
+                ohos:padding="5vp"
+                ohos:right_of="$id:str_rl"
+                ohos:text="40"
+                ohos:text_alignment="center"
+                ohos:text_color="#AE5B41"
+                ohos:text_size="12fp"/>
+
+            <Image
+                ohos:id="$+id:image_rl"
+                ohos:height="20vp"
+                ohos:width="20vp"
+                ohos:background_element="$media:plust"
+                ohos:right_margin="10vp"
+                ohos:right_of="$id:tx_rl"
+                ohos:vertical_center="true"/>
+        </DependentLayout>
+
+        <DependentLayout
+            ohos:height="match_content"
+            ohos:width="match_content"
+            ohos:background_element="$media:button"
+            ohos:layout_alignment="vertical_center"
+            ohos:left_margin="30vp">
+
+            <Text
+                ohos:height="40vp"
+                ohos:width="90vp"
+                ohos:alpha="0.9"
+                ohos:padding="5vp"
+                ohos:text="设置"
+                ohos:text_alignment="center"
+                ohos:text_color="#AE5B41"
+                ohos:text_size="12fp"/>
+        </DependentLayout>
+    </DirectionalLayout>
+    <!--中间两个模块-->
+    <DependentLayout
+        ohos:height="480vp"
+        ohos:width="match_parent">
+        <!--排行榜-->
+        <DirectionalLayout
+            ohos:id="$+id:dl_ranking"
+            ohos:height="match_parent"
+            ohos:width="match_content"
+            ohos:bottom_margin="50vp"
+            ohos:left_margin="30vp"
+            ohos:orientation="vertical"
+            ohos:top_margin="30vp">
+            <!--排行榜-->
+            <com.example.timestory.Utils.CusText
+                ohos:height="30vp"
+                ohos:width="match_content"
+                ohos:background_element="#AE5B41"
+                ohos:padding="5fp"
+                ohos:text="排行榜"
+                ohos:text_color="$color:white"
+                ohos:text_size="20fp"/>
+
+            <ListContainer
+                ohos:height="match_parent"
+                ohos:width="220vp"
+                ohos:alpha="0.8"
+                ohos:background_element="#FFF"/>
+        </DirectionalLayout>
+        <!--历史上的今天-->
+        <DirectionalLayout
+            ohos:height="match_parent"
+            ohos:width="match_content"
+            ohos:bottom_margin="50vp"
+            ohos:left_margin="350vp"
+            ohos:orientation="vertical"
+            ohos:top_margin="30vp">
+            <!--历史上的今天-->
+            <com.example.timestory.Utils.CusText
+                ohos:height="30vp"
+                ohos:width="match_content"
+                ohos:background_element="#AE5B41"
+                ohos:padding="5fp"
+                ohos:text="历史上的今天"
+                ohos:text_color="$color:white"
+                ohos:text_size="20fp"/>
+
+            <ListContainer
+                ohos:height="match_parent"
+                ohos:width="300vp"
+                ohos:alpha="0.8"
+                ohos:background_element="#FFF"/>
+        </DirectionalLayout>
+    </DependentLayout>
+
+    <!--底部一行横向模块-->
+    <DirectionalLayout
+        ohos:height="30vp"
+        ohos:width="match_content"
+        ohos:bottom_margin="20vp"
+        ohos:layout_alignment="horizontal_center"
+        ohos:orientation="horizontal">
+
+        <DependentLayout
+            ohos:height="match_content"
+            ohos:width="match_content"
+            ohos:background_element="$media:button"
+            ohos:layout_alignment="vertical_center">
+
+            <Text
+                ohos:height="40vp"
+                ohos:width="90vp"
+                ohos:alpha="0.9"
+                ohos:padding="5vp"
+                ohos:text="我的卡片"
+                ohos:text_alignment="center"
+                ohos:text_color="#AE5B41"
+                ohos:text_size="12fp"/>
+        </DependentLayout>
+
+        <DependentLayout
+            ohos:height="match_content"
+            ohos:width="match_content"
+            ohos:background_element="$media:button"
+            ohos:layout_alignment="vertical_center"
+            ohos:left_margin="60vp">
+
+            <Text
+                ohos:height="40vp"
+                ohos:width="90vp"
+                ohos:alpha="0.9"
+                ohos:padding="5vp"
+                ohos:text="我的收藏"
+                ohos:text_alignment="center"
+                ohos:text_color="#AE5B41"
+                ohos:text_size="12fp"/>
+        </DependentLayout>
+    </DirectionalLayout>
+</DirectionalLayout>
