@@ -1,17 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<DirectionalLayout
+<DependentLayout
     xmlns:ohos="http://schemas.huawei.com/res/ohos"
     ohos:height="match_parent"
     ohos:width="match_parent"
-    ohos:orientation="vertical">
+    ohos:background_element="$media:dynasty_bg">
 
-    <Text
-        ohos:id="$+id:text_helloworld"
-        ohos:height="match_content"
-        ohos:width="match_content"
-        ohos:layout_alignment="horizontal_center"
-        ohos:text="Hello World"
-        ohos:text_size="50"
-        />
+    <DirectionalLayout
+        ohos:id="$+id:head"
+        ohos:height="60vp"
+        ohos:width="match_parent"
+        ohos:align_parent_top="true"
+        ohos:alignment="vertical_center"
+        ohos:left_margin="20vp"
+        ohos:padding="10vp"
+        ohos:top_margin="20vp">
 
-</DirectionalLayout>
+        <Image
+            ohos:id="$+id:back"
+            ohos:height="50vp"
+            ohos:width="40vp"
+            ohos:image_src="$media:back"
+            ohos:left_margin="10vp"
+            ohos:padding="10vp"/>
+
+        <Text
+            ohos:id="$+id:text"
+            ohos:height="match_content"
+            ohos:width="match_parent"
+            ohos:right_of="$id:back"
+            ohos:text="请先选择朝代吧~"
+            ohos:text_color="#000"
+            ohos:text_size="20fp"/>
+    </DirectionalLayout>
+
+    <DirectionalLayout
+        ohos:height="match_parent"
+        ohos:width="match_parent"
+        ohos:below="$id:head"
+        ohos:horizontal_center="true"
+        ohos:orientation="vertical">
+
+        <!-- TODO SpeedRecyclerView -->
+    </DirectionalLayout>
+</DependentLayout>

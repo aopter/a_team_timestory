@@ -206,6 +206,42 @@
         "icon": "$media:icon",
         "description": "$string:rechargeability_description",
         "type": "service"
+      },
+      {
+        "orientation": "unspecified",
+        "name": "com.example.timestory.ability.card.ShareCardAbility",
+        "icon": "$media:icon",
+        "description": "$string:mainability_description",
+        "label": "TimeStroy",
+        "type": "page",
+        "launchType": "standard"
+      },
+      {
+        "orientation": "unspecified",
+        "name": "com.example.timestory.ability.card.ShowCardStoryAbility",
+        "icon": "$media:icon",
+        "description": "$string:mainability_description",
+        "label": "TimeStroy",
+        "type": "page",
+        "launchType": "standard"
+      },
+      {
+        "orientation": "unspecified",
+        "name": "com.example.timestory.ability.card.SpecificCardDetailAbility",
+        "icon": "$media:icon",
+        "description": "$string:mainability_description",
+        "label": "TimeStroy",
+        "type": "page",
+        "launchType": "standard"
+      },
+      {
+        "orientation": "unspecified",
+        "name": "com.example.timestory.ability.card.SpecificDynastyCardAbility",
+        "icon": "$media:icon",
+        "description": "$string:mainability_description",
+        "label": "TimeStroy",
+        "type": "page",
+        "launchType": "standard"
       }
     ]
   }
