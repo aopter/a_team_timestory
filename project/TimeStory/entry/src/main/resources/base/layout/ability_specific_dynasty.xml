@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:height="match_parent"
+    ohos:width="match_parent"
+    ohos:alpha="0.8"
+    ohos:background_element="$media:bg_dynasty_card"
+    ohos:orientation="vertical"
+    ohos:padding="10vp">
+
+    <DependentLayout
+        ohos:height="60vp"
+        ohos:width="match_parent"
+        ohos:bottom_margin="10vp"
+        ohos:padding="10vp">
+
+        <Image
+            ohos:id="$+id:back"
+            ohos:height="50vp"
+            ohos:width="40vp"
+            ohos:padding="5vp"
+            ohos:image_src="$media:back"/>
+
+        <!-- TODO ohos:left_of="$id:card_types" -->
+        <DependentLayout
+            ohos:id="$+id:search"
+            ohos:height="50vp"
+            ohos:width="260vp"
+            ohos:align_parent_right="true"
+            ohos:background_element="$graphic:border_style"
+            ohos:left_padding="10vp"
+            ohos:right_margin="20vp"
+            ohos:right_padding="10vp">
+
+            <TextField
+                ohos:id="$+id:search_card_name"
+                ohos:height="match_parent"
+                ohos:width="150vp"
+                ohos:hint="请输入卡片名称"
+                ohos:padding="5vp"
+                ohos:text_alignment="center"
+                ohos:text_size="16fp"
+                ohos:vertical_center="true"/>
+
+            <Image
+                ohos:id="$+id:search_delete"
+                ohos:height="match_parent"
+                ohos:width="40vp"
+                ohos:image_src="$media:delete"
+                ohos:right_of="$id:search_card_name"
+                />
+
+            <Text
+                ohos:id="$+id:search_btn"
+                ohos:height="match_parent"
+                ohos:width="70vp"
+                ohos:padding="10vp"
+                ohos:right_of="$id:search_delete"
+                ohos:text="搜索"
+                ohos:text_alignment="center"
+                ohos:text_color="#000"
+                ohos:text_size="15fp"/>
+        </DependentLayout>
+
+        <!--TODO 下拉框card_types-->
+    </DependentLayout>
+
+    <ListContainer
+        ohos:id="$+id:dynasty_cards"
+        ohos:height="match_parent"
+        ohos:width="match_parent"/>
+</DirectionalLayout>

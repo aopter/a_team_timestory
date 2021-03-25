@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:height="match_parent"
+    ohos:width="match_parent"
+    ohos:orientation="vertical">
+
+    <Image
+        ohos:id="$+id:share_icon"
+        ohos:height="match_content"
+        ohos:width="40vp"
+        ohos:image_src="$media:qq"
+        ohos:layout_alignment="center"
+        ohos:padding="5vp"/>
+
+    <Text
+        ohos:id="$+id:share_name"
+        ohos:height="match_content"
+        ohos:width="match_parent"
+        ohos:layout_alignment="center"
+        ohos:text="分享"
+        ohos:text_color="#CCC"/>
+</DirectionalLayout>

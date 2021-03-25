@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DependentLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:height="match_parent"
+    ohos:width="match_parent"
+    ohos:alpha="0.8"
+    ohos:background_element="$media:bg_card_story">
+
+    <DirectionalLayout
+        ohos:id="$+id:title_container"
+        ohos:height="55vp"
+        ohos:width="match_parent"
+        ohos:left_margin="20vp"
+        ohos:padding="10vp"
+        ohos:top_margin="20vp">
+
+        <Image
+            ohos:id="$+id:back"
+            ohos:height="50vp"
+            ohos:width="40vp"
+            ohos:image_src="$media:back"
+            ohos:left_margin="10vp"
+            ohos:padding="10vp"/>
+
+        <Text
+            ohos:id="$+id:role_story"
+            ohos:height="match_content"
+            ohos:width="match_parent"
+            ohos:text_color="#000"
+            ohos:text_size="18fp"/>
+    </DirectionalLayout>
+
+    <DependentLayout
+        ohos:height="match_content"
+        ohos:width="match_parent"
+        ohos:below="$id:title_container">
+
+        <DirectionalLayout
+            ohos:height="match_parent"
+            ohos:width="match_parent"
+            ohos:alignment="vertical_center"
+            ohos:orientation="horizontal">
+
+            <DirectionalLayout
+                ohos:id="$+id:former_story"
+                ohos:height="match_parent"
+                ohos:width="0"
+                ohos:orientation="vertical"
+                ohos:padding="15vp"
+                ohos:weight="1"/>
+
+            <DirectionalLayout
+                ohos:height="match_parent"
+                ohos:width="0"
+                ohos:orientation="vertical"
+                ohos:padding="15vp"
+                ohos:weight="4">
+
+                <Text
+                    ohos:id="$+id:story"
+                    ohos:height="190vp"
+                    ohos:width="match_parent"
+                    ohos:alpha="0.85"
+                    ohos:background_element="$media:bg_card_story_test"
+                    ohos:padding="25vp"
+                    ohos:scrollable="true"
+                    ohos:text_color="#000"
+                    ohos:text_size="17fp"/>
+            </DirectionalLayout>
+
+            <DirectionalLayout
+                ohos:id="$+id:next_story"
+                ohos:height="match_parent"
+                ohos:width="0"
+                ohos:orientation="vertical"
+                ohos:padding="15vp"
+                ohos:weight="1"/>
+        </DirectionalLayout>
+
+        <!-- TODO 结点 -->
+
+        <Image
+            ohos:id="$+id:card_img"
+            ohos:height="200vp"
+            ohos:width="130vp"
+            ohos:alpha="0.95"
+            ohos:image_src="$media:role"
+            ohos:left_margin="50vp"
+            ohos:top_margin="70vp"/>
+    </DependentLayout>
+</DependentLayout>

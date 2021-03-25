@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DependentLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:height="match_parent"
+    ohos:width="match_parent"
+    ohos:background_element="$media:bg_drawcard">
+
+    <DirectionalLayout
+        ohos:height="55vp"
+        ohos:width="match_parent"
+        ohos:alignment="vertical_center"
+        ohos:margin="10vp"
+        ohos:padding="10vp">
+
+        <Image
+            ohos:id="$+id:back"
+            ohos:height="50vp"
+            ohos:width="40vp"
+            ohos:image_src="$media:back"
+            ohos:left_margin="10vp"
+            ohos:padding="10vp"/>
+
+        <Text
+            ohos:id="$+id:text"
+            ohos:height="match_content"
+            ohos:width="match_parent"
+            ohos:left_padding="5vp"
+            ohos:right_of="$id:back"
+            ohos:text="快来分享吧"
+            ohos:text_color="#000"
+            ohos:text_size="20fp"/>
+    </DirectionalLayout>
+
+    <Image
+        ohos:id="$+id:share_img"
+        ohos:height="230vp"
+        ohos:width="400vp"
+        ohos:center_in_parent="true"
+        ohos:margin="20vp"/>
+
+    <ListContainer
+        ohos:id="$+id:icon_view"
+        ohos:height="match_content"
+        ohos:width="match_parent"
+        ohos:align_parent_bottom="true"
+        ohos:background_element="#FFF"
+        ohos:padding="10vp"/>
+</DependentLayout>

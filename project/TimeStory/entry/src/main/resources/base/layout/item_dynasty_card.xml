@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:height="match_parent"
+    ohos:width="match_parent">
+
+    <DependentLayout
+        ohos:height="match_parent"
+        ohos:width="match_parent">
+
+        <DependentLayout
+            ohos:id="$+id:card_container"
+            ohos:height="match_content"
+            ohos:width="match_content"
+            ohos:horizontal_center="true">
+
+            <Image
+                ohos:id="$+id:card_pic"
+                ohos:height="200vp"
+                ohos:width="140vp"
+                ohos:alpha="0.8"
+                ohos:background_element="$media:bg_card_img"
+                ohos:center_in_parent="true"
+                ohos:padding="10vp"/>
+
+            <Text
+                ohos:id="$+id:card_num"
+                ohos:height="40vp"
+                ohos:width="40vp"
+                ohos:align_right="$+id:card_pic"
+                ohos:align_top="$+id:card_pic"
+                ohos:background_element="$media:bg_bubble_card"
+                ohos:text_alignment="center"
+                ohos:text_color="$color:ourDynastyRed"
+                ohos:text_size="15fp"/>
+        </DependentLayout>
+
+        <Text
+            ohos:id="$+id:card_name"
+            ohos:height="match_parent"
+            ohos:width="match_content"
+            ohos:below="$id:card_container"
+            ohos:horizontal_center="true"
+            ohos:padding="10vp"
+            ohos:text_alignment="center"
+            ohos:text_color="#000"/>
+    </DependentLayout>
+</DirectionalLayout>

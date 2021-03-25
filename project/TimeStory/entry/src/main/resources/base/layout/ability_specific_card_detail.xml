@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DependentLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:height="match_parent"
+    ohos:width="match_parent"
+    ohos:background_element="$media:bg_card_detail"
+    ohos:orientation="vertical"
+    ohos:padding="20vp">
+
+    <DirectionalLayout
+        ohos:id="$+id:header"
+        ohos:height="55vp"
+        ohos:width="match_parent"
+        ohos:alpha="0.95"
+        ohos:padding="10vp">
+
+        <Image
+            ohos:id="$+id:back"
+            ohos:height="50vp"
+            ohos:width="40vp"
+            ohos:image_src="$media:back"
+            ohos:padding="10vp"/>
+
+        <Text
+            ohos:id="$+id:text"
+            ohos:height="match_content"
+            ohos:width="match_parent"
+            ohos:text="卡片详情"
+            ohos:text_color="#000"
+            ohos:text_size="18fp"/>
+    </DirectionalLayout>
+
+    <DirectionalLayout
+        ohos:height="match_parent"
+        ohos:width="match_parent"
+        ohos:below="$id:header"
+        ohos:bottom_margin="5vp"
+        ohos:orientation="horizontal"
+        ohos:padding="10vp">
+
+        <DependentLayout
+            ohos:height="match_parent"
+            ohos:width="120vp"
+            ohos:left_margin="20vp">
+
+            <Image
+                ohos:id="$+id:card_img"
+                ohos:height="260vp"
+                ohos:width="120vp"
+                ohos:above="$id:card_name_container"/>
+
+            <DirectionalLayout
+                ohos:id="$+id:card_name_container"
+                ohos:height="match_content"
+                ohos:width="match_parent"
+                ohos:align_parent_bottom="true"
+                ohos:align_parent_left="true"
+                ohos:alignment="horizontal_center"
+                ohos:orientation="vertical">
+
+                <Button
+                    ohos:id="$+id:card_name"
+                    ohos:height="35vp"
+                    ohos:width="match_content"
+                    ohos:alpha="0.7"
+                    ohos:background_element="$color:holo_red_dark"
+                    ohos:text_color="#FFF"
+                    ohos:text_weight="200"/>
+            </DirectionalLayout>
+        </DependentLayout>
+
+        <DependentLayout
+            ohos:height="match_parent"
+            ohos:width="match_parent"
+            ohos:right_margin="20vp">
+
+            <DirectionalLayout
+                ohos:height="match_parent"
+                ohos:width="match_parent"
+                ohos:above="$id:card_story"
+                ohos:background_element="$media:bg_card_detail_info"
+                ohos:bottom_margin="7vp"
+                ohos:left_margin="10vp"
+                ohos:padding="15vp"
+                ohos:right_margin="30vp">
+
+                <Text
+                    ohos:id="$+id:card_info"
+                    ohos:height="match_parent"
+                    ohos:width="match_parent"
+                    ohos:alpha="0.85"
+                    ohos:margin="15vp"
+                    ohos:scrollable="true"
+                    ohos:text_color="#000"
+                    ohos:text_size="17fp"/>
+            </DirectionalLayout>
+
+            <Button
+                ohos:id="$+id:card_story"
+                ohos:height="35vp"
+                ohos:width="match_content"
+                ohos:align_parent_bottom="true"
+                ohos:align_parent_right="true"
+                ohos:alpha="0.7"
+                ohos:background_element="$color:holo_red_dark"
+                ohos:right_margin="30vp"
+                ohos:text="查看生平"
+                ohos:text_color="#FFF"
+                ohos:text_weight="200"/>
+        </DependentLayout>
+    </DirectionalLayout>
+</DependentLayout>
