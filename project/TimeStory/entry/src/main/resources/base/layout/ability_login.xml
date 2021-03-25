@@ -34,6 +34,7 @@
             ohos:width="500vp"
             ohos:background_element="$graphic:login_textfield"
             ohos:hint="密码"
+            ohos:text_input_type="pattern_password"
             ohos:text_alignment="center"
             ohos:text_size="10fp"
             ohos:top_margin="20vp"/>

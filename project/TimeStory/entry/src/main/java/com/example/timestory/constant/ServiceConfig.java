@@ -36,4 +36,12 @@ public class ServiceConfig {
     public static final String UNLOCK_INCIDENT_ADD = "/userincident/unlock/";
     public static final int UNLOCK_INCIDENT_ADD_THREAD = 9;
 
+    /**
+     * 用户注册URL
+     */
+    public static final String REGISTRY_URL = "/user/register";
+    /**
+     * 手机号长度
+     */
+    public static final int PHONE_LENGTH = 11;
 }

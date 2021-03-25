@@ -4,6 +4,7 @@ import com.example.timestory.ResourceTable;
 import com.example.timestory.ability.user.LoginAbility;
 import com.example.timestory.Utils.Util;
 import com.example.timestory.ability.dynasty.HomePageAbility;
+import com.example.timestory.ability.user.RegistryAbility;
 import com.example.timestory.ability.user.SettingAbility;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
@@ -59,7 +60,7 @@ public class MainAbilitySlice extends AbilitySlice {
             switch (component.getId()) {
                 case ResourceTable.Id_module_user:
 //                    跳转
-                    startAbility(Util.generatePageNavigationIntent(SettingAbility.class.getName()));
+                    startAbility(Util.generatePageNavigationIntent(RegistryAbility.class.getName()));
                     break;
                 case ResourceTable.Id_module_dynasty:
 //                    跳转

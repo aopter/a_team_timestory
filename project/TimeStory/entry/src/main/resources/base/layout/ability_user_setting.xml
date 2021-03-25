@@ -205,7 +205,7 @@
                     ohos:width="match_parent"
                     ohos:margin="50vp">
 
-                    <Text
+                     <Text
                         ohos:height="match_content"
                         ohos:width="400vp"
                         ohos:bottom_padding="50vp"

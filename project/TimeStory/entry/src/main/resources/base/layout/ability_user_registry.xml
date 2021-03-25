@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DependentLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:height="match_parent"
+    ohos:width="match_parent"
+    ohos:background_element="$media:bg_login">
+
+    <DirectionalLayout
+        ohos:height="match_content"
+        ohos:width="match_content"
+        ohos:center_in_parent="true"
+        ohos:orientation="vertical">
+
+        <com.example.timestory.Utils.CusText
+            ohos:height="match_content"
+            ohos:width="match_content"
+            ohos:above="tf_phone"
+            ohos:bottom_margin="30vp"
+            ohos:layout_alignment="horizontal_center"
+            ohos:text="用户注册"
+            ohos:text_size="30fp"/>
+        <!--账号-->
+        <TextField
+            ohos:id="$+id:registry_phone"
+            ohos:height="40vp"
+            ohos:width="500vp"
+            ohos:background_element="$graphic:login_textfield"
+            ohos:hint="手机号"
+            ohos:text_alignment="center"
+            ohos:text_size="10fp"/>
+        <!--密码-->
+        <TextField
+            ohos:id="$+id:registry_password"
+            ohos:height="40vp"
+            ohos:width="500vp"
+            ohos:background_element="$graphic:login_textfield"
+            ohos:hint="密码"
+            ohos:text_alignment="center"
+            ohos:text_input_type="pattern_password"
+            ohos:text_size="10fp"
+            ohos:top_margin="20vp"/>
+
+        <Button
+            ohos:id="$+id:btn_registry"
+            ohos:height="40vp"
+            ohos:width="100vp"
+            ohos:background_element="$media:login_button"
+            ohos:layout_alignment="horizontal_center"
+            ohos:text="注册"
+            ohos:text_color="#AE5B41"
+            ohos:text_size="10fp"
+            ohos:top_margin="20vp"/>
+    </DirectionalLayout>
+</DependentLayout>

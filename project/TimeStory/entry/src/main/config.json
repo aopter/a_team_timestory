@@ -166,6 +166,15 @@
         "launchType": "standard"
       },
       {
+        "orientation": "unspecified",
+        "name": "com.example.timestory.ability.user.RegistryAbility",
+        "icon": "$media:icon",
+        "description": "$string:mainability_description",
+        "label": "TimeStroy",
+        "type": "page",
+        "launchType": "standard"
+      },
+      {
         "orientation": "landscape",
         "name": "com.example.timestory.ability.dynasty.DetailsEventAbility",
         "icon": "$media:icon",
@@ -200,48 +209,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "com.example.timestory.ability.user.RechargeAbility",
-        "icon": "$media:icon",
-        "description": "$string:rechargeability_description",
-        "type": "service"
-      },
-      {
-        "orientation": "unspecified",
-        "name": "com.example.timestory.ability.card.ShareCardAbility",
-        "icon": "$media:icon",
-        "description": "$string:mainability_description",
-        "label": "TimeStroy",
-        "type": "page",
-        "launchType": "standard"
-      },
-      {
-        "orientation": "unspecified",
-        "name": "com.example.timestory.ability.card.ShowCardStoryAbility",
-        "icon": "$media:icon",
-        "description": "$string:mainability_description",
-        "label": "TimeStroy",
-        "type": "page",
-        "launchType": "standard"
-      },
-      {
-        "orientation": "unspecified",
-        "name": "com.example.timestory.ability.card.SpecificCardDetailAbility",
-        "icon": "$media:icon",
-        "description": "$string:mainability_description",
-        "label": "TimeStroy",
-        "type": "page",
-        "launchType": "standard"
-      },
-      {
-        "orientation": "unspecified",
-        "name": "com.example.timestory.ability.card.SpecificDynastyCardAbility",
-        "icon": "$media:icon",
-        "description": "$string:mainability_description",
-        "label": "TimeStroy",
-        "type": "page",
-        "launchType": "standard"
       }
     ]
   }

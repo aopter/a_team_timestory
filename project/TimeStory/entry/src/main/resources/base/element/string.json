@@ -15,6 +15,10 @@
     {
       "name": "rechargeability_description",
       "value": "hap sample empty service"
+    },
+    {
+      "name": "registryability_description",
+      "value": "hap sample empty service"
     }
   ]
 }
