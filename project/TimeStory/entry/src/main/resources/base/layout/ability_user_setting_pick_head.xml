@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:height="match_parent"
+    ohos:width="match_parent"
+    ohos:orientation="vertical">
+
+    <!--    <Button-->
+    <!--        ohos:id="$+id:button_helloworld"-->
+    <!--        ohos:height="200px"-->
+    <!--        ohos:width="400px"-->
+    <!--        ohos:background_element="$graphic:background_ability_main"-->
+    <!--        ohos:layout_alignment="horizontal_center"-->
+    <!--        ohos:text="显示图片"-->
+    <!--        ohos:text_size="50"-->
+    <!--    />-->
+    <Text
+        ohos:id="$+id:text_pre_id"
+        ohos:width="match_parent"
+        ohos:height="match_parent"
+        ohos:text_alignment="center"
+        ohos:text_size="45fp"
+        ohos:text="Opening..."></Text>
+    <ScrollView ohos:width="match_parent"
+                ohos:height="600vp"
+                ohos:left_padding="25vp"
+        >
+
+        <TableLayout
+            ohos:id="$+id:layout_id"
+            ohos:height="match_content"
+            ohos:width="match_parent"
+            >
+
+        </TableLayout>
+    </ScrollView>
+    <Text
+        ohos:id="$+id:text_id"
+        ohos:width="match_content"
+        ohos:height="match_content"
+        ohos:text_alignment="center"
+        ohos:text_size="20fp"></Text>
+    <!--    <Image-->
+    <!--        ohos:id="$+id:image1"-->
+    <!--        ohos:layout_alignment="center"-->
+    <!--        />-->
+
+</DirectionalLayout>

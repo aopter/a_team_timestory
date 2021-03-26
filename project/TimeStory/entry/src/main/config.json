@@ -25,6 +25,9 @@
     "reqPermissions": [
       {
         "name": "ohos.permission.INTERNET"
+      },
+      {
+        "name": "ohos.permission.READ_USER_STORAGE"
       }
     ],
     "deviceType": [
@@ -95,6 +98,24 @@
       },
       {
         "orientation": "landscape",
+        "name": "com.example.timestory.ability.user.PickHeaderAbility",
+        "icon": "$media:icon",
+        "description": "$string:detailseventability_description",
+        "label": "TimeStroy",
+        "type": "page",
+        "launchType": "standard",
+        "metaData": {
+          "customizeData": [
+            {
+              "name": "hwc-theme",
+              "value": "androidhwext:style/Theme.Emui.Light.NoTitleBar.Fullscreen",
+              "extra": ""
+            }
+          ]
+        }
+      },
+      {
+        "orientation": "landscape",
         "name": "com.example.timestory.ability.dynasty.HomePageAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
@@ -130,49 +151,94 @@
         "launchType": "standard"
       },
       {
-        "orientation": "unspecified",
+        "orientation": "landscape",
         "name": "com.example.timestory.ability.user.LoginAbility",
         "icon": "$media:icon",
-        "description": "$string:mainability_description",
+        "description": "$string:detailseventability_description",
         "label": "TimeStroy",
         "type": "page",
-        "launchType": "standard"
+        "launchType": "standard",
+        "metaData": {
+          "customizeData": [
+            {
+              "name": "hwc-theme",
+              "value": "androidhwext:style/Theme.Emui.Light.NoTitleBar.Fullscreen",
+              "extra": ""
+            }
+          ]
+        }
       },
       {
-        "orientation": "unspecified",
+        "orientation": "landscape",
         "name": "com.example.timestory.ability.user.UserCenterAbility",
         "icon": "$media:icon",
-        "description": "$string:mainability_description",
+        "description": "$string:detailseventability_description",
         "label": "TimeStroy",
         "type": "page",
-        "launchType": "standard"
+        "launchType": "standard",
+        "metaData": {
+          "customizeData": [
+            {
+              "name": "hwc-theme",
+              "value": "androidhwext:style/Theme.Emui.Light.NoTitleBar.Fullscreen",
+              "extra": ""
+            }
+          ]
+        }
       },
       {
-        "orientation": "unspecified",
+        "orientation": "landscape",
         "name": "com.example.timestory.ability.user.SettingAbility",
         "icon": "$media:icon",
-        "description": "$string:mainability_description",
+        "description": "$string:detailseventability_description",
         "label": "TimeStroy",
         "type": "page",
-        "launchType": "standard"
+        "launchType": "standard",
+        "metaData": {
+          "customizeData": [
+            {
+              "name": "hwc-theme",
+              "value": "androidhwext:style/Theme.Emui.Light.NoTitleBar.Fullscreen",
+              "extra": ""
+            }
+          ]
+        }
       },
       {
-        "orientation": "unspecified",
+        "orientation": "landscape",
         "name": "com.example.timestory.ability.user.RechargeAbility",
         "icon": "$media:icon",
-        "description": "$string:mainability_description",
+        "description": "$string:detailseventability_description",
         "label": "TimeStroy",
         "type": "page",
-        "launchType": "standard"
+        "launchType": "standard",
+        "metaData": {
+          "customizeData": [
+            {
+              "name": "hwc-theme",
+              "value": "androidhwext:style/Theme.Emui.Light.NoTitleBar.Fullscreen",
+              "extra": ""
+            }
+          ]
+        }
       },
       {
-        "orientation": "unspecified",
+        "orientation": "landscape",
         "name": "com.example.timestory.ability.user.RegistryAbility",
         "icon": "$media:icon",
-        "description": "$string:mainability_description",
+        "description": "$string:detailseventability_description",
         "label": "TimeStroy",
         "type": "page",
-        "launchType": "standard"
+        "launchType": "standard",
+        "metaData": {
+          "customizeData": [
+            {
+              "name": "hwc-theme",
+              "value": "androidhwext:style/Theme.Emui.Light.NoTitleBar.Fullscreen",
+              "extra": ""
+            }
+          ]
+        }
       },
       {
         "orientation": "landscape",

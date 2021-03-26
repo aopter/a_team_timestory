@@ -92,6 +92,7 @@ public class RegistryAbilitySlice extends AbilitySlice {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
+                assert response.body() != null;
                 boolean result = new JsonParser().parse(response.body().string()).getAsJsonObject().get("result").getAsBoolean();
                 if (response.body() != null && result) {
                     //注册成功
@@ -101,7 +102,12 @@ public class RegistryAbilitySlice extends AbilitySlice {
                                     .setDuration(4000)
                                     .show());
                     //无参跳转
-                    present(new LoginAbilitySlice(), new Intent());
+                    Intent intent = new Intent();
+                    intent.setParam("phoneNum", phoneNum);
+                    intent.setParam("password", password);
+                    intent.setFlags(Intent.FLAG_ABILITY_CLEAR_MISSION | Intent.FLAG_ABILITY_NEW_MISSION);
+                    present(new LoginAbilitySlice(), intent);
+                    RegistryAbilitySlice.this.terminate();
                 } else {
                     //注册失败
                     getMainTaskDispatcher().syncDispatch(() ->

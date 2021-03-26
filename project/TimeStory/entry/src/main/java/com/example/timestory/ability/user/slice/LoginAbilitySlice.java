@@ -39,9 +39,34 @@ public class LoginAbilitySlice extends AbilitySlice {
     public void onStart(Intent intent) {
         super.onStart(intent);
         super.setUIContent(ResourceTable.Layout_ability_login);
+        getPermission();
         initView();
         setClickListener();
-        judgeSaveUser();
+        initTextField(intent);
+    }
+
+    private void getPermission() {
+        String[] permission = {"ohos.permission.READ_USER_STORAGE", "ohos.permission.INTERNET","ohos.permission.WRITE_MEDIA"};
+        requestPermissionsFromUser(permission, 0);
+    }
+
+    /**
+     * @param intent
+     * @return void
+     * @date 2021/3/26 7:57
+     * @description 判断intent中是否包含账号密码参数，如果有，就应该是注册成功后跳转回来的界面，自动的将注册的账号密码填充到文本域中
+     */
+    private void initTextField(Intent intent) {
+        phoneNum = intent.getStringParam("phoneNum");
+        password = intent.getStringParam("password");
+        //如果intent没有值，则证明不是注册页面跳转来的
+        if (phoneNum != null && password != null) {
+            phoneNumTf.setText(phoneNum);
+            passwordTf.setText(password);
+        } else {
+            //执行常规逻辑，判断用户是否记住密码
+            judgeSaveUser();
+        }
     }
 
     /**
@@ -195,7 +220,7 @@ public class LoginAbilitySlice extends AbilitySlice {
     /**
      * @return void
      * @date 2021/3/25 18:02
-     * @description 初始化视图
+     * @description 初始化视图以及微型数据库
      */
     private void initView() {
         saveUserRb = (RadioButton) findComponentById(ResourceTable.Id_save_user);

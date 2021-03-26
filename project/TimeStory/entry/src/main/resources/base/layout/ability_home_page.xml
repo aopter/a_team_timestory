@@ -203,6 +203,7 @@
                 ohos:background_element="$media:novoice"/>
 
             <Button
+                ohos:id="$+id:home_setting_btn"
                 ohos:height="30fp"
                 ohos:width="30fp"
                 ohos:margin="5fp"

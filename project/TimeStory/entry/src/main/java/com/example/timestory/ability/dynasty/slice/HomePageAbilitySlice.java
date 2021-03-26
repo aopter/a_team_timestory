@@ -3,6 +3,7 @@ package com.example.timestory.ability.dynasty.slice;
 import com.example.timestory.ResourceTable;
 import com.example.timestory.Utils.HmOSImageLoader;
 import com.example.timestory.ability.dynasty.HomePageAbility;
+import com.example.timestory.ability.user.slice.SettingAbilitySlice;
 import com.example.timestory.constant.Constant;
 import com.example.timestory.constant.ServiceConfig;
 import com.example.timestory.entity.Dynasty;
@@ -47,7 +48,8 @@ public class HomePageAbilitySlice extends AbilitySlice {
     private Text userCollection;//用户收藏
     private Text userCount;//用户积分
     private Image recharge;//充值
-    private Map<String,Image> textImage = new HashMap<>();
+    private Button settingBtn;
+    private Map<String, Image> textImage = new HashMap<>();
 
     private DirectionalLayout dynastyTop;//上层朝代父布局
     private DirectionalLayout dynastyBottom;//下层朝代父布局
@@ -56,27 +58,27 @@ public class HomePageAbilitySlice extends AbilitySlice {
     private TaskDispatcher parallelTaskDispatcher;//并发任务分发器
     private TaskDispatcher uiTaskDispatcher;//ui线程分发器
     private EventRunner eventRunner = EventRunner.create(true);//线程投递器
-    private EventHandler eventHandler = new EventHandler(eventRunner){
+    private EventHandler eventHandler = new EventHandler(eventRunner) {
         @Override
         protected void processEvent(InnerEvent event) {
             super.processEvent(event);
-            switch (event.eventId){
+            switch (event.eventId) {
                 case ServiceConfig.DYNASTY_LIST_THREAD:
                     downloadUnlockDynastyList();
                     break;
                 case ServiceConfig.UNLOCK_DYNASTY_LIST_THREAD:
-                    if(Constant.dynastiesName.size() <= 0 || Constant.UnlockDynasty.size() <= 0){
+                    if (Constant.dynastiesName.size() <= 0 || Constant.UnlockDynasty.size() <= 0) {
                         //报错
 
                         //跳出
                         break;
                     }
-                    for(int i = 0;i < Constant.dynastiesName.size();i++){
+                    for (int i = 0; i < Constant.dynastiesName.size(); i++) {
                         int finalI = i;
                         uiTaskDispatcher.syncDispatch(new Runnable() {
                             @Override
                             public void run() {
-                                addDynasty(finalI,Constant.dynastiesName.get(finalI).getDynastyName());
+                                addDynasty(finalI, Constant.dynastiesName.get(finalI).getDynastyName());
                             }
                         });
 
@@ -111,7 +113,6 @@ public class HomePageAbilitySlice extends AbilitySlice {
         Constant.User = user;
 
 
-
         //初始化并发任务分发器
         parallelTaskDispatcher = createParallelTaskDispatcher("homePageParallelTaskDispatcher", TaskPriority.DEFAULT);
         uiTaskDispatcher = getUITaskDispatcher();
@@ -134,7 +135,7 @@ public class HomePageAbilitySlice extends AbilitySlice {
     }
 
     //获取控件
-    private void initLayout(){
+    private void initLayout() {
         userHeader = (Image) findComponentById(ResourceTable.Id_user_header);
         progressBar = (ProgressBar) findComponentById(ResourceTable.Id_progress_bar);
         experience = (Text) findComponentById(ResourceTable.Id_experience);
@@ -143,13 +144,13 @@ public class HomePageAbilitySlice extends AbilitySlice {
         userCollection = (Text) findComponentById(ResourceTable.Id_user_collection);
         userCount = (Text) findComponentById(ResourceTable.Id_user_count);
         recharge = (Image) findComponentById(ResourceTable.Id_recharge);
-
+        settingBtn = (Button) findComponentById(ResourceTable.Id_home_setting_btn);
         dynastyTop = (DirectionalLayout) findComponentById(ResourceTable.Id_dynasty_top);
         dynastyBottom = (DirectionalLayout) findComponentById(ResourceTable.Id_dynasty_bottom);
     }
 
     //下载所有的等级
-    private void initStatus(){
+    private void initStatus() {
         okHttpClient = new OkHttpClient();
         //加载地位
         if (Constant.userStatuses.size() < 1) {
@@ -175,7 +176,7 @@ public class HomePageAbilitySlice extends AbilitySlice {
     }
 
     //初始化用户信息
-    private void initUserMessage(){
+    private void initUserMessage() {
         //初始化进度条
         initProgress();
         //初始化头像
@@ -187,7 +188,7 @@ public class HomePageAbilitySlice extends AbilitySlice {
     }
 
     //初始化经验等级
-    private void initExperience(){
+    private void initExperience() {
         if (Constant.User.getUserExperience() == Constant.User.getUserStatus().getStatusExperienceTop()) {
             Constant.User.setUserStatus(Constant.userStatuses.get(Constant.User.getUserStatus().getStatusId()));
         }
@@ -196,10 +197,10 @@ public class HomePageAbilitySlice extends AbilitySlice {
     }
 
     //初始化头像
-    public void initHeader(){
+    public void initHeader() {
         if (Constant.User.getFlag() == 0) {
             //手机号登录
-            if (Constant.User.getUserHeader() != null){
+            if (Constant.User.getUserHeader() != null) {
                 if (Constant.ChangeHeader == 0) {
                     //未修改头像
                     HmOSImageLoader.with(this).load(ServiceConfig.SERVICE_ROOT + "/img/" + Constant.User.getUserHeader()).into(userHeader);
@@ -218,7 +219,7 @@ public class HomePageAbilitySlice extends AbilitySlice {
     }
 
     //初始化进度条
-    private void initProgress(){
+    private void initProgress() {
         long userExperience = Constant.User.getUserExperience();
         UserStatus userStatus = Constant.User.getUserStatus();
         long experMax = userStatus.getStatusExperienceTop();
@@ -232,7 +233,7 @@ public class HomePageAbilitySlice extends AbilitySlice {
     }
 
     //设置监听器
-    private void setListener(){
+    private void setListener() {
         //创建监听器对象
         MyListener myListener = new MyListener();
         userHeader.setClickedListener(myListener);
@@ -241,10 +242,11 @@ public class HomePageAbilitySlice extends AbilitySlice {
         userCard.setClickedListener(myListener);
         userCollection.setClickedListener(myListener);
         recharge.setClickedListener(myListener);
+        settingBtn.setClickedListener(myListener);
     }
 
     //将数据添加到朝代布局中
-    private void addDynasty(int position,String dynastyName){
+    private void addDynasty(int position, String dynastyName) {
         DependentLayout dependentLayout = new DependentLayout(getContext());
         Image image = new Image(getContext());
         image.setScaleMode(Image.ScaleMode.INSIDE);
@@ -255,8 +257,8 @@ public class HomePageAbilitySlice extends AbilitySlice {
         text.setTextAlignment(TextAlignment.CENTER);
         text.setLayoutConfig(new DependentLayout.LayoutConfig(DependentLayout.LayoutConfig.MATCH_PARENT, DependentLayout.LayoutConfig.MATCH_PARENT));
 
-        DirectionalLayout.LayoutConfig layoutConfig = new DirectionalLayout.LayoutConfig(380,380);
-        if(isUnlockDynasty(position)){
+        DirectionalLayout.LayoutConfig layoutConfig = new DirectionalLayout.LayoutConfig(380, 380);
+        if (isUnlockDynasty(position)) {
             image.setPixelMap(ResourceTable.Media_shan);
             text.setClickedListener(new Component.ClickedListener() {
                 @Override
@@ -272,53 +274,52 @@ public class HomePageAbilitySlice extends AbilitySlice {
                             .withBundleName("com.example.timestory")
                             .withAbilityName("com.example.timestory.ability.dynasty.DynastyIntroduceActivity")
                             .build();
-                    intent.setParam("dynastyId",Constant.dynastiesName.get(position).getDynastyId());
+                    intent.setParam("dynastyId", Constant.dynastiesName.get(position).getDynastyId());
                     intent.setOperation(operation);
                     startAbility(intent);
 
                 }
             });
-        }else{
+        } else {
             image.setPixelMap(ResourceTable.Media_shanhui);
             text.setClickedListener(new Component.ClickedListener() {
                 @Override
                 public void onClick(Component component) {
                     //提示未解锁
                     ToastDialog toastDialog = new ToastDialog(getContext());
-                    toastDialog.setText("点击了"+Constant.dynastiesName.get(position).getDynastyName()+"-dynastyId为"+Constant.dynastiesName.get(position).getDynastyId()+"未解锁");
+                    toastDialog.setText("点击了" + Constant.dynastiesName.get(position).getDynastyName() + "-dynastyId为" + Constant.dynastiesName.get(position).getDynastyId() + "未解锁");
                     toastDialog.show();
                 }
             });
         }
-        if(position % 2 == 0){
-            layoutConfig.setMargins(150,10,50,0);
+        if (position % 2 == 0) {
+            layoutConfig.setMargins(150, 10, 50, 0);
             dependentLayout.setLayoutConfig(layoutConfig);
             dependentLayout.addComponent(image);
             dependentLayout.addComponent(text);
             dynastyTop.addComponent(dependentLayout);
-        }
-        else {
-            if(position == 1){
-                layoutConfig.setMargins(300,0,150,0);
+        } else {
+            if (position == 1) {
+                layoutConfig.setMargins(300, 0, 150, 0);
                 dependentLayout.setLayoutConfig(layoutConfig);
                 dependentLayout.addComponent(image);
                 dependentLayout.addComponent(text);
-            }else{
-                layoutConfig.setMargins(50,0,150,0);
+            } else {
+                layoutConfig.setMargins(50, 0, 150, 0);
                 dependentLayout.setLayoutConfig(layoutConfig);
                 dependentLayout.addComponent(image);
                 dependentLayout.addComponent(text);
             }
             dynastyBottom.addComponent(dependentLayout);
         }
-        textImage.put(dynastyName,image);
+        textImage.put(dynastyName, image);
     }
 
     //判断是否解锁此朝代
-    private boolean isUnlockDynasty(int position){
+    private boolean isUnlockDynasty(int position) {
         boolean flag = false;
-        for(int i = 0;i < Constant.UnlockDynasty.size();i++){
-            if(Constant.dynastiesName.get(position).getDynastyId().toString().equals(Constant.UnlockDynasty.get(i).getDynastyId())){
+        for (int i = 0; i < Constant.UnlockDynasty.size(); i++) {
+            if (Constant.dynastiesName.get(position).getDynastyId().toString().equals(Constant.UnlockDynasty.get(i).getDynastyId())) {
                 flag = true;
             }
         }
@@ -326,7 +327,7 @@ public class HomePageAbilitySlice extends AbilitySlice {
     }
 
     //初始化Gson
-    private void initGson(){
+    private void initGson() {
         gson = new GsonBuilder()
                 .setPrettyPrinting()
                 .serializeNulls()
@@ -335,10 +336,10 @@ public class HomePageAbilitySlice extends AbilitySlice {
     }
 
     //获取全部的朝代名称
-    private void downAllDynasty(){
+    private void downAllDynasty() {
         okHttpClient = new OkHttpClient();
         Request request = new Request.Builder()
-                .url(ServiceConfig.SERVICE_ROOT+ServiceConfig.DYNASTY_LIST)
+                .url(ServiceConfig.SERVICE_ROOT + ServiceConfig.DYNASTY_LIST)
                 .build();
         Call call = okHttpClient.newCall(request);
 
@@ -410,10 +411,10 @@ public class HomePageAbilitySlice extends AbilitySlice {
     }
 
     //获取用户已解锁的朝代信息
-    private void downloadUnlockDynastyList(){
+    private void downloadUnlockDynastyList() {
         okHttpClient = new OkHttpClient();
         Request request = new Request.Builder()
-                .url(ServiceConfig.SERVICE_ROOT+ServiceConfig.UNLOCK_DYNASTY_LIST+Constant.User.getUserId())
+                .url(ServiceConfig.SERVICE_ROOT + ServiceConfig.UNLOCK_DYNASTY_LIST + Constant.User.getUserId())
                 .build();
         Call call = okHttpClient.newCall(request);
 
@@ -443,19 +444,19 @@ public class HomePageAbilitySlice extends AbilitySlice {
     }
 
     //内部监听器类
-    private class MyListener implements Component.ClickedListener{
+    private class MyListener implements Component.ClickedListener {
         @Override
         public void onClick(Component component) {
-            switch (component.getId()){
+            switch (component.getId()) {
                 case ResourceTable.Id_user_header://用户头像
 
                     break;
                 case ResourceTable.Id_experience://用户经验
-                    if(flag == 0){
+                    if (flag == 0) {
                         experience.setText("" + Constant.User.getUserExperience() + "/" + Constant.User.getUserStatus().getStatusExperienceTop());
                         experience.setTextSize(30);
                         flag = 1;
-                    }else {
+                    } else {
                         experience.setText(Constant.User.getUserStatus().getStatusName());
                         experience.setTextSize(35);
                         flag = 0;
@@ -473,6 +474,9 @@ public class HomePageAbilitySlice extends AbilitySlice {
                 case ResourceTable.Id_recharge://用户充值
 
                     break;
+                case ResourceTable.Id_home_setting_btn:
+                    present(new SettingAbilitySlice(), new Intent());
+                    break;
             }
         }
     }
@@ -486,8 +490,8 @@ public class HomePageAbilitySlice extends AbilitySlice {
         for (int j = 0; j < Constant.UnlockDynasty.size(); j++) {
             unlockDynastyIds.add(Constant.UnlockDynasty.get(j).getDynastyName());
         }
-        for(int i = 0;i < unlockDynastyIds.size();i++){
-            if(textImage.containsKey(unlockDynastyIds.get(i))){
+        for (int i = 0; i < unlockDynastyIds.size(); i++) {
+            if (textImage.containsKey(unlockDynastyIds.get(i))) {
                 Image image = textImage.get(unlockDynastyIds.get(i));
                 image.setPixelMap(ResourceTable.Media_shan);
             }
