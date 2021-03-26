@@ -16,16 +16,18 @@
 
         <Image
             ohos:id="$+id:back"
-            ohos:height="50vp"
+            ohos:height="40vp"
             ohos:width="40vp"
             ohos:image_src="$media:back"
+            ohos:layout_alignment="vertical_center"
             ohos:left_margin="10vp"
             ohos:padding="10vp"/>
 
         <Text
             ohos:id="$+id:role_story"
-            ohos:height="match_content"
+            ohos:height="match_parent"
             ohos:width="match_parent"
+            ohos:text_alignment="vertical_center"
             ohos:text_color="#000"
             ohos:text_size="18fp"/>
     </DirectionalLayout>
@@ -38,7 +40,6 @@
         <DirectionalLayout
             ohos:height="match_parent"
             ohos:width="match_parent"
-            ohos:alignment="vertical_center"
             ohos:orientation="horizontal">
 
             <DirectionalLayout
@@ -52,18 +53,18 @@
             <DirectionalLayout
                 ohos:height="match_parent"
                 ohos:width="0"
-                ohos:orientation="vertical"
+                ohos:alignment="vertical_center"
+                ohos:orientation="horizontal"
                 ohos:padding="15vp"
-                ohos:weight="4">
+                ohos:weight="3">
 
                 <Text
                     ohos:id="$+id:story"
                     ohos:height="190vp"
                     ohos:width="match_parent"
-                    ohos:alpha="0.85"
                     ohos:background_element="$media:bg_card_story_test"
+                    ohos:multiple_lines="true"
                     ohos:padding="25vp"
-                    ohos:scrollable="true"
                     ohos:text_color="#000"
                     ohos:text_size="17fp"/>
             </DirectionalLayout>
@@ -81,11 +82,11 @@
 
         <Image
             ohos:id="$+id:card_img"
-            ohos:height="200vp"
+            ohos:height="match_content"
             ohos:width="130vp"
+            ohos:align_parent_bottom="true"
             ohos:alpha="0.95"
             ohos:image_src="$media:role"
-            ohos:left_margin="50vp"
-            ohos:top_margin="70vp"/>
+            ohos:margin="70vp"/>
     </DependentLayout>
 </DependentLayout>

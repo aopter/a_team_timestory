@@ -23,9 +23,10 @@
 
         <Text
             ohos:id="$+id:text"
-            ohos:height="match_content"
-            ohos:width="match_parent"
+            ohos:height="match_parent"
+            ohos:width="match_content"
             ohos:text="卡片详情"
+            ohos:text_alignment="vertical_center"
             ohos:text_color="#000"
             ohos:text_size="18fp"/>
     </DirectionalLayout>
@@ -60,10 +61,11 @@
 
                 <Button
                     ohos:id="$+id:card_name"
-                    ohos:height="35vp"
+                    ohos:height="match_content"
                     ohos:width="match_content"
                     ohos:alpha="0.7"
                     ohos:background_element="$color:holo_red_dark"
+                    ohos:padding="10vp"
                     ohos:text_color="#FFF"
                     ohos:text_weight="200"/>
             </DirectionalLayout>
@@ -90,6 +92,7 @@
                     ohos:width="match_parent"
                     ohos:alpha="0.85"
                     ohos:margin="15vp"
+                    ohos:multiple_lines="true"
                     ohos:scrollable="true"
                     ohos:text_color="#000"
                     ohos:text_size="17fp"/>
@@ -97,12 +100,13 @@
 
             <Button
                 ohos:id="$+id:card_story"
-                ohos:height="35vp"
+                ohos:height="match_content"
                 ohos:width="match_content"
                 ohos:align_parent_bottom="true"
                 ohos:align_parent_right="true"
                 ohos:alpha="0.7"
                 ohos:background_element="$color:holo_red_dark"
+                ohos:padding="10vp"
                 ohos:right_margin="30vp"
                 ohos:text="查看生平"
                 ohos:text_color="#FFF"

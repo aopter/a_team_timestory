@@ -1,6 +1,7 @@
 package com.example.timestory.slice;
 
 import com.example.timestory.ResourceTable;
+import com.example.timestory.ability.card.DrawCardAbility;
 import com.example.timestory.ability.user.LoginAbility;
 import com.example.timestory.Utils.Util;
 import com.example.timestory.ability.dynasty.HomePageAbility;
@@ -68,6 +69,7 @@ public class MainAbilitySlice extends AbilitySlice {
                     break;
                 case ResourceTable.Id_module_card:
 //                    跳转
+                    startAbility(Util.generatePageNavigationIntent(DrawCardAbility.class.getName()));
                     break;
                 case ResourceTable.Id_module_problem:
                     System.out.println("选中了：题目模块");

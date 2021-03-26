@@ -9,89 +9,83 @@
         ohos:width="match_parent"
         ohos:background_element="$media:bg_drawcard">
 
-        <DirectionalLayout
+
+        <DependentLayout
             ohos:id="$+id:card_container"
             ohos:height="match_parent"
             ohos:width="match_parent"
-            ohos:alpha="0"
             ohos:background_element="#000"
-            ohos:padding="40vp">
+            ohos:padding="40vp"
+            ohos:visibility="hide">
 
-            <DependentLayout
+            <Text
+                ohos:id="$+id:join"
+                ohos:height="match_content"
+                ohos:width="match_content"
+                ohos:align_parent_bottom="true"
+                ohos:bottom_margin="20vp"
+                ohos:max_text_lines="2"
+                ohos:multiple_lines="true"
+                ohos:text="您的好友已经获得很多卡片啦,快来加入我们吧↖(￣▽￣)"
+                ohos:text_color="#FFF"
+                ohos:top_padding="10vp"
+                ohos:visibility="hide"/>
+
+            <Image
+                ohos:id="$+id:e_r_code"
+                ohos:height="50vp"
+                ohos:width="50vp"
+                ohos:above="$id:join"
+                ohos:background_element="$media:e_r_code"
+                ohos:visibility="hide"/>
+
+            <Text
+                ohos:id="$+id:tip"
+                ohos:height="match_content"
+                ohos:width="match_parent"
+                ohos:align_parent_left="true"
+                ohos:align_parent_top="true"
+                ohos:padding="20vp"
+                ohos:text="点击看看得到了什么卡片吧＾０＾~"
+                ohos:text_alignment="vertical_center"
+                ohos:text_color="#FFF"
+                ohos:text_size="17fp"/>
+
+            <Image
+                ohos:id="$+id:share"
+                ohos:height="30vp"
+                ohos:width="30vp"
+                ohos:align_parent_right="true"
+                ohos:image_src="$media:share"
+                ohos:margin="20vp"
+                ohos:visibility="hide"/>
+
+            <DirectionalLayout
                 ohos:height="match_parent"
-                ohos:width="match_parent">
-
-                <Text
-                    ohos:id="$+id:join"
-                    ohos:height="match_content"
-                    ohos:width="match_content"
-                    ohos:align_parent_bottom="true"
-                    ohos:bottom_margin="20vp"
-                    ohos:max_text_lines="2"
-                    ohos:multiple_lines="true"
-                    ohos:text="您的好友已经获得很多卡片啦,快来加入我们吧↖(￣▽￣)"
-                    ohos:text_color="#FFF"
-                    ohos:top_padding="10vp"
-                    ohos:visibility="hide"/>
+                ohos:width="match_parent"
+                ohos:alignment="vertical_center"
+                ohos:orientation="vertical">
 
                 <Image
-                    ohos:id="$+id:e_r_code"
-                    ohos:height="50vp"
-                    ohos:width="50vp"
-                    ohos:above="$id:join"
-                    ohos:background_element="$media:e_r_code"
-                    ohos:visibility="hide"/>
+                    ohos:id="$+id:draw_card_show"
+                    ohos:height="256vp"
+                    ohos:width="160vp"
+                    ohos:background_element="$color:ourDynastyRed"
+                    ohos:image_src="$media:card_back"
+                    ohos:layout_alignment="horizontal_center"/>
+            </DirectionalLayout>
 
-                <Text
-                    ohos:id="$+id:tip"
-                    ohos:height="match_content"
-                    ohos:width="match_parent"
-                    ohos:align_parent_left="true"
-                    ohos:align_parent_top="true"
-                    ohos:padding="20vp"
-                    ohos:text="点击看看得到了什么卡片吧＾０＾~"
-                    ohos:text_color="#FFF"
-                    ohos:text_size="17fp"/>
-
-                <Image
-                    ohos:id="$+id:share"
-                    ohos:height="30vp"
-                    ohos:width="30vp"
-                    ohos:align_parent_right="true"
-                    ohos:image_src="$media:share"
-                    ohos:margin="20vp"
-                    ohos:visibility="hide"/>
-
-                <DirectionalLayout
-                    ohos:height="match_parent"
-                    ohos:width="match_parent"
-                    ohos:alignment="vertical_center"
-                    ohos:orientation="vertical">
-
-                    <Image
-                        ohos:id="$+id:draw_card_show"
-                        ohos:height="256vp"
-                        ohos:width="160vp"
-                        ohos:background_element="$color:ourDynastyRed"
-                        ohos:image_src="$media:card_back"
-                        ohos:layout_alignment="horizontal_center"
-                        ohos:visibility="hide"/>
-                </DirectionalLayout>
-
-                <Button
-                    ohos:id="$+id:to_last_view"
-                    ohos:height="match_content"
-                    ohos:width="match_content"
-                    ohos:align_parent_bottom="true"
-                    ohos:align_parent_right="true"
-                    ohos:alpha="0.9"
-                    ohos:background_element="#ffcc0000"
-                    ohos:padding="15vp"
-                    ohos:text="返回上一页"
-                    ohos:text_color="#FFF"
-                    ohos:visibility="hide"/>
-            </DependentLayout>
-        </DirectionalLayout>
+            <Button
+                ohos:id="$+id:to_last_view"
+                ohos:height="match_content"
+                ohos:width="match_content"
+                ohos:align_parent_bottom="true"
+                ohos:align_parent_right="true"
+                ohos:background_element="#ffcc0000"
+                ohos:padding="15vp"
+                ohos:text="返回上一页"
+                ohos:text_color="#FFF"/>
+        </DependentLayout>
 
         <DirectionalLayout
             ohos:id="$+id:front_container"
@@ -112,7 +106,7 @@
 
                     <Image
                         ohos:id="$+id:back"
-                        ohos:height="match_content"
+                        ohos:height="match_parent"
                         ohos:width="50vp"
                         ohos:image_src="$media:back"
                         ohos:left_margin="10vp"
@@ -122,9 +116,9 @@
                         ohos:id="$+id:text"
                         ohos:height="match_content"
                         ohos:width="match_parent"
-                        ohos:layout_alignment="vertical_center"
                         ohos:left_padding="5vp"
                         ohos:text="快在下面挑选一张属于你的卡片吧~"
+                        ohos:text_alignment="vertical_center"
                         ohos:text_color="#000"
                         ohos:text_size="25fp"
                         ohos:weight="100"/>

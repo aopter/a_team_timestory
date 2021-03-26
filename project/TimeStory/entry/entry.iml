@@ -29,9 +29,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/resources" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ohosTest/java" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ohosTest/js" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ohosTest/resources" type="java-test-resource" />
       <excludeFolder url="file://$MODULE_DIR$/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/build" />
     </content>
@@ -48,6 +45,7 @@
     <orderEntry type="library" exported="" name="Gradle: shadowlayout-1.0.0" level="project" />
     <orderEntry type="library" exported="" name="Gradle: core-3.3.0" level="project" />
     <orderEntry type="library" exported="" name="Gradle: android-gif-drawable-1.2.15" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: annotations-15.0" level="project" />
     <orderEntry type="library" exported="" name="Gradle: gifdecoder-4.9.0" level="project" />
     <orderEntry type="library" exported="" name="Gradle: disklrucache-4.9.0" level="project" />
     <orderEntry type="library" exported="" name="Gradle: annotations-4.9.0" level="project" />

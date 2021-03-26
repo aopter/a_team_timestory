@@ -1,6 +1,5 @@
 package com.example.timestory.Utils;
 
-import android.support.annotation.Nullable;
 import com.example.timestory.constant.Constant;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.agp.components.Image;
@@ -11,6 +10,7 @@ import ohos.media.image.PixelMap;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -46,7 +46,7 @@ public class HmOSImageLoader {
     }
 
     private void start() {
-        if(Constant.eventPics.containsKey(url)){
+        if (Constant.eventPics.containsKey(url)) {
             abilitySlice.getUITaskDispatcher().asyncDispatch(new Runnable() {
                 @Override
                 public void run() {
@@ -76,7 +76,7 @@ public class HmOSImageLoader {
                         //展示到组件上
                         image.setPixelMap(pixelMap);
                         //释放位图
-                        Constant.eventPics.put(url,pixelMap);
+                        Constant.eventPics.put(url, pixelMap);
                     }
                 });
             } catch (IOException e) {
