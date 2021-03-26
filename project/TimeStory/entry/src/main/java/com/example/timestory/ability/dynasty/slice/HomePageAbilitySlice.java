@@ -54,6 +54,7 @@ public class HomePageAbilitySlice extends AbilitySlice {
     private Gson gson;//Json转换框架
     private OkHttpClient okHttpClient;//网络访问请求对象
     private TaskDispatcher parallelTaskDispatcher;//并发任务分发器
+    private TaskDispatcher uiTaskDispatcher;//ui线程分发器
     private EventRunner eventRunner = EventRunner.create(true);//线程投递器
     private EventHandler eventHandler = new EventHandler(eventRunner){
         @Override
@@ -71,7 +72,14 @@ public class HomePageAbilitySlice extends AbilitySlice {
                         break;
                     }
                     for(int i = 0;i < Constant.dynastiesName.size();i++){
-                        addDynasty(i,Constant.dynastiesName.get(i).getDynastyName());
+                        int finalI = i;
+                        uiTaskDispatcher.syncDispatch(new Runnable() {
+                            @Override
+                            public void run() {
+                                addDynasty(finalI,Constant.dynastiesName.get(finalI).getDynastyName());
+                            }
+                        });
+
                     }
                     break;
             }
@@ -106,6 +114,7 @@ public class HomePageAbilitySlice extends AbilitySlice {
 
         //初始化并发任务分发器
         parallelTaskDispatcher = createParallelTaskDispatcher("homePageParallelTaskDispatcher", TaskPriority.DEFAULT);
+        uiTaskDispatcher = getUITaskDispatcher();
 
         //获取控件
         initLayout();

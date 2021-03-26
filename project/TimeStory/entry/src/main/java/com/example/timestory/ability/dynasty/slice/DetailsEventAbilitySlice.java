@@ -53,6 +53,7 @@ public class DetailsEventAbilitySlice extends AbilitySlice {
     private Gson gson;//json解析
     private OkHttpClient okHttpClient;//网络访问请求对象
     private TaskDispatcher parallelTaskDispatcher;//并发任务分发器
+    private TaskDispatcher uiTaskDispatcher;//ui线程任务分发器
     private EventRunner eventRunner = EventRunner.create(true);//线程投递器
     private EventHandler eventHandler = new EventHandler(eventRunner){
         @Override
@@ -68,7 +69,13 @@ public class DetailsEventAbilitySlice extends AbilitySlice {
                     if(incidentList.size() != 0){
                         //加载页面
                         for(int i=0;i < incidentList.size();i++){
-                            addIncident(incidentList.get(i));
+                            int finalI = i;
+                            uiTaskDispatcher.syncDispatch(new Runnable() {
+                                @Override
+                                public void run() {
+                                    addIncident(incidentList.get(finalI));
+                                }
+                            });
                         }
                     }else{
                         //无事件
@@ -91,6 +98,7 @@ public class DetailsEventAbilitySlice extends AbilitySlice {
 
         //初始化并发任务分发器
         parallelTaskDispatcher = createParallelTaskDispatcher("detailsEventPageParallelTaskDispatcher", TaskPriority.DEFAULT);
+        uiTaskDispatcher = getUITaskDispatcher();
 
         //初始化Gson
         initGson();
