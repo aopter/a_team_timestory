@@ -46,7 +46,7 @@ public class LoginAbilitySlice extends AbilitySlice {
     }
 
     private void getPermission() {
-        String[] permission = {"ohos.permission.READ_USER_STORAGE", "ohos.permission.INTERNET","ohos.permission.WRITE_MEDIA"};
+        String[] permission = {"ohos.permission.READ_USER_STORAGE", "ohos.permission.INTERNET", "ohos.permission.WRITE_MEDIA"};
         requestPermissionsFromUser(permission, 0);
     }
 

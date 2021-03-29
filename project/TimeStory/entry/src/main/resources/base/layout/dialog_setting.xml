@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:height="match_content"
+    ohos:width="match_parent"
+    ohos:orientation="vertical"
+    ohos:padding="10vp">
+
+    <Text
+        ohos:height="match_content"
+        ohos:width="match_parent"
+        ohos:text="请输入"
+        ohos:text_size="40fp"/>
+
+    <TextField
+        ohos:id="$+id:tf_modify"
+        ohos:height="match_parent"
+        ohos:width="match_parent"
+        ohos:bottom_margin="30vp"
+        ohos:hint="请输入修改后的内容"
+        ohos:left_margin="10vp"
+        ohos:right_margin="10vp"
+        ohos:text_alignment="vertical_center"
+        ohos:text_size="30fp"
+        ohos:top_margin="30vp"
+        ohos:weight="1"/>
+
+
+    <DirectionalLayout
+        ohos:height="match_content"
+        ohos:width="match_parent"
+        ohos:orientation="horizontal">
+
+        <Button
+            ohos:id="$+id:setting_dialog_cancel"
+            ohos:height="match_content"
+            ohos:width="match_parent"
+            ohos:background_element="yellow"
+            ohos:margin="10vp"
+            ohos:padding="10vp"
+            ohos:text="取消"
+            ohos:text_size="30fp"
+            ohos:weight="1"/>
+
+        <Button
+            ohos:id="$+id:setting_dialog_sure"
+            ohos:height="match_content"
+            ohos:width="match_parent"
+            ohos:margin="10vp"
+            ohos:padding="10vp"
+            ohos:text="确定"
+            ohos:text_size="30fp"
+            ohos:weight="1"/>
+
+    </DirectionalLayout>
+
+</DirectionalLayout>

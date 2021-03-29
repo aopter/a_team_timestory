@@ -52,6 +52,7 @@ public class Constant {
     public static int descCount = 60;
 
     public static Map<String, PixelMap> eventPics = new HashMap<>();
+    public static String[] SEXARR = new String[]{"男", "女"};
 
 ////    积分不足提示
 //    public static void showCountDialog(Context context) {

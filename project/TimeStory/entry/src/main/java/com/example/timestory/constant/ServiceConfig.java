@@ -44,5 +44,9 @@ public class ServiceConfig {
      * 用户登录URL
      */
     public static final String LOGIN_URL = "/user/login";
+    /**
+     * 用户详情URL
+     */
+    public static final String USERDETALURL = "/userdetails/details/";
 
 }

@@ -50,11 +50,12 @@
                     ohos:text_size="20vp"/>
 
                 <Text
+                    ohos:id="$+id:setting_user_name"
                     ohos:height="match_content"
                     ohos:width="match_content"
                     ohos:align_parent_end="true"
                     ohos:right_margin="40vp"
-                    ohos:text="昵称"
+                    ohos:text=""
                     ohos:text_size="20vp"/>
 
                 <Text
@@ -62,6 +63,7 @@
                     ohos:height="match_content"
                     ohos:width="match_content"
                     ohos:align_parent_end="true"
+                    ohos:clickable="true"
                     ohos:right_margin="10vp"
                     ohos:text=">"
                     ohos:text_size="20vp"/>
@@ -81,11 +83,12 @@
                     ohos:text_size="20vp"/>
 
                 <Text
+                    ohos:id="$+id:setting_user_signature"
                     ohos:height="match_content"
                     ohos:width="match_content"
                     ohos:left_of="$id:modify_user_signature"
                     ohos:right_margin="10vp"
-                    ohos:text="null"
+                    ohos:text=""
                     ohos:text_size="20vp"/>
 
                 <Text
@@ -93,6 +96,7 @@
                     ohos:height="match_content"
                     ohos:width="match_content"
                     ohos:align_parent_end="true"
+                    ohos:clickable="true"
                     ohos:right_margin="10vp"
                     ohos:text=">"
                     ohos:text_size="20vp"/>
@@ -112,11 +116,12 @@
                     ohos:text_size="20vp"/>
 
                 <Text
+                    ohos:id="$+id:setting_user_phone"
                     ohos:height="match_content"
                     ohos:width="match_content"
                     ohos:left_of="$id:modify_user_phone"
                     ohos:right_margin="10vp"
-                    ohos:text="15884729790"
+                    ohos:text=""
                     ohos:text_size="20vp"/>
 
                 <Text
@@ -124,37 +129,7 @@
                     ohos:height="match_content"
                     ohos:width="match_content"
                     ohos:align_parent_end="true"
-                    ohos:right_margin="10vp"
-                    ohos:text=">"
-                    ohos:text_size="20vp"/>
-            </DependentLayout>
-
-            <DependentLayout
-                ohos:height="60vp"
-                ohos:width="match_parent"
-                ohos:top_margin="20vp">
-
-                <Text
-                    ohos:height="match_content"
-                    ohos:width="match_content"
-                    ohos:align_parent_start="true"
-                    ohos:left_margin="40vp"
-                    ohos:text="二维码名片"
-                    ohos:text_size="20vp"/>
-
-                <Image
-                    ohos:height="40vp"
-                    ohos:width="40vp"
-                    ohos:image_src="$media:erweima"
-                    ohos:left_of="$id:modify_user_erweima"
-                    ohos:right_margin="10vp"
-                    ohos:scale_mode="zoom_center"/>
-
-                <Text
-                    ohos:id="$+id:modify_user_erweima"
-                    ohos:height="match_content"
-                    ohos:width="match_content"
-                    ohos:align_parent_end="true"
+                    ohos:clickable="true"
                     ohos:right_margin="10vp"
                     ohos:text=">"
                     ohos:text_size="20vp"/>
@@ -173,13 +148,29 @@
                     ohos:text="性别"
                     ohos:text_size="20vp"/>
 
-                <Picker
-                    ohos:id="$+id:test_picker"
+                <RadioContainer
+                    ohos:id="$+id:radio_container"
                     ohos:height="match_content"
-                    ohos:width="40vp"
+                    ohos:width="match_content"
                     ohos:align_parent_end="true"
-                    ohos:normal_text_size="20vp"
-                    ohos:selected_text_size="20vp"/>
+                    ohos:layout_alignment="horizontal_center"
+                    ohos:orientation="horizontal"
+                    ohos:top_margin="32vp">
+
+                    <RadioButton
+                        ohos:id="$+id:radio_button_1"
+                        ohos:height="40vp"
+                        ohos:width="match_content"
+                        ohos:text="男"
+                        ohos:text_size="20vp"/>
+
+                    <RadioButton
+                        ohos:id="$+id:radio_button_2"
+                        ohos:height="40vp"
+                        ohos:width="match_content"
+                        ohos:text="女"
+                        ohos:text_size="20vp"/>
+                </RadioContainer>
             </DependentLayout>
         </DirectionalLayout>
 
@@ -208,13 +199,13 @@
                     ohos:margin="50vp">
 
                     <Text
+                        ohos:id="$+id:setting_rule"
                         ohos:height="match_content"
                         ohos:width="400vp"
                         ohos:bottom_padding="50vp"
                         ohos:layout_alignment="horizontal_center"
                         ohos:multiple_lines="true"
-                        ohos:text="定义∶指将一个复杂对象的构造与它的表示分离，使同样的构建过程可以创建不同的表示，这样的设计模式被称为建造者模式。它是将一个复杂的对象分解为多个简单的对象，然后一步一步构建而成。它将变与不变相分离，即产品的组成部分是不变的，但每一部分是可以灵活选择的。
-主要作用：在用户不知道对象的建造过程和细节的情况下就可以直接创建复杂的对象。用户只需要给出指定复杂对象的类型和内容，建造者模式负责按顺序创建复杂对象（把内部的建造过程和细节隐藏起来)现在需要建造个房子，建造房子需要若干不同的步骤，但是对于客户来讲，他不用关心房屋是怎么创建出来的，他只需要去找包工头，让包工头去指挥工人做那些复杂的事情，最终直接收货即可。那么对于工人来讲，不同的工人能够使用不同的方式建造的房子，所以这里可以把建造者抽象出来"
+                        ohos:text=""
                         ohos:text_size="20vp"
                         ohos:top_padding="50vp"/>
                 </DirectionalLayout>
@@ -235,6 +226,7 @@
             ohos:width="match_parent">
 
             <TextField
+                ohos:id="$+id:setting_question"
                 ohos:height="300vp"
                 ohos:width="match_parent"
                 ohos:alpha="0.8"
@@ -247,7 +239,7 @@
                 ohos:top_padding="20vp"/>
 
             <Button
-                ohos:id="$+id:btn_login"
+                ohos:id="$+id:btn_submit_question"
                 ohos:height="40vp"
                 ohos:width="100vp"
                 ohos:background_element="$media:login_button"
@@ -258,6 +250,7 @@
         </DirectionalLayout>
 
         <Button
+            ohos:id="$+id:setting_exit_btn"
             ohos:height="match_content"
             ohos:width="200vp"
             ohos:background_element="$media:setting1"

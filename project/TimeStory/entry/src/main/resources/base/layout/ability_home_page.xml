@@ -209,8 +209,6 @@
                 ohos:margin="5fp"
                 ohos:background_element="$media:settings"/>
 
-
-
         </DirectionalLayout>
 
     </DirectionalLayout>

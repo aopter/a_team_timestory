@@ -17,14 +17,17 @@
         <DirectionalLayout
             ohos:height="match_content"
             ohos:width="match_content"
+            ohos:clickable="true"
             ohos:orientation="vertical">
 
             <Image
+                ohos:id="$+id:user_center_header"
                 ohos:height="60vp"
                 ohos:width="60vp"
                 ohos:image_src="$media:test_header"/>
 
             <ProgressBar
+                ohos:id="$+id:user_center_pb"
                 ohos:height="5vp"
                 ohos:width="60vp"
                 ohos:max="100"
@@ -36,27 +39,32 @@
         </DirectionalLayout>
 
         <DependentLayout
+            ohos:id="$+id:dl_level"
             ohos:height="match_content"
             ohos:width="match_content"
             ohos:background_element="$media:button"
+            ohos:clickable="true"
             ohos:layout_alignment="vertical_center"
             ohos:left_margin="30vp">
 
             <Text
+                ohos:id="$+id:user_center_tx_level"
                 ohos:height="40vp"
                 ohos:width="90vp"
                 ohos:alpha="0.9"
                 ohos:padding="5vp"
-                ohos:text="秀才"
+                ohos:text=""
                 ohos:text_alignment="center"
                 ohos:text_color="#AE5B41"
                 ohos:text_size="12fp"/>
         </DependentLayout>
 
         <DependentLayout
+            ohos:id="$+id:user_center_card_dl"
             ohos:height="match_content"
             ohos:width="match_content"
             ohos:background_element="$media:button"
+            ohos:clickable="true"
             ohos:layout_alignment="vertical_center"
             ohos:left_margin="30vp">
 
@@ -72,9 +80,11 @@
         </DependentLayout>
 
         <DependentLayout
+            ohos:id="$+id:user_center_go_dynasty_dl"
             ohos:height="match_content"
             ohos:width="match_content"
             ohos:background_element="$media:button"
+            ohos:clickable="true"
             ohos:layout_alignment="vertical_center"
             ohos:left_margin="30vp">
 
@@ -90,9 +100,11 @@
         </DependentLayout>
 
         <DependentLayout
+            ohos:id="$+id:user_center_point_dl"
             ohos:height="match_content"
             ohos:width="match_content"
             ohos:background_element="$media:button"
+            ohos:clickable="true"
             ohos:layout_alignment="vertical_center"
             ohos:left_margin="30vp">
 
@@ -108,7 +120,7 @@
                 ohos:text_size="12fp"/>
 
             <Text
-                ohos:id="$+id:tx_rl"
+                ohos:id="$+id:user_center_tx_point"
                 ohos:height="40vp"
                 ohos:width="match_content"
                 ohos:alpha="0.9"
@@ -125,14 +137,16 @@
                 ohos:width="20vp"
                 ohos:background_element="$media:plust"
                 ohos:right_margin="10vp"
-                ohos:right_of="$id:tx_rl"
+                ohos:right_of="$id:user_center_tx_point"
                 ohos:vertical_center="true"/>
         </DependentLayout>
 
         <DependentLayout
+            ohos:id="$+id:user_center_setting_dl"
             ohos:height="match_content"
             ohos:width="match_content"
             ohos:background_element="$media:button"
+            ohos:clickable="true"
             ohos:layout_alignment="vertical_center"
             ohos:left_margin="30vp">
 
@@ -171,6 +185,7 @@
                 ohos:text_size="20fp"/>
 
             <ListContainer
+                ohos:id="$+id:user_center_ranking_lc"
                 ohos:height="match_parent"
                 ohos:width="220vp"
                 ohos:alpha="0.8"
@@ -195,6 +210,7 @@
                 ohos:text_size="20fp"/>
 
             <ListContainer
+                ohos:id="$+id:user_center_history_today_lc"
                 ohos:height="match_parent"
                 ohos:width="300vp"
                 ohos:alpha="0.8"
@@ -217,6 +233,7 @@
             ohos:layout_alignment="vertical_center">
 
             <Text
+                ohos:id="$+id:user_center_my_card"
                 ohos:height="40vp"
                 ohos:width="90vp"
                 ohos:alpha="0.9"
@@ -235,6 +252,7 @@
             ohos:left_margin="60vp">
 
             <Text
+                ohos:id="$+id:user_center_my_collections"
                 ohos:height="40vp"
                 ohos:width="90vp"
                 ohos:alpha="0.9"
