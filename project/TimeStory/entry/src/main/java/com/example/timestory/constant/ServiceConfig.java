@@ -36,6 +36,7 @@ public class ServiceConfig {
     public static final String UNLOCK_INCIDENT_ADD = "/userincident/unlock/";
     public static final int UNLOCK_INCIDENT_ADD_THREAD = 9;
 
+    public static final String GET_PROBLEMS = "/problem/replenish/";
     /**
      * 用户注册URL
      */
