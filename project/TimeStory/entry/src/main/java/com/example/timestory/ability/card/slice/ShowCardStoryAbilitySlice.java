@@ -57,7 +57,7 @@ public class ShowCardStoryAbilitySlice extends AbilitySlice {
 
     private void defineViewAndAnimation() {
         tip.setText("'" + card.getCardName() + "'的那些事");
-        story.setText(event.get(currentStory));
+        story.setText("    " + event.get(currentStory));
         System.out.println("____story____currentStory:" + currentStory + ", story:" + event.get(currentStory));
 
     }
@@ -84,7 +84,7 @@ public class ShowCardStoryAbilitySlice extends AbilitySlice {
         public void onClick(Component component) {
             switch (component.getId()) {
                 case ResourceTable.Id_back:
-
+                    terminate();
                     break;
                 case ResourceTable.Id_former_story:
                     clickTwiceMillis = System.currentTimeMillis();

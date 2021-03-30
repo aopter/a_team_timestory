@@ -2,6 +2,8 @@ package com.example.timestory.slice;
 
 import com.example.timestory.ResourceTable;
 import com.example.timestory.ability.card.DrawCardAbility;
+import com.example.timestory.ability.card.MyCardAbility;
+import com.example.timestory.ability.card.SpecificDynastyCardAbility;
 import com.example.timestory.ability.user.LoginAbility;
 import com.example.timestory.Utils.Util;
 import com.example.timestory.ability.dynasty.HomePageAbility;
@@ -9,6 +11,7 @@ import com.example.timestory.ability.user.RegistryAbility;
 import com.example.timestory.ability.user.SettingAbility;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
+import ohos.aafwk.content.Operation;
 import ohos.agp.components.Component;
 import ohos.agp.components.Text;
 
@@ -69,7 +72,7 @@ public class MainAbilitySlice extends AbilitySlice {
                     break;
                 case ResourceTable.Id_module_card:
 //                    跳转
-                    startAbility(Util.generatePageNavigationIntent(DrawCardAbility.class.getName()));
+                    startAbility(Util.generatePageNavigationIntent(MyCardAbility.class.getName()));
                     break;
                 case ResourceTable.Id_module_problem:
                     System.out.println("选中了：题目模块");

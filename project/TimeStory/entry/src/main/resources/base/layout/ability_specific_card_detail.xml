@@ -12,11 +12,12 @@
         ohos:height="55vp"
         ohos:width="match_parent"
         ohos:alpha="0.95"
+        ohos:orientation="horizontal"
         ohos:padding="10vp">
 
         <Image
             ohos:id="$+id:back"
-            ohos:height="50vp"
+            ohos:height="match_parent"
             ohos:width="40vp"
             ohos:image_src="$media:back"
             ohos:padding="10vp"/>
@@ -41,14 +42,15 @@
 
         <DependentLayout
             ohos:height="match_parent"
-            ohos:width="120vp"
+            ohos:width="190vp"
             ohos:left_margin="20vp">
 
             <Image
                 ohos:id="$+id:card_img"
                 ohos:height="260vp"
-                ohos:width="120vp"
-                ohos:above="$id:card_name_container"/>
+                ohos:width="190vp"
+                ohos:above="$id:card_name_container"
+                ohos:bottom_margin="20vp"/>
 
             <DirectionalLayout
                 ohos:id="$+id:card_name_container"
@@ -62,9 +64,10 @@
                 <Button
                     ohos:id="$+id:card_name"
                     ohos:height="match_content"
-                    ohos:width="match_content"
+                    ohos:width="100vp"
                     ohos:alpha="0.7"
                     ohos:background_element="$color:holo_red_dark"
+                    ohos:layout_alignment="horizontal_center"
                     ohos:padding="10vp"
                     ohos:text_color="#FFF"
                     ohos:text_weight="200"/>
@@ -93,7 +96,9 @@
                     ohos:alpha="0.85"
                     ohos:margin="15vp"
                     ohos:multiple_lines="true"
+                    ohos:padding="20vp"
                     ohos:scrollable="true"
+                    ohos:text_alignment="left|top"
                     ohos:text_color="#000"
                     ohos:text_size="17fp"/>
             </DirectionalLayout>

@@ -14,9 +14,9 @@
             ohos:id="$+id:card_container"
             ohos:height="match_parent"
             ohos:width="match_parent"
+            ohos:alpha="0"
             ohos:background_element="#000"
-            ohos:padding="40vp"
-            ohos:visibility="hide">
+            ohos:padding="40vp">
 
             <Text
                 ohos:id="$+id:join"
@@ -68,8 +68,9 @@
 
                 <Image
                     ohos:id="$+id:draw_card_show"
-                    ohos:height="256vp"
-                    ohos:width="160vp"
+                    ohos:height="260vp"
+                    ohos:width="190vp"
+                    ohos:alpha="0"
                     ohos:background_element="$color:ourDynastyRed"
                     ohos:image_src="$media:card_back"
                     ohos:layout_alignment="horizontal_center"/>
@@ -81,6 +82,7 @@
                 ohos:width="match_content"
                 ohos:align_parent_bottom="true"
                 ohos:align_parent_right="true"
+                ohos:alpha="0"
                 ohos:background_element="#ffcc0000"
                 ohos:padding="15vp"
                 ohos:text="返回上一页"

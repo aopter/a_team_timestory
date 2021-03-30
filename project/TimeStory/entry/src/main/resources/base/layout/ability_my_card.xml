@@ -12,6 +12,7 @@
         ohos:align_parent_top="true"
         ohos:alignment="vertical_center"
         ohos:left_margin="20vp"
+        ohos:orientation="horizontal"
         ohos:padding="10vp"
         ohos:top_margin="20vp">
 
@@ -40,6 +41,13 @@
         ohos:horizontal_center="true"
         ohos:orientation="vertical">
 
-        <!-- TODO SpeedRecyclerView -->
+        <ListContainer
+            ohos:id="$+id:dynasty_list"
+            ohos:height="match_parent"
+            ohos:width="match_parent"
+            ohos:alpha="0.75"
+            ohos:left_margin="40vp"
+            ohos:padding="20vp"
+            ohos:right_margin="40vp"/>
     </DirectionalLayout>
 </DependentLayout>

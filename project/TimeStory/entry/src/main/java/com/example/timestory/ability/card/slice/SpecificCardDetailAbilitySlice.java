@@ -75,7 +75,7 @@ public class SpecificCardDetailAbilitySlice extends AbilitySlice {
     }
 
     private void showDatas() {
-        cardInfo.setText(card.getCardInfo());
+        cardInfo.setText("    " + card.getCardInfo());
         cardName.setText(card.getCardName());
         HmOSImageLoader.with(abilitySlice)
                 .load(ServiceConfig.SERVICE_ROOT + "/img/" + card.getCardPicture())
@@ -136,10 +136,9 @@ public class SpecificCardDetailAbilitySlice extends AbilitySlice {
         public void onClick(Component component) {
             switch (component.getId()) {
                 case ResourceTable.Id_back:
-
+                    terminate();
                     break;
                 case ResourceTable.Id_card_story:
-
                     Intent intent = new Intent();
                     Operation operation = new Intent.OperationBuilder()
                             .withDeviceId("")

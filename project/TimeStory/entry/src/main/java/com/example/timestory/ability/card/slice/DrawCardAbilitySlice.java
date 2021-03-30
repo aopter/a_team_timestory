@@ -1,17 +1,12 @@
 package com.example.timestory.ability.card.slice;
 
-import com.bumptech.glide.annotation.GlideOption;
 import com.example.timestory.ResourceTable;
 import com.example.timestory.Utils.HmOSImageLoader;
-import com.example.timestory.Utils.Util;
-import com.example.timestory.constant.Constant;
 import com.example.timestory.constant.ServiceConfig;
-import com.example.timestory.entity.Incident;
 import com.example.timestory.entity.card.Card;
 import com.example.timestory.entity.card.Icon;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
 import ohos.aafwk.content.Operation;
@@ -19,17 +14,11 @@ import ohos.agp.animation.Animator;
 import ohos.agp.animation.AnimatorGroup;
 import ohos.agp.animation.AnimatorProperty;
 import ohos.agp.components.*;
-import ohos.agp.components.element.ShapeElement;
-import ohos.agp.render.opengl.Utils;
-import ohos.app.dispatcher.TaskDispatcher;
-import ohos.app.dispatcher.task.TaskPriority;
+import ohos.agp.components.element.PixelMapElement;
 import ohos.eventhandler.EventHandler;
 import ohos.eventhandler.EventRunner;
 import ohos.eventhandler.InnerEvent;
 import ohos.global.resource.NotExistException;
-import ohos.global.resource.Resource;
-import ohos.hiviewdfx.HiLog;
-import ohos.hiviewdfx.HiLogLabel;
 import okhttp3.*;
 
 import java.io.IOException;
@@ -64,6 +53,7 @@ public class DrawCardAbilitySlice extends AbilitySlice {
     // 属性动画
     private AnimatorProperty cardAnimation;
     private OkHttpClient client;
+    private AnimatorGroup group;
     private Gson gson;
     // 是否在分享状态
     private boolean isShareing = false;
@@ -125,6 +115,7 @@ public class DrawCardAbilitySlice extends AbilitySlice {
                 .serializeNulls()
                 .create();
         // 定义动画
+        group = new AnimatorGroup();
         cardAnimation = drawCard.createAnimatorProperty();
         cardAnimation.scaleYBy(1).scaleY(0).scaleXBy(1).scaleX(0);
         cardAnimation.setStateChangedListener(new Animator.StateChangedListener() {
@@ -146,10 +137,16 @@ public class DrawCardAbilitySlice extends AbilitySlice {
             @Override
             public void onEnd(Animator animator) {
                 // TODO 设置背景
-//                drawCard.setBackground();
+                try {
+                    drawCard.setBackground(new PixelMapElement(getResourceManager().getResource(ResourceTable.Media_bg_card_img)));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (NotExistException e) {
+                    e.printStackTrace();
+                }
                 tip.setText(" (≧∇≦)ﾉ 手气真棒，恭喜你获得了‘" + card.getCardName() + "’卡片！");
                 HmOSImageLoader.with(abilitySlice).load(ServiceConfig.SERVICE_ROOT + "/img/" + card.getCardPicture())
-                        .into(drawCard);
+                        .into(drawCard, drawCard.getWidth() - 30, drawCard.getHeight() - 50);
                 AnimatorProperty property = drawCard.createAnimatorProperty().scaleXBy(0).scaleX(1).scaleYBy(0).scaleY(1).setDuration(1000);
                 property.start();
                 System.out.println("____draw____" + cardAnimation);
@@ -179,7 +176,7 @@ public class DrawCardAbilitySlice extends AbilitySlice {
                             // 如果未点击
                             flag = true;
                             toLastView.setVisibility(Component.VISIBLE);
-                            btnShare.setVisibility(Component.VISIBLE);
+//                            btnShare.setVisibility(Component.VISIBLE);
                             cardAnimation.start();
                         } else {
                             // 已经点击，再次点击进入卡片界面
@@ -210,7 +207,7 @@ public class DrawCardAbilitySlice extends AbilitySlice {
                         // TODO 获取卡片
                         getDrawCard();
 //                        Constant.User.setUserCount(Constant.User.getUserCount() - 60);
-                        AnimatorProperty alphaAnim1 = frontContainer.createAnimatorProperty().alpha(0).setDuration(300);
+                        AnimatorProperty alphaAnim1 = frontContainer.createAnimatorProperty().alpha(0).setDuration(500);
                         alphaAnim1.setStateChangedListener(new Animator.StateChangedListener() {
                             @Override
                             public void onStart(Animator animator) {
@@ -229,10 +226,13 @@ public class DrawCardAbilitySlice extends AbilitySlice {
 
                             @Override
                             public void onEnd(Animator animator) {
+                                frontContainer.setAlpha(0);
                                 frontContainer.setVisibility(Component.HIDE);
-                                cardContainer.setVisibility(Component.VISIBLE);
-                                AnimatorProperty property = cardContainer.createAnimatorProperty().alpha(0.8f).setDuration(400);
-                                property.start();
+                                AnimatorProperty property = cardContainer.createAnimatorProperty().alpha(0.7f).setDuration(1000);
+                                AnimatorProperty toLast = toLastView.createAnimatorProperty().alpha(0.9f).setDuration(1000);
+                                AnimatorProperty draw = drawCard.createAnimatorProperty().alpha(0.9f).setDuration(1000);
+                                group.runParallel(property, toLast, draw);
+                                group.start();
                             }
 
                             @Override
@@ -251,7 +251,7 @@ public class DrawCardAbilitySlice extends AbilitySlice {
                     break;
                 case ResourceTable.Id_back:
                 case ResourceTable.Id_to_last_view:
-
+                    terminate();
                     break;
                 case ResourceTable.Id_share:
                     break;

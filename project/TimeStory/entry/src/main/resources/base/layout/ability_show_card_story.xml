@@ -11,6 +11,7 @@
         ohos:height="55vp"
         ohos:width="match_parent"
         ohos:left_margin="20vp"
+        ohos:orientation="horizontal"
         ohos:padding="10vp"
         ohos:top_margin="20vp">
 
@@ -26,7 +27,7 @@
         <Text
             ohos:id="$+id:role_story"
             ohos:height="match_parent"
-            ohos:width="match_parent"
+            ohos:width="match_content"
             ohos:text_alignment="vertical_center"
             ohos:text_color="#000"
             ohos:text_size="18fp"/>
@@ -60,11 +61,13 @@
 
                 <Text
                     ohos:id="$+id:story"
-                    ohos:height="190vp"
+                    ohos:height="250vp"
                     ohos:width="match_parent"
                     ohos:background_element="$media:bg_card_story_test"
                     ohos:multiple_lines="true"
-                    ohos:padding="25vp"
+                    ohos:padding="30vp"
+                    ohos:scrollable="true"
+                    ohos:text_alignment="left|top"
                     ohos:text_color="#000"
                     ohos:text_size="17fp"/>
             </DirectionalLayout>
@@ -82,11 +85,12 @@
 
         <Image
             ohos:id="$+id:card_img"
-            ohos:height="match_content"
-            ohos:width="130vp"
+            ohos:height="250vp"
+            ohos:width="140vp"
             ohos:align_parent_bottom="true"
             ohos:alpha="0.95"
+            ohos:bottom_margin="70vp"
             ohos:image_src="$media:role"
-            ohos:margin="70vp"/>
+            ohos:left_margin="90vp"/>
     </DependentLayout>
 </DependentLayout>

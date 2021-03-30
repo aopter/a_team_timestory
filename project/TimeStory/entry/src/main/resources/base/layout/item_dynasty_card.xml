@@ -1,48 +1,215 @@
 <?xml version="1.0" encoding="utf-8"?>
 <DirectionalLayout
     xmlns:ohos="http://schemas.huawei.com/res/ohos"
-    ohos:height="match_parent"
-    ohos:width="match_parent">
+    ohos:height="match_content"
+    ohos:width="match_parent"
+    ohos:left_margin="40vp"
+    ohos:orientation="horizontal"
+    ohos:right_margin="40vp"
+    ohos:top_margin="20vp">
 
-    <DependentLayout
-        ohos:height="match_parent"
-        ohos:width="match_parent">
+    <DirectionalLayout
+        ohos:height="match_content"
+        ohos:width="0"
+        ohos:weight="1">
 
-        <DependentLayout
-            ohos:id="$+id:card_container"
+        <DirectionalLayout
+            ohos:id="$+id:card_container1"
             ohos:height="match_content"
-            ohos:width="match_content"
-            ohos:horizontal_center="true">
+            ohos:width="match_parent"
+            ohos:margin="20vp"
+            ohos:orientation="vertical"
+            ohos:visibility="hide">
 
-            <Image
-                ohos:id="$+id:card_pic"
-                ohos:height="200vp"
-                ohos:width="140vp"
-                ohos:alpha="0.8"
-                ohos:background_element="$media:bg_card_img"
-                ohos:center_in_parent="true"
-                ohos:padding="10vp"/>
+            <DependentLayout
+                ohos:height="match_content"
+                ohos:width="match_parent">
+
+                <Image
+                    ohos:id="$+id:card_pic1"
+                    ohos:height="200vp"
+                    ohos:width="140vp"
+                    ohos:alpha="0.8"
+                    ohos:background_element="$media:bg_card_img"
+                    ohos:center_in_parent="true"
+                    ohos:image_src="$media:share"
+                    ohos:padding="10vp"/>
+
+                <Text
+                    ohos:id="$+id:card_num1"
+                    ohos:height="40vp"
+                    ohos:width="40vp"
+                    ohos:align_right="$id:card_pic1"
+                    ohos:align_top="$id:card_pic1"
+                    ohos:background_element="$media:bg_bubble_card"
+                    ohos:text="1"
+                    ohos:text_alignment="center"
+                    ohos:text_color="$color:ourDynastyRed"
+                    ohos:text_size="15fp"/>
+            </DependentLayout>
 
             <Text
-                ohos:id="$+id:card_num"
-                ohos:height="40vp"
-                ohos:width="40vp"
-                ohos:align_right="$+id:card_pic"
-                ohos:align_top="$+id:card_pic"
-                ohos:background_element="$media:bg_bubble_card"
+                ohos:id="$+id:card_name1"
+                ohos:height="match_content"
+                ohos:width="match_parent"
+                ohos:horizontal_center="true"
+                ohos:padding="10vp"
                 ohos:text_alignment="center"
-                ohos:text_color="$color:ourDynastyRed"
-                ohos:text_size="15fp"/>
-        </DependentLayout>
+                ohos:text_color="black"/>
+        </DirectionalLayout>
+    </DirectionalLayout>
 
-        <Text
-            ohos:id="$+id:card_name"
-            ohos:height="match_parent"
-            ohos:width="match_content"
-            ohos:below="$id:card_container"
-            ohos:horizontal_center="true"
-            ohos:padding="10vp"
-            ohos:text_alignment="center"
-            ohos:text_color="#000"/>
-    </DependentLayout>
+    <DirectionalLayout
+        ohos:height="match_content"
+        ohos:width="0"
+        ohos:weight="1">
+
+        <DirectionalLayout
+            ohos:id="$+id:card_container2"
+            ohos:height="match_content"
+            ohos:width="match_parent"
+            ohos:margin="20vp"
+            ohos:orientation="vertical"
+            ohos:visibility="hide">
+
+            <DependentLayout
+                ohos:height="match_content"
+                ohos:width="match_parent">
+
+                <Image
+                    ohos:id="$+id:card_pic2"
+                    ohos:height="200vp"
+                    ohos:width="140vp"
+                    ohos:alpha="0.8"
+                    ohos:background_element="$media:bg_card_img"
+                    ohos:center_in_parent="true"
+                    ohos:image_src="$media:share"
+                    ohos:padding="10vp"/>
+
+                <Text
+                    ohos:id="$+id:card_num2"
+                    ohos:height="40vp"
+                    ohos:width="40vp"
+                    ohos:align_right="$id:card_pic2"
+                    ohos:align_top="$id:card_pic2"
+                    ohos:background_element="$media:bg_bubble_card"
+                    ohos:text="1"
+                    ohos:text_alignment="center"
+                    ohos:text_color="$color:ourDynastyRed"
+                    ohos:text_size="15fp"/>
+            </DependentLayout>
+
+            <Text
+                ohos:id="$+id:card_name2"
+                ohos:height="match_content"
+                ohos:width="match_parent"
+                ohos:horizontal_center="true"
+                ohos:padding="10vp"
+                ohos:text_alignment="center"
+                ohos:text_color="black"/>
+        </DirectionalLayout>
+    </DirectionalLayout>
+
+    <DirectionalLayout
+        ohos:height="match_content"
+        ohos:width="0"
+        ohos:weight="1">
+
+        <DirectionalLayout
+            ohos:id="$+id:card_container3"
+            ohos:height="match_content"
+            ohos:width="match_parent"
+            ohos:margin="20vp"
+            ohos:orientation="vertical"
+            ohos:visibility="hide">
+
+            <DependentLayout
+                ohos:height="match_content"
+                ohos:width="match_parent">
+
+                <Image
+                    ohos:id="$+id:card_pic3"
+                    ohos:height="200vp"
+                    ohos:width="140vp"
+                    ohos:alpha="0.8"
+                    ohos:background_element="$media:bg_card_img"
+                    ohos:center_in_parent="true"
+                    ohos:image_src="$media:share"
+                    ohos:padding="10vp"/>
+
+                <Text
+                    ohos:id="$+id:card_num3"
+                    ohos:height="40vp"
+                    ohos:width="40vp"
+                    ohos:align_right="$id:card_pic3"
+                    ohos:align_top="$id:card_pic3"
+                    ohos:background_element="$media:bg_bubble_card"
+                    ohos:text="1"
+                    ohos:text_alignment="center"
+                    ohos:text_color="$color:ourDynastyRed"
+                    ohos:text_size="15fp"/>
+            </DependentLayout>
+
+            <Text
+                ohos:id="$+id:card_name3"
+                ohos:height="match_content"
+                ohos:width="match_parent"
+                ohos:horizontal_center="true"
+                ohos:padding="10vp"
+                ohos:text_alignment="center"
+                ohos:text_color="black"/>
+        </DirectionalLayout>
+    </DirectionalLayout>
+
+    <DirectionalLayout
+        ohos:height="match_content"
+        ohos:width="0"
+        ohos:weight="1">
+
+        <DirectionalLayout
+            ohos:id="$+id:card_container4"
+            ohos:height="match_content"
+            ohos:width="match_parent"
+            ohos:margin="20vp"
+            ohos:orientation="vertical"
+            ohos:visibility="hide">
+
+            <DependentLayout
+                ohos:height="match_content"
+                ohos:width="match_parent">
+
+                <Image
+                    ohos:id="$+id:card_pic4"
+                    ohos:height="200vp"
+                    ohos:width="140vp"
+                    ohos:alpha="0.8"
+                    ohos:background_element="$media:bg_card_img"
+                    ohos:center_in_parent="true"
+                    ohos:image_src="$media:share"
+                    ohos:padding="10vp"/>
+
+                <Text
+                    ohos:id="$+id:card_num4"
+                    ohos:height="40vp"
+                    ohos:width="40vp"
+                    ohos:align_right="$id:card_pic4"
+                    ohos:align_top="$id:card_pic4"
+                    ohos:background_element="$media:bg_bubble_card"
+                    ohos:text="1"
+                    ohos:text_alignment="center"
+                    ohos:text_color="$color:ourDynastyRed"
+                    ohos:text_size="15fp"/>
+            </DependentLayout>
+
+            <Text
+                ohos:id="$+id:card_name4"
+                ohos:height="match_content"
+                ohos:width="match_parent"
+                ohos:below="$id:card_container4"
+                ohos:horizontal_center="true"
+                ohos:padding="10vp"
+                ohos:text_alignment="center"
+                ohos:text_color="black"/>
+        </DirectionalLayout>
+    </DirectionalLayout>
 </DirectionalLayout>

@@ -18,8 +18,8 @@
             ohos:id="$+id:back"
             ohos:height="50vp"
             ohos:width="40vp"
-            ohos:padding="5vp"
-            ohos:image_src="$media:back"/>
+            ohos:image_src="$media:back"
+            ohos:padding="5vp"/>
 
         <!-- TODO ohos:left_of="$id:card_types" -->
         <DependentLayout
@@ -38,7 +38,7 @@
                 ohos:width="150vp"
                 ohos:hint="请输入卡片名称"
                 ohos:padding="5vp"
-                ohos:text_alignment="center"
+                ohos:text_alignment="vertical_center"
                 ohos:text_size="16fp"
                 ohos:vertical_center="true"/>
 
@@ -48,12 +48,13 @@
                 ohos:width="40vp"
                 ohos:image_src="$media:delete"
                 ohos:right_of="$id:search_card_name"
+                ohos:visibility="invisible"
                 />
 
             <Text
                 ohos:id="$+id:search_btn"
                 ohos:height="match_parent"
-                ohos:width="70vp"
+                ohos:width="60vp"
                 ohos:padding="10vp"
                 ohos:right_of="$id:search_delete"
                 ohos:text="搜索"
@@ -68,5 +69,8 @@
     <ListContainer
         ohos:id="$+id:dynasty_cards"
         ohos:height="match_parent"
-        ohos:width="match_parent"/>
+        ohos:width="match_parent"
+        ohos:clickable="true"
+        ohos:orientation="vertical"
+        ohos:rebound_effect="true"/>
 </DirectionalLayout>
