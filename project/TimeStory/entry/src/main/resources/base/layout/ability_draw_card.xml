@@ -116,8 +116,8 @@
 
                     <Text
                         ohos:id="$+id:text"
-                        ohos:height="match_content"
-                        ohos:width="match_parent"
+                        ohos:height="match_parent"
+                        ohos:width="match_content"
                         ohos:left_padding="5vp"
                         ohos:text="快在下面挑选一张属于你的卡片吧~"
                         ohos:text_alignment="vertical_center"

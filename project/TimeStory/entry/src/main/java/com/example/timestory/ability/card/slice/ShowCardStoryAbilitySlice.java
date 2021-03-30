@@ -1,8 +1,8 @@
 package com.example.timestory.ability.card.slice;
 
 import com.example.timestory.ResourceTable;
-import com.example.timestory.Utils.CusText;
 import com.example.timestory.Utils.HmOSImageLoader;
+import com.example.timestory.Utils.ToastUtil;
 import com.example.timestory.constant.Constant;
 import com.example.timestory.constant.ServiceConfig;
 import com.example.timestory.entity.card.Card;
@@ -13,7 +13,6 @@ import ohos.agp.components.Component;
 import ohos.agp.components.DirectionalLayout;
 import ohos.agp.components.Image;
 import ohos.agp.components.Text;
-import ohos.agp.window.dialog.ToastDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,9 +28,6 @@ public class ShowCardStoryAbilitySlice extends AbilitySlice {
     private DirectionalLayout nextStory;
     private Image cardImg;
     private Text tip;
-    // TODO 动画
-    private AnimatorProperty in;
-    private AnimatorProperty out;
     private long clickMillis = 0;
     private long clickTwiceMillis;
     private AbilitySlice abilitySlice = this;
@@ -90,13 +86,13 @@ public class ShowCardStoryAbilitySlice extends AbilitySlice {
                     clickTwiceMillis = System.currentTimeMillis();
                     if ((clickTwiceMillis - clickMillis) < 250) {
                         if (currentStory > 0) {
-                            new ToastDialog(getContext()).setText("跟不上你的脚步了，点击慢一点吧").show();
+                            ToastUtil.showCryToast(abilitySlice, "跟不上你的脚步了，点击慢一点吧");
                         }
                     } else {
                         clickMillis = clickTwiceMillis;
                         currentStory = currentStory - 1;
                         if (currentStory < 0) {
-                            new ToastDialog(getContext()).setText("不能再回头啦").show();
+                            ToastUtil.showSickToast(abilitySlice, "不能再回头啦");
                             currentStory = 0;
                         } else {
                             story.setText(event.get(currentStory));
@@ -108,14 +104,14 @@ public class ShowCardStoryAbilitySlice extends AbilitySlice {
                     clickTwiceMillis = System.currentTimeMillis();
                     if ((clickTwiceMillis - clickMillis) < 250) {
                         if (currentStory < event.size() - 1) {
-                            new ToastDialog(getContext()).setText("跟不上你的脚步了，点击慢一点吧").show();
+                            ToastUtil.showCryToast(abilitySlice, "跟不上你的脚步了，点击慢一点吧");
                         }
                     } else {
                         clickMillis = clickTwiceMillis;
                         currentStory = currentStory + 1;
                         if (currentStory >= event.size()) {
                             currentStory = event.size() - 1;
-                            new ToastDialog(getContext()).setText("不能再回头啦").show();
+                            ToastUtil.showSickToast(abilitySlice, "没有更多了");
                         } else {
                             story.setText(event.get(currentStory));
                             System.out.println("____story____currentStory:" + currentStory + ", story:" + event.get(currentStory));

@@ -43,7 +43,7 @@
         <DependentLayout
             ohos:height="match_parent"
             ohos:width="190vp"
-            ohos:left_margin="20vp">
+            ohos:left_margin="10vp">
 
             <Image
                 ohos:id="$+id:card_img"
@@ -58,7 +58,6 @@
                 ohos:width="match_parent"
                 ohos:align_parent_bottom="true"
                 ohos:align_parent_left="true"
-                ohos:alignment="horizontal_center"
                 ohos:orientation="vertical">
 
                 <Button
@@ -67,8 +66,8 @@
                     ohos:width="100vp"
                     ohos:alpha="0.7"
                     ohos:background_element="$color:holo_red_dark"
-                    ohos:layout_alignment="horizontal_center"
                     ohos:padding="10vp"
+                    ohos:text_alignment="center"
                     ohos:text_color="#FFF"
                     ohos:text_weight="200"/>
             </DirectionalLayout>
@@ -94,9 +93,8 @@
                     ohos:height="match_parent"
                     ohos:width="match_parent"
                     ohos:alpha="0.85"
-                    ohos:margin="15vp"
                     ohos:multiple_lines="true"
-                    ohos:padding="20vp"
+                    ohos:padding="15vp"
                     ohos:scrollable="true"
                     ohos:text_alignment="left|top"
                     ohos:text_color="#000"

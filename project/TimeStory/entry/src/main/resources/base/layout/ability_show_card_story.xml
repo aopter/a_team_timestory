@@ -61,7 +61,7 @@
 
                 <Text
                     ohos:id="$+id:story"
-                    ohos:height="250vp"
+                    ohos:height="200vp"
                     ohos:width="match_parent"
                     ohos:background_element="$media:bg_card_story_test"
                     ohos:multiple_lines="true"

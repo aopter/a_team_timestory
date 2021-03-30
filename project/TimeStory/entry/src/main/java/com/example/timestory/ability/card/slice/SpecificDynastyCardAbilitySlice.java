@@ -1,6 +1,7 @@
 package com.example.timestory.ability.card.slice;
 
 import com.example.timestory.ResourceTable;
+import com.example.timestory.Utils.ToastUtil;
 import com.example.timestory.ability.card.adapter.SpecificDynastyCardProvider;
 import com.example.timestory.constant.ServiceConfig;
 import com.example.timestory.entity.card.UserCard;
@@ -10,7 +11,6 @@ import com.google.gson.reflect.TypeToken;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
 import ohos.agp.components.*;
-import ohos.agp.window.dialog.ToastDialog;
 import ohos.app.dispatcher.TaskDispatcher;
 import ohos.app.dispatcher.task.TaskPriority;
 import ohos.eventhandler.EventHandler;
@@ -65,18 +65,17 @@ public class SpecificDynastyCardAbilitySlice extends AbilitySlice {
                         }
                     }
                     System.out.println("____dycard____" + result);
-                    if (userCards.size() == 0) {
-                        getUITaskDispatcher().syncDispatch(() ->
-                                new ToastDialog(abilitySlice).setText("没有此朝代的卡片").show()
-                        );
-                    } else {
-                        getUITaskDispatcher().syncDispatch(() ->
-                                cardAdapter = new SpecificDynastyCardProvider(userCards, abilitySlice)
-                        );
-                        getUITaskDispatcher().syncDispatch(() ->
-                                dynastyCardView.setItemProvider(cardAdapter)
-                        );
-                    }
+                    getUITaskDispatcher().syncDispatch(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (userCards.size() == 0) {
+                                ToastUtil.showSickToast(getApplicationContext(), "没有此朝代的卡片，请重新选择朝代吧");
+                            } else {
+                                cardAdapter = new SpecificDynastyCardProvider(userCards, abilitySlice);
+                                dynastyCardView.setItemProvider(cardAdapter);
+                            }
+                        }
+                    });
                     break;
                 case 2:
                     userCards.clear();
@@ -101,17 +100,16 @@ public class SpecificDynastyCardAbilitySlice extends AbilitySlice {
                         }
                     }
                     System.out.println("____dycard____" + userCards.toString());
-                    if (userCards.size() == 0) {
-                        getUITaskDispatcher().syncDispatch(() ->
-                                new ToastDialog(abilitySlice).setText("没有相关卡片，请重新搜索吧").show()
-                        );
-                    }
-                    getUITaskDispatcher().syncDispatch(() ->
-                            cardAdapter = new SpecificDynastyCardProvider(userCards, abilitySlice)
-                    );
-                    getUITaskDispatcher().syncDispatch(() ->
-                            dynastyCardView.setItemProvider(cardAdapter)
-                    );
+                    getUITaskDispatcher().syncDispatch(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (userCards.size() == 0) {
+                                ToastUtil.showSickToast(abilitySlice, "没有相关卡片，请重新搜索吧");
+                            }
+                            cardAdapter = new SpecificDynastyCardProvider(userCards, abilitySlice);
+                            dynastyCardView.setItemProvider(cardAdapter);
+                        }
+                    });
                     break;
             }
         }
@@ -197,7 +195,9 @@ public class SpecificDynastyCardAbilitySlice extends AbilitySlice {
                 call.enqueue(new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
-                        new ToastDialog(getContext()).setText("获取朝代卡片失败了").show();
+                        getUITaskDispatcher().syncDispatch(() ->
+                                ToastUtil.showCryToast(abilitySlice, "获取朝代卡片失败了")
+                        );
                     }
 
                     @Override

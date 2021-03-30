@@ -2,6 +2,7 @@ package com.example.timestory.ability.card.slice;
 
 import com.example.timestory.ResourceTable;
 import com.example.timestory.Utils.HmOSImageLoader;
+import com.example.timestory.Utils.ToastUtil;
 import com.example.timestory.Utils.Util;
 import com.example.timestory.ability.card.ShowCardStoryAbility;
 import com.example.timestory.constant.ServiceConfig;
@@ -15,7 +16,6 @@ import ohos.agp.components.Button;
 import ohos.agp.components.Component;
 import ohos.agp.components.Image;
 import ohos.agp.components.Text;
-import ohos.agp.window.dialog.ToastDialog;
 import ohos.eventhandler.EventHandler;
 import ohos.eventhandler.EventRunner;
 import ohos.eventhandler.InnerEvent;
@@ -61,7 +61,7 @@ public class SpecificCardDetailAbilitySlice extends AbilitySlice {
         if (card == null) {
             cardId = intent.getIntParam("cardId", -1);
             if (cardId == -1) {
-                new ToastDialog(getContext()).setText("获取卡片详情出错了").show();
+                ToastUtil.showCryToast(getApplicationContext(), "获取卡片详情出错了");
                 cardName.setVisibility(Component.HIDE);
                 cardStory.setVisibility(Component.HIDE);
             } else {
@@ -75,16 +75,22 @@ public class SpecificCardDetailAbilitySlice extends AbilitySlice {
     }
 
     private void showDatas() {
-        cardInfo.setText("    " + card.getCardInfo());
-        cardName.setText(card.getCardName());
-        HmOSImageLoader.with(abilitySlice)
-                .load(ServiceConfig.SERVICE_ROOT + "/img/" + card.getCardPicture())
-                .into(cardPic);
-        if (card.getCardType() == 1) {
-            cardStory.setVisibility(Component.VISIBLE);
-        } else {
-            cardStory.setVisibility(Component.HIDE);
-        }
+        getUITaskDispatcher().syncDispatch(new Runnable() {
+            @Override
+            public void run() {
+                cardInfo.setText("    " + card.getCardInfo());
+                cardInfo.setText("    " + card.getCardInfo());
+                cardName.setText(card.getCardName());
+                HmOSImageLoader.with(abilitySlice)
+                        .load(ServiceConfig.SERVICE_ROOT + "/img/" + card.getCardPicture())
+                        .into(cardPic);
+                if (card.getCardType() == 1) {
+                    cardStory.setVisibility(Component.VISIBLE);
+                } else {
+                    cardStory.setVisibility(Component.HIDE);
+                }
+            }
+        });
     }
 
     private void getCardData() {
