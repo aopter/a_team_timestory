@@ -63,7 +63,7 @@ public class UserRankingAdapter extends BaseItemProvider {
     private void setData(int position) {
         User user = users.get(position);
         //设置头像
-        HmOSImageLoader.with(slice).load(ServiceConfig.SERVICE_ROOT + "/img/" + Constant.User.getUserHeader()).into(mRankUserHeader);
+        HmOSImageLoader.with(slice).load(ServiceConfig.SERVICE_ROOT + "/img/" + user.getUserHeader()).into(mRankUserHeader);
         //用户排名前三设置对应的奖杯图标
         switch (position) {
             case 0:
@@ -80,7 +80,7 @@ public class UserRankingAdapter extends BaseItemProvider {
                 break;
         }
         //排名数字
-        mRankNum.setText(position);
+        mRankNum.setText(position + 1);
         //用户昵称
         mRankUserName.setText(user.getUserNickname());
         //用户个性签名

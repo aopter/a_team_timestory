@@ -58,22 +58,40 @@
         "launchType": "standard"
       },
       {
-        "orientation": "unspecified",
+        "orientation": "landscape",
         "name": "com.example.timestory.ability.card.DrawCardAbility",
         "icon": "$media:icon",
-        "description": "$string:mainability_description",
+        "description": "$string:detailseventability_description",
         "label": "TimeStroy",
         "type": "page",
-        "launchType": "standard"
+        "launchType": "standard",
+        "metaData": {
+          "customizeData": [
+            {
+              "name": "hwc-theme",
+              "value": "androidhwext:style/Theme.Emui.Light.NoTitleBar.Fullscreen",
+              "extra": ""
+            }
+          ]
+        }
       },
       {
-        "orientation": "unspecified",
+        "orientation": "landscape",
         "name": "com.example.timestory.ability.card.MyCardAbility",
         "icon": "$media:icon",
-        "description": "$string:mainability_description",
+        "description": "$string:detailseventability_description",
         "label": "TimeStroy",
         "type": "page",
-        "launchType": "standard"
+        "launchType": "standard",
+        "metaData": {
+          "customizeData": [
+            {
+              "name": "hwc-theme",
+              "value": "androidhwext:style/Theme.Emui.Light.NoTitleBar.Fullscreen",
+              "extra": ""
+            }
+          ]
+        }
       },
       {
         "orientation": "landscape",
@@ -112,67 +130,130 @@
         }
       },
       {
-        "orientation": "unspecified",
+        "orientation": "landscape",
         "name": "com.example.timestory.ability.problem.ProblemCollectionActivity",
         "icon": "$media:icon",
-        "description": "$string:mainability_description",
+        "description": "$string:detailseventability_description",
         "label": "TimeStroy",
         "type": "page",
-        "launchType": "standard"
+        "launchType": "standard",
+        "metaData": {
+          "customizeData": [
+            {
+              "name": "hwc-theme",
+              "value": "androidhwext:style/Theme.Emui.Light.NoTitleBar.Fullscreen",
+              "extra": ""
+            }
+          ]
+        }
       },
       {
-        "orientation": "unspecified",
+        "orientation": "landscape",
         "name": "com.example.timestory.ability.problem.SelectProblemTypeAbility",
         "icon": "$media:icon",
-        "description": "$string:mainability_description",
+        "description": "$string:detailseventability_description",
         "label": "TimeStroy",
         "type": "page",
-        "launchType": "standard"
+        "launchType": "standard",
+        "metaData": {
+          "customizeData": [
+            {
+              "name": "hwc-theme",
+              "value": "androidhwext:style/Theme.Emui.Light.NoTitleBar.Fullscreen",
+              "extra": ""
+            }
+          ]
+        }
       },
       {
-        "orientation": "unspecified",
+        "orientation": "landscape",
         "name": "com.example.timestory.ability.user.LoginAbility",
         "icon": "$media:icon",
-        "description": "$string:mainability_description",
+        "description": "$string:detailseventability_description",
         "label": "TimeStroy",
         "type": "page",
-        "launchType": "standard"
+        "launchType": "standard",
+        "metaData": {
+          "customizeData": [
+            {
+              "name": "hwc-theme",
+              "value": "androidhwext:style/Theme.Emui.Light.NoTitleBar.Fullscreen",
+              "extra": ""
+            }
+          ]
+        }
       },
       {
-        "orientation": "unspecified",
+        "orientation": "landscape",
         "name": "com.example.timestory.ability.user.UserCenterAbility",
         "icon": "$media:icon",
-        "description": "$string:mainability_description",
+        "description": "$string:detailseventability_description",
         "label": "TimeStroy",
         "type": "page",
-        "launchType": "standard"
+        "launchType": "standard",
+        "metaData": {
+          "customizeData": [
+            {
+              "name": "hwc-theme",
+              "value": "androidhwext:style/Theme.Emui.Light.NoTitleBar.Fullscreen",
+              "extra": ""
+            }
+          ]
+        }
       },
       {
-        "orientation": "unspecified",
+        "orientation": "landscape",
         "name": "com.example.timestory.ability.user.SettingAbility",
         "icon": "$media:icon",
-        "description": "$string:mainability_description",
+        "description": "$string:detailseventability_description",
         "label": "TimeStroy",
         "type": "page",
-        "launchType": "standard"
+        "launchType": "standard",
+        "metaData": {
+          "customizeData": [
+            {
+              "name": "hwc-theme",
+              "value": "androidhwext:style/Theme.Emui.Light.NoTitleBar.Fullscreen",
+              "extra": ""
+            }
+          ]
+        }
       },
       {
-        "orientation": "unspecified",
+        "orientation": "landscape",
         "name": "com.example.timestory.ability.user.RechargeAbility",
         "icon": "$media:icon",
-        "description": "$string:mainability_description",
+        "description": "$string:detailseventability_description",
         "label": "TimeStroy",
         "type": "page",
-        "launchType": "standard"
+        "launchType": "standard",
+        "metaData": {
+          "customizeData": [
+            {
+              "name": "hwc-theme",
+              "value": "androidhwext:style/Theme.Emui.Light.NoTitleBar.Fullscreen",
+              "extra": ""
+            }
+          ]
+        }
       },
       {
-        "orientation": "unspecified",
+        "orientation": "landscape",
         "name": "com.example.timestory.ability.user.RegistryAbility",
         "icon": "$media:icon",
-        "description": "$string:mainability_description",
+        "description": "$string:detailseventability_description",
         "label": "TimeStroy",
         "type": "page",
-        "launchType": "standard"
+        "launchType": "standard",
+        "metaData": {
+          "customizeData": [
+            {
+              "name": "hwc-theme",
+              "value": "androidhwext:style/Theme.Emui.Light.NoTitleBar.Fullscreen",
+              "extra": ""
+            }
+          ]
+        }
       },
       {
         "orientation": "landscape",
@@ -211,40 +292,76 @@
         }
       },
       {
-        "orientation": "unspecified",
+        "orientation": "landscape",
         "name": "com.example.timestory.ability.card.ShowCardStoryAbility",
         "icon": "$media:icon",
-        "description": "$string:mainability_description",
+        "description": "$string:detailseventability_description",
         "label": "TimeStroy",
         "type": "page",
-        "launchType": "standard"
+        "launchType": "standard",
+        "metaData": {
+          "customizeData": [
+            {
+              "name": "hwc-theme",
+              "value": "androidhwext:style/Theme.Emui.Light.NoTitleBar.Fullscreen",
+              "extra": ""
+            }
+          ]
+        }
       },
       {
-        "orientation": "unspecified",
+        "orientation": "landscape",
         "name": "com.example.timestory.ability.card.ShareCardAbility",
         "icon": "$media:icon",
-        "description": "$string:mainability_description",
+        "description": "$string:detailseventability_description",
         "label": "TimeStroy",
         "type": "page",
-        "launchType": "standard"
+        "launchType": "standard",
+        "metaData": {
+          "customizeData": [
+            {
+              "name": "hwc-theme",
+              "value": "androidhwext:style/Theme.Emui.Light.NoTitleBar.Fullscreen",
+              "extra": ""
+            }
+          ]
+        }
       },
       {
-        "orientation": "unspecified",
+        "orientation": "landscape",
         "name": "com.example.timestory.ability.card.SpecificCardDetailAbility",
         "icon": "$media:icon",
-        "description": "$string:mainability_description",
+        "description": "$string:detailseventability_description",
         "label": "TimeStroy",
         "type": "page",
-        "launchType": "standard"
+        "launchType": "standard",
+        "metaData": {
+          "customizeData": [
+            {
+              "name": "hwc-theme",
+              "value": "androidhwext:style/Theme.Emui.Light.NoTitleBar.Fullscreen",
+              "extra": ""
+            }
+          ]
+        }
       },
       {
-        "orientation": "unspecified",
+        "orientation": "landscape",
         "name": "com.example.timestory.ability.card.SpecificDynastyCardAbility",
         "icon": "$media:icon",
-        "description": "$string:mainability_description",
+        "description": "$string:detailseventability_description",
         "label": "TimeStroy",
         "type": "page",
-        "launchType": "standard"
+        "launchType": "standard",
+        "metaData": {
+          "customizeData": [
+            {
+              "name": "hwc-theme",
+              "value": "androidhwext:style/Theme.Emui.Light.NoTitleBar.Fullscreen",
+              "extra": ""
+            }
+          ]
+        }
       }
     ]
   }

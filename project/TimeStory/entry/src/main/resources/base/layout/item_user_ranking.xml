@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <DirectionalLayout
     xmlns:ohos="http://schemas.huawei.com/res/ohos"
-    ohos:height="200vp"
+    ohos:height="40vp"
     ohos:width="match_parent"
+    ohos:top_margin="10vp"
     ohos:alpha="0.8"
     ohos:background_element="$color:white"
     ohos:orientation="horizontal">
@@ -11,15 +12,14 @@
         ohos:height="match_content"
         ohos:width="match_content"
         ohos:layout_alignment="vertical_center"
-        ohos:left_margin="40vp"
+        ohos:left_margin="10vp"
         ohos:orientation="vertical">
 
         <Image
             ohos:id="$+id:rank_img"
-            ohos:height="80vp"
-            ohos:width="60vp"
+            ohos:height="40vp"
+            ohos:width="30vp"
             ohos:center_in_parent="true"
-            ohos:image_src="$media:rank_f"
             ohos:scale_mode="zoom_center"/>
 
         <Text
@@ -27,40 +27,42 @@
             ohos:height="match_content"
             ohos:width="match_content"
             ohos:center_in_parent="true"
-            ohos:text="1"
+            ohos:text=""
             ohos:text_color="$color:white"
-            ohos:text_size="12fp"/>
+            ohos:text_size="10fp"/>
 
         <Text
+            ohos:id="$+id:ranking_user_level"
             ohos:height="match_content"
             ohos:width="match_content"
             ohos:background_element="$color:white"
             ohos:below="$id:rank_img"
             ohos:horizontal_center="true"
-            ohos:text="举人"
+            ohos:text=""
             ohos:text_color="#AE5B41"
             ohos:text_size="12fp"/>
     </DependentLayout>
 
     <Image
         ohos:id="$+id:rank_user_header"
-        ohos:height="100vp"
-        ohos:width="100vp"
-        ohos:image_src="$media:man"
+        ohos:height="50vp"
+        ohos:width="50vp"
         ohos:layout_alignment="vertical_center"
-        ohos:left_margin="15vp"
+        ohos:left_margin="8vp"
         ohos:scale_mode="zoom_center"/>
 
     <DependentLayout
         ohos:height="match_content"
         ohos:width="match_content"
+        ohos:left_margin="10vp"
         ohos:layout_alignment="vertical_center">
 
         <Text
             ohos:id="$+id:rank_user_name"
             ohos:height="match_content"
             ohos:width="match_content"
-            ohos:text="不见不散"
+            ohos:top_margin="5vp"
+            ohos:text=""
             ohos:text_size="12fp"/>
 
         <Text
@@ -69,9 +71,9 @@
             ohos:width="match_content"
             ohos:align_left="$id:rank_user_name"
             ohos:below="$id:rank_user_name"
-            ohos:text="谁把我的经验清空了！！！"
-            ohos:text_size="12fp"
-            ohos:top_margin="30vp"/>
+            ohos:text=""
+            ohos:text_size="10fp"
+            ohos:top_margin="10vp"/>
     </DependentLayout>
 
     <DirectionalLayout
@@ -94,7 +96,7 @@
             ohos:width="match_content"
             ohos:bottom_margin="10vp"
             ohos:left_padding="10vp"
-            ohos:text="5110"
+            ohos:text=""
             ohos:text_size="12fp"/>
     </DirectionalLayout>
 </DirectionalLayout>

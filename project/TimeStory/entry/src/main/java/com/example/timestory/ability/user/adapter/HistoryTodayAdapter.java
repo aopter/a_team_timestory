@@ -47,7 +47,7 @@ public class HistoryTodayAdapter extends RecycleItemProvider {
     @Override
     public Component getComponent(int i, Component component, ComponentContainer componentContainer) {
         if (component == null) {
-            component = LayoutScatter.getInstance(context).parse(ResourceTable.Layout_item_history_today, null, false);
+            component = LayoutScatter.getInstance(slice).parse(ResourceTable.Layout_item_history_today, null, false);
             initView(component);
             setData(i);
         }

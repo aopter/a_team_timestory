@@ -171,8 +171,10 @@
             ohos:height="match_parent"
             ohos:width="match_content"
             ohos:bottom_margin="50vp"
-            ohos:left_margin="30vp"
+            ohos:left_margin="100vp"
+            ohos:align_parent_start="true"
             ohos:orientation="vertical"
+            ohos:total_weight="1"
             ohos:top_margin="30vp">
             <!--排行榜-->
             <com.example.timestory.Utils.CusText
@@ -187,16 +189,18 @@
             <ListContainer
                 ohos:id="$+id:user_center_ranking_lc"
                 ohos:height="match_parent"
-                ohos:width="220vp"
+                ohos:width="400vp"
                 ohos:alpha="0.8"
                 ohos:background_element="#FFF"/>
         </DirectionalLayout>
         <!--历史上的今天-->
         <DirectionalLayout
+            ohos:total_weight="1"
             ohos:height="match_parent"
             ohos:width="match_content"
             ohos:bottom_margin="50vp"
-            ohos:left_margin="350vp"
+            ohos:right_margin="100vp"
+            ohos:align_parent_end="true"
             ohos:orientation="vertical"
             ohos:top_margin="30vp">
             <!--历史上的今天-->
@@ -212,7 +216,7 @@
             <ListContainer
                 ohos:id="$+id:user_center_history_today_lc"
                 ohos:height="match_parent"
-                ohos:width="300vp"
+                ohos:width="400vp"
                 ohos:alpha="0.8"
                 ohos:background_element="#FFF"/>
         </DirectionalLayout>

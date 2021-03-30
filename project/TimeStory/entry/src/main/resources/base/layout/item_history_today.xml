@@ -12,10 +12,10 @@
         ohos:width="match_parent"
         ohos:alpha="0.8"
         ohos:background_element="$color:white"
-        ohos:text="title"
+        ohos:text=""
         ohos:text_alignment="center"
         ohos:text_color="#AE5B41"
-        ohos:text_size="24fp"/>
+        ohos:text_size="20fp"/>
 
     <DirectionalLayout
         ohos:height="match_parent"
@@ -36,7 +36,7 @@
                 ohos:left_of="$id:history_today_time"
                 ohos:text="时间:"
                 ohos:text_color="$color:white"
-                ohos:text_size="24fp"
+                ohos:text_size="15fp"
                 ohos:top_padding="20vp"/>
 
             <Text
@@ -48,20 +48,21 @@
                 ohos:right_padding="20vp"
                 ohos:text=""
                 ohos:text_color="$color:white"
-                ohos:text_size="24fp"
+                ohos:text_size="15fp"
                 ohos:top_padding="20vp"/>
         </DependentLayout>
 
         <Text
+            ohos:multiple_lines="true"
             ohos:id="$+id:history_today_body"
             ohos:height="match_parent"
             ohos:width="match_parent"
             ohos:left_padding="20vp"
             ohos:right_padding="20vp"
-            ohos:text="内容"
+            ohos:text=""
             ohos:text_alignment="horizontal_center"
             ohos:text_color="$color:white"
-            ohos:text_size="24fp"
+            ohos:text_size="15fp"
             ohos:top_padding="20vp"/>
     </DirectionalLayout>
 </DirectionalLayout>

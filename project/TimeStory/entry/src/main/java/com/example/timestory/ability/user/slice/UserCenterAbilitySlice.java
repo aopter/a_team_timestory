@@ -53,12 +53,6 @@ public class UserCenterAbilitySlice extends AbilitySlice implements Component.Cl
             switch (event.eventId) {
                 //加载用户榜单
                 case 1:
-                    getMainTaskDispatcher().syncDispatch(() -> {
-                        new ToastDialog(UserCenterAbilitySlice.this)
-                                .setText("test")
-                                .setDuration(4000)
-                                .show();
-                    });
                     UserRankingAdapter userRankingAdapter = new UserRankingAdapter(Constant.UserRankList, UserCenterAbilitySlice.this, UserCenterAbilitySlice.this.getContext());
                     mUserCenterRankingLc.setItemProvider(userRankingAdapter);
                     break;
