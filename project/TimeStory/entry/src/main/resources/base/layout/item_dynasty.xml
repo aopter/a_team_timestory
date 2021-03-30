@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:height="match_parent"
+    ohos:width="match_content"
+    ohos:alignment="center"
+    ohos:left_padding="30vp"
+    ohos:orientation="vertical"
+    ohos:right_padding="30vp">
+
+    <Text
+        ohos:id="$+id:dynasty"
+        ohos:height="180vp"
+        ohos:width="340vp"
+        ohos:background_element="$media:dynasty_background"
+        ohos:text_alignment="center"
+        ohos:text_color="black"
+        ohos:text_size="25fp"/>
+</DirectionalLayout>

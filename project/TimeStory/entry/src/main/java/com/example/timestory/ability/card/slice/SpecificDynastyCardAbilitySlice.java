@@ -165,6 +165,7 @@ public class SpecificDynastyCardAbilitySlice extends AbilitySlice {
         public void onClick(Component component) {
             switch (component.getId()) {
                 case ResourceTable.Id_back:
+                    terminate();
                     break;
                 case ResourceTable.Id_search_btn:
                     String key = searchCardName.getText().toString().trim();
