@@ -54,13 +54,13 @@
 
         <Text
             ohos:multiple_lines="true"
+            ohos:layout_alignment="horizontal_center"
             ohos:id="$+id:history_today_body"
             ohos:height="match_parent"
             ohos:width="match_parent"
             ohos:left_padding="20vp"
             ohos:right_padding="20vp"
             ohos:text=""
-            ohos:text_alignment="horizontal_center"
             ohos:text_color="$color:white"
             ohos:text_size="15fp"
             ohos:top_padding="20vp"/>
