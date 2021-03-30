@@ -163,7 +163,7 @@
     </DirectionalLayout>
     <!--中间两个模块-->
     <DependentLayout
-        ohos:height="480vp"
+        ohos:height="450vp"
         ohos:width="match_parent">
         <!--排行榜-->
         <DirectionalLayout
@@ -222,7 +222,7 @@
     <DirectionalLayout
         ohos:height="30vp"
         ohos:width="match_content"
-        ohos:bottom_margin="20vp"
+        ohos:bottom_margin="50vp"
         ohos:layout_alignment="horizontal_center"
         ohos:orientation="horizontal">
 

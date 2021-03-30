@@ -43,6 +43,7 @@
     </DependentLayout>
 
     <Image
+        ohos:id="$+id:rank_user_header"
         ohos:height="100vp"
         ohos:width="100vp"
         ohos:image_src="$media:man"
@@ -88,6 +89,7 @@
             ohos:text_size="12fp"/>
 
         <Text
+            ohos:id="$+id:ranking_point"
             ohos:height="match_content"
             ohos:width="match_content"
             ohos:bottom_margin="10vp"

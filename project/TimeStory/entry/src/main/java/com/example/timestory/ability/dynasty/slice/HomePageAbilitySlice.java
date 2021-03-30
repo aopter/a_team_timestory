@@ -4,6 +4,7 @@ import com.example.timestory.ResourceTable;
 import com.example.timestory.Utils.HmOSImageLoader;
 import com.example.timestory.ability.dynasty.HomePageAbility;
 import com.example.timestory.ability.user.slice.SettingAbilitySlice;
+import com.example.timestory.ability.user.slice.UserCenterAbilitySlice;
 import com.example.timestory.constant.Constant;
 import com.example.timestory.constant.ServiceConfig;
 import com.example.timestory.entity.Dynasty;
@@ -92,26 +93,6 @@ public class HomePageAbilitySlice extends AbilitySlice {
     public void onStart(Intent intent) {
         super.onStart(intent);
         super.setUIContent(ResourceTable.Layout_ability_home_page);
-
-        //TODO 假定设置用户
-        User user = new User();
-        user.setUserId(8);
-        user.setUserAccount("13722328172");
-        user.setUserPassword("1234567");
-        user.setUserHeader("user/us-10.jpg");
-        user.setUserNickname("超爱吃荔枝");
-        user.setUserExperience(800);
-        user.setUserCount(1000);
-        user.setUserSignature("我是你爸爸");
-        UserStatus userStatus = new UserStatus();
-        userStatus.setStatusId(2);
-        userStatus.setStatusExperienceLow(500);
-        userStatus.setStatusExperienceTop(3200);
-        userStatus.setStatusInfo("会试取中者");
-        userStatus.setStatusName("秀才");
-        user.setUserStatus(userStatus);
-        Constant.User = user;
-
 
         //初始化并发任务分发器
         parallelTaskDispatcher = createParallelTaskDispatcher("homePageParallelTaskDispatcher", TaskPriority.DEFAULT);
@@ -449,7 +430,7 @@ public class HomePageAbilitySlice extends AbilitySlice {
         public void onClick(Component component) {
             switch (component.getId()) {
                 case ResourceTable.Id_user_header://用户头像
-
+                    present(new UserCenterAbilitySlice(), new Intent());
                     break;
                 case ResourceTable.Id_experience://用户经验
                     if (flag == 0) {

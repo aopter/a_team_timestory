@@ -7,6 +7,7 @@
     ohos:orientation="vertical">
 
     <Text
+        ohos:id="$+id:history_today_title"
         ohos:height="50vp"
         ohos:width="match_parent"
         ohos:alpha="0.8"
@@ -45,13 +46,14 @@
                 ohos:align_parent_end="true"
                 ohos:alpha="0.8"
                 ohos:right_padding="20vp"
-                ohos:text="时间"
+                ohos:text=""
                 ohos:text_color="$color:white"
                 ohos:text_size="24fp"
                 ohos:top_padding="20vp"/>
         </DependentLayout>
 
         <Text
+            ohos:id="$+id:history_today_body"
             ohos:height="match_parent"
             ohos:width="match_parent"
             ohos:left_padding="20vp"

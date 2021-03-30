@@ -50,27 +50,26 @@ public class SettingAbilitySlice extends AbilitySlice implements Component.Click
         @Override
         protected void processEvent(InnerEvent event) {
             super.processEvent(event);
-            switch (event.eventId) {
-                case 1:
-                    getUITaskDispatcher().syncDispatch(() -> {
-                        HiLog.info(hiLogLabel, Constant.UserDetails.toString());
-                        //初始化头像
-                        HmOSImageLoader.with(SettingAbilitySlice.this).load(ServiceConfig.SERVICE_ROOT + "/img/" + Constant.User.getUserHeader()).into(mSettingUserHeader);
-                        //初始化昵称
-                        mSettingUserName.setText(Constant.User.getUserNickname());
-                        //初始化个性签名
-                        mSettingUserSignature.setText(Constant.User.getUserSignature());
-                        //初始化手机号
-                        mModifyUserPhone.setText(Constant.User.getUserAccount());
-                        //初始化性别
-                        if (Constant.SEXARR[0].equals(Constant.UserDetails.getUserSex())) {
-                            mRadioContainer.mark(0);
-                        } else {
-                            mRadioContainer.mark(1);
-                        }
-                        //初始化规则
-                        mSettingRule.setText(Constant.Rule.getRuleInfo());
-                    });
+            if (event.eventId == 1) {
+                getUITaskDispatcher().syncDispatch(() -> {
+                    HiLog.info(hiLogLabel, Constant.UserDetails.toString());
+                    //初始化头像
+                    HmOSImageLoader.with(SettingAbilitySlice.this).load(ServiceConfig.SERVICE_ROOT + "/img/" + Constant.User.getUserHeader()).into(mSettingUserHeader);
+                    //初始化昵称
+                    mSettingUserName.setText(Constant.User.getUserNickname());
+                    //初始化个性签名
+                    mSettingUserSignature.setText(Constant.User.getUserSignature());
+                    //初始化手机号
+                    mModifyUserPhone.setText(Constant.User.getUserAccount());
+                    //初始化性别
+                    if (Constant.SEXARR[0].equals(Constant.UserDetails.getUserSex())) {
+                        mRadioContainer.mark(0);
+                    } else {
+                        mRadioContainer.mark(1);
+                    }
+                    //初始化规则
+                    mSettingRule.setText(Constant.Rule.getRuleInfo());
+                });
             }
         }
     };
@@ -85,54 +84,6 @@ public class SettingAbilitySlice extends AbilitySlice implements Component.Click
     }
 
     private void initDate() {
-//        //实例化OkHttp
-//        OkHttpClient okHttpClient = new OkHttpClient();
-//        FormBody.Builder builder = new FormBody.Builder();
-//        //构建请求体
-//        FormBody formBody = builder.add("id", Constant.User.getUserId() + "")
-//                .build();
-//        //构建请求对象
-//        Request request = new Request.Builder()
-//                .url(ServiceConfig.SERVICE_ROOT + ServiceConfig.USERDETALURL)
-//                .method("Get", formBody)
-//                .post(formBody)
-//                .build();
-//        //创建Call对象发送请求
-//        Call call = okHttpClient.newCall(request);
-//        //异步请求
-//        call.enqueue(new Callback() {
-//            @Override
-//            public void onFailure(Call call, IOException e) {
-//                //ToastDialog只能在主线程执行，所以获取主线程供子线程中创建ToastDialog，下同
-////                getMainTaskDispatcher().syncDispatch(() ->
-////                        new ToastDialog(SettingAbilitySlice.this)
-////                                .setText("请求失败，请检查网络连接是否正常")
-////                                .setDuration(4000)
-////                                .show());
-//                e.printStackTrace();
-//            }
-//
-//            @Override
-//            public void onResponse(Call call, Response response) throws IOException {
-//                assert response.body() != null;
-//                String result = response.body().string();
-//                Constant.UserDetails = new Gson().fromJson(result, UserDetails.class);
-//                getMainTaskDispatcher().syncDispatch(() -> {
-////                    HiLog.info(hiLogLabel, "test");
-////                    HiLog.info(hiLogLabel, result);
-//                    getMainTaskDispatcher().syncDispatch(() ->
-//                            new ToastDialog(SettingAbilitySlice.this)
-//                                    .setText("test")
-//                                    .setDuration(4000)
-//                                    .show());
-//                    getMainTaskDispatcher().syncDispatch(() ->
-//                            new ToastDialog(SettingAbilitySlice.this)
-//                                    .setText(result)
-//                                    .setDuration(4000)
-//                                    .show());
-//                });
-//            }
-//        });
         new Thread(() -> {
             try {
                 URL url = new URL(ServiceConfig.SERVICE_ROOT + ServiceConfig.USERDETALURL + Constant.User.getUserId());
@@ -256,7 +207,7 @@ public class SettingAbilitySlice extends AbilitySlice implements Component.Click
             }
 
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
+            public void onResponse(Call call, Response response) {
                 getMainTaskDispatcher().syncDispatch(() -> new ToastDialog(SettingAbilitySlice.this)
                         .setText("修改成功")
                         .setDuration(4000)

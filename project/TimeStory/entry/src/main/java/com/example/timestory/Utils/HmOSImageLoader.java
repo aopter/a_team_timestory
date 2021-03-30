@@ -10,7 +10,6 @@ import ohos.media.image.PixelMap;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -30,17 +29,17 @@ public class HmOSImageLoader {
         return new HmOSImageLoader(abilitySlice);
     }
 
-    public HmOSImageLoader load(@Nullable String url) {
+    public HmOSImageLoader load(String url) {
         this.url = url;
         return this;
     }
 
-    public HmOSImageLoader def(@Nullable int defImage) {
+    public HmOSImageLoader def(int defImage) {
         this.defImage = defImage;
         return this;
     }
 
-    public void into(@Nullable Image image) {
+    public void into(Image image) {
         this.image = image;
         start();
     }

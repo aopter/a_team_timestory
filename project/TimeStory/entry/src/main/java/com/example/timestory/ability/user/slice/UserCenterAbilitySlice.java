@@ -5,6 +5,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.example.timestory.ResourceTable;
 import com.example.timestory.Utils.HmOSImageLoader;
 import com.example.timestory.ability.dynasty.slice.HomePageAbilitySlice;
+import com.example.timestory.ability.user.adapter.HistoryTodayAdapter;
+import com.example.timestory.ability.user.adapter.UserRankingAdapter;
 import com.example.timestory.constant.Constant;
 import com.example.timestory.constant.ServiceConfig;
 import com.example.timestory.entity.HistoryDay;
@@ -15,17 +17,15 @@ import com.google.gson.reflect.TypeToken;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
 import ohos.agp.components.*;
+import ohos.agp.window.dialog.ToastDialog;
 import ohos.eventhandler.EventHandler;
 import ohos.eventhandler.EventRunner;
 import ohos.eventhandler.InnerEvent;
-import ohos.hiviewdfx.HiLog;
-import ohos.miscservices.timeutility.Time;
 import okhttp3.*;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
@@ -36,17 +36,14 @@ public class UserCenterAbilitySlice extends AbilitySlice implements Component.Cl
     private DependentLayout mDlLevel;
     private DependentLayout mUserCenterCardDl;
     private DependentLayout mUserCenterGoDynastyDl;
-    private Text mStrRl;
     private Text mUserCenterTxPoint;
-    private Image mImageRl;
     private DependentLayout mUserCenterPointDl;
     private DependentLayout mUserCenterSettingDl;
     private ListContainer mUserCenterRankingLc;
-    private DirectionalLayout mDlRanking;
     private ListContainer mUserCenterHistoryTodayLc;
     private Text mUserCenterMyCard;
     private Text mUserCenterMyCollections;
-    private OkHttpClient okHttpClient;
+    private OkHttpClient okHttpClient = new OkHttpClient();
     private boolean flag;
     private EventRunner eventRunner = EventRunner.create(true);
     private EventHandler eventHandler = new EventHandler(eventRunner) {
@@ -54,17 +51,26 @@ public class UserCenterAbilitySlice extends AbilitySlice implements Component.Cl
         protected void processEvent(InnerEvent event) {
             super.processEvent(event);
             switch (event.eventId) {
+                //加载用户榜单
                 case 1:
+                    getMainTaskDispatcher().syncDispatch(() -> {
+                        new ToastDialog(UserCenterAbilitySlice.this)
+                                .setText("test")
+                                .setDuration(4000)
+                                .show();
+                    });
+                    UserRankingAdapter userRankingAdapter = new UserRankingAdapter(Constant.UserRankList, UserCenterAbilitySlice.this, UserCenterAbilitySlice.this.getContext());
+                    mUserCenterRankingLc.setItemProvider(userRankingAdapter);
                     break;
                 case 2:
-                    break;
-                case 3:
+                    HistoryTodayAdapter historyTodayAdapter = new HistoryTodayAdapter(Constant.historyDays, UserCenterAbilitySlice.this, UserCenterAbilitySlice.this.getContext());
+                    mUserCenterHistoryTodayLc.setItemProvider(historyTodayAdapter);
                     break;
                 default:
                     break;
             }
         }
-    };//线程通讯工具
+    };
 
     @Override
     public void onStart(Intent intent) {
@@ -109,15 +115,16 @@ public class UserCenterAbilitySlice extends AbilitySlice implements Component.Cl
 
     //获取历史上的今天
     private void getHistoryToday() {
-        if (Constant.historyDays.size() > 0) {//直接去提交
+        //直接去提交
+        if (Constant.historyDays.size() > 0) {
             eventHandler.sendEvent(2);
             return;
         }
-
         Request.Builder builder = new Request.Builder();
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeZone(TimeZone.getDefault());
-        int month = calendar.get(Calendar.MONTH) + 1; //月份前面加1，是因为从0开始计算，需要加1操作
+        //月份前面加1，是因为从0开始计算，需要加1操作
+        int month = calendar.get(Calendar.MONTH) + 1;
         int day = calendar.get(Calendar.DAY_OF_MONTH);
         builder.url(ServiceConfig.HISTORY_TODAY + "?v=1.0&month=" + month + "&day=" + day + "&key=7a9cf9c5a9ff6338f5484d484ba51587");
         //构造请求类
@@ -181,6 +188,7 @@ public class UserCenterAbilitySlice extends AbilitySlice implements Component.Cl
         mUserCenterCardDl.setClickedListener(this);
         mUserCenterGoDynastyDl.setClickedListener(this);
         mUserCenterPointDl.setClickedListener(this);
+        mUserCenterSettingDl.setClickedListener(this);
         mUserCenterMyCard.setClickedListener(this);
         mUserCenterMyCollections.setClickedListener(this);
     }
@@ -192,13 +200,10 @@ public class UserCenterAbilitySlice extends AbilitySlice implements Component.Cl
         mDlLevel = (DependentLayout) findComponentById(ResourceTable.Id_dl_level);
         mUserCenterCardDl = (DependentLayout) findComponentById(ResourceTable.Id_user_center_card_dl);
         mUserCenterGoDynastyDl = (DependentLayout) findComponentById(ResourceTable.Id_user_center_go_dynasty_dl);
-        mStrRl = (Text) findComponentById(ResourceTable.Id_str_rl);
         mUserCenterTxPoint = (Text) findComponentById(ResourceTable.Id_user_center_tx_point);
-        mImageRl = (Image) findComponentById(ResourceTable.Id_image_rl);
         mUserCenterPointDl = (DependentLayout) findComponentById(ResourceTable.Id_user_center_point_dl);
         mUserCenterSettingDl = (DependentLayout) findComponentById(ResourceTable.Id_user_center_setting_dl);
         mUserCenterRankingLc = (ListContainer) findComponentById(ResourceTable.Id_user_center_ranking_lc);
-        mDlRanking = (DirectionalLayout) findComponentById(ResourceTable.Id_dl_ranking);
         mUserCenterHistoryTodayLc = (ListContainer) findComponentById(ResourceTable.Id_user_center_history_today_lc);
         mUserCenterMyCard = (Text) findComponentById(ResourceTable.Id_user_center_my_card);
         mUserCenterMyCollections = (Text) findComponentById(ResourceTable.Id_user_center_my_collections);
