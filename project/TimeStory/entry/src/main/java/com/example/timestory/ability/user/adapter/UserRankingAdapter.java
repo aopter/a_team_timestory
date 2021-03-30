@@ -2,11 +2,11 @@ package com.example.timestory.ability.user.adapter;
 
 import com.example.timestory.ResourceTable;
 import com.example.timestory.Utils.HmOSImageLoader;
-import com.example.timestory.constant.Constant;
 import com.example.timestory.constant.ServiceConfig;
 import com.example.timestory.entity.User;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.agp.components.*;
+import ohos.agp.render.render3d.ViewHolder;
 import ohos.app.Context;
 
 import java.util.List;
@@ -21,7 +21,6 @@ import java.util.List;
 public class UserRankingAdapter extends BaseItemProvider {
     private List<User> users;
     private AbilitySlice slice;
-    private Context context;
     private Image mRankImg;
     private Image mRankUserHeader;
     private Text mRankNum;
@@ -29,20 +28,22 @@ public class UserRankingAdapter extends BaseItemProvider {
     private Text mRankUserSomething;
     private Text mRankingPoint;
 
-    public UserRankingAdapter(List<User> users, AbilitySlice slice, Context context) {
+    public UserRankingAdapter(List<User> users, AbilitySlice slice) {
         this.users = users;
         this.slice = slice;
-        this.context = context;
     }
 
     @Override
     public int getCount() {
-        return users.size();
+        return users == null ? 0 : users.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return users.get(i);
+        if (users != null && i < users.size() && i >= 0) {
+            return users.get(i);
+        }
+        return null;
     }
 
     @Override
@@ -52,49 +53,72 @@ public class UserRankingAdapter extends BaseItemProvider {
 
     @Override
     public Component getComponent(int i, Component component, ComponentContainer componentContainer) {
+        ViewHolder viewHolder;
         if (component == null) {
-            component = LayoutScatter.getInstance(context).parse(ResourceTable.Layout_item_user_ranking, null, false);
-            initView(component);
-            setData(i);
+            viewHolder = new ViewHolder();
+            component = LayoutScatter.getInstance(slice).parse(ResourceTable.Layout_item_user_ranking, null, false);
+            initView(component, viewHolder);
+            component.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) component.getTag();
         }
+        setData(i, viewHolder);
         return component;
     }
 
-    private void setData(int position) {
+    private void setData(int position, ViewHolder viewHolder) {
         User user = users.get(position);
         //设置头像
-        HmOSImageLoader.with(slice).load(ServiceConfig.SERVICE_ROOT + "/img/" + user.getUserHeader()).into(mRankUserHeader);
+        if (user.getUserHeader() != null) {
+            HmOSImageLoader.with(slice).load(ServiceConfig.SERVICE_ROOT + "/img/" + user.getUserHeader()).into(viewHolder.mRankUserHeader);
+        }
         //用户排名前三设置对应的奖杯图标
         switch (position) {
             case 0:
-                mRankImg.setPixelMap(ResourceTable.Media_rank_f);
+                viewHolder.mRankImg.setPixelMap(ResourceTable.Media_rank_f);
                 break;
             case 1:
-                mRankImg.setPixelMap(ResourceTable.Media_rank_s);
+                viewHolder.mRankImg.setPixelMap(ResourceTable.Media_rank_s);
                 break;
             case 2:
-                mRankImg.setPixelMap(ResourceTable.Media_rank_t);
+                viewHolder.mRankImg.setPixelMap(ResourceTable.Media_rank_t);
                 break;
             default:
-                mRankImg.setPixelMap(ResourceTable.Media_rank_e);
+                viewHolder.mRankImg.setPixelMap(ResourceTable.Media_rank_e);
                 break;
         }
         //排名数字
-        mRankNum.setText(position + 1);
+        viewHolder.mRankNum.setText(position + 1 + "");
         //用户昵称
-        mRankUserName.setText(user.getUserNickname());
+        viewHolder.mRankUserName.setText(user.getUserNickname());
         //用户个性签名
-        mRankUserSomething.setText(user.getUserSignature());
+        viewHolder.mRankUserSomething.setText(user.getUserSignature());
         //设置经验
-        mRankingPoint.setText(user.getUserExperience() + "");
+        viewHolder.mRankingPoint.setText(user.getUserExperience() + "");
     }
 
-    private void initView(Component component) {
+    private void initView(Component component, ViewHolder viewHolder) {
         mRankImg = (Image) component.findComponentById(ResourceTable.Id_rank_img);
+        viewHolder.mRankImg = mRankImg;
         mRankUserHeader = (Image) component.findComponentById(ResourceTable.Id_rank_user_header);
+        viewHolder.mRankUserHeader = mRankUserHeader;
         mRankNum = (Text) component.findComponentById(ResourceTable.Id_rank_num);
+        viewHolder.mRankNum = mRankNum;
         mRankUserName = (Text) component.findComponentById(ResourceTable.Id_rank_user_name);
+        viewHolder.mRankUserName = mRankUserName;
         mRankUserSomething = (Text) component.findComponentById(ResourceTable.Id_rank_user_something);
+        viewHolder.mRankUserSomething = mRankUserSomething;
         mRankingPoint = (Text) component.findComponentById(ResourceTable.Id_ranking_point);
+        viewHolder.mRankingPoint = mRankingPoint;
+
+    }
+
+    private static class ViewHolder {
+        private Image mRankImg;
+        private Image mRankUserHeader;
+        private Text mRankNum;
+        private Text mRankUserName;
+        private Text mRankUserSomething;
+        private Text mRankingPoint;
     }
 }

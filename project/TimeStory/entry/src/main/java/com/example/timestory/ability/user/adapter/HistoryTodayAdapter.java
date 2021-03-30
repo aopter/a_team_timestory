@@ -2,7 +2,6 @@ package com.example.timestory.ability.user.adapter;
 
 import com.example.timestory.ResourceTable;
 import com.example.timestory.entity.HistoryDay;
-import ohos.aafwk.ability.AbilitySlice;
 import ohos.agp.components.*;
 import ohos.app.Context;
 
@@ -15,17 +14,15 @@ import java.util.List;
  * @className HistoryTodayAdapter.java
  * @description TODO
  */
-public class HistoryTodayAdapter extends RecycleItemProvider {
+public class HistoryTodayAdapter extends BaseItemProvider {
     private List<HistoryDay> historyDays;
     private Context context;
-    private AbilitySlice slice;
     private Text mHistoryTodayTitle;
     private Text mHistoryTodayTime;
     private Text mHistoryTodayBody;
 
-    public HistoryTodayAdapter(List<HistoryDay> historyDays, AbilitySlice slice, Context context) {
+    public HistoryTodayAdapter(List<HistoryDay> historyDays,  Context context) {
         this.historyDays = historyDays;
-        this.slice = slice;
         this.context = context;
     }
 
@@ -46,24 +43,38 @@ public class HistoryTodayAdapter extends RecycleItemProvider {
 
     @Override
     public Component getComponent(int i, Component component, ComponentContainer componentContainer) {
+        ViewHolder viewHolder = null;
         if (component == null) {
-            component = LayoutScatter.getInstance(slice).parse(ResourceTable.Layout_item_history_today, null, false);
-            initView(component);
-            setData(i);
+            viewHolder = new ViewHolder();
+            component = LayoutScatter.getInstance(context).parse(ResourceTable.Layout_item_history_today, null, false);
+            initView(component, viewHolder);
+            component.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) component.getTag();
         }
+        setData(i, viewHolder);
         return component;
     }
 
-    private void setData(int position) {
+    private void setData(int position, ViewHolder viewHolder) {
         HistoryDay historyDay = historyDays.get(position);
-        mHistoryTodayTitle.setText(historyDay.getTitle());
-        mHistoryTodayTime.setText(historyDay.getLunar());
-        mHistoryTodayBody.setText(historyDay.getDes());
+        viewHolder.mHistoryTodayTitle.setText(historyDay.getTitle());
+        viewHolder.mHistoryTodayTime.setText(historyDay.getLunar());
+        viewHolder.mHistoryTodayBody.setText(historyDay.getDes());
     }
 
-    private void initView(Component component) {
+    private void initView(Component component, ViewHolder viewHolder) {
         mHistoryTodayTitle = (Text) component.findComponentById(ResourceTable.Id_history_today_title);
+        viewHolder.mHistoryTodayTitle = mHistoryTodayTitle;
         mHistoryTodayTime = (Text) component.findComponentById(ResourceTable.Id_history_today_time);
+        viewHolder.mHistoryTodayTime = mHistoryTodayTime;
         mHistoryTodayBody = (Text) component.findComponentById(ResourceTable.Id_history_today_body);
+        viewHolder.mHistoryTodayBody = mHistoryTodayBody;
+    }
+
+    private static class ViewHolder {
+        private Text mHistoryTodayTitle;
+        private Text mHistoryTodayTime;
+        private Text mHistoryTodayBody;
     }
 }

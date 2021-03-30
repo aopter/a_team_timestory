@@ -63,6 +63,6 @@
             ohos:text=""
             ohos:text_color="$color:white"
             ohos:text_size="15fp"
-            ohos:top_padding="20vp"/>
+            ohos:top_padding="10vp"/>
     </DirectionalLayout>
 </DirectionalLayout>

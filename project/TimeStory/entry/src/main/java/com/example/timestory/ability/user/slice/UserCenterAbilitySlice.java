@@ -17,7 +17,6 @@ import com.google.gson.reflect.TypeToken;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
 import ohos.agp.components.*;
-import ohos.agp.window.dialog.ToastDialog;
 import ohos.eventhandler.EventHandler;
 import ohos.eventhandler.EventRunner;
 import ohos.eventhandler.InnerEvent;
@@ -53,11 +52,11 @@ public class UserCenterAbilitySlice extends AbilitySlice implements Component.Cl
             switch (event.eventId) {
                 //加载用户榜单
                 case 1:
-                    UserRankingAdapter userRankingAdapter = new UserRankingAdapter(Constant.UserRankList, UserCenterAbilitySlice.this, UserCenterAbilitySlice.this.getContext());
+                    UserRankingAdapter userRankingAdapter = new UserRankingAdapter(Constant.UserRankList, UserCenterAbilitySlice.this);
                     mUserCenterRankingLc.setItemProvider(userRankingAdapter);
                     break;
                 case 2:
-                    HistoryTodayAdapter historyTodayAdapter = new HistoryTodayAdapter(Constant.historyDays, UserCenterAbilitySlice.this, UserCenterAbilitySlice.this.getContext());
+                    HistoryTodayAdapter historyTodayAdapter = new HistoryTodayAdapter(Constant.historyDays, UserCenterAbilitySlice.this.getContext());
                     mUserCenterHistoryTodayLc.setItemProvider(historyTodayAdapter);
                     break;
                 default:
@@ -145,7 +144,7 @@ public class UserCenterAbilitySlice extends AbilitySlice implements Component.Cl
                         historyDay.setYear(his.getInteger("year"));
                         Constant.historyDays.add(historyDay);
                     }
-                    eventHandler.sendEvent(3);
+                    eventHandler.sendEvent(2);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

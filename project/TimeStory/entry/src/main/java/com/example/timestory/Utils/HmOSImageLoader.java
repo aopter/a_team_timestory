@@ -11,7 +11,6 @@ import ohos.media.image.common.Size;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -33,24 +32,24 @@ public class HmOSImageLoader {
         return new HmOSImageLoader(abilitySlice);
     }
 
-    public HmOSImageLoader load(@Nullable String url) {
+    public HmOSImageLoader load(String url) {
         this.url = url;
         return this;
     }
 
-    public HmOSImageLoader def(@Nullable int defImage) {
+    public HmOSImageLoader def(int defImage) {
         this.defImage = defImage;
         return this;
     }
 
-    public void into(@Nullable Image image) {
+    public void into(Image image) {
         this.image = image;
         imageHeight = image.getHeight();
         imageWidth = image.getWidth();
         start();
     }
 
-    public void into(@Nullable Image image, int imageWidth, int imageHeight) {
+    public void into(Image image, int imageWidth, int imageHeight) {
         this.image = image;
         this.imageHeight = imageHeight;
         this.imageWidth = imageWidth;
@@ -67,8 +66,9 @@ public class HmOSImageLoader {
                 }
             });
         }
-        if (defImage != 0)
+        if (defImage != 0) {
             image.setPixelMap(defImage);
+        }
         Request request = new Request.Builder().url(url).get().build();
         new Thread(() -> {
             OkHttpClient okHttpClient = new OkHttpClient();
