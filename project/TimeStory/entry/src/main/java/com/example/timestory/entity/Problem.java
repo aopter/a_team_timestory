@@ -12,6 +12,24 @@ public class Problem implements Serializable {
      String problemDetails;//题目解析
     private String problemCreator;//创建人
     private long problemCreationTime;//创建时间
+    public boolean isCollection = false;
+    public boolean isGetAnswer = false;
+
+    public boolean isCollection() {
+        return isCollection;
+    }
+
+    public void setCollection(boolean collection) {
+        isCollection = collection;
+    }
+
+    public boolean isGetAnswer() {
+        return isGetAnswer;
+    }
+
+    public void setGetAnswer(boolean getAnswer) {
+        isGetAnswer = getAnswer;
+    }
 
     public String getDynastyId() {
         return dynastyId;

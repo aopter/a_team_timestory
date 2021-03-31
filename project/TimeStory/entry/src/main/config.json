@@ -40,25 +40,7 @@
       "moduleType": "entry"
     },
     "abilities": [
-      {
-        "skills": [
-          {
-            "entities": [
-              "entity.system.home"
-            ],
-            "actions": [
-              "action.system.home"
-            ]
-          }
-        ],
-        "orientation": "unspecified",
-        "name": "com.example.timestory.MainAbility",
-        "icon": "$media:icon",
-        "description": "$string:mainability_description",
-        "label": "TimeStroy",
-        "type": "page",
-        "launchType": "standard"
-      },
+
       {
         "orientation": "landscape",
         "name": "com.example.timestory.ability.card.DrawCardAbility",
@@ -135,7 +117,7 @@
         "orientation": "landscape",
         "name": "com.example.timestory.ability.problem.ProblemCollectionActivity",
         "icon": "$media:icon",
-        "description": "$string:detailseventability_description",
+        "description": "$string:mainability_description",
         "label": "TimeStroy",
         "type": "page",
         "launchType": "standard",
@@ -151,9 +133,9 @@
       },
       {
         "orientation": "landscape",
-        "name": "com.example.timestory.ability.problem.SelectProblemTypeAbility",
+        "name": "com.example.timestory.ability.problem.ProblemInfoAbility",
         "icon": "$media:icon",
-        "description": "$string:detailseventability_description",
+        "description": "$string:mainability_description",
         "label": "TimeStroy",
         "type": "page",
         "launchType": "standard",
@@ -168,6 +150,16 @@
         }
       },
       {
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "action.system.home"
+            ]
+          }
+        ],
         "orientation": "landscape",
         "name": "com.example.timestory.ability.user.LoginAbility",
         "icon": "$media:icon",

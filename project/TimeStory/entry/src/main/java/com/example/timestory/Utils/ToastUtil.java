@@ -17,7 +17,7 @@ public class ToastUtil {
         new ToastDialog(context)
                 .setContentCustomComponent(toastLayout)
                 .setSize(DirectionalLayout.LayoutConfig.MATCH_CONTENT, DirectionalLayout.LayoutConfig.MATCH_CONTENT)
-                .setAlignment(LayoutAlignment.CENTER)
+                .setAlignment(LayoutAlignment.BOTTOM)
                 .show();
     }
 

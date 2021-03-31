@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DependentLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:height="match_parent"
+    ohos:width="match_parent"
+    ohos:alpha="0.8"
+    ohos:orientation="vertical">
+
+    <Text
+        ohos:align_parent_top="true"
+        ohos:above="$id:btn_close"
+        ohos:top_margin="20vp"
+        ohos:padding="10vp"
+        ohos:id="$+id:tv_answer"
+        ohos:height="900vp"
+        ohos:width="950vp"
+        ohos:multiple_lines="true"
+        ohos:scrollable="true"
+        ohos:text_size="17fp"
+        ohos:text="题目解析"/>
+    <Button
+        ohos:right_margin="15vp"
+        ohos:bottom_margin="15vp"
+        ohos:align_parent_bottom="true"
+        ohos:align_parent_right="true"
+        ohos:height="match_content"
+        ohos:width="match_content"
+        ohos:top_padding="10vp"
+        ohos:bottom_padding="10vp"
+        ohos:left_padding="20vp"
+        ohos:right_padding="20vp"
+        ohos:text="关闭"
+        ohos:text_size="15fp"
+        ohos:background_element="$media:button"
+        ohos:id="$+id:btn_close"/>
+</DependentLayout>

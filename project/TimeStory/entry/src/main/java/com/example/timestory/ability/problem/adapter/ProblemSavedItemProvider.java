@@ -2,6 +2,7 @@ package com.example.timestory.ability.problem.adapter;
 
 import com.example.timestory.ResourceTable;
 import com.example.timestory.Utils.HmOSImageLoader;
+import com.example.timestory.ability.problem.slice.SelectProblemSlice;
 import com.example.timestory.constant.Constant;
 import com.example.timestory.constant.ServiceConfig;
 import com.example.timestory.entity.Problem;
@@ -11,6 +12,7 @@ import ohos.aafwk.content.Intent;
 import ohos.aafwk.content.Operation;
 import ohos.agp.components.*;
 import ohos.app.Context;
+import ohos.hiviewdfx.HiLog;
 
 import java.util.List;
 
@@ -117,6 +119,8 @@ public class ProblemSavedItemProvider extends BaseItemProvider {
                 viewHolder.container.setClickedListener(new Component.ClickedListener() {
                     @Override
                     public void onClick(Component component) {
+                        HiLog.info(SelectProblemSlice.LABEL_LOG, "跳转题目界面");
+
                         Intent intent = new Intent();
                         intent.setParam("type", "xuan");
                         intent.setParam("dynastyId", problemSelect.getDynastyId());

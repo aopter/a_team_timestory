@@ -12,7 +12,7 @@
         ohos:height="0vp"
         ohos:width="match_parent"
         ohos:text_alignment="center"
-        ohos:weight="1">
+        ohos:weight="1.5">
 
         <Text
             ohos:id="$+id:title_collection"
@@ -42,7 +42,7 @@
             ohos:height="match_parent"
             ohos:width="0vp"
             ohos:orientation="vertical"
-            ohos:weight="1">
+            ohos:weight="2">
 
             <Text
                 ohos:height="match_content"
@@ -51,7 +51,7 @@
                 ohos:padding="5vp"
                 ohos:text="朝代"
                 ohos:text_color="$color:ourDynastyRed"
-                ohos:text_size="22fp"/>
+                ohos:text_size="20fp"/>
             <!--            朝代-->
             <ListContainer
                 ohos:id="$+id:type_dynasty"
@@ -71,7 +71,7 @@
                 ohos:text_alignment="center"
                 ohos:text="收藏里面空空如也，快去答题吧~"
                 ohos:text_color="#77000000"
-                ohos:text_size="18fp"/>
+                ohos:text_size="20fp"/>
 
 
             <ListContainer

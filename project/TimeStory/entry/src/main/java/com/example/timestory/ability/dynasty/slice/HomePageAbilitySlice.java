@@ -2,7 +2,10 @@ package com.example.timestory.ability.dynasty.slice;
 
 import com.example.timestory.ResourceTable;
 import com.example.timestory.Utils.HmOSImageLoader;
+import com.example.timestory.ability.card.slice.DrawCardAbilitySlice;
+import com.example.timestory.ability.card.slice.MyCardAbilitySlice;
 import com.example.timestory.ability.dynasty.HomePageAbility;
+import com.example.timestory.ability.problem.slice.ProblemCollectionActivitySlice;
 import com.example.timestory.ability.user.slice.SettingAbilitySlice;
 import com.example.timestory.ability.user.slice.UserCenterAbilitySlice;
 import com.example.timestory.constant.Constant;
@@ -444,12 +447,15 @@ public class HomePageAbilitySlice extends AbilitySlice {
                     }
                     break;
                 case ResourceTable.Id_draw_card://用户抽卡
+                    present(new DrawCardAbilitySlice(), new Intent());
 
                     break;
                 case ResourceTable.Id_user_card://用户卡片
+                    present(new MyCardAbilitySlice(), new Intent());
 
                     break;
                 case ResourceTable.Id_user_collection://用户收藏
+                    present(new ProblemCollectionActivitySlice(), new Intent());
 
                     break;
                 case ResourceTable.Id_recharge://用户充值

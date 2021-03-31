@@ -1,6 +1,7 @@
 package com.example.timestory.ability.dynasty.slice;
 
 import com.example.timestory.ResourceTable;
+import com.example.timestory.ability.problem.slice.SelectProblemSlice;
 import com.example.timestory.constant.ServiceConfig;
 import com.example.timestory.entity.Dynasty;
 import com.google.gson.Gson;
@@ -17,6 +18,7 @@ import ohos.app.dispatcher.task.TaskPriority;
 import ohos.eventhandler.EventHandler;
 import ohos.eventhandler.EventRunner;
 import ohos.eventhandler.InnerEvent;
+import ohos.hiviewdfx.HiLog;
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -157,6 +159,17 @@ public class DynastyIntroduceActivitySlice extends AbilitySlice {
                     break;
                 case ResourceTable.Id_problem:
                     //跳转答题页面
+                    Intent intent2 = new Intent();
+                    Operation operation2 = new Intent.OperationBuilder()
+                            .withDeviceId("")
+                            .withBundleName("com.example.timestory")
+                            .withAbilityName("com.example.timestory.ability.problem.ProblemInfoAbility")
+                            .build();
+                    HiLog.info(SelectProblemSlice.LABEL_LOG, "跳转时的dynastyId："+dynastyId);
+                    intent2.setParam("dynastyId",dynastyId+"");
+                    intent2.setParam("before","types");
+                    intent2.setOperation(operation2);
+                    startAbility(intent2);
                     break;
                 case ResourceTable.Id_event:
                     //跳转朝代事件页面

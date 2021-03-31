@@ -7,9 +7,7 @@ import com.example.timestory.ability.problem.adapter.ProblemleftDynastyItemProvi
 import com.example.timestory.constant.Constant;
 import com.example.timestory.constant.ServiceConfig;
 import com.example.timestory.entity.Problem;
-import com.example.timestory.entity.UserUnlockDynasty;
 import com.example.timestory.entity.problem.PageCount;
-import com.example.timestory.entity.problem.ProblemCheckAnswer;
 import com.example.timestory.entity.problem.ProblemCollection;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -172,14 +170,14 @@ public class ProblemCollectionActivitySlice extends AbilitySlice {
     //    初始化所有朝代
     private void initDynastys() {
 //       造假数据
-        if (Constant.UnlockDynasty.size() <= 0) {
-            for (int i = 0; i < 3; i++) {
-                UserUnlockDynasty dynasty = new UserUnlockDynasty();
-                dynasty.setDynastyName("唐朝" + i);
-                dynasty.setDynastyId("11");
-                Constant.UnlockDynasty.add(dynasty);
-            }
-        }
+//        if (Constant.UnlockDynasty.size() <= 0) {
+//            for (int i = 0; i < 3; i++) {
+//                UserUnlockDynasty dynasty = new UserUnlockDynasty();
+//                dynasty.setDynastyName("唐朝" + i);
+//                dynasty.setDynastyId("11");
+//                Constant.UnlockDynasty.add(dynasty);
+//            }
+//        }
         List<String> dynastyName = new ArrayList<>();
         HiLog.info(SelectProblemSlice.LABEL_LOG, "朝代的长度" + ":" + Constant.UnlockDynasty.size() + "");
 

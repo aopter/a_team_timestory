@@ -4,7 +4,9 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.example.timestory.ResourceTable;
 import com.example.timestory.Utils.HmOSImageLoader;
+import com.example.timestory.ability.card.slice.MyCardAbilitySlice;
 import com.example.timestory.ability.dynasty.slice.HomePageAbilitySlice;
+import com.example.timestory.ability.problem.slice.ProblemCollectionActivitySlice;
 import com.example.timestory.ability.user.adapter.HistoryTodayAdapter;
 import com.example.timestory.ability.user.adapter.UserRankingAdapter;
 import com.example.timestory.constant.Constant;
@@ -250,11 +252,12 @@ public class UserCenterAbilitySlice extends AbilitySlice implements Component.Cl
                 break;
             case ResourceTable.Id_user_center_my_card:
                 //跳转到我的卡片页面
-                //TODO
+                present(new MyCardAbilitySlice(), new Intent());
                 break;
             case ResourceTable.Id_user_center_my_collections:
                 //跳转到收藏页面
-                //TODO
+                present(new ProblemCollectionActivitySlice(), new Intent());
+
                 break;
             default:
                 break;

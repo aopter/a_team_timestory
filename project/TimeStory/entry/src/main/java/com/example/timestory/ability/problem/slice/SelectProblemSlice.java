@@ -2,29 +2,23 @@ package com.example.timestory.ability.problem.slice;
 
 
 import com.example.timestory.ResourceTable;
-
 import com.example.timestory.Utils.HmOSImageLoader;
-import com.example.timestory.ability.user.slice.LoginAbilitySlice;
-import com.example.timestory.ability.user.slice.RegistryAbilitySlice;
+import com.example.timestory.Utils.ToastUtil;
 import com.example.timestory.constant.Constant;
 import com.example.timestory.constant.ServiceConfig;
 import com.example.timestory.entity.Problem;
-import com.example.timestory.entity.User;
-import com.example.timestory.entity.problem.*;
+import com.example.timestory.entity.problem.ProblemCheckAnswer;
+import com.example.timestory.entity.problem.ProblemLinkLine;
+import com.example.timestory.entity.problem.ProblemSelect;
+import com.example.timestory.entity.problem.ProblemgetOrder;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
-import ohos.agp.components.Component;
-import ohos.agp.components.DirectionalLayout;
-import ohos.agp.components.Image;
-import ohos.agp.components.Text;
+import ohos.agp.components.*;
+import ohos.agp.window.dialog.CommonDialog;
 import ohos.agp.window.dialog.ToastDialog;
 import ohos.app.dispatcher.TaskDispatcher;
 import ohos.app.dispatcher.task.TaskPriority;
-import ohos.eventhandler.EventHandler;
-import ohos.eventhandler.EventRunner;
-import ohos.eventhandler.InnerEvent;
 import ohos.hiviewdfx.HiLog;
 import ohos.hiviewdfx.HiLogLabel;
 import okhttp3.*;
@@ -34,7 +28,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SelectProblemSlice extends AbilitySlice {
-
+    //    左右屏幕的滑动事件
+    final int RIGHT = 0;
+    final int LEFT = 1;
     private boolean isGetAnswer = false;
     private Text mTvUserE;//经验
     private Text mTvUserC;//积分
@@ -54,6 +50,8 @@ public class SelectProblemSlice extends AbilitySlice {
     private Text mProblemAnswer;
     private Text mProblemSave;
     private Text mProblemUp;
+    private Text mProblemP;
+    private Text mProblemN;
     private Image[] imageViewsCheck;
     private String dynastyId;//朝代id
     Problem cProblem;//当前题目
@@ -66,37 +64,12 @@ public class SelectProblemSlice extends AbilitySlice {
     private DirectionalLayout mDlXuanD;
     private List<Problem> myProblems;
     private String before;//跳转前页面代号
+    private int cIndex = 0;//当前索引
 
     private Gson gson;//json解析
     private OkHttpClient okHttpClient;//网络访问请求对象
     private TaskDispatcher parallelTaskDispatcher;//并发任务分发器
-    private EventRunner eventRunner = EventRunner.create(true);//线程投递器
     public static final HiLogLabel LABEL_LOG = new HiLogLabel(3, 0xD00101, "ProblemSlice");
-    private EventHandler eventHandler = new EventHandler(eventRunner) {
-        @Override
-        protected void processEvent(InnerEvent event) {
-            super.processEvent(event);
-            HiLog.info(LABEL_LOG, "eventId：" + event.eventId);
-            switch (event.eventId) {
-                case 1://选择题
-                    //将信息显示在页面
-                    break;
-                case 2://连线题
-                    break;
-                case 3://排序题
-                    break;
-                case 4://收藏成功
-                    break;
-                case 5://取消收藏成功
-
-                    break;
-                case 6://是否收藏题目
-                    break;
-                case 7://上传答题情况的结果
-                    break;
-            }
-        }
-    };
 
 
     @Override
@@ -105,27 +78,134 @@ public class SelectProblemSlice extends AbilitySlice {
         super.setUIContent(ResourceTable.Layout_ability_problem_select);
 //        查找组件
         findComponents();
-//      TODO  跳转的参数
         initGson();
+
+//      跳转的参数
+        before = intent.getStringParam("before");
+        dynastyId = intent.getStringParam("dynastyId");
+
+        if (before.equals("types"))//类型页
+        {
+            HiLog.info(SelectProblemSlice.LABEL_LOG, "朝代页跳转");
+            getProblemFromServer(1);//下载题目
+        } else {//收藏页跳转
+            HiLog.info(SelectProblemSlice.LABEL_LOG, "收藏页跳转");
+            mProblemSave.setText("已收藏");
+//           隐藏上一题 下一题
+            mProblemP.setVisibility(Component.INVISIBLE);
+            mProblemN.setVisibility(Component.INVISIBLE);
+
+            cIndex = intent.getIntParam("position", 0);
+            problemSelect = (ProblemSelect) intent.getSerializableParam("problem");
+            cProblem.setProblemId(problemSelect.getProblemId());
+            cProblem.setProblemDetails(problemSelect.getProblemDetails());
+            cProblem.setGetAnswer(true);
+            cProblem.setCollection(true);
+//           cProblem //显示
+            mProblemUp.setVisibility(Component.HIDE);
+            mTvTitle.setText(problemSelect.getTitle());
+            mTvOptionA.setText(problemSelect.getOptionA());
+            mTvOptionB.setText(problemSelect.getOptionB());
+            mTvOptionC.setText(problemSelect.getOptionC());
+            mTvOptionD.setText(problemSelect.getOptionD());
+            String url = ServiceConfig.SERVICE_ROOT + "/img/";
+            HiLog.info(LABEL_LOG, "访问的路径" + url + problemSelect.getOptionApic());
+            HmOSImageLoader.with(SelectProblemSlice.this).load(url + problemSelect.getOptionApic()).into(mIvOptionA);
+            HmOSImageLoader.with(SelectProblemSlice.this).load(url + problemSelect.getOptionBpic()).into(mIvOptionB);
+            HmOSImageLoader.with(SelectProblemSlice.this).load(url + problemSelect.getOptionCpic()).into(mIvOptionC);
+            HmOSImageLoader.with(SelectProblemSlice.this).load(url + problemSelect.getOptionDpic()).into(mIvOptionD);
+
+        }
         //初始化并发任务分发器
         parallelTaskDispatcher = createParallelTaskDispatcher("ProblemPageParallelTaskDispatcher", TaskPriority.DEFAULT);
 //        答题设置监听器
         setListener();
-//        获取题目
-        getProblemFromServer(1);
     }
 
-    //TODO 初始化
-    private void initGson() {
-//        TODo 删除用户
-        User user = new User();
-        user.setUserId(1);
-        user.setUserCount(100);
-        user.setUserExperience(200);
-        Constant.User = user;
-        dynastyId = "11";
-        before = "type";
+    //    上一题 下一题
+    private void doResult(int action) {
+        for (int i = 0; i < 4; ++i) {// 清空图片
+            imageViewsCheck[i].setPixelMap(0);
+        }
+        switch (action) {
+            case LEFT:
+                cIndex += 1;
+                if (before.equals("info")) {
+                    return;
+                }
+                if (myProblems.size() > cIndex) {//下一道
+                    getBeforeOrNextProblem();//显示
+                    return;
+                } else {
 
+                    getProblemFromServer(1);
+                }
+
+                break;
+            case RIGHT:
+                cIndex -= 1;
+                if (before.equals("info")) {
+                    return;
+                }
+                if (cIndex < 0) {//上一道
+                    cIndex = 0;
+//                   提示不能滑动
+                    ToastUtil.showSickToast(SelectProblemSlice.this,"不能再滑啦");
+//                    Toast.makeText(getApplicationContext(), "不能再滑啦", Toast.LENGTH_SHORT).show();
+                    return;
+                } else {
+//                    显示
+                    getBeforeOrNextProblem();//显示上一道题目
+                }
+                break;
+        }
+    }
+
+
+    //    获取上下一道题目
+    private void getBeforeOrNextProblem() {
+        Problem problem = myProblems.get(cIndex);
+        cProblem = problem;
+//        上一题 下一题是否收藏 是否答过
+        if (cProblem.isGetAnswer()) {//答过
+//            显示解析
+            mProblemAnswer.setVisibility(Component.VISIBLE);//显示
+        } else {//没有答过
+            mProblemAnswer.setVisibility(Component.INVISIBLE);//不显示
+        }
+        if (cProblem.isCollection()) {//收藏过
+//            显示解析
+            mProblemSave.setText("已收藏");
+        } else {//没有收藏过
+            mProblemSave.setText("收藏");
+        }
+        switch (cProblem.getProblemType()) {
+            case 1://选择
+                HiLog.info(SelectProblemSlice.LABEL_LOG, "清空图片了啦");
+                for (int i = 0; i < 4; ++i) {// 清空图片
+                    imageViewsCheck[i].setPixelMap(0);
+                }
+                problemSelect = (ProblemSelect) problem;
+
+                HiLog.info(LABEL_LOG, "上一题下一题");
+                mProblemUp.setVisibility(Component.HIDE);
+                mTvTitle.setText(problemSelect.getTitle());
+                mTvOptionA.setText(problemSelect.getOptionA());
+                mTvOptionB.setText(problemSelect.getOptionB());
+                mTvOptionC.setText(problemSelect.getOptionC());
+                mTvOptionD.setText(problemSelect.getOptionD());
+                String url = ServiceConfig.SERVICE_ROOT + "/img/";
+                HmOSImageLoader.with(SelectProblemSlice.this).load(url + problemSelect.getOptionApic()).into(mIvOptionA);
+                HmOSImageLoader.with(SelectProblemSlice.this).load(url + problemSelect.getOptionBpic()).into(mIvOptionB);
+                HmOSImageLoader.with(SelectProblemSlice.this).load(url + problemSelect.getOptionCpic()).into(mIvOptionC);
+                HmOSImageLoader.with(SelectProblemSlice.this).load(url + problemSelect.getOptionDpic()).into(mIvOptionD);
+                break;
+        }
+    }
+
+
+    //初始化
+    private void initGson() {
 //        初始化工作
         mTvUserC.setText(Constant.User.getUserCount() + "");
         mTvUserE.setText(Constant.User.getUserExperience() + "");
@@ -133,10 +213,12 @@ public class SelectProblemSlice extends AbilitySlice {
         okHttpClient = new OkHttpClient();
         myProblems = new ArrayList<>();
         gson = new Gson();
+
     }
 
-    //Todo 获取题目
+    // 获取题目
     private void getProblemFromServer(int type) {
+//        朝代跳转
         mProblemAnswer.setVisibility(Component.INVISIBLE);//隐藏解析按钮
         Request request = new Request.Builder()
                 .url(ServiceConfig.SERVICE_ROOT + ServiceConfig.GET_PROBLEMS + type + "/" + dynastyId + "")
@@ -154,7 +236,6 @@ public class SelectProblemSlice extends AbilitySlice {
             public void onResponse(Call call, Response response) throws IOException {
 //                成功
                 String jsonData = response.body().string();
-                HiLog.info(LABEL_LOG, "题目" + ":" + jsonData);
 //                  得到题目 反序列化
                 Problem problem = gson.fromJson(jsonData, Problem.class);
                 HiLog.info(LABEL_LOG, "problem :" + problem.toString());
@@ -164,7 +245,6 @@ public class SelectProblemSlice extends AbilitySlice {
                 cProblem = problem;
 //                   根据题目类型解析
                 String[] contents1 = problem.getProblemContent().split("&&&");
-                HiLog.info(LABEL_LOG, "type :" + type);
                 switch (type) {
                     case 1:
                         problemSelect = new ProblemSelect();
@@ -182,14 +262,16 @@ public class SelectProblemSlice extends AbilitySlice {
                         problemSelect.setOptionDpic(contents1[8]);
                         problemSelect.setProblemKey(problem.getProblemKey());
                         problemSelect.setProblemDetails(problem.getProblemDetails());
-                        HiLog.info(LABEL_LOG, "选择题了啦");
+//
+                        if (mProblemSave.getText().equals("已收藏")) {
+                            HiLog.info(LABEL_LOG, "已收藏修改");
+                            problemSelect.setCollection(true);
+                        }
                         myProblems.add(problemSelect);
-
 //                        主线程运行
                         getMainTaskDispatcher().syncDispatch(new Runnable() {
                             @Override
                             public void run() {
-                                HiLog.info(LABEL_LOG, "接收到了");
                                 mProblemUp.setVisibility(Component.HIDE);
                                 mTvTitle.setText(problemSelect.getTitle());
                                 mTvOptionA.setText(problemSelect.getOptionA());
@@ -205,98 +287,33 @@ public class SelectProblemSlice extends AbilitySlice {
                             }
                         });
                         break;
-                    case 2:
-                        problemLinkLine = new ProblemLinkLine();
-                        problemLinkLine.setDynastyId(dynastyId);
-                        problemLinkLine.setProblemId(problem.getProblemId());
-                        problemLinkLine.setProblemDetails(problem.getProblemDetails());
-                        problemLinkLine.setProblemType(2);
-                        problemLinkLine.setTitle(contents1[0]);
-                        problemLinkLine.setOptionA(contents1[1]);
-                        problemLinkLine.setOptionB(contents1[2]);
-                        problemLinkLine.setOptionC(contents1[3]);
-                        problemLinkLine.setOptionD(contents1[4]);
-                        problemLinkLine.setOptionAdes(contents1[5]);
-                        problemLinkLine.setOptionBdes(contents1[6]);
-                        problemLinkLine.setOptionCdes(contents1[7]);
-                        problemLinkLine.setOptionDdes(contents1[8]);
-                        problemLinkLine.setProblemKey(problem.getProblemKey());
-                        String problemKey = problem.getProblemKey();
-                        String[] qNum = problemKey.split(Constant.DELIMITER);
-
-                        List<LinkDataBean> linkDataBeans = new ArrayList<>();
-                        for (int i = 0; i < 4; i++) {
-                            LinkDataBean linkDataBean = new LinkDataBean();
-                            linkDataBean.setContent(contents1[i + 1]);
-                            linkDataBean.setQ_num(Integer.parseInt(qNum[i]));
-                            linkDataBean.setRow(i + 1);
-                            linkDataBean.setCol(0);
-                            linkDataBeans.add(linkDataBean);
-                        }
-
-                        for (int i = 0; i < 4; i++) {
-                            LinkDataBean linkDataBean = new LinkDataBean();
-                            linkDataBean.setContent(contents1[i + 5]);
-                            linkDataBean.setQ_num(Integer.parseInt(qNum[i + 4]));
-                            linkDataBean.setRow(i + 1);
-                            linkDataBean.setCol(1);
-                            linkDataBeans.add(linkDataBean);
-                        }
-                        myProblems.add(problemLinkLine);
-                        eventHandler.sendEvent(2);
-
-                        break;
-                    case 3:
-                        problemgetOrder = new ProblemgetOrder();
-                        problemgetOrder.setProblemDetails(problem.getProblemDetails());
-                        problemgetOrder.setDynastyId(dynastyId);
-                        problemgetOrder.setTitle(contents1[0]);
-                        problemgetOrder.setProblemType(3);
-                        problemgetOrder.setProblemKey(problem.getProblemKey());
-                        problemgetOrder.setProblemId(problem.getProblemId());
-
-                        String key = problem.getProblemKey();
-                        List<OrderBean> orderBeans = new ArrayList<>();
-                        for (int i = 0; i < key.length(); i++) {
-                            //
-                            OrderBean orderBean = new OrderBean();
-                            orderBean.setContent(contents1[i + 1]);
-                            orderBean.setOrder(Integer.parseInt(key.charAt(i) + ""));
-                            orderBeans.add(orderBean);
-                        }
-                        problemgetOrder.setContents(orderBeans);
-                        myProblems.add(problemgetOrder);
-                        eventHandler.sendEvent(3);
-                        break;
                 }
             }
         });
     }
 
 
-
-    //    TODO 上传答题结果 判断朝代是否解锁
+    //  上传答题结果 判断朝代是否解锁
     public void UpProblemAnwer(int problemId, int result) {
-        HiLog.info(LABEL_LOG, "p答案 result："+result);
+        HiLog.info(LABEL_LOG, "p答案 result：" + result);
 //备注：result中1，表示正确，2表示错误
-        mProblemAnswer.setVisibility(Component.VISIBLE);//显示解析按钮
         switch (result) {
             case 1://正确
                 HiLog.info(LABEL_LOG, "回答正确喽！经验+20,积分+10\"");
-//                //TODO 判断
-//                if (Integer.parseInt(dynastyId) == Constant.UnlockDynasty.size()) {
-//                    //TODO 弹窗提示
-//                    HiLog.info(LABEL_LOG, "回答正确喽！经验+20,积分+10\"");
-////                    promptDialog.showInfo("回答正确喽！经验+20,积分+10");
-//                } else {//正确 未解锁
-//                    //TODO 弹窗提示
-//                    HiLog.info(LABEL_LOG, "回答正确喽！经验+20");
-////                    promptDialog.showInfo("回答正确喽！经验+20");
-//                }
+                // 判断
+                if (Integer.parseInt(dynastyId) == Constant.UnlockDynasty.size()) {
+                    //TODO 弹窗提示
+                    HiLog.info(LABEL_LOG, "回答正确喽！经验+20,积分+10\"");
+//                    promptDialog.showInfo("回答正确喽！经验+20,积分+10");
+                } else {//正确 未解锁
+                    //TODO 弹窗提示
+                    HiLog.info(LABEL_LOG, "回答正确喽！经验+20");
+//                    promptDialog.showInfo("回答正确喽！经验+20");
+                }
                 break;
             case 2:
-                //TODO 弹窗提示
-                HiLog.info(LABEL_LOG, "很遗憾~ 回答错误,经验+20");
+                //弹窗提示
+                ToastUtil.showSickToast(SelectProblemSlice.this,"很遗憾~ 回答错误,经验+20");
                 break;
         }
         if (before.equals("info")) {
@@ -314,6 +331,7 @@ public class SelectProblemSlice extends AbilitySlice {
             @Override
             public void onFailure(Call call, IOException e) {
             }
+
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String result = response.body().string();
@@ -321,8 +339,8 @@ public class SelectProblemSlice extends AbilitySlice {
                     @Override
                     public void run() {
                         ProblemCheckAnswer problemCheckAnswer = gson.fromJson(result, ProblemCheckAnswer.class);
-//                        TODO 加积分加经验
-                        HiLog.info(LABEL_LOG, "答案 加积分加经验" );
+//                       加积分加经验
+                        HiLog.info(LABEL_LOG, "答案 加积分加经验");
                         Constant.User.setUserExperience(problemCheckAnswer.getUserExperience());
                         Constant.User.setUserCount(problemCheckAnswer.getUserCount());
                         mTvUserC.setText(problemCheckAnswer.getUserCount() + "");
@@ -349,8 +367,11 @@ public class SelectProblemSlice extends AbilitySlice {
         mIvCheckD.setClickedListener(myListener);
         mProblemUp.setClickedListener(myListener);
         mProblemSave.setClickedListener(myListener);
+        mProblemP.setClickedListener(myListener);
+        mProblemN.setClickedListener(myListener);
 
     }
+
     private void findComponents() {
         mTvUserE = (Text) findComponentById(ResourceTable.Id_tv_user_e);
         mTvUserC = (Text) findComponentById(ResourceTable.Id_tv_user_c);
@@ -374,12 +395,14 @@ public class SelectProblemSlice extends AbilitySlice {
         mProblemAnswer = (Text) findComponentById(ResourceTable.Id_problem_answer);
         mProblemSave = (Text) findComponentById(ResourceTable.Id_problem_save);
         mProblemUp = (Text) findComponentById(ResourceTable.Id_problem_up);
+        mProblemP = (Text) findComponentById(ResourceTable.Id_problem_p);
+        mProblemN = (Text) findComponentById(ResourceTable.Id_problem_n);
         imageViewsCheck = new Image[]{mIvCheckA, mIvCheckB, mIvCheckC, mIvCheckD};
 
 
     }
 
-    //    TODO 监听器类
+    //    监听器类
     class MyListener implements Component.ClickedListener {
         @Override
         public void onClick(Component component) {
@@ -426,7 +449,6 @@ public class SelectProblemSlice extends AbilitySlice {
                     break;
                 case ResourceTable.Id_problem_save://收藏
                     HiLog.info(LABEL_LOG, "当先题目: " + cProblem.toString());
-
                     String s = mProblemSave.getText();
                     if (s.equals("收藏")) {//取消收藏
                         String urlSaveProblem = ServiceConfig.SERVICE_ROOT + "/userproblem/collect/" +
@@ -441,9 +463,11 @@ public class SelectProblemSlice extends AbilitySlice {
                             @Override
                             public void onFailure(Call call, IOException e) {
                                 HiLog.info(LABEL_LOG, "onFailure: " + "收藏失败");
-                                //TODO 弹窗提示
+                                // 提示
+                                ToastUtil.showSickToast(SelectProblemSlice.this,"网络拥堵，请稍后试试喔");
 //                                promptDialog.showError("网络较差，请稍后");
                             }
+
                             @Override
                             public void onResponse(Call call, Response response) throws IOException {
 //                                eventHandler.sendEvent(4);
@@ -452,10 +476,10 @@ public class SelectProblemSlice extends AbilitySlice {
                                     @Override
                                     public void run() {
                                         mProblemSave.setText("已收藏");
-                                        new ToastDialog(SelectProblemSlice.this)
-                                                .setText("收藏成功啦")
-                                                .setDuration(1500)
-                                                .show();
+                                        ToastUtil.showEncourageToast(SelectProblemSlice.this,"收藏成功啦");
+
+                                        if (before.equals("types"))
+                                            myProblems.get(cIndex).setCollection(true);
                                     }
                                 });
 
@@ -476,6 +500,7 @@ public class SelectProblemSlice extends AbilitySlice {
                             public void onFailure(Call call, IOException e) {
 //                                promptDialog.showError("网络较差，请稍后");
                             }
+
                             @Override
                             public void onResponse(Call call, Response response) throws IOException {
 //                                eventHandler.sendEvent(5);
@@ -483,10 +508,10 @@ public class SelectProblemSlice extends AbilitySlice {
                                     @Override
                                     public void run() {
                                         mProblemSave.setText("收藏");
-                                        new ToastDialog(SelectProblemSlice.this)
-                                                .setText("取消收藏成功啦")
-                                                .setDuration(1500)
-                                                .show();
+                                        ToastUtil.showEncourageToast(SelectProblemSlice.this,"取消收藏成功啦");
+
+                                        if (before.equals("types"))
+                                            myProblems.get(cIndex).setCollection(false);
                                     }
                                 });
 
@@ -494,14 +519,33 @@ public class SelectProblemSlice extends AbilitySlice {
                         });
                     }
                     break;
-                case ResourceTable.Id_problem_up://排序题检查
+                case ResourceTable.Id_problem_p://上一题
+                    doResult(RIGHT);
+                    break;
+                case ResourceTable.Id_problem_n://下一题
+                    doResult(LEFT);
                     break;
             }
         }
     }
 
-    //TODO 弹窗提示解析
+
+    // 弹窗提示解析
     private void getProblemAnswer() {
+        CommonDialog commonDialog = new CommonDialog(this);
+        Component dialog = LayoutScatter.getInstance(getContext()).parse(ResourceTable.Layout_dialog_problem_answer, null, false);
+        Text text = (Text) dialog.findComponentById(ResourceTable.Id_tv_answer);
+        Button btn = (Button) dialog.findComponentById(ResourceTable.Id_btn_close);
+        text.setText(cProblem.getProblemDetails());
+        btn.setClickedListener(new Component.ClickedListener() {
+            @Override
+            public void onClick(Component component) {
+                commonDialog.hide();
+            }
+        });
+        commonDialog.setSize(1000, 600);
+        commonDialog.setContentCustomComponent(dialog);
+        commonDialog.show();
 
     }
 
@@ -519,6 +563,7 @@ public class SelectProblemSlice extends AbilitySlice {
                 //失败
                 HiLog.info(LABEL_LOG, "获取是否收藏题目失败");
             }
+
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String result = response.body().string();
@@ -536,13 +581,17 @@ public class SelectProblemSlice extends AbilitySlice {
 
 
     }
-    //    检查正误
+
+    //    检查是否答过
     private boolean checkUserXuanAnswer(String option) {
-        if (isGetAnswer) {
+        if (before.equals("types")) {//朝代跳转
+            myProblems.get(cIndex).setGetAnswer(true);
+        }
+        mProblemAnswer.setVisibility(Component.VISIBLE);//显示解析按钮
+        if (isGetAnswer) {//isGetAnswer为true 答过   不会上传
             return false;
         }
         if (problemSelect.getProblemKey().equals(option) && !isGetAnswer) {
-
 //        上传结果
             UpProblemAnwer(problemSelect.getProblemId(), 1);
             isGetAnswer = true;
@@ -554,6 +603,7 @@ public class SelectProblemSlice extends AbilitySlice {
         }
 
     }
+
     //    更换选择题 正确与否的图片
     private void getCheckImage(int index) {
         imageViewsCheck[index].setPixelMap(ResourceTable.Media_p_no);

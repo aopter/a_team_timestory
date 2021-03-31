@@ -7,7 +7,7 @@
 
     <Text
         ohos:padding="5vp"
-        ohos:text_size="18fp"
+        ohos:text_size="17fp"
         ohos:id="$+id:dynasty"
         ohos:height="match_content"
         ohos:width="match_parent"

@@ -16,6 +16,24 @@ public class ProblemSelect extends Problem implements Serializable {
     private String title;//标题
     private String problemDetails;
     private int problemType;
+    public boolean isCollection = false;
+    public boolean isGetAnswer = false;
+
+    public boolean isCollection() {
+        return isCollection;
+    }
+
+    public void setCollection(boolean collection) {
+        isCollection = collection;
+    }
+
+    public boolean isGetAnswer() {
+        return isGetAnswer;
+    }
+
+    public void setGetAnswer(boolean getAnswer) {
+        isGetAnswer = getAnswer;
+    }
 
     @Override
     public int getProblemType() {
