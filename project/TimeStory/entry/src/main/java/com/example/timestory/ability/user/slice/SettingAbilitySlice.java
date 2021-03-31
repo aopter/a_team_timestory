@@ -2,6 +2,7 @@ package com.example.timestory.ability.user.slice;
 
 import com.example.timestory.ResourceTable;
 import com.example.timestory.Utils.HmOSImageLoader;
+import com.example.timestory.Utils.ToastUtil;
 import com.example.timestory.constant.Constant;
 import com.example.timestory.constant.ServiceConfig;
 import com.example.timestory.entity.UserDetails;
@@ -10,11 +11,9 @@ import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
 import ohos.agp.components.*;
 import ohos.agp.window.dialog.CommonDialog;
-import ohos.agp.window.dialog.ToastDialog;
 import ohos.eventhandler.EventHandler;
 import ohos.eventhandler.EventRunner;
 import ohos.eventhandler.InnerEvent;
-import ohos.hiviewdfx.HiLogLabel;
 import okhttp3.*;
 
 import java.io.BufferedReader;
@@ -149,10 +148,7 @@ public class SettingAbilitySlice extends AbilitySlice implements Component.Click
                 present(new LoginAbilitySlice(), new Intent());
                 break;
             default:
-                new ToastDialog(SettingAbilitySlice.this)
-                        .setText("未知错误")
-                        .setDuration(4000)
-                        .show();
+                getMainTaskDispatcher().syncDispatch(() -> ToastUtil.showCryToast(SettingAbilitySlice.this, "未知错误"));
                 break;
         }
     }
@@ -182,12 +178,7 @@ public class SettingAbilitySlice extends AbilitySlice implements Component.Click
         call.enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                getMainTaskDispatcher().syncDispatch(() -> {
-                    new ToastDialog(SettingAbilitySlice.this)
-                            .setText("请求失败")
-                            .setDuration(4000)
-                            .show();
-                });
+                getMainTaskDispatcher().syncDispatch(() -> ToastUtil.showCryToast(SettingAbilitySlice.this, "请求失败"));
                 if (commonDialog != null) {
                     commonDialog.hide();
                 }
@@ -198,10 +189,7 @@ public class SettingAbilitySlice extends AbilitySlice implements Component.Click
                 if (commonDialog != null) {
                     getMainTaskDispatcher().syncDispatch(commonDialog::hide);
                 }
-                getMainTaskDispatcher().syncDispatch(() -> new ToastDialog(SettingAbilitySlice.this)
-                        .setText("修改成功")
-                        .setDuration(4000)
-                        .show());
+                getMainTaskDispatcher().syncDispatch(() -> ToastUtil.showEncourageToast(SettingAbilitySlice.this, "修改成功"));
             }
         });
     }

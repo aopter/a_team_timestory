@@ -243,7 +243,6 @@ public class UserCenterAbilitySlice extends AbilitySlice implements Component.Cl
                 break;
             //积分
             case ResourceTable.Id_user_center_point_dl:
-                present(new RechargeAbilitySlice(), new Intent());
                 break;
             //设置
             case ResourceTable.Id_user_center_setting_dl:

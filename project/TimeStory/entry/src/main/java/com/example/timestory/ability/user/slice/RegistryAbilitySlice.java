@@ -1,6 +1,7 @@
 package com.example.timestory.ability.user.slice;
 
 import com.example.timestory.ResourceTable;
+import com.example.timestory.Utils.ToastUtil;
 import com.example.timestory.constant.Constant;
 import com.example.timestory.constant.ServiceConfig;
 import com.google.gson.JsonParser;
@@ -55,10 +56,7 @@ public class RegistryAbilitySlice extends AbilitySlice {
      */
     private void registry(String phoneNum, String password) {
         if (phoneNum == null || password == null || phoneNum.length() != Constant.PHONE_LENGTH || "".equals(password)) {
-            new ToastDialog(RegistryAbilitySlice.this)
-                    .setText("手机号格式不正确或密码为空")
-                    .setDuration(4000)
-                    .show();
+            ToastUtil.showCryToast(RegistryAbilitySlice.this, "手机号格式不正确或密码为空");
             return;
         }
         //实例化OkHttp
@@ -82,11 +80,7 @@ public class RegistryAbilitySlice extends AbilitySlice {
             @Override
             public void onFailure(Call call, IOException e) {
                 //ToastDialog只能在主线程执行，所以获取主线程供子线程中创建ToastDialog，下同
-                getMainTaskDispatcher().syncDispatch(() ->
-                        new ToastDialog(RegistryAbilitySlice.this)
-                                .setText("请求失败，请检查网络连接是否正常")
-                                .setDuration(4000)
-                                .show());
+                getMainTaskDispatcher().syncDispatch(() -> ToastUtil.showCryToast(RegistryAbilitySlice.this, "请求失败，请检查网络连接是否正常"));
                 e.printStackTrace();
             }
 
@@ -101,6 +95,7 @@ public class RegistryAbilitySlice extends AbilitySlice {
                                     .setText("注册成功")
                                     .setDuration(4000)
                                     .show());
+                    getMainTaskDispatcher().syncDispatch(() -> ToastUtil.showEncourageToast(RegistryAbilitySlice.this, "注册成功"));
                     //无参跳转
                     Intent intent = new Intent();
                     intent.setParam("phoneNum", phoneNum);
@@ -110,11 +105,7 @@ public class RegistryAbilitySlice extends AbilitySlice {
                     RegistryAbilitySlice.this.terminate();
                 } else {
                     //注册失败
-                    getMainTaskDispatcher().syncDispatch(() ->
-                            new ToastDialog(RegistryAbilitySlice.this)
-                                    .setText("注册失败，该用户已存在")
-                                    .setDuration(4000)
-                                    .show());
+                    getMainTaskDispatcher().syncDispatch(() -> ToastUtil.showCryToast(RegistryAbilitySlice.this, "注册失败"));
                 }
             }
         });

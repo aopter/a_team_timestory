@@ -1,6 +1,7 @@
 package com.example.timestory.ability.user.slice;
 
 import com.example.timestory.ResourceTable;
+import com.example.timestory.Utils.ToastUtil;
 import com.example.timestory.ability.dynasty.slice.HomePageAbilitySlice;
 import com.example.timestory.constant.Constant;
 import com.example.timestory.constant.ServiceConfig;
@@ -153,11 +154,7 @@ public class LoginAbilitySlice extends AbilitySlice {
                     String result = response.body().string();
                     if (result.contains("false")) {
                         //登录失败
-                        getMainTaskDispatcher().syncDispatch(() ->
-                                new ToastDialog(LoginAbilitySlice.this)
-                                        .setText("登录失败，请检查用户名和密码是否正确")
-                                        .setDuration(4000)
-                                        .show());
+                        getMainTaskDispatcher().syncDispatch(() -> ToastUtil.showCryToast(LoginAbilitySlice.this, "登录失败"));
                     } else {
                         if (saveUserRb.isChecked()) {
                             saveUser();
@@ -165,11 +162,7 @@ public class LoginAbilitySlice extends AbilitySlice {
                             deleteUser();
                         }
                         //登录成功
-                        getMainTaskDispatcher().syncDispatch(() ->
-                                new ToastDialog(LoginAbilitySlice.this)
-                                        .setText("登陆成功")
-                                        .setDuration(4000)
-                                        .show());
+                        getMainTaskDispatcher().syncDispatch(() -> ToastUtil.showEncourageToast(LoginAbilitySlice.this, "登录成功！"));
                         //处理返回Json串
                         Constant.User = new Gson().fromJson(result, User.class);
                         Constant.User.setUserAccount(phoneNum);
@@ -180,11 +173,7 @@ public class LoginAbilitySlice extends AbilitySlice {
                         LoginAbilitySlice.this.terminate();
                     }
                 } else {
-                    getMainTaskDispatcher().syncDispatch(() ->
-                            new ToastDialog(LoginAbilitySlice.this)
-                                    .setText("收到响应异常，请稍后再试")
-                                    .setDuration(4000)
-                                    .show());
+                    getMainTaskDispatcher().syncDispatch(() -> getMainTaskDispatcher().syncDispatch(() -> ToastUtil.showCryToast(LoginAbilitySlice.this, "登录失败")));
                 }
             }
         });

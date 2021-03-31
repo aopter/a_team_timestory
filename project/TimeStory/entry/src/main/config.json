@@ -223,24 +223,6 @@
       },
       {
         "orientation": "landscape",
-        "name": "com.example.timestory.ability.user.RechargeAbility",
-        "icon": "$media:icon",
-        "description": "$string:detailseventability_description",
-        "label": "TimeStroy",
-        "type": "page",
-        "launchType": "standard",
-        "metaData": {
-          "customizeData": [
-            {
-              "name": "hwc-theme",
-              "value": "androidhwext:style/Theme.Emui.Light.NoTitleBar.Fullscreen",
-              "extra": ""
-            }
-          ]
-        }
-      },
-      {
-        "orientation": "landscape",
         "name": "com.example.timestory.ability.user.RegistryAbility",
         "icon": "$media:icon",
         "description": "$string:detailseventability_description",
