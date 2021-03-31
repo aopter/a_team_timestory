@@ -40,7 +40,6 @@
       "moduleType": "entry"
     },
     "abilities": [
-
       {
         "orientation": "landscape",
         "name": "com.example.timestory.ability.card.DrawCardAbility",
