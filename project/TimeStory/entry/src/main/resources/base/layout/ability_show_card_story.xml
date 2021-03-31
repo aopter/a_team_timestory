@@ -22,7 +22,8 @@
             ohos:image_src="$media:back"
             ohos:layout_alignment="vertical_center"
             ohos:left_margin="10vp"
-            ohos:padding="10vp"/>
+            ohos:padding="10vp"
+            ohos:scale_mode="stretch"/>
 
         <Text
             ohos:id="$+id:role_story"
@@ -81,16 +82,13 @@
                 ohos:weight="1"/>
         </DirectionalLayout>
 
-        <!-- TODO 结点 -->
-
         <Image
             ohos:id="$+id:card_img"
-            ohos:height="250vp"
+            ohos:height="210vp"
             ohos:width="140vp"
             ohos:align_parent_bottom="true"
-            ohos:alpha="0.95"
+            ohos:alpha="0.75"
             ohos:bottom_margin="70vp"
-            ohos:image_src="$media:role"
-            ohos:left_margin="90vp"/>
+            ohos:left_margin="70vp"/>
     </DependentLayout>
 </DependentLayout>

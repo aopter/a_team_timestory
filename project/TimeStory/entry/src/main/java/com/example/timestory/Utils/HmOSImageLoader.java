@@ -20,8 +20,6 @@ public class HmOSImageLoader {
     Image image;
     String url;
     int defImage;
-    int imageWidth;
-    int imageHeight;
     AbilitySlice abilitySlice;
 
     private HmOSImageLoader(AbilitySlice abilitySlice) {
@@ -44,15 +42,6 @@ public class HmOSImageLoader {
 
     public void into(Image image) {
         this.image = image;
-        imageHeight = image.getHeight();
-        imageWidth = image.getWidth();
-        start();
-    }
-
-    public void into(Image image, int imageWidth, int imageHeight) {
-        this.image = image;
-        this.imageHeight = imageHeight;
-        this.imageWidth = imageWidth;
         start();
     }
 
@@ -75,8 +64,6 @@ public class HmOSImageLoader {
             try {
 //                PixelMap.InitializationOptions initializationOptions = new PixelMap.InitializationOptions();
 //                initializationOptions.size = new Size(imageWidth, imageHeight);
-                ImageSource.DecodingOptions decodingOpts = new ImageSource.DecodingOptions();
-                decodingOpts.desiredSize = new Size(imageWidth, imageHeight);
                 //异步网络请求
                 Response execute = okHttpClient.newCall(request).execute();
                 //获取流
@@ -84,7 +71,7 @@ public class HmOSImageLoader {
                 //利用鸿蒙api将流解码为图片源
                 ImageSource imageSource = ImageSource.create(inputStream, null);
                 //根据图片源创建位图
-                PixelMap pixelMap = imageSource.createPixelmap(decodingOpts);
+                PixelMap pixelMap = imageSource.createPixelmap(null);
 
                 abilitySlice.getUITaskDispatcher().asyncDispatch(new Runnable() {
                     @Override

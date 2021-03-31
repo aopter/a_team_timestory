@@ -45,7 +45,7 @@
                 ohos:width="match_parent"
                 ohos:align_parent_left="true"
                 ohos:align_parent_top="true"
-                ohos:padding="20vp"
+                ohos:alpha="0"
                 ohos:text="点击看看得到了什么卡片吧＾０＾~"
                 ohos:text_alignment="vertical_center"
                 ohos:text_color="#FFF"
@@ -60,21 +60,16 @@
                 ohos:margin="20vp"
                 ohos:visibility="hide"/>
 
-            <DirectionalLayout
-                ohos:height="match_parent"
-                ohos:width="match_parent"
-                ohos:alignment="vertical_center"
-                ohos:orientation="vertical">
-
-                <Image
-                    ohos:id="$+id:draw_card_show"
-                    ohos:height="260vp"
-                    ohos:width="190vp"
-                    ohos:alpha="0"
-                    ohos:background_element="$color:ourDynastyRed"
-                    ohos:image_src="$media:card_back"
-                    ohos:layout_alignment="horizontal_center"/>
-            </DirectionalLayout>
+            <Image
+                ohos:id="$+id:draw_card_show"
+                ohos:height="200vp"
+                ohos:width="150vp"
+                ohos:alpha="0"
+                ohos:background_element="$color:ourDynastyRed"
+                ohos:center_in_parent="true"
+                ohos:image_src="$media:card_back"
+                ohos:padding="20vp"
+                ohos:scale_mode="stretch"/>
 
             <Button
                 ohos:id="$+id:to_last_view"
@@ -84,9 +79,10 @@
                 ohos:align_parent_right="true"
                 ohos:alpha="0"
                 ohos:background_element="#ffcc0000"
-                ohos:padding="15vp"
+                ohos:padding="10vp"
                 ohos:text="返回上一页"
-                ohos:text_color="#FFF"/>
+                ohos:text_color="#FFF"
+                ohos:text_size="15fp"/>
         </DependentLayout>
 
         <DirectionalLayout
@@ -103,16 +99,20 @@
                     ohos:id="$+id:title_container"
                     ohos:height="50vp"
                     ohos:width="match_parent"
+                    ohos:align_parent_left="true"
+                    ohos:align_parent_top="true"
                     ohos:margin="20vp"
                     ohos:orientation="horizontal">
 
                     <Image
                         ohos:id="$+id:back"
-                        ohos:height="match_parent"
-                        ohos:width="50vp"
+                        ohos:height="40vp"
+                        ohos:width="40vp"
                         ohos:image_src="$media:back"
+                        ohos:layout_alignment="center"
                         ohos:left_margin="10vp"
-                        ohos:padding="5vp"/>
+                        ohos:padding="5vp"
+                        ohos:scale_mode="stretch"/>
 
                     <Text
                         ohos:id="$+id:text"
@@ -122,7 +122,7 @@
                         ohos:text="快在下面挑选一张属于你的卡片吧~"
                         ohos:text_alignment="vertical_center"
                         ohos:text_color="#000"
-                        ohos:text_size="25fp"
+                        ohos:text_size="20fp"
                         ohos:weight="100"/>
                 </DirectionalLayout>
 
@@ -133,9 +133,9 @@
                     ohos:below="$id:title_container">
 
                     <DirectionalLayout
-                        ohos:height="match_parent"
+                        ohos:height="match_content"
                         ohos:width="match_parent"
-                        ohos:alignment="vertical_center"
+                        ohos:alignment="center"
                         ohos:alpha="0.9"
                         ohos:left_padding="20vp"
                         ohos:orientation="horizontal"
@@ -143,38 +143,42 @@
 
                         <Image
                             ohos:id="$+id:card1"
-                            ohos:height="260vp"
+                            ohos:height="180vp"
                             ohos:width="0"
                             ohos:background_element="$color:ourDynastyRed"
                             ohos:image_src="$media:card_back"
                             ohos:margin="15vp"
+                            ohos:scale_mode="stretch"
                             ohos:weight="1"/>
 
                         <Image
                             ohos:id="$+id:card2"
-                            ohos:height="260vp"
+                            ohos:height="180vp"
                             ohos:width="0"
                             ohos:background_element="$color:ourDynastyRed"
                             ohos:image_src="$media:card_back"
                             ohos:margin="15vp"
+                            ohos:scale_mode="stretch"
                             ohos:weight="1"/>
 
                         <Image
                             ohos:id="$+id:card3"
-                            ohos:height="260vp"
+                            ohos:height="180vp"
                             ohos:width="0"
                             ohos:background_element="$color:ourDynastyRed"
                             ohos:image_src="$media:card_back"
                             ohos:margin="15vp"
+                            ohos:scale_mode="stretch"
                             ohos:weight="1"/>
 
                         <Image
                             ohos:id="$+id:card4"
-                            ohos:height="260vp"
+                            ohos:height="180vp"
                             ohos:width="0"
                             ohos:background_element="$color:ourDynastyRed"
                             ohos:image_src="$media:card_back"
                             ohos:margin="15vp"
+                            ohos:scale_mode="stretch"
                             ohos:weight="1"/>
                     </DirectionalLayout>
                 </DirectionalLayout>

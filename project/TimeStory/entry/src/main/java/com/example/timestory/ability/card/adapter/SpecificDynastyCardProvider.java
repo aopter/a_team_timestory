@@ -70,7 +70,7 @@ public class SpecificDynastyCardProvider extends RecycleItemProvider {
                 cardName1.setText(cards.get(position).get(i).getCardListVO().getCardName());
                 HmOSImageLoader.with(slice)
                         .load(ServiceConfig.SERVICE_ROOT + "/picture/download/" + cards.get(position).get(i).getCardListVO().getCardPicture())
-                        .into(cardPic1, width, height);
+                        .into(cardPic1);
                 cardNum1.setText(cards.get(position).get(i).getCardCount() + "");
                 int finalI = i;
                 cardContainer1.setClickedListener(new Component.ClickedListener() {
@@ -92,7 +92,7 @@ public class SpecificDynastyCardProvider extends RecycleItemProvider {
                 cardName2.setText(cards.get(position).get(i).getCardListVO().getCardName());
                 HmOSImageLoader.with(slice)
                         .load(ServiceConfig.SERVICE_ROOT + "/picture/download/" + cards.get(position).get(i).getCardListVO().getCardPicture())
-                        .into(cardPic2, width, height);
+                        .into(cardPic2);
                 cardNum2.setText(cards.get(position).get(i).getCardCount() + "");
                 int finalI = i;
                 cardContainer2.setClickedListener(new Component.ClickedListener() {
@@ -114,7 +114,7 @@ public class SpecificDynastyCardProvider extends RecycleItemProvider {
                 cardName3.setText(cards.get(position).get(i).getCardListVO().getCardName());
                 HmOSImageLoader.with(slice)
                         .load(ServiceConfig.SERVICE_ROOT + "/picture/download/" + cards.get(position).get(i).getCardListVO().getCardPicture())
-                        .into(cardPic3, width, height);
+                        .into(cardPic3);
                 cardNum3.setText(cards.get(position).get(i).getCardCount() + "");
                 int finalI = i;
                 cardContainer3.setClickedListener(new Component.ClickedListener() {
@@ -136,7 +136,7 @@ public class SpecificDynastyCardProvider extends RecycleItemProvider {
                 cardName4.setText(cards.get(position).get(i).getCardListVO().getCardName());
                 HmOSImageLoader.with(slice)
                         .load(ServiceConfig.SERVICE_ROOT + "/picture/download/" + cards.get(position).get(i).getCardListVO().getCardPicture())
-                        .into(cardPic4, width, height);
+                        .into(cardPic4);
                 cardNum4.setText(cards.get(position).get(i).getCardCount() + "");
                 int finalI = i;
                 cardContainer4.setClickedListener(new Component.ClickedListener() {
