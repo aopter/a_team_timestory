@@ -44,7 +44,7 @@
 
         <DependentLayout
             ohos:height="match_parent"
-            ohos:width="match_content">
+            ohos:width="140vp">
 
             <Image
                 ohos:id="$+id:card_img"
@@ -52,7 +52,8 @@
                 ohos:width="140vp"
                 ohos:above="$id:card_name_container"
                 ohos:bottom_margin="20vp"
-                ohos:horizontal_center="true"/>
+                ohos:horizontal_center="true"
+                ohos:scale_mode="stretch"/>
 
             <DirectionalLayout
                 ohos:id="$+id:card_name_container"
@@ -69,6 +70,7 @@
                     ohos:alpha="0.7"
                     ohos:background_element="$color:holo_red_dark"
                     ohos:layout_alignment="horizontal_center"
+                    ohos:multiple_lines="true"
                     ohos:padding="10vp"
                     ohos:text_alignment="center"
                     ohos:text_color="#FFF"
