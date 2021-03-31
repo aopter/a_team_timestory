@@ -3,10 +3,9 @@
     xmlns:ohos="http://schemas.huawei.com/res/ohos"
     ohos:height="match_content"
     ohos:width="match_parent"
-    ohos:left_margin="40vp"
+    ohos:left_margin="30vp"
     ohos:orientation="horizontal"
-    ohos:right_margin="40vp"
-    ohos:top_margin="20vp">
+    ohos:right_margin="30vp">
 
     <DirectionalLayout
         ohos:height="match_content"
@@ -17,7 +16,7 @@
             ohos:id="$+id:card_container1"
             ohos:height="match_content"
             ohos:width="match_parent"
-            ohos:margin="20vp"
+            ohos:margin="10vp"
             ohos:orientation="vertical"
             ohos:visibility="hide">
 
@@ -27,13 +26,14 @@
 
                 <Image
                     ohos:id="$+id:card_pic1"
-                    ohos:height="200vp"
+                    ohos:height="180vp"
                     ohos:width="140vp"
                     ohos:alpha="0.8"
                     ohos:background_element="$media:bg_card_img"
                     ohos:center_in_parent="true"
                     ohos:image_src="$media:share"
-                    ohos:padding="10vp"/>
+                    ohos:padding="20vp"
+                    ohos:scale_mode="stretch"/>
 
                 <Text
                     ohos:id="$+id:card_num1"
@@ -55,7 +55,8 @@
                 ohos:horizontal_center="true"
                 ohos:padding="10vp"
                 ohos:text_alignment="center"
-                ohos:text_color="black"/>
+                ohos:text_color="black"
+                ohos:text_size="12fp"/>
         </DirectionalLayout>
     </DirectionalLayout>
 
@@ -68,7 +69,7 @@
             ohos:id="$+id:card_container2"
             ohos:height="match_content"
             ohos:width="match_parent"
-            ohos:margin="20vp"
+            ohos:margin="10vp"
             ohos:orientation="vertical"
             ohos:visibility="hide">
 
@@ -78,13 +79,14 @@
 
                 <Image
                     ohos:id="$+id:card_pic2"
-                    ohos:height="200vp"
+                    ohos:height="180vp"
                     ohos:width="140vp"
                     ohos:alpha="0.8"
                     ohos:background_element="$media:bg_card_img"
                     ohos:center_in_parent="true"
                     ohos:image_src="$media:share"
-                    ohos:padding="10vp"/>
+                    ohos:padding="20vp"
+                    ohos:scale_mode="stretch"/>
 
                 <Text
                     ohos:id="$+id:card_num2"
@@ -106,7 +108,8 @@
                 ohos:horizontal_center="true"
                 ohos:padding="10vp"
                 ohos:text_alignment="center"
-                ohos:text_color="black"/>
+                ohos:text_color="black"
+                ohos:text_size="12fp"/>
         </DirectionalLayout>
     </DirectionalLayout>
 
@@ -119,7 +122,7 @@
             ohos:id="$+id:card_container3"
             ohos:height="match_content"
             ohos:width="match_parent"
-            ohos:margin="20vp"
+            ohos:margin="10vp"
             ohos:orientation="vertical"
             ohos:visibility="hide">
 
@@ -129,13 +132,14 @@
 
                 <Image
                     ohos:id="$+id:card_pic3"
-                    ohos:height="200vp"
+                    ohos:height="180vp"
                     ohos:width="140vp"
                     ohos:alpha="0.8"
                     ohos:background_element="$media:bg_card_img"
                     ohos:center_in_parent="true"
                     ohos:image_src="$media:share"
-                    ohos:padding="10vp"/>
+                    ohos:padding="20vp"
+                    ohos:scale_mode="stretch"/>
 
                 <Text
                     ohos:id="$+id:card_num3"
@@ -157,7 +161,8 @@
                 ohos:horizontal_center="true"
                 ohos:padding="10vp"
                 ohos:text_alignment="center"
-                ohos:text_color="black"/>
+                ohos:text_color="black"
+                ohos:text_size="12fp"/>
         </DirectionalLayout>
     </DirectionalLayout>
 
@@ -170,7 +175,7 @@
             ohos:id="$+id:card_container4"
             ohos:height="match_content"
             ohos:width="match_parent"
-            ohos:margin="20vp"
+            ohos:margin="10vp"
             ohos:orientation="vertical"
             ohos:visibility="hide">
 
@@ -180,13 +185,14 @@
 
                 <Image
                     ohos:id="$+id:card_pic4"
-                    ohos:height="200vp"
+                    ohos:height="180vp"
                     ohos:width="140vp"
                     ohos:alpha="0.8"
                     ohos:background_element="$media:bg_card_img"
                     ohos:center_in_parent="true"
                     ohos:image_src="$media:share"
-                    ohos:padding="10vp"/>
+                    ohos:padding="20vp"
+                    ohos:scale_mode="stretch"/>
 
                 <Text
                     ohos:id="$+id:card_num4"
@@ -209,7 +215,8 @@
                 ohos:horizontal_center="true"
                 ohos:padding="10vp"
                 ohos:text_alignment="center"
-                ohos:text_color="black"/>
+                ohos:text_color="black"
+                ohos:text_size="12fp"/>
         </DirectionalLayout>
     </DirectionalLayout>
 </DirectionalLayout>

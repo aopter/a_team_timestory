@@ -17,10 +17,12 @@
 
         <Image
             ohos:id="$+id:back"
-            ohos:height="match_parent"
+            ohos:height="40vp"
             ohos:width="40vp"
             ohos:image_src="$media:back"
-            ohos:padding="10vp"/>
+            ohos:layout_alignment="center"
+            ohos:padding="10vp"
+            ohos:scale_mode="stretch"/>
 
         <Text
             ohos:id="$+id:text"
@@ -42,15 +44,15 @@
 
         <DependentLayout
             ohos:height="match_parent"
-            ohos:width="190vp"
-            ohos:left_margin="10vp">
+            ohos:width="match_content">
 
             <Image
                 ohos:id="$+id:card_img"
-                ohos:height="260vp"
-                ohos:width="190vp"
+                ohos:height="210vp"
+                ohos:width="140vp"
                 ohos:above="$id:card_name_container"
-                ohos:bottom_margin="20vp"/>
+                ohos:bottom_margin="20vp"
+                ohos:horizontal_center="true"/>
 
             <DirectionalLayout
                 ohos:id="$+id:card_name_container"
@@ -63,12 +65,14 @@
                 <Button
                     ohos:id="$+id:card_name"
                     ohos:height="match_content"
-                    ohos:width="100vp"
+                    ohos:width="match_content"
                     ohos:alpha="0.7"
                     ohos:background_element="$color:holo_red_dark"
+                    ohos:layout_alignment="horizontal_center"
                     ohos:padding="10vp"
                     ohos:text_alignment="center"
                     ohos:text_color="#FFF"
+                    ohos:text_size="12fp"
                     ohos:text_weight="200"/>
             </DirectionalLayout>
         </DependentLayout>
@@ -113,6 +117,7 @@
                 ohos:right_margin="30vp"
                 ohos:text="查看生平"
                 ohos:text_color="#FFF"
+                ohos:text_size="12fp"
                 ohos:text_weight="200"/>
         </DependentLayout>
     </DirectionalLayout>

@@ -136,7 +136,6 @@ public class DrawCardAbilitySlice extends AbilitySlice {
 
             @Override
             public void onEnd(Animator animator) {
-                // TODO 设置背景
                 try {
                     drawCard.setBackground(new PixelMapElement(getResourceManager().getResource(ResourceTable.Media_bg_card_img)));
                 } catch (IOException e) {
@@ -146,7 +145,7 @@ public class DrawCardAbilitySlice extends AbilitySlice {
                 }
                 tip.setText(" (≧∇≦)ﾉ 手气真棒，恭喜你获得了‘" + card.getCardName() + "’卡片！");
                 HmOSImageLoader.with(abilitySlice).load(ServiceConfig.SERVICE_ROOT + "/img/" + card.getCardPicture())
-                        .into(drawCard, drawCard.getWidth() - 30, drawCard.getHeight() - 50);
+                        .into(drawCard);
                 AnimatorProperty property = drawCard.createAnimatorProperty().scaleXBy(0).scaleX(1).scaleYBy(0).scaleY(1).setDuration(1000);
                 property.start();
                 System.out.println("____draw____" + cardAnimation);
@@ -231,7 +230,8 @@ public class DrawCardAbilitySlice extends AbilitySlice {
                                 AnimatorProperty property = cardContainer.createAnimatorProperty().alpha(0.7f).setDuration(1000);
                                 AnimatorProperty toLast = toLastView.createAnimatorProperty().alpha(0.9f).setDuration(1000);
                                 AnimatorProperty draw = drawCard.createAnimatorProperty().alpha(0.9f).setDuration(1000);
-                                group.runParallel(property, toLast, draw);
+                                AnimatorProperty t = tip.createAnimatorProperty().alpha(0.9f).setDuration(1000);
+                                group.runParallel(property, toLast, draw, t);
                                 group.start();
                             }
 
