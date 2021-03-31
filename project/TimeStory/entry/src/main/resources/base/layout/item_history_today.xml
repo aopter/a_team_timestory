@@ -8,14 +8,14 @@
 
     <Text
         ohos:id="$+id:history_today_title"
-        ohos:height="50vp"
+        ohos:height="25vp"
         ohos:width="match_parent"
         ohos:alpha="0.8"
         ohos:background_element="$color:white"
         ohos:text=""
         ohos:text_alignment="center"
         ohos:text_color="#AE5B41"
-        ohos:text_size="20fp"/>
+        ohos:text_size="10fp"/>
 
     <DirectionalLayout
         ohos:height="match_parent"
@@ -25,7 +25,7 @@
         ohos:orientation="vertical">
 
         <DependentLayout
-            ohos:height="50vp"
+            ohos:height="25vp"
             ohos:width="match_parent"
             ohos:background_element="$color:colorBorder">
 
@@ -36,8 +36,8 @@
                 ohos:left_of="$id:history_today_time"
                 ohos:text="时间:"
                 ohos:text_color="$color:white"
-                ohos:text_size="15fp"
-                ohos:top_padding="20vp"/>
+                ohos:text_size="8fp"
+                ohos:top_padding="10vp"/>
 
             <Text
                 ohos:id="$+id:history_today_time"
@@ -45,11 +45,11 @@
                 ohos:width="match_content"
                 ohos:align_parent_end="true"
                 ohos:alpha="0.8"
-                ohos:right_padding="20vp"
+                ohos:right_padding="10vp"
                 ohos:text=""
                 ohos:text_color="$color:white"
-                ohos:text_size="15fp"
-                ohos:top_padding="20vp"/>
+                ohos:text_size="8fp"
+                ohos:top_padding="10vp"/>
         </DependentLayout>
 
         <Text
@@ -58,11 +58,10 @@
             ohos:id="$+id:history_today_body"
             ohos:height="match_parent"
             ohos:width="match_parent"
-            ohos:left_padding="20vp"
-            ohos:right_padding="20vp"
+            ohos:left_padding="10vp"
+            ohos:right_padding="10vp"
             ohos:text=""
             ohos:text_color="$color:white"
-            ohos:text_size="15fp"
-            ohos:top_padding="10vp"/>
+            ohos:text_size="8fp"/>
     </DirectionalLayout>
 </DirectionalLayout>

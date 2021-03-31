@@ -8,23 +8,26 @@
 
     <!--横向模块-->
     <DirectionalLayout
-        ohos:height="match_content"
+        ohos:height="match_parent"
         ohos:width="match_parent"
-        ohos:left_margin="30vp"
+        ohos:left_margin="15vp"
         ohos:orientation="horizontal"
-        ohos:top_margin="30vp">
+        ohos:top_margin="15vp"
+        ohos:weight="1">
 
         <DirectionalLayout
             ohos:height="match_content"
             ohos:width="match_content"
             ohos:clickable="true"
+            ohos:layout_alignment="vertical_center"
             ohos:orientation="vertical">
 
             <Image
                 ohos:id="$+id:user_center_header"
-                ohos:height="60vp"
-                ohos:width="60vp"
-                ohos:image_src="$media:test_header"/>
+                ohos:height="30vp"
+                ohos:width="30vp"
+                ohos:image_src="$media:test_header"
+                ohos:scale_mode="zoom_center"/>
 
             <ProgressBar
                 ohos:id="$+id:user_center_pb"
@@ -34,8 +37,7 @@
                 ohos:min="0"
                 ohos:progress="60"
                 ohos:progress_color="#AE5B41"
-                ohos:progress_width="10vp"
-                ohos:top_margin="10vp"/>
+                ohos:progress_width="10vp"/>
         </DirectionalLayout>
 
         <DependentLayout
@@ -45,18 +47,18 @@
             ohos:background_element="$media:button"
             ohos:clickable="true"
             ohos:layout_alignment="vertical_center"
-            ohos:left_margin="30vp">
+            ohos:left_margin="15vp">
 
             <Text
                 ohos:id="$+id:user_center_tx_level"
-                ohos:height="40vp"
-                ohos:width="90vp"
+                ohos:height="20vp"
+                ohos:width="50vp"
                 ohos:alpha="0.9"
                 ohos:padding="5vp"
                 ohos:text=""
                 ohos:text_alignment="center"
                 ohos:text_color="#AE5B41"
-                ohos:text_size="12fp"/>
+                ohos:text_size="10fp"/>
         </DependentLayout>
 
         <DependentLayout
@@ -66,17 +68,17 @@
             ohos:background_element="$media:button"
             ohos:clickable="true"
             ohos:layout_alignment="vertical_center"
-            ohos:left_margin="30vp">
+            ohos:left_margin="15vp">
 
             <Text
-                ohos:height="40vp"
-                ohos:width="90vp"
+                ohos:height="20vp"
+                ohos:width="50vp"
                 ohos:alpha="0.9"
                 ohos:padding="5vp"
                 ohos:text="抽卡"
                 ohos:text_alignment="center"
                 ohos:text_color="#AE5B41"
-                ohos:text_size="12fp"/>
+                ohos:text_size="10fp"/>
         </DependentLayout>
 
         <DependentLayout
@@ -86,17 +88,17 @@
             ohos:background_element="$media:button"
             ohos:clickable="true"
             ohos:layout_alignment="vertical_center"
-            ohos:left_margin="30vp">
+            ohos:left_margin="15vp">
 
             <Text
-                ohos:height="40vp"
-                ohos:width="90vp"
+                ohos:height="20vp"
+                ohos:width="50vp"
                 ohos:alpha="0.9"
                 ohos:padding="5vp"
                 ohos:text="出行"
                 ohos:text_alignment="center"
                 ohos:text_color="#AE5B41"
-                ohos:text_size="12fp"/>
+                ohos:text_size="10fp"/>
         </DependentLayout>
 
         <DependentLayout
@@ -106,22 +108,22 @@
             ohos:background_element="$media:button"
             ohos:clickable="true"
             ohos:layout_alignment="vertical_center"
-            ohos:left_margin="30vp">
+            ohos:left_margin="15vp">
 
             <Text
                 ohos:id="$+id:str_rl"
-                ohos:height="40vp"
+                ohos:height="20vp"
                 ohos:width="match_content"
                 ohos:alpha="0.9"
                 ohos:left_padding="10vp"
                 ohos:text="积分:"
                 ohos:text_alignment="center"
                 ohos:text_color="#AE5B41"
-                ohos:text_size="12fp"/>
+                ohos:text_size="10fp"/>
 
             <Text
                 ohos:id="$+id:user_center_tx_point"
-                ohos:height="40vp"
+                ohos:height="20vp"
                 ohos:width="match_content"
                 ohos:alpha="0.9"
                 ohos:padding="5vp"
@@ -129,12 +131,12 @@
                 ohos:text="40"
                 ohos:text_alignment="center"
                 ohos:text_color="#AE5B41"
-                ohos:text_size="12fp"/>
+                ohos:text_size="10fp"/>
 
             <Image
                 ohos:id="$+id:image_rl"
-                ohos:height="20vp"
-                ohos:width="20vp"
+                ohos:height="10vp"
+                ohos:width="10vp"
                 ohos:background_element="$media:plust"
                 ohos:right_margin="10vp"
                 ohos:right_of="$id:user_center_tx_point"
@@ -148,75 +150,76 @@
             ohos:background_element="$media:button"
             ohos:clickable="true"
             ohos:layout_alignment="vertical_center"
-            ohos:left_margin="30vp">
+            ohos:left_margin="15vp">
 
             <Text
-                ohos:height="40vp"
-                ohos:width="90vp"
+                ohos:height="20vp"
+                ohos:width="50vp"
                 ohos:alpha="0.9"
                 ohos:padding="5vp"
                 ohos:text="设置"
                 ohos:text_alignment="center"
                 ohos:text_color="#AE5B41"
-                ohos:text_size="12fp"/>
+                ohos:text_size="10fp"/>
         </DependentLayout>
     </DirectionalLayout>
     <!--中间两个模块-->
     <DependentLayout
-        ohos:height="450vp"
-        ohos:width="match_parent">
+        ohos:height="match_parent"
+        ohos:width="match_parent"
+        ohos:weight="10">
         <!--排行榜-->
         <DirectionalLayout
             ohos:id="$+id:dl_ranking"
             ohos:height="match_parent"
             ohos:width="match_content"
-            ohos:bottom_margin="50vp"
-            ohos:left_margin="100vp"
             ohos:align_parent_start="true"
+            ohos:bottom_margin="50vp"
+            ohos:left_margin="30vp"
             ohos:orientation="vertical"
-            ohos:total_weight="1"
-            ohos:top_margin="30vp">
+            ohos:top_margin="30vp"
+            ohos:total_weight="1">
             <!--排行榜-->
             <com.example.timestory.Utils.CusText
-                ohos:height="30vp"
+                ohos:height="20vp"
                 ohos:width="match_content"
                 ohos:background_element="#AE5B41"
                 ohos:padding="5fp"
                 ohos:text="排行榜"
                 ohos:text_color="$color:white"
-                ohos:text_size="20fp"/>
+                ohos:text_size="12fp"/>
 
             <ListContainer
                 ohos:id="$+id:user_center_ranking_lc"
                 ohos:height="match_parent"
-                ohos:width="400vp"
+                ohos:width="300vp"
                 ohos:alpha="0.8"
                 ohos:background_element="#FFF"/>
         </DirectionalLayout>
         <!--历史上的今天-->
         <DirectionalLayout
-            ohos:total_weight="1"
             ohos:height="match_parent"
             ohos:width="match_content"
-            ohos:bottom_margin="50vp"
-            ohos:right_margin="100vp"
             ohos:align_parent_end="true"
+            ohos:bottom_margin="50vp"
             ohos:orientation="vertical"
-            ohos:top_margin="30vp">
+            ohos:right_margin="30vp"
+            ohos:top_margin="30vp"
+            ohos:total_weight="1">
             <!--历史上的今天-->
             <com.example.timestory.Utils.CusText
-                ohos:height="30vp"
+                ohos:height="20vp"
                 ohos:width="match_content"
                 ohos:background_element="#AE5B41"
                 ohos:padding="5fp"
                 ohos:text="历史上的今天"
                 ohos:text_color="$color:white"
-                ohos:text_size="20fp"/>
+                ohos:text_size="12fp"/>
 
             <ListContainer
                 ohos:id="$+id:user_center_history_today_lc"
                 ohos:height="match_parent"
-                ohos:width="400vp"
+                ohos:width="300vp"
                 ohos:alpha="0.8"
                 ohos:background_element="#FFF"/>
         </DirectionalLayout>
@@ -224,11 +227,12 @@
 
     <!--底部一行横向模块-->
     <DirectionalLayout
-        ohos:height="30vp"
+        ohos:height="match_parent"
         ohos:width="match_content"
-        ohos:bottom_margin="50vp"
+        ohos:bottom_margin="25vp"
         ohos:layout_alignment="horizontal_center"
-        ohos:orientation="horizontal">
+        ohos:orientation="horizontal"
+        ohos:weight="1">
 
         <DependentLayout
             ohos:height="match_content"
@@ -238,14 +242,17 @@
 
             <Text
                 ohos:id="$+id:user_center_my_card"
-                ohos:height="40vp"
-                ohos:width="90vp"
+                ohos:height="match_content"
+                ohos:width="match_content"
                 ohos:alpha="0.9"
-                ohos:padding="5vp"
+                ohos:bottom_padding="5vp"
+                ohos:left_padding="10vp"
+                ohos:right_padding="10vp"
                 ohos:text="我的卡片"
                 ohos:text_alignment="center"
                 ohos:text_color="#AE5B41"
-                ohos:text_size="12fp"/>
+                ohos:text_size="10fp"
+                ohos:top_padding="5vp"/>
         </DependentLayout>
 
         <DependentLayout
@@ -257,14 +264,14 @@
 
             <Text
                 ohos:id="$+id:user_center_my_collections"
-                ohos:height="40vp"
-                ohos:width="90vp"
+                ohos:height="match_content"
+                ohos:width="match_content"
                 ohos:alpha="0.9"
                 ohos:padding="5vp"
                 ohos:text="我的收藏"
                 ohos:text_alignment="center"
                 ohos:text_color="#AE5B41"
-                ohos:text_size="12fp"/>
+                ohos:text_size="10fp"/>
         </DependentLayout>
     </DirectionalLayout>
 </DirectionalLayout>

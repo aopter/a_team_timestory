@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<DirectionalLayout
+<DependentLayout
     xmlns:ohos="http://schemas.huawei.com/res/ohos"
-    ohos:height="40vp"
+    ohos:height="20vp"
     ohos:width="match_parent"
     ohos:alpha="0.8"
     ohos:background_element="$color:white"
-    ohos:orientation="horizontal"
-    ohos:top_margin="10vp">
+    ohos:top_margin="5vp">
 
     <DependentLayout
+        ohos:id="$+id:dl_rank_num"
         ohos:height="match_content"
         ohos:width="match_content"
         ohos:layout_alignment="vertical_center"
@@ -17,8 +17,8 @@
 
         <Image
             ohos:id="$+id:rank_img"
-            ohos:height="40vp"
-            ohos:width="30vp"
+            ohos:height="20vp"
+            ohos:width="15vp"
             ohos:center_in_parent="true"
             ohos:scale_mode="zoom_center"/>
 
@@ -28,7 +28,7 @@
             ohos:width="match_content"
             ohos:center_in_parent="true"
             ohos:text_color="$color:white"
-            ohos:text_size="10fp"/>
+            ohos:text_size="5fp"/>
 
         <Text
             ohos:id="$+id:ranking_user_level"
@@ -39,30 +39,31 @@
             ohos:horizontal_center="true"
             ohos:text=""
             ohos:text_color="#AE5B41"
-            ohos:text_size="12fp"/>
+            ohos:text_size="6fp"/>
     </DependentLayout>
 
     <Image
+        ohos:right_of="$id:dl_rank_num"
         ohos:id="$+id:rank_user_header"
-        ohos:height="50vp"
-        ohos:width="50vp"
+        ohos:height="30vp"
+        ohos:width="30vp"
         ohos:layout_alignment="vertical_center"
-        ohos:left_margin="8vp"
-        ohos:scale_mode="zoom_center"/>
+        ohos:left_margin="5vp"/>
 
     <DependentLayout
+        ohos:right_of="$id:rank_user_header"
         ohos:height="match_content"
         ohos:width="match_content"
         ohos:layout_alignment="vertical_center"
-        ohos:left_margin="10vp">
+        ohos:left_margin="5vp">
 
         <Text
             ohos:id="$+id:rank_user_name"
             ohos:height="match_content"
             ohos:width="match_content"
             ohos:text=""
-            ohos:text_size="12fp"
-            ohos:top_margin="5vp"/>
+            ohos:text_size="6fp"
+            ohos:top_margin="1vp"/>
 
         <Text
             ohos:id="$+id:rank_user_something"
@@ -71,31 +72,33 @@
             ohos:align_left="$id:rank_user_name"
             ohos:below="$id:rank_user_name"
             ohos:text=""
-            ohos:text_size="10fp"
-            ohos:top_margin="10vp"/>
+            ohos:text_size="5fp"
+            ohos:top_margin="2vp"/>
     </DependentLayout>
 
     <DirectionalLayout
+        ohos:align_parent_end="true"
         ohos:height="match_content"
         ohos:width="match_content"
+        ohos:top_margin="1vp"
         ohos:orientation="horizontal"
-        ohos:top_margin="70vp">
+        ohos:right_margin="5vp">
 
         <Text
             ohos:height="match_content"
             ohos:width="match_content"
-            ohos:bottom_margin="10vp"
-            ohos:left_padding="10vp"
+            ohos:bottom_margin="5vp"
+            ohos:right_margin="5vp"
             ohos:text="经验："
-            ohos:text_size="12fp"/>
+            ohos:text_size="6fp"/>
 
         <Text
             ohos:id="$+id:ranking_point"
             ohos:height="match_content"
             ohos:width="match_content"
-            ohos:bottom_margin="10vp"
-            ohos:left_padding="10vp"
+            ohos:left_padding="5vp"
+            ohos:right_margin="5vp"
             ohos:text=""
-            ohos:text_size="12fp"/>
+            ohos:text_size="6fp"/>
     </DirectionalLayout>
-</DirectionalLayout>
+</DependentLayout>

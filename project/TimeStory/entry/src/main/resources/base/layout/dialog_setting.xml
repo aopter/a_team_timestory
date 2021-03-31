@@ -13,22 +13,22 @@
         ohos:layout_alignment="horizontal_center"
         ohos:text="请输入"
         ohos:text_alignment="horizontal_center"
-        ohos:text_size="20fp"/>
+        ohos:text_size="10fp"/>
 
     <TextField
         ohos:id="$+id:tf_modify"
         ohos:height="match_content"
         ohos:width="match_parent"
         ohos:background_element="$graphic:login_textfield"
-        ohos:bottom_margin="30vp"
+        ohos:bottom_margin="15vp"
         ohos:hint="请输入修改后的内容"
         ohos:layout_alignment="horizontal_center"
-        ohos:left_margin="10vp"
-        ohos:padding="10vp"
-        ohos:right_margin="10vp"
+        ohos:left_margin="5vp"
+        ohos:padding="5vp"
+        ohos:right_margin="5vp"
         ohos:text_alignment="center"
-        ohos:text_size="15fp"
-        ohos:top_margin="30vp"
+        ohos:text_size="10fp"
+        ohos:top_margin="15vp"
         ohos:weight="1"/>
 
     <DirectionalLayout
@@ -43,28 +43,28 @@
             ohos:height="match_content"
             ohos:width="match_content"
             ohos:background_element="$media:button"
-            ohos:bottom_padding="10vp"
-            ohos:left_margin="30vp"
-            ohos:left_padding="20vp"
-            ohos:margin="10vp"
-            ohos:right_margin="30vp"
-            ohos:right_padding="20vp"
+            ohos:bottom_padding="5vp"
+            ohos:left_margin="15vp"
+            ohos:left_padding="10vp"
+            ohos:margin="5vp"
+            ohos:right_margin="15vp"
+            ohos:right_padding="10vp"
             ohos:text="取消"
-            ohos:text_size="15fp"
-            ohos:top_padding="10vp"/>
+            ohos:text_size="10fp"
+            ohos:top_padding="5vp"/>
 
         <Button
             ohos:id="$+id:setting_dialog_sure"
             ohos:height="match_content"
             ohos:width="match_content"
             ohos:background_element="$media:button"
-            ohos:bottom_padding="10vp"
-            ohos:left_padding="20vp"
-            ohos:margin="10vp"
-            ohos:right_margin="30vp"
-            ohos:right_padding="20vp"
+            ohos:bottom_padding="5vp"
+            ohos:left_padding="10vp"
+            ohos:margin="5vp"
+            ohos:right_margin="15vp"
+            ohos:right_padding="10vp"
             ohos:text="确定"
-            ohos:text_size="15fp"
-            ohos:top_padding="10vp"/>
+            ohos:text_size="10fp"
+            ohos:top_padding="5vp"/>
     </DirectionalLayout>
 </DirectionalLayout>

@@ -20,7 +20,7 @@
             ohos:text="个人资料"
             ohos:text_alignment="center"
             ohos:text_color="#B22222"
-            ohos:text_size="20vp"/>
+            ohos:text_size="10vp"/>
 
         <DirectionalLayout
             ohos:height="match_content"
@@ -29,8 +29,8 @@
 
             <Image
                 ohos:id="$+id:setting_user_header"
-                ohos:height="100vp"
-                ohos:width="100vp"
+                ohos:height="50vp"
+                ohos:width="50vp"
                 ohos:clickable="true"
                 ohos:image_src="$media:test_header"
                 ohos:layout_alignment="center"
@@ -38,7 +38,7 @@
 
             <DependentLayout
                 ohos:id="$+id:modify_name"
-                ohos:height="60vp"
+                ohos:height="30vp"
                 ohos:width="match_parent"
                 ohos:clickable="true"
                 ohos:top_margin="10vp">
@@ -47,18 +47,18 @@
                     ohos:height="match_content"
                     ohos:width="match_content"
                     ohos:align_parent_start="true"
-                    ohos:left_margin="40vp"
+                    ohos:left_margin="20vp"
                     ohos:text="昵称"
-                    ohos:text_size="20vp"/>
+                    ohos:text_size="10vp"/>
 
                 <Text
                     ohos:id="$+id:setting_user_name"
                     ohos:height="match_content"
                     ohos:width="match_content"
                     ohos:left_of="$id:modify_name_tag"
-                    ohos:right_margin="10vp"
+                    ohos:right_margin="5vp"
                     ohos:text=""
-                    ohos:text_size="20vp"/>
+                    ohos:text_size="10vp"/>
 
                 <Text
                     ohos:id="$+id:modify_name_tag"
@@ -66,34 +66,34 @@
                     ohos:width="match_content"
                     ohos:align_parent_end="true"
                     ohos:clickable="true"
-                    ohos:right_margin="40vp"
+                    ohos:right_margin="20vp"
                     ohos:text=">"
-                    ohos:text_size="20vp"/>
+                    ohos:text_size="10vp"/>
             </DependentLayout>
 
             <DependentLayout
                 ohos:id="$+id:modify_user_signature"
-                ohos:height="60vp"
+                ohos:height="30vp"
                 ohos:width="match_parent"
                 ohos:clickable="true"
-                ohos:top_margin="20vp">
+                ohos:top_margin="10vp">
 
                 <Text
                     ohos:height="match_content"
                     ohos:width="match_content"
                     ohos:align_parent_start="true"
-                    ohos:left_margin="40vp"
+                    ohos:left_margin="20vp"
                     ohos:text="个性签名"
-                    ohos:text_size="20vp"/>
+                    ohos:text_size="10vp"/>
 
                 <Text
                     ohos:id="$+id:setting_user_signature"
                     ohos:height="match_content"
                     ohos:width="match_content"
                     ohos:left_of="$id:modify_user_signature_tag"
-                    ohos:right_margin="10vp"
+                    ohos:right_margin="5vp"
                     ohos:text=""
-                    ohos:text_size="20vp"/>
+                    ohos:text_size="10vp"/>
 
                 <Text
                     ohos:id="$+id:modify_user_signature_tag"
@@ -101,32 +101,32 @@
                     ohos:width="match_content"
                     ohos:align_parent_end="true"
                     ohos:clickable="true"
-                    ohos:right_margin="40vp"
+                    ohos:right_margin="20vp"
                     ohos:text=">"
-                    ohos:text_size="20vp"/>
+                    ohos:text_size="10vp"/>
             </DependentLayout>
 
             <DependentLayout
-                ohos:height="60vp"
+                ohos:height="30vp"
                 ohos:width="match_parent"
-                ohos:top_margin="20vp">
+                ohos:top_margin="10vp">
 
                 <Text
                     ohos:height="match_content"
                     ohos:width="match_content"
                     ohos:align_parent_start="true"
-                    ohos:left_margin="40vp"
+                    ohos:left_margin="20vp"
                     ohos:text="手机号"
-                    ohos:text_size="20vp"/>
+                    ohos:text_size="10vp"/>
 
                 <Text
                     ohos:id="$+id:setting_user_phone"
                     ohos:height="match_content"
                     ohos:width="match_content"
                     ohos:left_of="$id:modify_user_phone"
-                    ohos:right_margin="10vp"
+                    ohos:right_margin="5vp"
                     ohos:text=""
-                    ohos:text_size="20vp"/>
+                    ohos:text_size="10vp"/>
 
                 <Text
                     ohos:id="$+id:modify_user_phone"
@@ -134,23 +134,23 @@
                     ohos:width="match_content"
                     ohos:align_parent_end="true"
                     ohos:clickable="true"
-                    ohos:right_margin="40vp"
+                    ohos:right_margin="20vp"
                     ohos:text=">"
-                    ohos:text_size="20vp"/>
+                    ohos:text_size="10vp"/>
             </DependentLayout>
 
             <DependentLayout
-                ohos:height="60vp"
+                ohos:height="30vp"
                 ohos:width="match_parent"
-                ohos:top_margin="20vp">
+                ohos:top_margin="10vp">
 
                 <Text
                     ohos:height="match_content"
                     ohos:width="match_content"
                     ohos:align_parent_start="true"
-                    ohos:left_margin="40vp"
+                    ohos:left_margin="20vp"
                     ohos:text="性别"
-                    ohos:text_size="20vp"/>
+                    ohos:text_size="10vp"/>
 
                 <RadioContainer
                     ohos:id="$+id:radio_container"
@@ -159,23 +159,23 @@
                     ohos:align_parent_end="true"
                     ohos:layout_alignment="horizontal_center"
                     ohos:orientation="horizontal"
-                    ohos:right_margin="40vp"
-                    ohos:top_margin="32vp">
+                    ohos:right_margin="20vp"
+                    ohos:top_margin="16vp">
 
                     <RadioButton
                         ohos:id="$+id:radio_button_1"
-                        ohos:height="40vp"
+                        ohos:height="20vp"
                         ohos:width="match_content"
                         ohos:marked="true"
                         ohos:text="男"
-                        ohos:text_size="20vp"/>
+                        ohos:text_size="10vp"/>
 
                     <RadioButton
                         ohos:id="$+id:radio_button_2"
-                        ohos:height="40vp"
+                        ohos:height="20vp"
                         ohos:width="match_content"
                         ohos:text="女"
-                        ohos:text_size="20vp"/>
+                        ohos:text_size="10vp"/>
                 </RadioContainer>
             </DependentLayout>
         </DirectionalLayout>
@@ -183,13 +183,13 @@
         <Button
             ohos:id="$+id:setting_exit_btn"
             ohos:height="match_content"
-            ohos:width="200vp"
+            ohos:width="100vp"
             ohos:background_element="$media:setting1"
             ohos:bottom_margin="20vp"
             ohos:layout_alignment="center"
             ohos:text="退出登录"
             ohos:text_alignment="center"
             ohos:text_color="#B22222"
-            ohos:text_size="20vp"/>
+            ohos:text_size="10vp"/>
     </DirectionalLayout>
 </ScrollView>
