@@ -53,11 +53,11 @@ public class UserCenterAbilitySlice extends AbilitySlice implements Component.Cl
                 //加载用户榜单
                 case 1:
                     UserRankingAdapter userRankingAdapter = new UserRankingAdapter(Constant.UserRankList, UserCenterAbilitySlice.this);
-                    mUserCenterRankingLc.setItemProvider(userRankingAdapter);
+                    getUITaskDispatcher().syncDispatch(() -> mUserCenterRankingLc.setItemProvider(userRankingAdapter));
                     break;
                 case 2:
                     HistoryTodayAdapter historyTodayAdapter = new HistoryTodayAdapter(Constant.historyDays, UserCenterAbilitySlice.this.getContext());
-                    mUserCenterHistoryTodayLc.setItemProvider(historyTodayAdapter);
+                    getUITaskDispatcher().syncDispatch(() -> mUserCenterHistoryTodayLc.setItemProvider(historyTodayAdapter));
                     break;
                 default:
                     break;
