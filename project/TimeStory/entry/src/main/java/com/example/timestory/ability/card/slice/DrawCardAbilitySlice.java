@@ -2,6 +2,7 @@ package com.example.timestory.ability.card.slice;
 
 import com.example.timestory.ResourceTable;
 import com.example.timestory.Utils.HmOSImageLoader;
+import com.example.timestory.constant.Constant;
 import com.example.timestory.constant.ServiceConfig;
 import com.example.timestory.entity.card.Card;
 import com.example.timestory.entity.card.Icon;
@@ -175,7 +176,6 @@ public class DrawCardAbilitySlice extends AbilitySlice {
                             // 如果未点击
                             flag = true;
                             toLastView.setVisibility(Component.VISIBLE);
-//                            btnShare.setVisibility(Component.VISIBLE);
                             cardAnimation.start();
                         } else {
                             // 已经点击，再次点击进入卡片界面
@@ -203,9 +203,8 @@ public class DrawCardAbilitySlice extends AbilitySlice {
                 case ResourceTable.Id_card4:
                     System.out.println("____draw____选择了卡片");
                     if (!isFlag) {
-                        // TODO 获取卡片
                         getDrawCard();
-//                        Constant.User.setUserCount(Constant.User.getUserCount() - 60);
+                        Constant.User.setUserCount(Constant.User.getUserCount() - 60);
                         AnimatorProperty alphaAnim1 = frontContainer.createAnimatorProperty().alpha(0).setDuration(500);
                         alphaAnim1.setStateChangedListener(new Animator.StateChangedListener() {
                             @Override
@@ -276,9 +275,8 @@ public class DrawCardAbilitySlice extends AbilitySlice {
         new Thread() {
             @Override
             public void run() {
-                // TODO 用户id：Constant.User.getUserId()
                 Request request = new Request.Builder()
-                        .url(ServiceConfig.SERVICE_ROOT + "/card/draw/" + 6)
+                        .url(ServiceConfig.SERVICE_ROOT + "/card/draw/" + Constant.User.getUserId())
                         .build();
                 System.out.println("____draw____" + ServiceConfig.SERVICE_ROOT + "/card/draw/" + 6);
                 Call call = client.newCall(request);

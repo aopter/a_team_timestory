@@ -50,8 +50,6 @@ public class SpecificDynastyCardProvider extends RecycleItemProvider {
         Text cardName1 = (Text) cpt.findComponentById(ResourceTable.Id_card_name1);
         Image cardPic1 = (Image) cpt.findComponentById(ResourceTable.Id_card_pic1);
         Text cardNum1 = (Text) cpt.findComponentById(ResourceTable.Id_card_num1);
-        int width = cardPic1.getWidth() - 20;
-        int height = cardPic1.getHeight() - 40;
         DirectionalLayout cardContainer2 = (DirectionalLayout) cpt.findComponentById(ResourceTable.Id_card_container2);
         Text cardName2 = (Text) cpt.findComponentById(ResourceTable.Id_card_name2);
         Image cardPic2 = (Image) cpt.findComponentById(ResourceTable.Id_card_pic2);
@@ -64,6 +62,10 @@ public class SpecificDynastyCardProvider extends RecycleItemProvider {
         Text cardName4 = (Text) cpt.findComponentById(ResourceTable.Id_card_name4);
         Image cardPic4 = (Image) cpt.findComponentById(ResourceTable.Id_card_pic4);
         Text cardNum4 = (Text) cpt.findComponentById(ResourceTable.Id_card_num4);
+        cardContainer1.setVisibility(Component.HIDE);
+        cardContainer2.setVisibility(Component.HIDE);
+        cardContainer3.setVisibility(Component.HIDE);
+        cardContainer4.setVisibility(Component.HIDE);
         for (int i = 0; i < cards.get(position).size(); i++) {
             if (i % 4 == 0) {
                 cardContainer1.setVisibility(Component.VISIBLE);

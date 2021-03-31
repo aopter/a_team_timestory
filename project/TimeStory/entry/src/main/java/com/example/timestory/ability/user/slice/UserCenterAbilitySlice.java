@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.example.timestory.ResourceTable;
 import com.example.timestory.Utils.HmOSImageLoader;
+import com.example.timestory.ability.card.slice.DrawCardAbilitySlice;
 import com.example.timestory.ability.card.slice.MyCardAbilitySlice;
 import com.example.timestory.ability.dynasty.slice.HomePageAbilitySlice;
 import com.example.timestory.ability.problem.slice.ProblemCollectionActivitySlice;
@@ -237,7 +238,7 @@ public class UserCenterAbilitySlice extends AbilitySlice implements Component.Cl
             //抽卡
             case ResourceTable.Id_user_center_card_dl:
                 //抽卡
-                //TODO
+                present(new DrawCardAbilitySlice(), new Intent());
                 break;
             //出征
             case ResourceTable.Id_user_center_go_dynasty_dl:

@@ -3,14 +3,10 @@ package com.example.timestory.ability.card.slice;
 import com.example.timestory.ResourceTable;
 import com.example.timestory.ability.card.adapter.CardProvider;
 import com.example.timestory.constant.Constant;
-import com.example.timestory.entity.UserUnlockDynasty;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
 import ohos.aafwk.content.Operation;
 import ohos.agp.components.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MyCardAbilitySlice extends AbilitySlice {
     private ListContainer dyanstiesView;
@@ -21,21 +17,6 @@ public class MyCardAbilitySlice extends AbilitySlice {
     public void onStart(Intent intent) {
         super.onStart(intent);
         super.setUIContent(ResourceTable.Layout_ability_my_card);
-        List<UserUnlockDynasty> dynasties = new ArrayList<>();
-        UserUnlockDynasty dy1 = new UserUnlockDynasty();
-        dy1.setDynastyId("10");
-        dy1.setDynastyName("隋朝");
-        UserUnlockDynasty dy2 = new UserUnlockDynasty();
-        dy2.setDynastyId("11");
-        dy2.setDynastyName("唐朝");
-        UserUnlockDynasty dy3 = new UserUnlockDynasty();
-        dy3.setDynastyId("12");
-        dy3.setDynastyName("五代十国");
-        dynasties.add(dy1);
-        dynasties.add(dy2);
-        dynasties.add(dy3);
-        Constant.UnlockDynasty = dynasties;
-        System.out.println("mycard" + dynasties);
         initComponent();
         setListener();
     }

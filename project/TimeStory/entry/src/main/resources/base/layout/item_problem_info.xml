@@ -2,10 +2,10 @@
 <DirectionalLayout
     xmlns:ohos="http://schemas.huawei.com/res/ohos"
     ohos:id="$+id:container"
-    ohos:clickable="true"
     ohos:height="match_content"
-    ohos:focusable="focus_enable"
     ohos:width="match_parent"
+    ohos:clickable="true"
+    ohos:focusable="focus_enable"
     ohos:orientation="vertical">
 
     <Text
@@ -24,17 +24,17 @@
             ohos:height="match_content"
             ohos:width="match_parent"
             ohos:margin="15vp"
+            ohos:multiple_lines="true"
             ohos:text="题目：你喜欢这个界面吗"
-            ohos:text_size="18fp"/>
+            ohos:text_size="17fp"/>
         <!--    选择题选项的布局-->
         <DirectionalLayout
-            ohos:left_margin="10vp"
-            ohos:right_margin="10vp"
-            ohos:bottom_margin="10vp"
             ohos:height="match_content"
             ohos:width="match_parent"
-            ohos:orientation="horizontal">
-
+            ohos:bottom_margin="10vp"
+            ohos:left_margin="10vp"
+            ohos:orientation="horizontal"
+            ohos:right_margin="10vp">
 
 
             <!--        A-->
@@ -174,9 +174,9 @@
                         ohos:height="match_content"
                         ohos:width="match_content"
                         ohos:align_parent_bottom="true"
-                        ohos:text_size="12fp"
                         ohos:layout_alignment="left|top"
                         ohos:text="C "
+                        ohos:text_size="12fp"
                         />
 
                     <Text
@@ -229,9 +229,9 @@
                         ohos:height="match_content"
                         ohos:width="match_content"
                         ohos:align_parent_bottom="true"
+                        ohos:layout_alignment="left|top"
                         ohos:text="D "
-                        ohos:text_size="12fp"
-                        ohos:layout_alignment="left|top"/>
+                        ohos:text_size="12fp"/>
 
                     <Text
                         ohos:id="$+id:tv_optionD"
