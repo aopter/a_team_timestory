@@ -13,7 +13,7 @@
         ohos:left_margin="15vp"
         ohos:orientation="horizontal"
         ohos:top_margin="15vp"
-        ohos:weight="1">
+        ohos:weight="2">
 
         <DirectionalLayout
             ohos:height="match_content"
@@ -32,7 +32,7 @@
             <ProgressBar
                 ohos:id="$+id:user_center_pb"
                 ohos:height="5vp"
-                ohos:width="60vp"
+                ohos:width="40vp"
                 ohos:max="100"
                 ohos:min="0"
                 ohos:progress="60"
@@ -167,7 +167,7 @@
     <DependentLayout
         ohos:height="match_parent"
         ohos:width="match_parent"
-        ohos:weight="10">
+        ohos:weight="15">
         <!--排行榜-->
         <DirectionalLayout
             ohos:id="$+id:dl_ranking"
@@ -181,7 +181,7 @@
             ohos:total_weight="1">
             <!--排行榜-->
             <com.example.timestory.Utils.CusText
-                ohos:height="20vp"
+                ohos:height="25vp"
                 ohos:width="match_content"
                 ohos:background_element="#AE5B41"
                 ohos:padding="5fp"
@@ -208,7 +208,7 @@
             ohos:total_weight="1">
             <!--历史上的今天-->
             <com.example.timestory.Utils.CusText
-                ohos:height="20vp"
+                ohos:height="25vp"
                 ohos:width="match_content"
                 ohos:background_element="#AE5B41"
                 ohos:padding="5fp"
