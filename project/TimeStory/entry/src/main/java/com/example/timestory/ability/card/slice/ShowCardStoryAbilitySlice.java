@@ -7,18 +7,17 @@ import com.example.timestory.constant.Constant;
 import com.example.timestory.constant.ServiceConfig;
 import com.example.timestory.entity.card.Card;
 import ohos.aafwk.ability.AbilitySlice;
+import ohos.aafwk.ability.IAbilityContinuation;
 import ohos.aafwk.content.Intent;
+import ohos.aafwk.content.IntentParams;
 import ohos.agp.animation.AnimatorProperty;
-import ohos.agp.components.Component;
-import ohos.agp.components.DirectionalLayout;
-import ohos.agp.components.Image;
-import ohos.agp.components.Text;
+import ohos.agp.components.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class ShowCardStoryAbilitySlice extends AbilitySlice {
+public class ShowCardStoryAbilitySlice extends AbilitySlice implements IAbilityContinuation {
     private Card card;
     private List<String> event = new ArrayList<>();
     private int currentStory = 0;
@@ -28,6 +27,7 @@ public class ShowCardStoryAbilitySlice extends AbilitySlice {
     private DirectionalLayout nextStory;
     private Image cardImg;
     private Text tip;
+    private Button btn_continue;
     private long clickMillis = 0;
     private long clickTwiceMillis;
     private AbilitySlice abilitySlice = this;
@@ -63,6 +63,7 @@ public class ShowCardStoryAbilitySlice extends AbilitySlice {
         back.setClickedListener(myListener);
         formerStory.setClickedListener(myListener);
         nextStory.setClickedListener(myListener);
+        btn_continue.setClickedListener(myListener);
     }
 
     private void initComponent() {
@@ -72,6 +73,27 @@ public class ShowCardStoryAbilitySlice extends AbilitySlice {
         nextStory = (DirectionalLayout) findComponentById(ResourceTable.Id_next_story);
         cardImg = (Image) findComponentById(ResourceTable.Id_card_img);
         tip = (Text) findComponentById(ResourceTable.Id_role_story);
+        btn_continue = (Button) findComponentById(ResourceTable.Id_btn_continue);
+    }
+
+    @Override
+    public boolean onStartContinuation() {
+        return true;
+    }
+
+    @Override
+    public boolean onSaveData(IntentParams intentParams) {
+        return true;
+    }
+
+    @Override
+    public boolean onRestoreData(IntentParams intentParams) {
+        return true;
+    }
+
+    @Override
+    public void onCompleteContinuation(int i) {
+        terminateAbility();
     }
 
     class MyListener implements Component.ClickedListener {
@@ -79,6 +101,9 @@ public class ShowCardStoryAbilitySlice extends AbilitySlice {
         @Override
         public void onClick(Component component) {
             switch (component.getId()) {
+                case ResourceTable.Id_btn_continue://流转
+                    continueAbility(Constant.getAvailableDeviceIds().get(0));
+                    break;
                 case ResourceTable.Id_back:
                     terminate();
                     break;

@@ -2,6 +2,8 @@ package com.example.timestory.constant;
 
 
 import com.example.timestory.entity.*;
+import ohos.distributedschedule.interwork.DeviceInfo;
+import ohos.distributedschedule.interwork.DeviceManager;
 import ohos.media.image.PixelMap;
 
 import java.util.ArrayList;
@@ -53,6 +55,26 @@ public class Constant {
 
     public static Map<String, PixelMap> eventPics = new HashMap<>();
     public static String[] SEXARR = new String[]{"男", "女"};
+
+    /**
+     * 获得所有已经连接的所有设备ID
+     * @return 设备ID列表
+     */
+    public static List<String> getAvailableDeviceIds() {
+        // 获得DeviceInfo列表，包含了已经连接的所有设备信息
+        List<DeviceInfo> deviceInfoList = DeviceManager.getDeviceList(DeviceInfo.FLAG_GET_ONLINE_DEVICE);
+        // 如果DeviceInfo列表为空则返回
+        if (deviceInfoList == null || deviceInfoList.size() == 0) {
+            return null;
+        }
+        // 遍历DeviceInfo列表，获得所有的设备ID
+        List<String> deviceIds = new ArrayList<>();
+        for (DeviceInfo deviceInfo : deviceInfoList) {
+            deviceIds.add(deviceInfo.getDeviceId());
+        }
+        // 返回所有的设备ID
+        return deviceIds;
+    }
 
 ////    积分不足提示
 //    public static void showCountDialog(Context context) {

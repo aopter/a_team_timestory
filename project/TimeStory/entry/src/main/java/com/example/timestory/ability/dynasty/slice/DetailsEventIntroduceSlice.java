@@ -12,7 +12,9 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import ohos.aafwk.ability.AbilitySlice;
+import ohos.aafwk.ability.IAbilityContinuation;
 import ohos.aafwk.content.Intent;
+import ohos.aafwk.content.IntentParams;
 import ohos.agp.components.*;
 import ohos.agp.window.dialog.ToastDialog;
 import ohos.app.dispatcher.TaskDispatcher;
@@ -27,7 +29,7 @@ import okhttp3.Response;
 
 import java.io.IOException;
 
-public class DetailsEventIntroduceSlice extends AbilitySlice {
+public class DetailsEventIntroduceSlice extends AbilitySlice implements IAbilityContinuation {
     private int dynastyId;//朝代Id
     private int eventId;//事件Id
     private Incident incident;//事件对象
@@ -35,6 +37,7 @@ public class DetailsEventIntroduceSlice extends AbilitySlice {
     private int i = 0;//对话进行的个数
 
     private Button back;//返回按钮
+    private Button btn_continue;//流转按钮
     private Text eventName;//事件名称
     private Text eventIntroduce;//事件简介
     private Image picPangbai;//旁白图片
@@ -102,6 +105,7 @@ public class DetailsEventIntroduceSlice extends AbilitySlice {
         dialogue = (DependentLayout) findComponentById(ResourceTable.Id_dialogue);
         picOne = (Image) findComponentById(ResourceTable.Id_pic_one);
         picTwo = (Image) findComponentById(ResourceTable.Id_pic_two);
+        btn_continue = (Button) findComponentById(ResourceTable.Id_btn_continue);
     }
 
     //设置监听器
@@ -109,6 +113,28 @@ public class DetailsEventIntroduceSlice extends AbilitySlice {
         MyListener myListener = new MyListener();
         back.setClickedListener(myListener);
         dialogue.setClickedListener(myListener);
+        btn_continue.setClickedListener(myListener);
+    }
+
+    @Override
+    public boolean onStartContinuation() {
+        return true;
+    }
+
+    @Override
+    public boolean onSaveData(IntentParams intentParams) {
+        return true;
+    }
+
+    @Override
+    public boolean onRestoreData(IntentParams intentParams) {
+        return true;
+    }
+
+    @Override
+    public void onCompleteContinuation(int i) {
+        terminateAbility();
+
     }
 
     //监听器
@@ -127,6 +153,13 @@ public class DetailsEventIntroduceSlice extends AbilitySlice {
                     }else {
                         addDialogLayout(ResourceTable.Layout_dialog_text_right_item);
                     }
+                    break;
+                case ResourceTable.Id_btn_continue://流转按钮
+                    //可以让用户弹窗选择 设备 这里直接用的第一个设备
+                    //在两个搭载鸿蒙操作系统的手机上均安装这个程序，并在其中一个设备上打开的该应用程序：按钮
+                    // 可以实现应用程序在两个设备间的流转了。
+//                不过，这两个设备需要在同一个WiFi下，并且登录同一个华为账号，才可以使用分布式软总线实现流转。
+                    continueAbility(Constant.getAvailableDeviceIds().get(0));
                     break;
             }
         }

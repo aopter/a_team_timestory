@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/TimeStory.iml" filepath="$PROJECT_DIR$/.idea/modules/TimeStory.iml" group="TimeStory" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/entry/TimeStory-entry.iml" filepath="$PROJECT_DIR$/.idea/modules/entry/TimeStory-entry.iml" group="TimeStory/entry" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/entry/entry.iml" filepath="$PROJECT_DIR$/.idea/modules/entry/entry.iml" group="TimeStory/entry" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/project-TimeStory.iml" filepath="$PROJECT_DIR$/.idea/modules/project-TimeStory.iml" group="TimeStory" />
     </modules>
   </component>
 </project>

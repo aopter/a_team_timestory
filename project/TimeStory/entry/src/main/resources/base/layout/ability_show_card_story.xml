@@ -6,7 +6,7 @@
     ohos:alpha="0.8"
     ohos:background_element="$media:bg_card_story">
 
-    <DirectionalLayout
+    <DependentLayout
         ohos:id="$+id:title_container"
         ohos:height="55vp"
         ohos:width="match_parent"
@@ -16,6 +16,7 @@
         ohos:top_margin="20vp">
 
         <Image
+            ohos:align_parent_left="true"
             ohos:id="$+id:back"
             ohos:height="40vp"
             ohos:width="40vp"
@@ -26,13 +27,27 @@
             ohos:scale_mode="stretch"/>
 
         <Text
+            ohos:text="喵喵喵"
+            ohos:right_of="$id:back"
             ohos:id="$+id:role_story"
             ohos:height="match_parent"
             ohos:width="match_content"
             ohos:text_alignment="vertical_center"
             ohos:text_color="#000"
             ohos:text_size="18fp"/>
-    </DirectionalLayout>
+
+        <Button
+            ohos:align_parent_right="true"
+            ohos:id="$+id:btn_continue"
+            ohos:height="match_content"
+            ohos:width="match_content"
+            ohos:padding="10vp"
+            ohos:text="流转"
+            ohos:right_margin="20vp"
+            ohos:background_element="$media:button"
+            ohos:layout_alignment="right"
+            />
+    </DependentLayout>
 
     <DependentLayout
         ohos:height="match_content"

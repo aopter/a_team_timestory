@@ -31,6 +31,18 @@
             ohos:text_color="$color:ourDynastyRed"
             ohos:text_alignment="center"/>
 
+        <Button
+            ohos:id="$+id:btn_continue"
+            ohos:height="match_content"
+            ohos:width="match_content"
+            ohos:padding="10vp"
+            ohos:text="流转"
+            ohos:right_margin="20vp"
+            ohos:background_element="$media:button"
+            ohos:align_parent_top="true"
+            ohos:align_parent_right="true"
+            ohos:margin="28fp"/>
+
     </DependentLayout>
 
 <!--    人物叙述部分-->
