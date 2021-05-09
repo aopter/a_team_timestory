@@ -47,7 +47,7 @@ public class LoginAbilitySlice extends AbilitySlice {
     }
 
     private void getPermission() {
-        String[] permission = {"ohos.permission.READ_USER_STORAGE", "ohos.permission.INTERNET", "ohos.permission.WRITE_MEDIA"};
+        String[] permission = {"ohos.permission.READ_USER_STORAGE", "ohos.permission.INTERNET", "ohos.permission.WRITE_MEDIA","ohos.permission.DISTRIBUTED_DATASYNC","ohos.permission.servicebus.ACCESS_SERVICE","com.huawei.hwddmp.servicebus.BIND_SERVICE","ohos.permission.servicebus.DISTRIBUTED_DEVICE_STATE_CHANGE","ohos.permission.servicebus.GET_BUNDLE_INFO","ohos.permission.GET_DISTRIBUTED_DEVICE_INFO"};
         requestPermissionsFromUser(permission, 0);
     }
 

@@ -4,13 +4,20 @@
     ohos:height="match_parent"
     ohos:width="match_parent"
     ohos:background_element="$media:bg_login">
+    <!--gif动图无法显示，先写上，如果解决了再修改-->
+    <com.isoftstone.giflibrary.Gif
+        ohos:height="100vp"
+        ohos:width="100vp"
+        ohos:align_parent_bottom="true"
+        ohos:align_parent_right="true"
+        ohos:image_src="$media:gif_login"/>
 
     <DirectionalLayout
         ohos:height="match_content"
         ohos:width="match_content"
         ohos:center_in_parent="true"
-        ohos:top_margin="150vp"
-        ohos:orientation="vertical">
+        ohos:orientation="vertical"
+        ohos:top_margin="150vp">
         <!--账号-->
         <TextField
             ohos:id="$+id:login_phone"
@@ -27,8 +34,8 @@
             ohos:width="400vp"
             ohos:background_element="$graphic:login_textfield"
             ohos:hint="密码"
-            ohos:text_input_type="pattern_password"
             ohos:text_alignment="center"
+            ohos:text_input_type="pattern_password"
             ohos:text_size="10fp"
             ohos:top_margin="10vp"/>
         <!--记住密码-->
@@ -52,9 +59,9 @@
             </DirectionalLayout>
 
             <Text
-                ohos:clickable="true"
                 ohos:height="match_content"
                 ohos:width="match_content"
+                ohos:clickable="true"
                 ohos:layout_alignment="vertical_center"
                 ohos:left_margin="10vp"
                 ohos:text="记住密码"

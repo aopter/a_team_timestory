@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <DependentLayout
-    ohos:width="match_parent"
-    ohos:height="match_parent"
     xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:height="match_parent"
+    ohos:width="match_parent"
     ohos:background_element="$media:bg_in">
 
     <DependentLayout
@@ -14,30 +14,20 @@
             ohos:id="$+id:back"
             ohos:height="25fp"
             ohos:width="25fp"
-            ohos:background_element="$media:back"
             ohos:align_parent_top="true"
+            ohos:background_element="$media:back"
             ohos:margin="28fp"/>
-
-<!--        <com.example.timestory.slice.Utils.Gif-->
-<!--            ohos:height="match_content"-->
-<!--            ohos:width="30vp"-->
-<!--            ohos:image_src="$media:git_bg_dy"/>-->
-
-<!--        <com.example.timestory.Utils.Gif-->
-<!--            ohos:height="match_content"-->
-<!--            ohos:width="30vp"-->
-<!--            ohos:image_src="$media:git_bg_dy"/>-->
 
         <Text
             ohos:id="$+id:dynasty_name"
             ohos:height="match_content"
             ohos:width="35vp"
-            ohos:text_size="30fp"
+            ohos:background_element="#FFF"
             ohos:center_in_parent="true"
-            ohos:multiple_lines="true"
             ohos:margin="20fp"
+            ohos:multiple_lines="true"
             ohos:text_alignment="center"
-            ohos:background_element="#FFF"/>
+            ohos:text_size="30fp"/>
 
     </DependentLayout>
 
@@ -45,76 +35,110 @@
         ohos:id="$+id:cont"
         ohos:height="match_parent"
         ohos:width="match_parent"
-        ohos:right_of="$id:title"
         ohos:above="$id:btn"
-        ohos:right_margin="20fp">
+        ohos:right_margin="20fp"
+        ohos:right_of="$id:title">
 
-    <Text
-        ohos:id="$+id:dynasty_introduction"
-        ohos:height="match_parent"
-        ohos:width="match_parent"
-        ohos:background_element="$media:bg_container"
-        ohos:top_margin="5fp"
-        ohos:top_padding="80fp"
-        ohos:left_padding="20fp"
-        ohos:right_padding="30fp"
-        ohos:bottom_padding="25fp"
-        ohos:scrollable="true"
-        ohos:multiple_lines="true"
-        ohos:text_size="16vp"
-        ohos:text_color="$color:black"/>
+        <Text
+            ohos:id="$+id:dynasty_introduction"
+            ohos:height="match_parent"
+            ohos:width="match_parent"
+            ohos:background_element="$media:bg_container"
+            ohos:bottom_padding="25fp"
+            ohos:left_padding="20fp"
+            ohos:multiple_lines="true"
+            ohos:right_padding="30fp"
+            ohos:scrollable="true"
+            ohos:text_color="$color:black"
+            ohos:text_size="16vp"
+            ohos:top_margin="5fp"
+            ohos:top_padding="80fp"/>
 
     </DependentLayout>
 
-    <DependentLayout
-        ohos:id="$+id:btn"
-        ohos:height="50vp"
+    <DirectionalLayout
+        ohos:height="match_content"
         ohos:width="match_parent"
-        ohos:right_of="$id:title"
         ohos:align_parent_bottom="true"
         ohos:alignment="right"
-        ohos:right_margin="30fp">
+        ohos:orientation="horizontal"
+        ohos:right_margin="30fp"
+        ohos:right_of="$id:title">
 
-        <Button
-            ohos:id="$+id:map"
-            ohos:height="match_content"
-            ohos:width="110fp"
-            ohos:background_element="$graphic:cornert"
-            ohos:right_margin="10fp"
-            ohos:left_margin="10fp"
-            ohos:bottom_margin="18fp"
-            ohos:padding="8fp"
-            ohos:text_size="14fp"
-            ohos:text="进入全景图"
-            ohos:text_color="#FFF"/>
-        <Button
-            ohos:id="$+id:problem"
-            ohos:height="match_content"
-            ohos:width="110fp"
-            ohos:background_element="$graphic:cornert"
-            ohos:right_of="$id:map"
-            ohos:right_margin="10fp"
-            ohos:left_margin="10fp"
-            ohos:bottom_margin="18fp"
-            ohos:padding="8fp"
-            ohos:text_size="14fp"
-            ohos:text="朝代知道多少"
-            ohos:text_color="#FFF"/>
-        <Button
-            ohos:id="$+id:event"
-            ohos:height="match_content"
-            ohos:width="110fp"
-            ohos:background_element="$graphic:cornert"
-            ohos:right_of="$id:problem"
-            ohos:right_margin="10fp"
-            ohos:left_margin="10fp"
-            ohos:bottom_margin="18fp"
-            ohos:padding="8fp"
-            ohos:text_size="14fp"
-            ohos:text="进入详情"
-            ohos:text_color="#FFF"/>
+        <DependentLayout
+            ohos:id="$+id:speech_dl"
+            ohos:height="50vp"
+            ohos:width="match_content"
+            ohos:align_parent_bottom="true"
+            ohos:alignment="right"
+            ohos:right_margin="30fp"
+            ohos:right_of="$id:title"
+            ohos:weight="1">
 
-    </DependentLayout>
+            <Button
+                ohos:id="$+id:speech"
+                ohos:height="match_content"
+                ohos:width="110fp"
+                ohos:background_element="$graphic:cornert"
+                ohos:bottom_margin="18fp"
+                ohos:left_margin="10fp"
+                ohos:padding="8fp"
+                ohos:right_margin="10fp"
+                ohos:text="播报"
+                ohos:text_color="#FFF"
+                ohos:text_size="14fp"/>
+
+        </DependentLayout>
+
+        <DependentLayout
+            ohos:id="$+id:btn"
+            ohos:height="50vp"
+            ohos:width="match_content"
+            ohos:weight="3">
+
+            <Button
+                ohos:id="$+id:map"
+                ohos:height="match_content"
+                ohos:width="110fp"
+                ohos:background_element="$graphic:cornert"
+                ohos:bottom_margin="18fp"
+                ohos:left_margin="10fp"
+                ohos:padding="8fp"
+                ohos:right_margin="10fp"
+                ohos:text="进入全景图"
+                ohos:text_color="#FFF"
+                ohos:text_size="14fp"/>
+
+            <Button
+                ohos:id="$+id:problem"
+                ohos:height="match_content"
+                ohos:width="110fp"
+                ohos:background_element="$graphic:cornert"
+                ohos:bottom_margin="18fp"
+                ohos:left_margin="10fp"
+                ohos:padding="8fp"
+                ohos:right_margin="10fp"
+                ohos:right_of="$id:map"
+                ohos:text="朝代知道多少"
+                ohos:text_color="#FFF"
+                ohos:text_size="14fp"/>
+
+            <Button
+                ohos:id="$+id:event"
+                ohos:height="match_content"
+                ohos:width="110fp"
+                ohos:background_element="$graphic:cornert"
+                ohos:bottom_margin="18fp"
+                ohos:left_margin="10fp"
+                ohos:padding="8fp"
+                ohos:right_margin="10fp"
+                ohos:right_of="$id:problem"
+                ohos:text="进入详情"
+                ohos:text_color="#FFF"
+                ohos:text_size="14fp"/>
+
+        </DependentLayout>
+    </DirectionalLayout>
 
 
 </DependentLayout>
