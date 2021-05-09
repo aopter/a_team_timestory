@@ -27,12 +27,11 @@
             ohos:width="match_parent"
             ohos:orientation="vertical">
 
-            <Image
+            <com.example.timestory.Utils.RoundImage
                 ohos:id="$+id:setting_user_header"
                 ohos:height="50vp"
                 ohos:width="50vp"
                 ohos:clickable="true"
-                ohos:image_src="$media:test_header"
                 ohos:layout_alignment="center"
                 ohos:scale_mode="zoom_center"/>
 

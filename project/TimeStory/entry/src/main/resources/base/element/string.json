@@ -19,6 +19,18 @@
     {
       "name": "registryability_description",
       "value": "hap sample empty service"
+    },
+    {
+      "name": "mission_statement",
+      "value": "Facebook’s mission is to give people the power to build community and bring the world closer together."
+    },
+    {
+      "name": "presets",
+      "value": "Presets"
+    },
+    {
+      "name": "error_gif",
+      "value": "x or y bound size should be at least %1$dpx and file size should be no more than %2$sM"
     }
   ]
 }

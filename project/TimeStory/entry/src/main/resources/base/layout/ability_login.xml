@@ -4,13 +4,13 @@
     ohos:height="match_parent"
     ohos:width="match_parent"
     ohos:background_element="$media:bg_login">
-    <!--gif动图无法显示，先写上，如果解决了再修改-->
     <com.isoftstone.giflibrary.Gif
         ohos:height="100vp"
         ohos:width="100vp"
         ohos:align_parent_bottom="true"
         ohos:align_parent_right="true"
-        ohos:image_src="$media:gif_login"/>
+        ohos:image_src="$media:gif_login"
+        ohos:scale_mode="zoom_center"/>
 
     <DirectionalLayout
         ohos:height="match_content"

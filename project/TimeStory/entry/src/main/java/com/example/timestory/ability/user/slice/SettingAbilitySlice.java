@@ -1,28 +1,38 @@
 package com.example.timestory.ability.user.slice;
 
 import com.example.timestory.ResourceTable;
+import com.example.timestory.Utils.GifSizeFilter;
 import com.example.timestory.Utils.HmOSImageLoader;
+import com.example.timestory.Utils.RoundImage;
 import com.example.timestory.Utils.ToastUtil;
 import com.example.timestory.constant.Constant;
 import com.example.timestory.constant.ServiceConfig;
 import com.example.timestory.entity.UserDetails;
 import com.google.gson.Gson;
+import com.zhihu.matisse.Matisse;
+import com.zhihu.matisse.MatisseAbility;
+import com.zhihu.matisse.MimeType;
+import com.zhihu.matisse.filter.Filter;
 import ohos.aafwk.ability.AbilitySlice;
+import ohos.aafwk.ability.DataAbilityHelper;
 import ohos.aafwk.content.Intent;
 import ohos.agp.components.*;
 import ohos.agp.window.dialog.CommonDialog;
+import ohos.bundle.IBundleManager;
 import ohos.eventhandler.EventHandler;
 import ohos.eventhandler.EventRunner;
 import ohos.eventhandler.InnerEvent;
+import ohos.media.image.ImageSource;
+import ohos.media.image.PixelMap;
+import ohos.media.image.common.Size;
+import ohos.utils.net.Uri;
 import okhttp3.*;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 
 /**
  * @author PengHuAnZhi
@@ -32,7 +42,7 @@ import java.nio.charset.StandardCharsets;
  * @description TODO
  */
 public class SettingAbilitySlice extends AbilitySlice implements Component.ClickedListener, RadioContainer.CheckedStateChangedListener {
-    private Image mSettingUserHeader;
+    private RoundImage mSettingUserHeader;
     private Text mSettingUserName;
     private DependentLayout mModifyName;
     private Text mSettingUserSignature;
@@ -41,6 +51,8 @@ public class SettingAbilitySlice extends AbilitySlice implements Component.Click
     private Button mSettingExitBtn;
     private RadioContainer mRadioContainer;
     private EventRunner eventRunner = EventRunner.create(true);
+    private static final int REQUEST_CODE = 23;
+    private static final int MY_PERMISSIONS_REQUEST_CAMERA = 23;
     private EventHandler eventHandler = new EventHandler(eventRunner) {
         @Override
         protected void processEvent(InnerEvent event) {
@@ -48,7 +60,7 @@ public class SettingAbilitySlice extends AbilitySlice implements Component.Click
             if (event.eventId == 1) {
                 getUITaskDispatcher().syncDispatch(() -> {
                     //初始化头像
-                    HmOSImageLoader.with(SettingAbilitySlice.this).load(ServiceConfig.SERVICE_ROOT + "/img/" + Constant.User.getUserHeader()).into(mSettingUserHeader);
+                    HmOSImageLoader.with(SettingAbilitySlice.this).load(ServiceConfig.SERVICE_ROOT + "/img/" + Constant.User.getUserHeader()).intoAndCircle(mSettingUserHeader);
                     //初始化昵称
                     mSettingUserName.setText(Constant.User.getUserNickname());
                     //初始化个性签名
@@ -102,7 +114,7 @@ public class SettingAbilitySlice extends AbilitySlice implements Component.Click
     }
 
     private void initView() {
-        mSettingUserHeader = (Image) findComponentById(ResourceTable.Id_setting_user_header);
+        mSettingUserHeader = (RoundImage) findComponentById(ResourceTable.Id_setting_user_header);
         mSettingUserName = (Text) findComponentById(ResourceTable.Id_setting_user_name);
         mModifyName = (DependentLayout) findComponentById(ResourceTable.Id_modify_name);
         mSettingUserSignature = (Text) findComponentById(ResourceTable.Id_setting_user_signature);
@@ -116,7 +128,27 @@ public class SettingAbilitySlice extends AbilitySlice implements Component.Click
     public void onClick(Component component) {
         switch (component.getId()) {
             case ResourceTable.Id_setting_user_header:
-                present(new PickHeaderAbilitySlice(), new Intent());
+                if (verifySelfPermission("ohos.permission.WRITE_USER_STORAGE") != IBundleManager.PERMISSION_GRANTED ||
+                        verifySelfPermission("ohos.permission.CAMERA") != IBundleManager.PERMISSION_GRANTED ||
+                        verifySelfPermission("ohos.permission.READ_MEDIA") != IBundleManager.PERMISSION_GRANTED) {
+                    if (canRequestPermission("ohos.permission.READ_MEDIA")) {
+                        requestPermissionsFromUser(
+                                new String[]{"ohos.permission.READ_MEDIA",
+                                        "ohos.permission.WRITE_MEDIA",
+                                        "ohos.permission.MEDIA_LOCATION",
+                                        "ohos.permission.CAMERA",
+                                        "ohos.permission.WRITE_USER_STORAGE"
+                                }, MY_PERMISSIONS_REQUEST_CAMERA);
+                    }
+                }
+                Matisse.from(SettingAbilitySlice.this)
+                        .choose(MimeType.ofAll())
+                        .addFilter(new GifSizeFilter(320, 320, 5 * Filter.K * Filter.K))
+                        .countable(true)
+                        .capture(true)
+                        .maxSelectable(5)
+                        .originalEnable(false)
+                        .forResult(REQUEST_CODE);
                 break;
             case ResourceTable.Id_modify_name:
                 CommonDialog nameCommonDialog = new CommonDialog(this);
@@ -197,5 +229,52 @@ public class SettingAbilitySlice extends AbilitySlice implements Component.Click
     @Override
     public void onCheckedChanged(RadioContainer radioContainer, int i) {
         sendModifyRequest(null, Constant.UserDetails.getUserId() + "", Constant.User.getUserNickname(), Constant.UserDetails.getUserSignature(), Constant.SEXARR[i]);
+    }
+
+    @Override
+    protected void onAbilityResult(int requestCode, int resultCode, Intent resultData) {
+        super.onAbilityResult(requestCode, resultCode, resultData);
+
+        if (resultCode != MatisseAbility.RESULT_OK) {
+            return;
+        }
+        try {
+            ArrayList<Uri> uriArrayList = resultData.getSequenceableArrayListParam(MatisseAbility.EXTRA_RESULT_SELECTION);
+            ArrayList<String> stringArrayList = resultData.getStringArrayListParam(MatisseAbility.EXTRA_RESULT_SELECTION_PATH);
+            DataAbilityHelper helper = DataAbilityHelper.creator(getContext());
+            FileDescriptor fileDesc = helper.openFile(uriArrayList.get(0), "r");
+            ImageSource.DecodingOptions decodingOpts = new ImageSource.DecodingOptions();
+            decodingOpts.desiredSize = new Size(300, 300);
+            ImageSource imageSource = ImageSource.create(fileDesc, null);
+            PixelMap pixelMap = imageSource.createThumbnailPixelmap(decodingOpts, true);
+            mSettingUserHeader.setPixelMapAndCircle(pixelMap);
+            File file = new File(stringArrayList.get(0));
+            OkHttpClient client = new OkHttpClient();
+            MultipartBody.Builder requestBody = new MultipartBody.Builder()
+                    .setType(MultipartBody.FORM);
+            RequestBody fileBody = RequestBody.create(MediaType.parse("image/*"), file);
+            requestBody.addFormDataPart("file", file.getName(), fileBody)
+                    .addFormDataPart("userId", Constant.User.getUserId() + "");
+            Request request = new Request.Builder()
+                    .url(ServiceConfig.SERVICE_ROOT + "/picture/upload")
+                    .post(requestBody.build())
+                    .build();
+
+            client.newBuilder().build().newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    getMainTaskDispatcher().syncDispatch(() -> ToastUtil.showEncourageToast(SettingAbilitySlice.this, "失败！！"));
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) {
+                    getMainTaskDispatcher().syncDispatch(() -> ToastUtil.showEncourageToast(SettingAbilitySlice.this, "成功！！"));
+                    Constant.ChangeHeader = 1;
+                    Constant.User.setUserHeader("user/us-" + Constant.User.getUserId() + ".jpg");
+                }
+            });
+        } catch (Exception e) {
+            throw new ClassCastException("Class Exception");
+        }
     }
 }
