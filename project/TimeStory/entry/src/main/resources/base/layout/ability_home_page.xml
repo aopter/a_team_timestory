@@ -34,7 +34,7 @@
                 ohos:width="50fp"
                 ohos:top_margin="3fp"
                 ohos:progress_color="blue"
-                ohos:background_element="$color:orange"
+                ohos:background_element="#AE5B41"
                 ohos:min="0"
                 ohos:max="100"/>
 

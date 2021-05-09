@@ -7,17 +7,19 @@
       "name": "1.0"
     },
     "apiVersion": {
-      "compatible": 3,
-      "target": 4
+      "compatible": 4,
+      "target": 5,
+      "releaseType": "Release"
     }
   },
   "deviceConfig": {
     "default": {
       "network": {
-        "usesCleartext": true
+        "cleartextTraffic": true
       }
     }
   },
+
   "module": {
     "package": "com.example.timestory",
     "name": ".MyApplication",

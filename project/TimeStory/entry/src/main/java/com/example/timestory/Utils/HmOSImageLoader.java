@@ -18,6 +18,7 @@ import java.io.InputStream;
 public class HmOSImageLoader {
     private final static HiLogLabel LABEL_LOG = new HiLogLabel(HiLog.LOG_APP, 0, "HmOSImageLoader");
     Image image;
+    RoundImage roundImage;
     String url;
     int defImage;
     AbilitySlice abilitySlice;
@@ -43,6 +44,51 @@ public class HmOSImageLoader {
     public void into(Image image) {
         this.image = image;
         start();
+    }
+
+    public void intoAndCircle(RoundImage roundImage) {
+        this.roundImage = roundImage;
+//        roundImage.setPixelMapAndCircle(roundImage.getPixelMap());
+        startAndCircle();
+    }
+
+    private void startAndCircle() {
+        if (Constant.eventPics.containsKey(url)) {
+            abilitySlice.getUITaskDispatcher().asyncDispatch(() -> {
+                //展示到组件上
+                roundImage.setPixelMapAndCircle(Constant.eventPics.get(url));
+            });
+        }
+        if (defImage != 0) {
+            roundImage.setPixelMapAndCircle(defImage);
+        }
+        Request request = new Request.Builder().url(url).get().build();
+        new Thread(() -> {
+            OkHttpClient okHttpClient = new OkHttpClient();
+            try {
+                //异步网络请求
+                Response execute = okHttpClient.newCall(request).execute();
+                //获取流
+                InputStream inputStream = execute.body().byteStream();
+                //利用鸿蒙api将流解码为图片源
+                ImageSource imageSource = ImageSource.create(inputStream, null);
+                //根据图片源创建位图
+                PixelMap pixelMap = imageSource.createPixelmap(null);
+
+                abilitySlice.getUITaskDispatcher().asyncDispatch(new Runnable() {
+                    @Override
+                    public void run() {
+                        //展示到组件上
+                        roundImage.setPixelMapAndCircle(pixelMap);
+                        //释放位图
+                        Constant.eventPics.put(url, pixelMap);
+                    }
+                });
+            } catch (IOException e) {
+                HiLog.error(LABEL_LOG, " ----- " + e.getMessage());
+                e.printStackTrace();
+            }
+        }).start();
     }
 
     private void start() {

@@ -1,15 +1,8 @@
 {
  "1.0.0": {
   "LastPreviewDevice": {
-   "D:\\learningMaterials\\Future\\my-deveco-studio\\workspace\\a_team_timestory\\project\\TimeStory\\entry": [
-    "tablet"
-   ],
-   "F:\\mygithubhouses\\a_team_timestory\\project\\TimeStory\\entry": [],
-   "D:\\HarmonyOS\\teamwork\\a_team_timestory\\project\\TimeStory\\entry": [
-    "phone"
-   ],
    "D:\\DevEcoStudioWorkspace\\GithubRepositories\\a_team_timestory\\project\\TimeStory\\entry": [
-    "tablet"
+    "phone"
    ]
   }
  }

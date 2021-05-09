@@ -22,22 +22,22 @@
             ohos:layout_alignment="vertical_center"
             ohos:orientation="vertical">
 
-            <Image
+            <com.example.timestory.Utils.RoundImage
                 ohos:id="$+id:user_center_header"
                 ohos:height="30vp"
                 ohos:width="30vp"
-                ohos:image_src="$media:test_header"
+                ohos:layout_alignment="horizontal_center"
                 ohos:scale_mode="zoom_center"/>
 
             <ProgressBar
                 ohos:id="$+id:user_center_pb"
-                ohos:height="5vp"
-                ohos:width="40vp"
+                ohos:height="match_content"
+                ohos:width="50fp"
+                ohos:background_element="#AE5B41"
                 ohos:max="100"
                 ohos:min="0"
-                ohos:progress="60"
-                ohos:progress_color="#AE5B41"
-                ohos:progress_width="10vp"/>
+                ohos:progress_color="blue"
+                ohos:top_margin="3fp"/>
         </DirectionalLayout>
 
         <DependentLayout
@@ -192,7 +192,7 @@
             <ListContainer
                 ohos:id="$+id:user_center_ranking_lc"
                 ohos:height="match_parent"
-                ohos:width="300vp"
+                ohos:width="200vp"
                 ohos:alpha="0.8"
                 ohos:background_element="#FFF"/>
         </DirectionalLayout>
@@ -235,14 +235,14 @@
         ohos:weight="1">
 
         <DependentLayout
-            ohos:height="match_content"
+            ohos:height="20vp"
             ohos:width="match_content"
             ohos:background_element="$media:button"
             ohos:layout_alignment="vertical_center">
 
             <Text
                 ohos:id="$+id:user_center_my_card"
-                ohos:height="match_content"
+                ohos:height="match_parent"
                 ohos:width="match_content"
                 ohos:alpha="0.9"
                 ohos:bottom_padding="5vp"
@@ -256,7 +256,7 @@
         </DependentLayout>
 
         <DependentLayout
-            ohos:height="match_content"
+            ohos:height="20vp"
             ohos:width="match_content"
             ohos:background_element="$media:button"
             ohos:layout_alignment="vertical_center"
@@ -264,7 +264,7 @@
 
             <Text
                 ohos:id="$+id:user_center_my_collections"
-                ohos:height="match_content"
+                ohos:height="match_parent"
                 ohos:width="match_content"
                 ohos:alpha="0.9"
                 ohos:padding="5vp"

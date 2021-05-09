@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.example.timestory.ResourceTable;
 import com.example.timestory.Utils.HmOSImageLoader;
+import com.example.timestory.Utils.RoundImage;
 import com.example.timestory.ability.card.slice.DrawCardAbilitySlice;
 import com.example.timestory.ability.card.slice.MyCardAbilitySlice;
 import com.example.timestory.ability.dynasty.slice.HomePageAbilitySlice;
@@ -31,8 +32,11 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.TimeZone;
 
+/**
+ * @author PengHuAnZhi
+ */
 public class UserCenterAbilitySlice extends AbilitySlice implements Component.ClickedListener {
-    private Image mUserCenterHeader;
+    private RoundImage mUserCenterHeader;
     private ProgressBar mUserCenterPb;
     private Text mUserCenterTxLevel;
     private DependentLayout mDlLevel;
@@ -45,10 +49,10 @@ public class UserCenterAbilitySlice extends AbilitySlice implements Component.Cl
     private ListContainer mUserCenterHistoryTodayLc;
     private Text mUserCenterMyCard;
     private Text mUserCenterMyCollections;
-    private OkHttpClient okHttpClient = new OkHttpClient();
+    private final OkHttpClient okHttpClient = new OkHttpClient();
     private boolean flag;
-    private EventRunner eventRunner = EventRunner.create(true);
-    private EventHandler eventHandler = new EventHandler(eventRunner) {
+    private final EventRunner eventRunner = EventRunner.create(true);
+    private final EventHandler eventHandler = new EventHandler(eventRunner) {
         @Override
         protected void processEvent(InnerEvent event) {
             super.processEvent(event);
@@ -95,7 +99,7 @@ public class UserCenterAbilitySlice extends AbilitySlice implements Component.Cl
 
     private void setDate() {
         //头像
-        HmOSImageLoader.with(UserCenterAbilitySlice.this).load(ServiceConfig.SERVICE_ROOT + "/img/" + Constant.User.getUserHeader()).into(mUserCenterHeader);
+        HmOSImageLoader.with(UserCenterAbilitySlice.this).load(ServiceConfig.SERVICE_ROOT + "/img/" + Constant.User.getUserHeader()).intoAndCircle(mUserCenterHeader);
         //进度条
         initProgress();
         //等级
@@ -190,7 +194,7 @@ public class UserCenterAbilitySlice extends AbilitySlice implements Component.Cl
     }
 
     private void initView() {
-        mUserCenterHeader = (Image) findComponentById(ResourceTable.Id_user_center_header);
+        mUserCenterHeader = (RoundImage) findComponentById(ResourceTable.Id_user_center_header);
         mUserCenterPb = (ProgressBar) findComponentById(ResourceTable.Id_user_center_pb);
         mUserCenterTxLevel = (Text) findComponentById(ResourceTable.Id_user_center_tx_level);
         mDlLevel = (DependentLayout) findComponentById(ResourceTable.Id_dl_level);
@@ -258,7 +262,6 @@ public class UserCenterAbilitySlice extends AbilitySlice implements Component.Cl
             case ResourceTable.Id_user_center_my_collections:
                 //跳转到收藏页面
                 present(new ProblemCollectionActivitySlice(), new Intent());
-
                 break;
             default:
                 break;

@@ -2,6 +2,7 @@ package com.example.timestory.ability.user.adapter;
 
 import com.example.timestory.ResourceTable;
 import com.example.timestory.Utils.HmOSImageLoader;
+import com.example.timestory.Utils.RoundImage;
 import com.example.timestory.constant.ServiceConfig;
 import com.example.timestory.entity.User;
 import ohos.aafwk.ability.AbilitySlice;
@@ -19,14 +20,8 @@ import java.util.List;
  * @description TODO
  */
 public class UserRankingAdapter extends BaseItemProvider {
-    private List<User> users;
-    private AbilitySlice slice;
-    private Image mRankImg;
-    private Image mRankUserHeader;
-    private Text mRankNum;
-    private Text mRankUserName;
-    private Text mRankUserSomething;
-    private Text mRankingPoint;
+    private final List<User> users;
+    private final AbilitySlice slice;
 
     public UserRankingAdapter(List<User> users, AbilitySlice slice) {
         this.users = users;
@@ -70,7 +65,7 @@ public class UserRankingAdapter extends BaseItemProvider {
         User user = users.get(position);
         //设置头像
         if (user.getUserHeader() != null) {
-            HmOSImageLoader.with(slice).load(ServiceConfig.SERVICE_ROOT + "/img/" + user.getUserHeader()).into(viewHolder.mRankUserHeader);
+            HmOSImageLoader.with(slice).load(ServiceConfig.SERVICE_ROOT + "/img/" + user.getUserHeader()).intoAndCircle(viewHolder.mRankUserHeader);
         }
         //用户排名前三设置对应的奖杯图标
         switch (position) {
@@ -98,24 +93,18 @@ public class UserRankingAdapter extends BaseItemProvider {
     }
 
     private void initView(Component component, ViewHolder viewHolder) {
-        mRankImg = (Image) component.findComponentById(ResourceTable.Id_rank_img);
-        viewHolder.mRankImg = mRankImg;
-        mRankUserHeader = (Image) component.findComponentById(ResourceTable.Id_rank_user_header);
-        viewHolder.mRankUserHeader = mRankUserHeader;
-        mRankNum = (Text) component.findComponentById(ResourceTable.Id_rank_num);
-        viewHolder.mRankNum = mRankNum;
-        mRankUserName = (Text) component.findComponentById(ResourceTable.Id_rank_user_name);
-        viewHolder.mRankUserName = mRankUserName;
-        mRankUserSomething = (Text) component.findComponentById(ResourceTable.Id_rank_user_something);
-        viewHolder.mRankUserSomething = mRankUserSomething;
-        mRankingPoint = (Text) component.findComponentById(ResourceTable.Id_ranking_point);
-        viewHolder.mRankingPoint = mRankingPoint;
+        viewHolder.mRankImg = (RoundImage) component.findComponentById(ResourceTable.Id_rank_img);
+        viewHolder.mRankUserHeader = (RoundImage) component.findComponentById(ResourceTable.Id_rank_user_header);
+        viewHolder.mRankNum = (Text) component.findComponentById(ResourceTable.Id_rank_num);
+        viewHolder.mRankUserName = (Text) component.findComponentById(ResourceTable.Id_rank_user_name);
+        viewHolder.mRankUserSomething = (Text) component.findComponentById(ResourceTable.Id_rank_user_something);
+        viewHolder.mRankingPoint = (Text) component.findComponentById(ResourceTable.Id_ranking_point);
 
     }
 
     private static class ViewHolder {
         private Image mRankImg;
-        private Image mRankUserHeader;
+        private RoundImage mRankUserHeader;
         private Text mRankNum;
         private Text mRankUserName;
         private Text mRankUserSomething;

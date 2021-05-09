@@ -15,10 +15,10 @@
         ohos:left_margin="10vp"
         ohos:orientation="vertical">
 
-        <Image
+        <com.example.timestory.Utils.RoundImage
             ohos:id="$+id:rank_img"
-            ohos:height="20vp"
-            ohos:width="15vp"
+            ohos:height="13vp"
+            ohos:width="13vp"
             ohos:center_in_parent="true"
             ohos:scale_mode="zoom_center"/>
 
@@ -42,11 +42,11 @@
             ohos:text_size="6fp"/>
     </DependentLayout>
 
-    <Image
+    <com.example.timestory.Utils.RoundImage
         ohos:right_of="$id:dl_rank_num"
         ohos:id="$+id:rank_user_header"
-        ohos:height="30vp"
-        ohos:width="30vp"
+        ohos:height="20vp"
+        ohos:width="20vp"
         ohos:layout_alignment="vertical_center"
         ohos:left_margin="5vp"/>
 
