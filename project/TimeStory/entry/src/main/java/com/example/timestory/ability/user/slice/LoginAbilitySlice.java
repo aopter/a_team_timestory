@@ -13,6 +13,7 @@ import ohos.agp.components.Button;
 import ohos.agp.components.RadioButton;
 import ohos.agp.components.TextField;
 import ohos.agp.window.dialog.ToastDialog;
+import ohos.bundle.IBundleManager;
 import ohos.data.DatabaseHelper;
 import ohos.data.preferences.Preferences;
 import okhttp3.*;
@@ -35,6 +36,7 @@ public class LoginAbilitySlice extends AbilitySlice {
     private String phoneNum;
     private String password;
     private DatabaseHelper databaseHelper;
+    private static final int MY_PERMISSIONS_REQUEST_CAMERA = 23;
 
     @Override
     public void onStart(Intent intent) {
@@ -47,8 +49,38 @@ public class LoginAbilitySlice extends AbilitySlice {
     }
 
     private void getPermission() {
-        String[] permission = {"ohos.permission.READ_USER_STORAGE", "ohos.permission.INTERNET", "ohos.permission.WRITE_MEDIA","ohos.permission.DISTRIBUTED_DATASYNC","ohos.permission.servicebus.ACCESS_SERVICE","com.huawei.hwddmp.servicebus.BIND_SERVICE","ohos.permission.servicebus.DISTRIBUTED_DEVICE_STATE_CHANGE","ohos.permission.servicebus.GET_BUNDLE_INFO","ohos.permission.GET_DISTRIBUTED_DEVICE_INFO"};
-        requestPermissionsFromUser(permission, 0);
+        if (verifySelfPermission("ohos.permission.READ_MEDIA") != IBundleManager.PERMISSION_GRANTED ||
+                verifySelfPermission("ohos.permission.READ_USER_STORAGE") != IBundleManager.PERMISSION_GRANTED ||
+                verifySelfPermission("ohos.permission.INTERNET") != IBundleManager.PERMISSION_GRANTED ||
+                verifySelfPermission("ohos.permission.WRITE_MEDIA") != IBundleManager.PERMISSION_GRANTED ||
+                verifySelfPermission("ohos.permission.DISTRIBUTED_DATASYNC") != IBundleManager.PERMISSION_GRANTED ||
+                verifySelfPermission("ohos.permission.servicebus.ACCESS_SERVICE") != IBundleManager.PERMISSION_GRANTED ||
+                verifySelfPermission("com.huawei.hwddmp.servicebus.BIND_SERVICE") != IBundleManager.PERMISSION_GRANTED ||
+                verifySelfPermission("ohos.permission.servicebus.DISTRIBUTED_DEVICE_STATE_CHANGE") != IBundleManager.PERMISSION_GRANTED ||
+                verifySelfPermission("ohos.permission.servicebus.GET_BUNDLE_INFO") != IBundleManager.PERMISSION_GRANTED ||
+                verifySelfPermission("ohos.permission.READ_MEDIA") != IBundleManager.PERMISSION_GRANTED ||
+                verifySelfPermission("ohos.permission.MEDIA_LOCATION") != IBundleManager.PERMISSION_GRANTED ||
+                verifySelfPermission("ohos.permission.CAMERA") != IBundleManager.PERMISSION_GRANTED ||
+                verifySelfPermission("ohos.permission.WRITE_USER_STORAGE") != IBundleManager.PERMISSION_GRANTED) {
+            if (canRequestPermission("ohos.permission.READ_MEDIA")) {
+                requestPermissionsFromUser(
+                        new String[]{"ohos.permission.READ_MEDIA",
+                                "ohos.permission.READ_USER_STORAGE",
+                                "ohos.permission.INTERNET",
+                                "ohos.permission.WRITE_MEDIA",
+                                "ohos.permission.DISTRIBUTED_DATASYNC",
+                                "ohos.permission.servicebus.ACCESS_SERVICE",
+                                "com.huawei.hwddmp.servicebus.BIND_SERVICE",
+                                "ohos.permission.servicebus.DISTRIBUTED_DEVICE_STATE_CHANGE",
+                                "ohos.permission.servicebus.GET_BUNDLE_INFO",
+                                "ohos.permission.GET_DISTRIBUTED_DEVICE_INFO",
+                                "ohos.permission.READ_MEDIA",
+                                "ohos.permission.MEDIA_LOCATION",
+                                "ohos.permission.CAMERA",
+                                "ohos.permission.WRITE_USER_STORAGE"
+                        }, MY_PERMISSIONS_REQUEST_CAMERA);
+            }
+        }
     }
 
     /**

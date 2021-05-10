@@ -19,7 +19,6 @@
       }
     }
   },
-
   "module": {
     "package": "com.example.timestory",
     "name": ".MyApplication",
@@ -50,6 +49,18 @@
       },
       {
         "name": "ohos.permission.GET_DISTRIBUTED_DEVICE_INFO"
+      },
+      {
+        "name": "ohos.permission.READ_MEDIA"
+      },
+      {
+        "name": "ohos.permission.MEDIA_LOCATION"
+      },
+      {
+        "name": "ohos.permission.CAMERA"
+      },
+      {
+        "name": "ohos.permission.WRITE_USER_STORAGE"
       }
     ],
     "deviceType": [

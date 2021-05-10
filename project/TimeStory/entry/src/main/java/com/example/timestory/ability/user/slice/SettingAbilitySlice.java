@@ -15,6 +15,7 @@ import com.zhihu.matisse.MimeType;
 import com.zhihu.matisse.filter.Filter;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.ability.DataAbilityHelper;
+import ohos.aafwk.ability.DataAbilityRemoteException;
 import ohos.aafwk.content.Intent;
 import ohos.agp.components.*;
 import ohos.agp.window.dialog.CommonDialog;
@@ -50,10 +51,10 @@ public class SettingAbilitySlice extends AbilitySlice implements Component.Click
     private Text mModifyUserPhone;
     private Button mSettingExitBtn;
     private RadioContainer mRadioContainer;
-    private EventRunner eventRunner = EventRunner.create(true);
+    private final EventRunner eventRunner = EventRunner.create(true);
     private static final int REQUEST_CODE = 23;
     private static final int MY_PERMISSIONS_REQUEST_CAMERA = 23;
-    private EventHandler eventHandler = new EventHandler(eventRunner) {
+    private final EventHandler eventHandler = new EventHandler(eventRunner) {
         @Override
         protected void processEvent(InnerEvent event) {
             super.processEvent(event);
@@ -128,19 +129,6 @@ public class SettingAbilitySlice extends AbilitySlice implements Component.Click
     public void onClick(Component component) {
         switch (component.getId()) {
             case ResourceTable.Id_setting_user_header:
-                if (verifySelfPermission("ohos.permission.WRITE_USER_STORAGE") != IBundleManager.PERMISSION_GRANTED ||
-                        verifySelfPermission("ohos.permission.CAMERA") != IBundleManager.PERMISSION_GRANTED ||
-                        verifySelfPermission("ohos.permission.READ_MEDIA") != IBundleManager.PERMISSION_GRANTED) {
-                    if (canRequestPermission("ohos.permission.READ_MEDIA")) {
-                        requestPermissionsFromUser(
-                                new String[]{"ohos.permission.READ_MEDIA",
-                                        "ohos.permission.WRITE_MEDIA",
-                                        "ohos.permission.MEDIA_LOCATION",
-                                        "ohos.permission.CAMERA",
-                                        "ohos.permission.WRITE_USER_STORAGE"
-                                }, MY_PERMISSIONS_REQUEST_CAMERA);
-                    }
-                }
                 Matisse.from(SettingAbilitySlice.this)
                         .choose(MimeType.ofAll())
                         .addFilter(new GifSizeFilter(320, 320, 5 * Filter.K * Filter.K))
@@ -238,43 +226,65 @@ public class SettingAbilitySlice extends AbilitySlice implements Component.Click
         if (resultCode != MatisseAbility.RESULT_OK) {
             return;
         }
+
+        ArrayList<Uri> uriArrayList = resultData.getSequenceableArrayListParam(MatisseAbility.EXTRA_RESULT_SELECTION);
+        ArrayList<String> stringArrayList = resultData.getStringArrayListParam(MatisseAbility.EXTRA_RESULT_SELECTION_PATH);
+        DataAbilityHelper helper = DataAbilityHelper.creator(getContext());
+        FileDescriptor fileDesc = null;
         try {
-            ArrayList<Uri> uriArrayList = resultData.getSequenceableArrayListParam(MatisseAbility.EXTRA_RESULT_SELECTION);
-            ArrayList<String> stringArrayList = resultData.getStringArrayListParam(MatisseAbility.EXTRA_RESULT_SELECTION_PATH);
-            DataAbilityHelper helper = DataAbilityHelper.creator(getContext());
-            FileDescriptor fileDesc = helper.openFile(uriArrayList.get(0), "r");
-            ImageSource.DecodingOptions decodingOpts = new ImageSource.DecodingOptions();
-            decodingOpts.desiredSize = new Size(300, 300);
-            ImageSource imageSource = ImageSource.create(fileDesc, null);
-            PixelMap pixelMap = imageSource.createThumbnailPixelmap(decodingOpts, true);
-            mSettingUserHeader.setPixelMapAndCircle(pixelMap);
-            File file = new File(stringArrayList.get(0));
-            OkHttpClient client = new OkHttpClient();
-            MultipartBody.Builder requestBody = new MultipartBody.Builder()
-                    .setType(MultipartBody.FORM);
-            RequestBody fileBody = RequestBody.create(MediaType.parse("image/*"), file);
-            requestBody.addFormDataPart("file", file.getName(), fileBody)
-                    .addFormDataPart("userId", Constant.User.getUserId() + "");
-            Request request = new Request.Builder()
-                    .url(ServiceConfig.SERVICE_ROOT + "/picture/upload")
-                    .post(requestBody.build())
-                    .build();
-
-            client.newBuilder().build().newCall(request).enqueue(new Callback() {
-                @Override
-                public void onFailure(Call call, IOException e) {
-                    getMainTaskDispatcher().syncDispatch(() -> ToastUtil.showEncourageToast(SettingAbilitySlice.this, "失败！！"));
-                }
-
-                @Override
-                public void onResponse(Call call, Response response) {
-                    getMainTaskDispatcher().syncDispatch(() -> ToastUtil.showEncourageToast(SettingAbilitySlice.this, "成功！！"));
-                    Constant.ChangeHeader = 1;
-                    Constant.User.setUserHeader("user/us-" + Constant.User.getUserId() + ".jpg");
-                }
-            });
-        } catch (Exception e) {
-            throw new ClassCastException("Class Exception");
+            fileDesc = helper.openFile(uriArrayList.get(0), "r");
+        } catch (DataAbilityRemoteException | FileNotFoundException e) {
+            e.printStackTrace();
         }
+        ImageSource.DecodingOptions decodingOpts = new ImageSource.DecodingOptions();
+        decodingOpts.desiredSize = new Size(300, 300);
+        ImageSource imageSource = ImageSource.create(fileDesc, null);
+        PixelMap pixelMap = imageSource.createThumbnailPixelmap(decodingOpts, true);
+
+        //测试代码
+//        mSettingUserSignature.setText(stringArrayList.get(0));
+//        mModifyUserPhone.setText(uriArrayList.get(0).toString());
+
+        File file = new File(stringArrayList.get(0));
+        mSettingUserName.setText(file.getPath() + "," + file.length());
+        OkHttpClient client = new OkHttpClient();
+
+        MultipartBody.Builder requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM);
+        RequestBody fileBody = RequestBody.create(MediaType.parse("image/*"), file);
+        requestBody.addFormDataPart("file", file.getName(), fileBody)
+                .addFormDataPart("userId", Constant.User.getUserId() + "");
+        Request request = new Request.Builder()
+                .url(ServiceConfig.SERVICE_ROOT + "/picture/upload")
+                .post(requestBody.build())
+                .build();
+
+//        new Thread(() -> {
+//            try {
+//                client.newBuilder().build().newCall(request).execute();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//                getMainTaskDispatcher().syncDispatch(() -> ToastUtil.showEncourageToast(SettingAbilitySlice.this, "失败！！"));
+//                return;
+//            }
+//            getMainTaskDispatcher().syncDispatch(() -> ToastUtil.showEncourageToast(SettingAbilitySlice.this, "成功！！"));
+//        }).start();
+        client.newBuilder().build().newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+                getMainTaskDispatcher().syncDispatch(() -> ToastUtil.showEncourageToast(SettingAbilitySlice.this, "失败！！"));
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) {
+                Constant.ChangeHeader = 1;
+                Constant.User.setUserHeader("user/us-" + Constant.User.getUserId() + ".jpg");
+                getMainTaskDispatcher().syncDispatch(() -> {
+                    ToastUtil.showEncourageToast(SettingAbilitySlice.this, "成功！！");
+                    mSettingUserHeader.setPixelMapAndCircle(pixelMap);
+                });
+            }
+        });
     }
 }
