@@ -7,7 +7,7 @@
         <option name="testRunner" value="PLATFORM" />
         <option name="distributionType" value="LOCAL" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="D:\DevEco Studio 2.1.0.303\tools\gradle" />
+        <option name="gradleHome" value="D:\software\DevEco Studio 2.1.0.303\tools\gradle" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />

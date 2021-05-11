@@ -35,7 +35,7 @@
         ohos:id="$+id:cont"
         ohos:height="match_parent"
         ohos:width="match_parent"
-        ohos:above="$id:btn"
+        ohos:above="$id:buttons"
         ohos:right_margin="20fp"
         ohos:right_of="$id:title">
 
@@ -57,6 +57,7 @@
     </DependentLayout>
 
     <DirectionalLayout
+        ohos:id="$+id:buttons"
         ohos:height="match_content"
         ohos:width="match_parent"
         ohos:align_parent_bottom="true"
@@ -91,7 +92,6 @@
         </DependentLayout>
 
         <DependentLayout
-            ohos:id="$+id:btn"
             ohos:height="50vp"
             ohos:width="match_content"
             ohos:weight="3">

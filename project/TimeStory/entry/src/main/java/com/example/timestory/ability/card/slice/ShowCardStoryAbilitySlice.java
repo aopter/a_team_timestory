@@ -102,7 +102,11 @@ public class ShowCardStoryAbilitySlice extends AbilitySlice implements IAbilityC
         public void onClick(Component component) {
             switch (component.getId()) {
                 case ResourceTable.Id_btn_continue://流转
-                    continueAbility(Constant.getAvailableDeviceIds().get(0));
+                    if (null == Constant.getAvailableDeviceIds()) {
+                        ToastUtil.showSickToast(getApplicationContext(), "附近没有能够流转的设备，请确认是否有流转设备");
+                    } else {
+                        continueAbility(Constant.getAvailableDeviceIds().get(0));
+                    }
                     break;
                 case ResourceTable.Id_back:
                     terminate();

@@ -225,6 +225,15 @@ public class DynastyIntroduceActivitySlice extends AbilitySlice {
                     break;
                 case ResourceTable.Id_map:
                     //跳转全景图
+                    Intent intent1 = new Intent();
+                    Operation operation1 = new Intent.OperationBuilder()
+                            .withDeviceId("")
+                            .withBundleName("com.example.timestory")
+                            .withAbilityName("com.example.timestory.ability.dynasty.AllScreenImgAbility")
+                            .build();
+                    HiLog.info(SelectProblemSlice.LABEL_LOG, "跳转时的dynastyId：" + dynastyId);
+                    intent1.setOperation(operation1);
+                    startAbility(intent1);
                     break;
                 case ResourceTable.Id_problem:
                     //跳转答题页面

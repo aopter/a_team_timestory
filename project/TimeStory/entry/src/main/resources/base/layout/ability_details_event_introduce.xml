@@ -3,135 +3,140 @@
     xmlns:ohos="http://schemas.huawei.com/res/ohos"
     ohos:height="match_parent"
     ohos:width="match_parent"
-    ohos:orientation="horizontal"
-    ohos:background_element="$media:intro">
+    ohos:background_element="$media:intro"
+    ohos:orientation="horizontal">
 
-<!--    标题部分-->
     <DependentLayout
-        ohos:id="$+id:title"
         ohos:height="match_parent"
-        ohos:width="match_content">
+        ohos:width="match_content"
+        ohos:bottom_margin="20vp"
+        ohos:left_margin="20vp"
+        ohos:orientation="vertical"
+        ohos:right_margin="20vp"
+        ohos:top_margin="20vp">
 
         <Button
             ohos:id="$+id:back"
-            ohos:height="25fp"
-            ohos:width="25fp"
-            ohos:background_element="$media:back"
+            ohos:height="40vp"
+            ohos:width="40vp"
             ohos:align_parent_top="true"
-            ohos:margin="28fp"/>
+            ohos:background_element="$media:back"/>
 
         <Text
             ohos:id="$+id:event_name"
             ohos:height="match_content"
             ohos:width="35vp"
-            ohos:text_size="25fp"
-            ohos:center_in_parent="true"
             ohos:multiple_lines="true"
-            ohos:margin="20fp"
+            ohos:text="贞观之治"
+            ohos:text_alignment="center"
             ohos:text_color="$color:ourDynastyRed"
-            ohos:text_alignment="center"/>
-
-        <Button
-            ohos:id="$+id:btn_continue"
-            ohos:height="match_content"
-            ohos:width="match_content"
-            ohos:padding="10vp"
-            ohos:text="流转"
-            ohos:right_margin="20vp"
-            ohos:background_element="$media:button"
-            ohos:align_parent_top="true"
-            ohos:align_parent_right="true"
-            ohos:margin="28fp"/>
-
+            ohos:text_size="25fp"
+            ohos:vertical_center="true"/>
     </DependentLayout>
 
-<!--    人物叙述部分-->
+    <!--    人物叙述部分-->
     <DependentLayout
         ohos:height="match_parent"
-        ohos:width="260fp">
+        ohos:width="260vp"
+        ohos:right_margin="10vp">
 
-<!--        灯笼图片-->
-<!--        简介框-->
+        <!--        灯笼图片-->
+        <!--        简介框-->
         <DirectionalLayout
-            ohos:height="210fp"
-            ohos:width="230fp"
+            ohos:height="match_parent"
+            ohos:width="260vp"
             ohos:alignment="center"
-            ohos:background_element="$media:bg_pangbai"
-            ohos:horizontal_center="true"
-            ohos:above="$id:pic_pangbai"
-            ohos:bottom_margin="-90fp">
+            ohos:bottom_margin="90vp"
+            ohos:horizontal_center="true">
 
             <Text
                 ohos:id="$+id:event_introduce"
                 ohos:height="match_parent"
                 ohos:width="match_parent"
-                ohos:text_size="14fp"
-                ohos:multiple_lines="true"
-                ohos:scrollable="true"
+                ohos:background_element="$media:bg_pangbai"
+                ohos:bottom_margin="20vp"
+                ohos:bottom_padding="20vp"
                 ohos:clickable="false"
-                ohos:top_padding="20fp"
-                ohos:bottom_padding="20fp"
-                ohos:left_padding="15fp"
-                ohos:right_padding="12fp"/>
-
+                ohos:left_padding="15vp"
+                ohos:multiple_lines="true"
+                ohos:right_padding="12vp"
+                ohos:scrollable="true"
+                ohos:text_size="14fp"
+                ohos:top_margin="60vp"
+                ohos:top_padding="20fp"/>
         </DirectionalLayout>
-<!--        人物图片-->
+
+        <!--        人物图片-->
         <Image
             ohos:id="$+id:pic_pangbai"
-            ohos:height="130fp"
-            ohos:width="130fp"
-            ohos:bottom_margin="5fp"
+            ohos:height="150vp"
+            ohos:width="150vp"
             ohos:align_parent_bottom="true"
+            ohos:align_parent_left="true"
+            ohos:bottom_margin="5fp"
             ohos:scale_mode="inside"/>
     </DependentLayout>
 
-<!--    人物动画部分-->
-    <DirectionalLayout
+    <!--    人物动画部分-->
+    <DependentLayout
         ohos:height="match_content"
         ohos:width="match_parent"
         ohos:orientation="vertical">
 
-<!--        滚动-->
+        <Button
+            ohos:id="$+id:btn_continue"
+            ohos:height="match_content"
+            ohos:width="match_content"
+            ohos:align_parent_right="true"
+            ohos:align_parent_top="true"
+            ohos:background_element="$media:button"
+            ohos:margin="28fp"
+            ohos:padding="10vp"
+            ohos:right_margin="20vp"
+            ohos:text="流转"/>
+
+        <!--        滚动-->
         <ScrollView
-            ohos:height="200fp"
-            ohos:width="match_parent">
+            ohos:height="250vp"
+            ohos:width="match_parent"
+            ohos:bottom_padding="20vp">
 
             <DirectionalLayout
                 ohos:id="$+id:dialog_box"
                 ohos:height="match_content"
                 ohos:width="match_parent"
-                ohos:orientation="vertical"
+                ohos:alignment="horizontal_center"
                 ohos:layout_alignment="bottom"
-                ohos:alignment="horizontal_center">
+                ohos:orientation="vertical">
 
             </DirectionalLayout>
         </ScrollView>
 
-<!--        人物-->
+        <!--        人物-->
         <DependentLayout
             ohos:id="$+id:dialogue"
-            ohos:height="match_parent"
+            ohos:height="match_content"
             ohos:width="match_parent"
+            ohos:align_parent_bottom="true"
             ohos:clickable="true">
 
             <Image
                 ohos:id="$+id:pic_one"
-                ohos:height="150fp"
-                ohos:width="150fp"
-                ohos:background_element="$media:tangtwo"
+                ohos:height="150vp"
+                ohos:width="150vp"
                 ohos:align_parent_left="true"
-                ohos:left_margin="35fp"
+                ohos:background_element="$media:tangtwo"
                 ohos:clickable="false"/>
+
             <Image
                 ohos:id="$+id:pic_two"
-                ohos:height="150fp"
-                ohos:width="150fp"
-                ohos:background_element="$media:tangOne"
+                ohos:height="150vp"
+                ohos:width="150vp"
                 ohos:align_parent_right="true"
-                ohos:right_margin="35fp"
+                ohos:background_element="$media:tangOne"
                 ohos:clickable="false"/>
 
         </DependentLayout>
-    </DirectionalLayout>
+    </DependentLayout>
 
 </DirectionalLayout>

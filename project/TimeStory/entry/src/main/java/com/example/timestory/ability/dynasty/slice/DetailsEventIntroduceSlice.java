@@ -2,6 +2,7 @@ package com.example.timestory.ability.dynasty.slice;
 
 import com.example.timestory.ResourceTable;
 import com.example.timestory.Utils.HmOSImageLoader;
+import com.example.timestory.Utils.ToastUtil;
 import com.example.timestory.constant.Constant;
 import com.example.timestory.constant.ServiceConfig;
 import com.example.timestory.entity.Incident;
@@ -50,13 +51,13 @@ public class DetailsEventIntroduceSlice extends AbilitySlice implements IAbility
     private OkHttpClient okHttpClient;//网络访问请求对象
     private TaskDispatcher parallelTaskDispatcher;//并发任务分发器
     private EventRunner eventRunner = EventRunner.create(true);//线程投递器
-    private EventHandler eventHandler = new EventHandler(eventRunner){
+    private EventHandler eventHandler = new EventHandler(eventRunner) {
         @Override
         protected void processEvent(InnerEvent event) {
             super.processEvent(event);
-            switch (event.eventId){
+            switch (event.eventId) {
                 case ServiceConfig.INCIDENT_DETAILS_URL_THREAD:
-                   setLayout();
+                    setLayout();
                     break;
             }
         }
@@ -68,8 +69,8 @@ public class DetailsEventIntroduceSlice extends AbilitySlice implements IAbility
         super.setUIContent(ResourceTable.Layout_ability_details_event_introduce);
 
         //获取信息
-        dynastyId = intent.getIntParam("dynastyId",1);
-        eventId = intent.getIntParam("eventId",1);
+        dynastyId = intent.getIntParam("dynastyId", 1);
+        eventId = intent.getIntParam("eventId", 1);
 
         //初始化并发任务分发器
         parallelTaskDispatcher = createParallelTaskDispatcher("detailsEventIntroducePageParallelTaskDispatcher", TaskPriority.DEFAULT);
@@ -87,7 +88,7 @@ public class DetailsEventIntroduceSlice extends AbilitySlice implements IAbility
     }
 
     //初始化Gson
-    private void initGson(){
+    private void initGson() {
         gson = new GsonBuilder()
                 .setPrettyPrinting()
                 .serializeNulls()
@@ -109,7 +110,7 @@ public class DetailsEventIntroduceSlice extends AbilitySlice implements IAbility
     }
 
     //设置监听器
-    private void setListener(){
+    private void setListener() {
         MyListener myListener = new MyListener();
         back.setClickedListener(myListener);
         dialogue.setClickedListener(myListener);
@@ -138,19 +139,19 @@ public class DetailsEventIntroduceSlice extends AbilitySlice implements IAbility
     }
 
     //监听器
-    private class MyListener implements Component.ClickedListener{
+    private class MyListener implements Component.ClickedListener {
         @Override
         public void onClick(Component component) {
-            switch (component.getId()){
+            switch (component.getId()) {
                 case ResourceTable.Id_back:
                     //关闭页面
                     terminate();
                     break;
                 case ResourceTable.Id_dialogue:
 
-                    if(i % 2 == 0){
+                    if (i % 2 == 0) {
                         addDialogLayout(ResourceTable.Layout_dialog_text_left_item);
-                    }else {
+                    } else {
                         addDialogLayout(ResourceTable.Layout_dialog_text_right_item);
                     }
                     break;
@@ -159,17 +160,21 @@ public class DetailsEventIntroduceSlice extends AbilitySlice implements IAbility
                     //在两个搭载鸿蒙操作系统的手机上均安装这个程序，并在其中一个设备上打开的该应用程序：按钮
                     // 可以实现应用程序在两个设备间的流转了。
 //                不过，这两个设备需要在同一个WiFi下，并且登录同一个华为账号，才可以使用分布式软总线实现流转。
-                    continueAbility(Constant.getAvailableDeviceIds().get(0));
+                    if (null == Constant.getAvailableDeviceIds()) {
+                        ToastUtil.showSickToast(getApplicationContext(), "附近没有能够流转的设备，请确认是否有流转设备");
+                    } else {
+                        continueAbility(Constant.getAvailableDeviceIds().get(0));
+                    }
                     break;
             }
         }
     }
 
     //网络获取朝代事件详情
-    public void downloadDynastyIncident(){
+    public void downloadDynastyIncident() {
         okHttpClient = new OkHttpClient();
         Request request = new Request.Builder()
-                .url(ServiceConfig.SERVICE_ROOT+ServiceConfig.INCIDENT_DETAILS_URL+eventId)
+                .url(ServiceConfig.SERVICE_ROOT + ServiceConfig.INCIDENT_DETAILS_URL + eventId)
                 .build();
         Call call = okHttpClient.newCall(request);
 
@@ -182,7 +187,7 @@ public class DetailsEventIntroduceSlice extends AbilitySlice implements IAbility
                     String json = response.body().string();
 
                     //获取对象
-                    incident = gson.fromJson(json,Incident.class);
+                    incident = gson.fromJson(json, Incident.class);
                     //获取list集合
                     dialogList = incident.getIncidentDialog().split(Constant.DELIMITER);
                     eventHandler.sendEvent(ServiceConfig.INCIDENT_DETAILS_URL_THREAD);
@@ -198,7 +203,7 @@ public class DetailsEventIntroduceSlice extends AbilitySlice implements IAbility
     }
 
     //设置页面
-    public void setLayout(){
+    public void setLayout() {
         //设置标题
         eventName.setText(incident.getIncidentName());
         //设置内容
@@ -206,7 +211,7 @@ public class DetailsEventIntroduceSlice extends AbilitySlice implements IAbility
         //加载旁白图片
         String[] urls = incident.getIncidentPicture().split(Constant.DELIMITER);
         String url = urls[urls.length - 2];
-        HmOSImageLoader.with(this).load(ServiceConfig.SERVICE_ROOT+"/img/"+url).into(picPangbai);
+        HmOSImageLoader.with(this).load(ServiceConfig.SERVICE_ROOT + "/img/" + url).into(picPangbai);
 
         //添加对话布局
         addDialogLayout(ResourceTable.Layout_dialog_text_left_item);
@@ -218,15 +223,15 @@ public class DetailsEventIntroduceSlice extends AbilitySlice implements IAbility
     }
 
     //添加对话布局
-    public void addDialogLayout(int layoutItem){
-        if(i < dialogList.length){
-            Component component = LayoutScatter.getInstance(getContext()).parse(layoutItem,null,false);
+    public void addDialogLayout(int layoutItem) {
+        if (i < dialogList.length) {
+            Component component = LayoutScatter.getInstance(getContext()).parse(layoutItem, null, false);
             Text text = (Text) component.findComponentById(ResourceTable.Id_sentence);
             text.setText(dialogList[i]);
             i++;
             dialogBox.addComponent(component);
-        }else{
-            new ToastDialog(getContext()).setText("事件完成").show();
+        } else {
+            ToastUtil.showEncourageToast(getApplicationContext(), "您已看完此事件");
             //事件完成，监察之前是否已经解锁，如果没有解锁，那就解锁
             addUnlockIncidents();
             //取消监听器
@@ -245,17 +250,17 @@ public class DetailsEventIntroduceSlice extends AbilitySlice implements IAbility
                 .url(ServiceConfig.SERVICE_ROOT + ServiceConfig.UNLOCK_INCIDENT_ADD + Constant.User.getUserId() + "/" + dynastyId + "/" + eventId)
                 .build();
         Call call = okHttpClient.newCall(request);
-        new Thread(){
+        new Thread() {
             @Override
             public void run() {
                 try {
                     Response response = call.execute();
                     String json = response.body().string();
-                    System.out.println("____json____"+json);
+                    System.out.println("____json____" + json);
                     Result result = gson.fromJson(json, Result.class);
                     String isAdd = result.getResult();
-                    System.out.println("____isadd____"+isAdd);
-                    if ("true".equals(isAdd)){
+                    System.out.println("____isadd____" + isAdd);
+                    if ("true".equals(isAdd)) {
                         long experience = Constant.User.getUserExperience();
                         experience = experience + 15;
                         Constant.User.setUserExperience(experience);
@@ -292,7 +297,7 @@ public class DetailsEventIntroduceSlice extends AbilitySlice implements IAbility
                 String json = response.body().string();
 
                 Result result = gson.fromJson(json, Result.class);
-                String isPass =  result.getResult();
+                String isPass = result.getResult();
                 if ("true".equals(isPass)) {
                     //先判断下一朝代是否解锁，后解锁下一朝代
                     addUnlockDynasty(dynastyId);

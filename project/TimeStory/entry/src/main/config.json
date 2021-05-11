@@ -371,6 +371,24 @@
             }
           ]
         }
+      },
+      {
+        "orientation": "portrait",
+        "name": "com.example.timestory.ability.dynasty.AllScreenImgAbility",
+        "icon": "$media:icon",
+        "description": "$string:detailseventability_description",
+        "label": "TimeStroy",
+        "type": "page",
+        "launchType": "standard",
+        "metaData": {
+          "customizeData": [
+            {
+              "name": "hwc-theme",
+              "value": "androidhwext:style/Theme.Emui.Light.NoTitleBar.Fullscreen",
+              "extra": ""
+            }
+          ]
+        }
       }
     ]
   }
