@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: giflibrary-release@har">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/dc7f4af86d67aa021ff9bff153398b37/giflibrary-release/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/dc7f4af86d67aa021ff9bff153398b37/giflibrary-release/resources" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/dc7f4af86d67aa021ff9bff153398b37/giflibrary-release/config.json" />
+      <root url="jar://$PROJECT_DIR$/../../../../../GradleHome/caches/transforms-2/files-2.1/968a9df8ba88c012f21b3b5571713030/giflibrary-release/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../../../GradleHome/caches/transforms-2/files-2.1/968a9df8ba88c012f21b3b5571713030/giflibrary-release/resources" />
+      <root url="file://$PROJECT_DIR$/../../../../../GradleHome/caches/transforms-2/files-2.1/968a9df8ba88c012f21b3b5571713030/giflibrary-release/config.json" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

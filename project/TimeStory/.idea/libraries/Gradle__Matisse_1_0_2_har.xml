@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: Matisse-1.0.2@har">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b10204f577181da55ba38e6de557ebe5/Matisse-1.0.2/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b10204f577181da55ba38e6de557ebe5/Matisse-1.0.2/resources" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b10204f577181da55ba38e6de557ebe5/Matisse-1.0.2/config.json" />
+      <root url="jar://$PROJECT_DIR$/../../../../../GradleHome/caches/transforms-2/files-2.1/46ee1092bc994176cb9d779d253e2eec/Matisse-1.0.2/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../../../GradleHome/caches/transforms-2/files-2.1/46ee1092bc994176cb9d779d253e2eec/Matisse-1.0.2/resources" />
+      <root url="file://$PROJECT_DIR$/../../../../../GradleHome/caches/transforms-2/files-2.1/46ee1092bc994176cb9d779d253e2eec/Matisse-1.0.2/config.json" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

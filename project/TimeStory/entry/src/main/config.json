@@ -1,15 +1,15 @@
 {
   "app": {
-    "bundleName": "com.example.timestory",
+    "bundleName": "com.example.timesequence",
     "vendor": "example",
     "version": {
       "code": 1,
       "name": "1.0"
     },
     "apiVersion": {
-      "compatible": 4,
-      "target": 5,
-      "releaseType": "Release"
+      "compatible": 3,
+      "target": 4,
+      "releaseType": "Beta1"
     }
   },
   "deviceConfig": {
@@ -20,8 +20,8 @@
     }
   },
   "module": {
-    "package": "com.example.timestory",
-    "name": ".MyApplication",
+    "package": "com.example.timesequence",
+    "name": "com.example.timesequence.MyApplication",
     "reqPermissions": [
       {
         "name": "ohos.permission.INTERNET"
@@ -76,7 +76,7 @@
     "abilities": [
       {
         "orientation": "landscape",
-        "name": "com.example.timestory.ability.card.DrawCardAbility",
+        "name": "com.example.timesequence.ability.card.DrawCardAbility",
         "icon": "$media:icon",
         "description": "$string:detailseventability_description",
         "label": "TimeStroy",
@@ -94,7 +94,7 @@
       },
       {
         "orientation": "landscape",
-        "name": "com.example.timestory.ability.card.MyCardAbility",
+        "name": "com.example.timesequence.ability.card.MyCardAbility",
         "icon": "$media:icon",
         "description": "$string:detailseventability_description",
         "label": "TimeStroy",
@@ -112,7 +112,7 @@
       },
       {
         "orientation": "landscape",
-        "name": "com.example.timestory.ability.dynasty.DynastyIntroduceActivity",
+        "name": "com.example.timesequence.ability.dynasty.DynastyIntroduceActivity",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "TimeStroy",
@@ -130,7 +130,7 @@
       },
       {
         "orientation": "landscape",
-        "name": "com.example.timestory.ability.dynasty.HomePageAbility",
+        "name": "com.example.timesequence.ability.dynasty.HomePageAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "TimeStroy",
@@ -148,7 +148,7 @@
       },
       {
         "orientation": "landscape",
-        "name": "com.example.timestory.ability.problem.ProblemCollectionActivity",
+        "name": "com.example.timesequence.ability.problem.ProblemCollectionActivity",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "TimeStroy",
@@ -166,7 +166,7 @@
       },
       {
         "orientation": "landscape",
-        "name": "com.example.timestory.ability.problem.ProblemInfoAbility",
+        "name": "com.example.timesequence.ability.problem.ProblemInfoAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "TimeStroy",
@@ -194,7 +194,7 @@
           }
         ],
         "orientation": "landscape",
-        "name": "com.example.timestory.ability.user.LoginAbility",
+        "name": "com.example.timesequence.ability.user.LoginAbility",
         "icon": "$media:icon",
         "description": "$string:detailseventability_description",
         "label": "TimeStroy",
@@ -212,7 +212,7 @@
       },
       {
         "orientation": "landscape",
-        "name": "com.example.timestory.ability.user.UserCenterAbility",
+        "name": "com.example.timesequence.ability.user.UserCenterAbility",
         "icon": "$media:icon",
         "description": "$string:detailseventability_description",
         "label": "TimeStroy",
@@ -230,7 +230,7 @@
       },
       {
         "orientation": "landscape",
-        "name": "com.example.timestory.ability.user.SettingAbility",
+        "name": "com.example.timesequence.ability.user.SettingAbility",
         "icon": "$media:icon",
         "description": "$string:detailseventability_description",
         "label": "TimeStroy",
@@ -248,7 +248,7 @@
       },
       {
         "orientation": "landscape",
-        "name": "com.example.timestory.ability.user.RegistryAbility",
+        "name": "com.example.timesequence.ability.user.RegistryAbility",
         "icon": "$media:icon",
         "description": "$string:detailseventability_description",
         "label": "TimeStroy",
@@ -266,7 +266,7 @@
       },
       {
         "orientation": "landscape",
-        "name": "com.example.timestory.ability.dynasty.DetailsEventAbility",
+        "name": "com.example.timesequence.ability.dynasty.DetailsEventAbility",
         "icon": "$media:icon",
         "description": "$string:detailseventability_description",
         "label": "TimeStroy",
@@ -284,7 +284,7 @@
       },
       {
         "orientation": "landscape",
-        "name": "com.example.timestory.ability.dynasty.DetailsEventIntroduceAbility",
+        "name": "com.example.timesequence.ability.dynasty.DetailsEventIntroduceAbility",
         "icon": "$media:icon",
         "description": "$string:detailseventability_description",
         "label": "TimeStroy",
@@ -302,7 +302,7 @@
       },
       {
         "orientation": "landscape",
-        "name": "com.example.timestory.ability.card.ShowCardStoryAbility",
+        "name": "com.example.timesequence.ability.card.ShowCardStoryAbility",
         "icon": "$media:icon",
         "description": "$string:detailseventability_description",
         "label": "TimeStroy",
@@ -320,7 +320,7 @@
       },
       {
         "orientation": "landscape",
-        "name": "com.example.timestory.ability.card.ShareCardAbility",
+        "name": "com.example.timesequence.ability.card.ShareCardAbility",
         "icon": "$media:icon",
         "description": "$string:detailseventability_description",
         "label": "TimeStroy",
@@ -338,7 +338,7 @@
       },
       {
         "orientation": "landscape",
-        "name": "com.example.timestory.ability.card.SpecificCardDetailAbility",
+        "name": "com.example.timesequence.ability.card.SpecificCardDetailAbility",
         "icon": "$media:icon",
         "description": "$string:detailseventability_description",
         "label": "TimeStroy",
@@ -356,7 +356,7 @@
       },
       {
         "orientation": "landscape",
-        "name": "com.example.timestory.ability.card.SpecificDynastyCardAbility",
+        "name": "com.example.timesequence.ability.card.SpecificDynastyCardAbility",
         "icon": "$media:icon",
         "description": "$string:detailseventability_description",
         "label": "TimeStroy",
@@ -374,7 +374,7 @@
       },
       {
         "orientation": "portrait",
-        "name": "com.example.timestory.ability.dynasty.AllScreenImgAbility",
+        "name": "com.example.timesequence.ability.dynasty.AllScreenImgAbility",
         "icon": "$media:icon",
         "description": "$string:detailseventability_description",
         "label": "TimeStroy",

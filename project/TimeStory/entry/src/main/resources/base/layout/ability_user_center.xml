@@ -22,7 +22,7 @@
             ohos:layout_alignment="vertical_center"
             ohos:orientation="vertical">
 
-            <com.example.timestory.Utils.RoundImage
+            <com.example.timesequence.Utils.RoundImage
                 ohos:id="$+id:user_center_header"
                 ohos:height="30vp"
                 ohos:width="30vp"
@@ -180,7 +180,7 @@
             ohos:top_margin="30vp"
             ohos:total_weight="1">
             <!--排行榜-->
-            <com.example.timestory.Utils.CusText
+            <com.example.timesequence.Utils.CusText
                 ohos:height="25vp"
                 ohos:width="match_content"
                 ohos:background_element="#AE5B41"
@@ -207,7 +207,7 @@
             ohos:top_margin="30vp"
             ohos:total_weight="1">
             <!--历史上的今天-->
-            <com.example.timestory.Utils.CusText
+            <com.example.timesequence.Utils.CusText
                 ohos:height="25vp"
                 ohos:width="match_content"
                 ohos:background_element="#AE5B41"

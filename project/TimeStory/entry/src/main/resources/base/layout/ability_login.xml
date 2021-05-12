@@ -4,6 +4,7 @@
     ohos:height="match_parent"
     ohos:width="match_parent"
     ohos:background_element="$media:bg_login">
+
     <com.isoftstone.giflibrary.Gif
         ohos:height="100vp"
         ohos:width="100vp"
@@ -35,7 +36,6 @@
             ohos:background_element="$graphic:login_textfield"
             ohos:hint="密码"
             ohos:text_alignment="center"
-            ohos:text_input_type="pattern_password"
             ohos:text_size="10fp"
             ohos:top_margin="10vp"/>
         <!--记住密码-->

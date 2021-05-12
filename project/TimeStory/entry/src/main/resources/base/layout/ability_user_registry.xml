@@ -11,7 +11,7 @@
         ohos:center_in_parent="true"
         ohos:orientation="vertical">
 
-        <com.example.timestory.Utils.CusText
+        <com.example.timesequence.Utils.CusText
             ohos:height="match_content"
             ohos:width="match_content"
             ohos:above="tf_phone"

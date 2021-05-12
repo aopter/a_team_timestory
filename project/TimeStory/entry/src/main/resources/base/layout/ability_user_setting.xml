@@ -27,7 +27,7 @@
             ohos:width="match_parent"
             ohos:orientation="vertical">
 
-            <com.example.timestory.Utils.RoundImage
+            <com.example.timesequence.Utils.RoundImage
                 ohos:id="$+id:setting_user_header"
                 ohos:height="50vp"
                 ohos:width="50vp"

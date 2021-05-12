@@ -15,7 +15,7 @@
         ohos:left_margin="10vp"
         ohos:orientation="vertical">
 
-        <com.example.timestory.Utils.RoundImage
+        <com.example.timesequence.Utils.RoundImage
             ohos:id="$+id:rank_img"
             ohos:height="13vp"
             ohos:width="13vp"
@@ -42,7 +42,7 @@
             ohos:text_size="6fp"/>
     </DependentLayout>
 
-    <com.example.timestory.Utils.RoundImage
+    <com.example.timesequence.Utils.RoundImage
         ohos:right_of="$id:dl_rank_num"
         ohos:id="$+id:rank_user_header"
         ohos:height="20vp"
