@@ -31,7 +31,7 @@
             ohos:height="match_parent"
             ohos:width="match_content"
             ohos:right_of="$id:back"
-            ohos:text="喵喵喵"
+            ohos:text="请稍等"
             ohos:text_alignment="vertical_center"
             ohos:text_color="#000"
             ohos:text_size="18fp"/>
@@ -42,10 +42,10 @@
             ohos:width="match_content"
             ohos:align_parent_right="true"
             ohos:background_element="$media:button"
-            ohos:layout_alignment="right"
             ohos:padding="10vp"
             ohos:right_margin="20vp"
-            ohos:text="流转"/>
+            ohos:text="迁移"
+            ohos:text_alignment="center"/>
     </DependentLayout>
 
     <DependentLayout

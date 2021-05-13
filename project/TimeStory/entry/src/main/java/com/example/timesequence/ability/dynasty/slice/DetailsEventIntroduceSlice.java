@@ -12,9 +12,7 @@ import com.example.timesequence.entity.UserUnlockDynastyIncident;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import ohos.aafwk.ability.AbilitySlice;
-import ohos.aafwk.ability.IAbilityContinuation;
 import ohos.aafwk.content.Intent;
-import ohos.aafwk.content.IntentParams;
 import ohos.agp.components.*;
 import ohos.app.dispatcher.TaskDispatcher;
 import ohos.app.dispatcher.task.TaskPriority;
@@ -28,15 +26,13 @@ import okhttp3.Response;
 
 import java.io.IOException;
 
-public class DetailsEventIntroduceSlice extends AbilitySlice implements IAbilityContinuation {
+public class DetailsEventIntroduceSlice extends AbilitySlice {
     private int dynastyId = 0;//朝代Id
     private int eventId = 0;//事件Id
     private Incident incident;//事件对象
     private String[] dialogList;//对话数组
     private int i = 0;//对话进行的个数
-
     private Button back;//返回按钮
-    private Button btn_continue;//流转按钮
     private Text eventName;//事件名称
     private Text eventIntroduce;//事件简介
     private Image picPangbai;//旁白图片
@@ -44,10 +40,11 @@ public class DetailsEventIntroduceSlice extends AbilitySlice implements IAbility
     private DependentLayout dialogue;//对话进行的点击按钮
     private Image picOne;//第一个谈话者
     private Image picTwo;//第二个谈话者
-
+    private boolean flag = false; // 判断是否进了的迁移
     private Gson gson;//json解析
     private OkHttpClient okHttpClient;//网络访问请求对象
     private TaskDispatcher parallelTaskDispatcher;//并发任务分发器
+    private AbilitySlice abilitySlice = this;
     private EventRunner eventRunner = EventRunner.create(true);//线程投递器
     private EventHandler eventHandler = new EventHandler(eventRunner) {
         @Override
@@ -65,7 +62,8 @@ public class DetailsEventIntroduceSlice extends AbilitySlice implements IAbility
     protected void onStart(Intent intent) {
         super.onStart(intent);
         super.setUIContent(ResourceTable.Layout_ability_details_event_introduce);
-
+        flag = false;
+        // 判断是否为迁移的数据
         if (dynastyId == 0 || eventId == 0) {
             //获取信息
             dynastyId = intent.getIntParam("dynastyId", 1);
@@ -106,7 +104,6 @@ public class DetailsEventIntroduceSlice extends AbilitySlice implements IAbility
         dialogue = (DependentLayout) findComponentById(ResourceTable.Id_dialogue);
         picOne = (Image) findComponentById(ResourceTable.Id_pic_one);
         picTwo = (Image) findComponentById(ResourceTable.Id_pic_two);
-        btn_continue = (Button) findComponentById(ResourceTable.Id_btn_continue);
     }
 
     //设置监听器
@@ -114,37 +111,6 @@ public class DetailsEventIntroduceSlice extends AbilitySlice implements IAbility
         MyListener myListener = new MyListener();
         back.setClickedListener(myListener);
         dialogue.setClickedListener(myListener);
-        btn_continue.setClickedListener(myListener);
-    }
-
-    @Override
-    public boolean onStartContinuation() {
-        return true;
-    }
-
-    @Override
-    public boolean onSaveData(IntentParams intentParams) {
-        intentParams.setParam("dynastyId", dynastyId);
-        intentParams.setParam("eventId", eventId);
-        String dy = intentParams.getParam("dynastyId").toString();
-        String ev = intentParams.getParam("eventId").toString();
-        System.out.println("dynastyId" + Integer.parseInt(dy));
-        System.out.println("eventId" + Integer.parseInt(ev));
-        return true;
-    }
-
-    @Override
-    public boolean onRestoreData(IntentParams intentParams) {
-        String dy = intentParams.getParam("dynastyId").toString();
-        String ev = intentParams.getParam("eventId").toString();
-        dynastyId = Integer.parseInt(dy);
-        eventId = Integer.parseInt(ev);
-        return true;
-    }
-
-    @Override
-    public void onCompleteContinuation(int i) {
-        terminateAbility();
     }
 
     //监听器
@@ -162,17 +128,6 @@ public class DetailsEventIntroduceSlice extends AbilitySlice implements IAbility
                         addDialogLayout(ResourceTable.Layout_dialog_text_left_item);
                     } else {
                         addDialogLayout(ResourceTable.Layout_dialog_text_right_item);
-                    }
-                    break;
-                case ResourceTable.Id_btn_continue://流转按钮
-                    //可以让用户弹窗选择 设备 这里直接用的第一个设备
-                    //在两个搭载鸿蒙操作系统的手机上均安装这个程序，并在其中一个设备上打开的该应用程序：按钮
-                    // 可以实现应用程序在两个设备间的流转了。
-//                不过，这两个设备需要在同一个WiFi下，并且登录同一个华为账号，才可以使用分布式软总线实现流转。
-                    if (null == Constant.getAvailableDeviceIds()) {
-                        ToastUtil.showSickToast(getApplicationContext(), "附近没有能够流转的设备，请确认是否有流转设备");
-                    } else {
-                        continueAbility(Constant.getAvailableDeviceIds().get(0));
                     }
                     break;
             }
@@ -240,7 +195,7 @@ public class DetailsEventIntroduceSlice extends AbilitySlice implements IAbility
             i++;
             dialogBox.addComponent(component);
         } else {
-            ToastUtil.showEncourageToast(getApplicationContext(), "您已看完此事件");
+            ToastUtil.showEncourageToast(abilitySlice, "您已看完此事件");
             //事件完成，监察之前是否已经解锁，如果没有解锁，那就解锁
             addUnlockIncidents();
             //取消监听器

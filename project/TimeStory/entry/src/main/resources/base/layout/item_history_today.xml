@@ -14,7 +14,7 @@
         ohos:text=""
         ohos:text_alignment="center"
         ohos:text_color="#AE5B41"
-        ohos:text_size="10fp"/>
+        ohos:text_size="12fp"/>
 
     <DirectionalLayout
         ohos:height="match_parent"
@@ -35,7 +35,7 @@
                 ohos:left_of="$id:history_today_time"
                 ohos:text="时间:"
                 ohos:text_color="$color:white"
-                ohos:text_size="8fp"
+                ohos:text_size="10fp"
                 ohos:top_padding="10vp"/>
 
             <Text
@@ -47,7 +47,7 @@
                 ohos:right_padding="10vp"
                 ohos:text=""
                 ohos:text_color="$color:white"
-                ohos:text_size="8fp"
+                ohos:text_size="10fp"
                 ohos:top_padding="10vp"/>
         </DependentLayout>
 
@@ -61,6 +61,6 @@
             ohos:right_padding="10vp"
             ohos:text=""
             ohos:text_color="$color:white"
-            ohos:text_size="8fp"/>
+            ohos:text_size="10fp"/>
     </DirectionalLayout>
 </DirectionalLayout>

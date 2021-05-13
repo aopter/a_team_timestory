@@ -31,6 +31,8 @@ public class ShowCardStoryAbilitySlice extends AbilitySlice implements IAbilityC
     private long clickMillis = 0;
     private long clickTwiceMillis;
     private AbilitySlice abilitySlice = this;
+    private boolean flag = false; // 是否正在迁移
+    private String isMoved = "false"; // 是否迁移
 
     @Override
     public void onStart(Intent intent) {
@@ -75,6 +77,9 @@ public class ShowCardStoryAbilitySlice extends AbilitySlice implements IAbilityC
         cardImg = (Image) findComponentById(ResourceTable.Id_card_img);
         tip = (Text) findComponentById(ResourceTable.Id_role_story);
         btn_continue = (Button) findComponentById(ResourceTable.Id_btn_continue);
+        if (isMoved.contains("true")) {
+            btn_continue.setVisibility(Component.HIDE);
+        }
     }
 
     @Override
@@ -86,6 +91,7 @@ public class ShowCardStoryAbilitySlice extends AbilitySlice implements IAbilityC
     public boolean onSaveData(IntentParams intentParams) {
         // 开始保存slice数据
         intentParams.setParam("card", card);
+        intentParams.setParam("isMoved", "true");
         System.out.println("card" + intentParams.getParam("card"));
         return true;
     }
@@ -94,6 +100,7 @@ public class ShowCardStoryAbilitySlice extends AbilitySlice implements IAbilityC
     public boolean onRestoreData(IntentParams intentParams) {
         // 目标侧接收迁移数据
         card = (Card) intentParams.getParam("card");
+        isMoved = intentParams.getParam("isMoved").toString();
         System.out.println("card" + card);
         return true;
     }
@@ -108,12 +115,56 @@ public class ShowCardStoryAbilitySlice extends AbilitySlice implements IAbilityC
         @Override
         public void onClick(Component component) {
             switch (component.getId()) {
-                case ResourceTable.Id_btn_continue://流转
-                    if (null == Constant.getAvailableDeviceIds()) {
-                        ToastUtil.showSickToast(getApplicationContext(), "附近没有能够流转的设备，请确认是否有流转设备");
+                case ResourceTable.Id_btn_continue://迁移与回迁控制
+                    //可以让用户弹窗选择 设备 这里直接用的第一个设备
+                    //在两个搭载鸿蒙操作系统的手机上均安装这个程序，并在其中一个设备上打开的该应用程序：按钮
+                    // 可以实现应用程序在两个设备间的流转了。
+//                不过，这两个设备需要在同一个WiFi下，并且登录同一个华为账号，才可以使用分布式软总线实现流转。
+//                    if (!flag) {  // 未迁移
+//                        // 通过FLAG_GET_ONLINE_DEVICE标记获得在线设备列表
+//                        List<DeviceInfo> deviceInfoList = DeviceManager.getDeviceList(DeviceInfo.FLAG_GET_ONLINE_DEVICE);
+//                        if (deviceInfoList.size() < 1) {
+//                            ToastUtil.showSickToast(getApplicationContext(), "附近没有能够流转的设备，请确认是否有流转设备");
+//                        } else {
+//                            DeviceSelectDialog dialog = new DeviceSelectDialog(getApplicationContext());
+//                            // 点击后迁移到指定设备
+//                            dialog.setListener(
+//                                    deviceInfo -> {
+//                                        try {
+//                                            // 迁移
+//                                            String deviceId = deviceInfo.getDeviceId();
+//                                            continueAbilityReversibly(deviceId);
+//                                            flag = true;
+//                                            ToastUtil.showEncourageToast(getApplicationContext(), "迁移成功~");
+//                                            btn_continue.setText("回迁");
+//                                        } catch (IllegalStateException | UnsupportedOperationException e) {
+//                                            ToastUtil.showSickToast(getApplicationContext(), "迁移失败~");
+//                                        }
+//                                        dialog.hide();
+//                                    });
+//                            dialog.show();
+//                        }
+//                    } else {
+//                        reverseContinueAbility();
+//                        flag = false;
+//                        ToastUtil.showEncourageToast(getApplicationContext(), "回迁成功~");
+//                        btn_continue.setText("迁移");
+//                    }
+                    if (!flag) {
+                        if (null == Constant.getAvailableDeviceIds()) {
+                            ToastUtil.showSickToast(getApplicationContext(), "附近没有能够流转的设备，请确认是否有流转设备");
+                        } else {
+                            // 找到第一个流转的设备
+                            continueAbilityReversibly(Constant.getAvailableDeviceIds().get(0));
+                            ToastUtil.showEncourageToast(getApplicationContext(), "迁移成功~");
+                            flag = true;
+                            btn_continue.setText("回迁");
+                        }
                     } else {
-                        // 找到第一个流转的设备
-                        continueAbility(Constant.getAvailableDeviceIds().get(0));
+                        reverseContinueAbility();
+                        flag = false;
+                        ToastUtil.showEncourageToast(getApplicationContext(), "回迁成功,再次迁移请重新进入此页~");
+                        btn_continue.setText("迁移");
                     }
                     break;
                 case ResourceTable.Id_back:

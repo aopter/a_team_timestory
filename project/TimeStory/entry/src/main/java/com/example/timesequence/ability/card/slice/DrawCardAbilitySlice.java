@@ -80,7 +80,6 @@ public class DrawCardAbilitySlice extends AbilitySlice {
         initComponent();
         setListener();
     }
-
     private void setListener() {
         MyListener myListener = new MyListener();
         drawCard.setClickedListener(myListener);

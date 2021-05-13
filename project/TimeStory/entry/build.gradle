@@ -10,6 +10,15 @@ ohos {
             profile file('D:\\HarmonyOS\\Key\\TimeSequenceProfileDebug.p7b')
             certpath file('D:\\HarmonyOS\\Key\\myApplication_debug.cer')
         }
+        release {
+            storeFile file('D:\\HarmonyOS\\Key\\key.p12')
+            storePassword '0000001C3C749BAA136366EBB9989D6124F37684CAA3FF15B92FC606F4076E58A49B1F05E291ECA01A6A39B0'
+            keyAlias = 'key'
+            keyPassword '0000001C63507BB224DE8084C3FB7733DB76B82AC17446920C7353F64B62ECCAF1F59E601C55F55119D80D2A'
+            signAlg = 'SHA256withECDSA'
+            profile file('D:\\HarmonyOS\\Key\\TimeSequenceProfileDebug.p7b')
+            certpath file('D:\\HarmonyOS\\Key\\myApplication_debug.cer')
+        }
     }
     compileSdkVersion 5
     defaultConfig {

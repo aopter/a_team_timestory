@@ -83,18 +83,6 @@
         ohos:width="match_parent"
         ohos:orientation="vertical">
 
-        <Button
-            ohos:id="$+id:btn_continue"
-            ohos:height="match_content"
-            ohos:width="match_content"
-            ohos:align_parent_right="true"
-            ohos:align_parent_top="true"
-            ohos:background_element="$media:button"
-            ohos:margin="28fp"
-            ohos:padding="10vp"
-            ohos:right_margin="20vp"
-            ohos:text="流转"/>
-
         <!--        滚动-->
         <ScrollView
             ohos:height="250vp"
