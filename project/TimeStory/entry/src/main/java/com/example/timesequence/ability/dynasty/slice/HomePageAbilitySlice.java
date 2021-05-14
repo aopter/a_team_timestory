@@ -2,6 +2,8 @@ package com.example.timesequence.ability.dynasty.slice;
 
 import com.example.timesequence.ResourceTable;
 import com.example.timesequence.Utils.HmOSImageLoader;
+import com.example.timesequence.Utils.RoundImage;
+import com.example.timesequence.Utils.ToastUtil;
 import com.example.timesequence.ability.card.slice.DrawCardAbilitySlice;
 import com.example.timesequence.ability.card.slice.MyCardAbilitySlice;
 import com.example.timesequence.ability.problem.slice.ProblemCollectionActivitySlice;
@@ -39,7 +41,7 @@ import java.util.Map;
 public class HomePageAbilitySlice extends AbilitySlice {
     //标识显示的是等级还是经验，0等级，1经验
     int flag = 0;
-    private Image userHeader;//用户头像
+    private RoundImage userHeader;//用户头像
     private ProgressBar progressBar;//用户经验条
     private Text experience;//用户经验等级
     private Text drawCard;//用户抽卡
@@ -115,7 +117,7 @@ public class HomePageAbilitySlice extends AbilitySlice {
 
     //获取控件
     private void initLayout() {
-        userHeader = (Image) findComponentById(ResourceTable.Id_user_header);
+        userHeader = (RoundImage) findComponentById(ResourceTable.Id_user_header);
         progressBar = (ProgressBar) findComponentById(ResourceTable.Id_progress_bar);
         experience = (Text) findComponentById(ResourceTable.Id_experience);
         drawCard = (Text) findComponentById(ResourceTable.Id_draw_card);
@@ -182,18 +184,18 @@ public class HomePageAbilitySlice extends AbilitySlice {
             if (Constant.User.getUserHeader() != null) {
                 if (Constant.ChangeHeader == 0) {
                     //未修改头像
-                    HmOSImageLoader.with(this).load(ServiceConfig.SERVICE_ROOT + "/img/" + Constant.User.getUserHeader()).into(userHeader);
+                    HmOSImageLoader.with(this).load(ServiceConfig.SERVICE_ROOT + "/img/" + Constant.User.getUserHeader()).intoAndCircle(userHeader);
                 } else if (Constant.ChangeHeader == 1) {
                     //修改头像
                     Constant.Random = System.currentTimeMillis();
                     Constant.eventPics.remove(ServiceConfig.SERVICE_ROOT + "/img/" + Constant.User.getUserHeader());
-                    HmOSImageLoader.with(this).load(ServiceConfig.SERVICE_ROOT + "/img/" + Constant.User.getUserHeader()).into(userHeader);
+                    HmOSImageLoader.with(this).load(ServiceConfig.SERVICE_ROOT + "/img/" + Constant.User.getUserHeader()).intoAndCircle(userHeader);
                     Constant.ChangeHeader = 0;
                 }
             }
         } else if (Constant.User.getFlag() == 1) {
             //QQ登录
-            HmOSImageLoader.with(this).load(Constant.User.getUserHeader()).into(userHeader);
+            HmOSImageLoader.with(this).load(Constant.User.getUserHeader()).intoAndCircle(userHeader);
         }
     }
 
@@ -442,8 +444,18 @@ public class HomePageAbilitySlice extends AbilitySlice {
                     }
                     break;
                 case ResourceTable.Id_draw_card://用户抽卡
-                    present(new DrawCardAbilitySlice(), new Intent());
-
+                    if (Constant.User.getUserCount() >= 60){
+                        Intent intent = new Intent();
+                        Operation operation = new Intent.OperationBuilder()
+                                .withDeviceId("")
+                                .withBundleName("com.example.timesequence")
+                                .withAbilityName("com.example.timesequence.ability.card.DrawCardAbility")
+                                .build();
+                        intent.setOperation(operation);
+                        startAbility(intent, 0);
+                    } else {
+                        ToastUtil.showSickToast(getContext(), "您的积分不足");
+                    }
                     break;
                 case ResourceTable.Id_user_card://用户卡片
                     present(new MyCardAbilitySlice(), new Intent());

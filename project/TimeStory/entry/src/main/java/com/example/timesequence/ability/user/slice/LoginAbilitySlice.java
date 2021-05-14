@@ -42,6 +42,10 @@ public class LoginAbilitySlice extends AbilitySlice {
     public void onStart(Intent intent) {
         super.onStart(intent);
         super.setUIContent(ResourceTable.Layout_ability_login);
+        Constant.User = null;
+        Constant.UnlockDynasty.clear();
+        Constant.dynastiesName.clear();
+        Constant.eventPics.clear();
         getPermission();
         initView();
         setClickListener();

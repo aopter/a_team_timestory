@@ -2,13 +2,13 @@ package com.example.timesequence.ability.user.slice;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.example.timesequence.Utils.ToastUtil;
 import com.example.timesequence.ability.dynasty.slice.HomePageAbilitySlice;
 import com.example.timesequence.ability.user.adapter.HistoryTodayAdapter;
 import com.example.timesequence.ability.user.adapter.UserRankingAdapter;
 import com.example.timesequence.ResourceTable;
 import com.example.timesequence.Utils.HmOSImageLoader;
 import com.example.timesequence.Utils.RoundImage;
-import com.example.timesequence.ability.card.slice.DrawCardAbilitySlice;
 import com.example.timesequence.ability.card.slice.MyCardAbilitySlice;
 import com.example.timesequence.ability.problem.slice.ProblemCollectionActivitySlice;
 import com.example.timesequence.constant.Constant;
@@ -20,6 +20,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
+import ohos.aafwk.content.Operation;
 import ohos.agp.components.*;
 import ohos.eventhandler.EventHandler;
 import ohos.eventhandler.EventRunner;
@@ -242,7 +243,18 @@ public class UserCenterAbilitySlice extends AbilitySlice implements Component.Cl
             //抽卡
             case ResourceTable.Id_user_center_card_dl:
                 //抽卡
-                present(new DrawCardAbilitySlice(), new Intent());
+                if (Constant.User.getUserCount() >= 60) {
+                    Intent intent1 = new Intent();
+                    Operation operation1 = new Intent.OperationBuilder()
+                            .withDeviceId("")
+                            .withBundleName("com.example.timesequence")
+                            .withAbilityName("com.example.timesequence.ability.card.DrawCardAbility")
+                            .build();
+                    intent1.setOperation(operation1);
+                    startAbility(intent1, 0);
+                } else {
+                    ToastUtil.showSickToast(getContext(), "您的积分不足");
+                }
                 break;
             //出征
             case ResourceTable.Id_user_center_go_dynasty_dl:

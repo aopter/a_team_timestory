@@ -8,37 +8,36 @@
 
     <!--横向模块-->
     <DirectionalLayout
-        ohos:height="match_parent"
+        ohos:height="60vp"
         ohos:width="match_parent"
-        ohos:left_margin="15vp"
+        ohos:layout_alignment="vertical_center"
+        ohos:left_margin="20vp"
         ohos:orientation="horizontal"
-        ohos:top_margin="15vp"
-        ohos:weight="2">
+        ohos:top_margin="15vp">
 
-        <DirectionalLayout
-            ohos:height="50vp"
+        <DependentLayout
+            ohos:height="match_content"
             ohos:width="match_content"
             ohos:clickable="true"
-            ohos:layout_alignment="vertical_center"
             ohos:orientation="vertical">
 
             <com.example.timesequence.Utils.RoundImage
                 ohos:id="$+id:user_center_header"
-                ohos:height="30vp"
-                ohos:width="30vp"
-                ohos:layout_alignment="horizontal_center"
+                ohos:height="40vp"
+                ohos:width="40vp"
+                ohos:center_in_parent="true"
                 ohos:scale_mode="zoom_center"/>
 
             <ProgressBar
                 ohos:id="$+id:user_center_pb"
                 ohos:height="match_content"
                 ohos:width="50fp"
-                ohos:background_element="#AE5B41"
+                ohos:align_parent_bottom="true"
                 ohos:max="100"
                 ohos:min="0"
-                ohos:progress_color="blue"
+                ohos:progress_color="$color:orange"
                 ohos:top_margin="3fp"/>
-        </DirectionalLayout>
+        </DependentLayout>
 
         <DependentLayout
             ohos:id="$+id:dl_level"
@@ -165,9 +164,8 @@
     </DirectionalLayout>
     <!--中间两个模块-->
     <DependentLayout
-        ohos:height="match_parent"
-        ohos:width="match_parent"
-        ohos:weight="15">
+        ohos:height="240vp"
+        ohos:width="match_parent">
         <!--排行榜-->
         <DirectionalLayout
             ohos:id="$+id:dl_ranking"
@@ -177,8 +175,8 @@
             ohos:bottom_margin="10vp"
             ohos:left_margin="30vp"
             ohos:orientation="vertical"
-            ohos:top_margin="20vp"
-            ohos:total_weight="1">
+            ohos:top_margin="10vp"
+            ohos:total_weight="2">
             <!--排行榜-->
             <com.example.timesequence.Utils.CusText
                 ohos:height="25vp"
@@ -190,12 +188,12 @@
                 ohos:text_size="12fp"/>
 
             <ListContainer
-                ohos:top_padding="5vp"
                 ohos:id="$+id:user_center_ranking_lc"
                 ohos:height="match_parent"
                 ohos:width="280vp"
                 ohos:alpha="0.8"
-                ohos:background_element="#FFF"/>
+                ohos:background_element="#FFF"
+                ohos:top_padding="5vp"/>
         </DirectionalLayout>
         <!--历史上的今天-->
         <DirectionalLayout
@@ -226,53 +224,73 @@
         </DirectionalLayout>
     </DependentLayout>
 
-    <!--底部一行横向模块-->
     <DirectionalLayout
-        ohos:height="match_parent"
-        ohos:width="match_content"
-        ohos:bottom_margin="25vp"
-        ohos:layout_alignment="horizontal_center"
-        ohos:orientation="horizontal"
-        ohos:weight="1">
-
-        <DependentLayout
-            ohos:height="20vp"
+        ohos:height="60vp"
+        ohos:width="match_parent"
+        ohos:orientation="horizontal">
+        <!--底部一行横向模块-->
+        <DirectionalLayout
+            ohos:height="match_content"
             ohos:width="match_content"
-            ohos:background_element="$media:button"
-            ohos:layout_alignment="vertical_center">
+            ohos:alignment="horizontal_center"
+            ohos:bottom_margin="20vp"
+            ohos:layout_alignment="horizontal_center"
+            ohos:orientation="horizontal"
+            ohos:weight="1">
 
-            <Text
-                ohos:id="$+id:user_center_my_card"
-                ohos:height="36fp"
-                ohos:width="match_content"
-                ohos:alpha="0.9"
-                ohos:bottom_padding="5vp"
-                ohos:left_padding="10vp"
-                ohos:right_padding="10vp"
-                ohos:text="我的卡片"
-                ohos:text_alignment="center"
-                ohos:text_color="#AE5B41"
-                ohos:text_size="12fp"
-                ohos:top_padding="5vp"/>
-        </DependentLayout>
-
-        <DependentLayout
-            ohos:height="20vp"
-            ohos:width="match_content"
-            ohos:background_element="$media:button"
-            ohos:layout_alignment="vertical_center"
-            ohos:left_margin="60vp">
-
-            <Text
-                ohos:id="$+id:user_center_my_collections"
+            <DependentLayout
                 ohos:height="35fp"
                 ohos:width="match_content"
-                ohos:alpha="0.9"
-                ohos:padding="5vp"
-                ohos:text="我的收藏"
-                ohos:text_alignment="center"
-                ohos:text_color="#AE5B41"
-                ohos:text_size="12fp"/>
-        </DependentLayout>
+                ohos:background_element="$media:button"
+                ohos:layout_alignment="vertical_center">
+
+                <Text
+                    ohos:id="$+id:user_center_my_card"
+                    ohos:height="match_parent"
+                    ohos:width="match_content"
+                    ohos:alpha="0.9"
+                    ohos:bottom_padding="5vp"
+                    ohos:left_padding="10vp"
+                    ohos:right_padding="10vp"
+                    ohos:text="我的卡片"
+                    ohos:text_alignment="center"
+                    ohos:text_color="#AE5B41"
+                    ohos:text_size="10fp"
+                    ohos:top_padding="5vp"/>
+            </DependentLayout>
+
+            <DependentLayout
+                ohos:height="35fp"
+                ohos:width="match_content"
+                ohos:background_element="$media:button"
+                ohos:layout_alignment="vertical_center"
+                ohos:left_margin="60vp">
+
+                <Text
+                    ohos:id="$+id:user_center_my_collections"
+                    ohos:height="match_parent"
+                    ohos:width="match_content"
+                    ohos:alpha="0.9"
+                    ohos:bottom_padding="5vp"
+                    ohos:left_padding="10vp"
+                    ohos:padding="5vp"
+                    ohos:right_padding="10vp"
+                    ohos:text="我的收藏"
+                    ohos:text_alignment="center"
+                    ohos:text_color="#AE5B41"
+                    ohos:text_size="10fp"
+                    ohos:top_padding="5vp"/>
+            </DependentLayout>
+        </DirectionalLayout>
+
+        <!--        <com.isoftstone.giflibrary.Gif-->
+        <!--            ohos:height="50vp"-->
+        <!--            ohos:width="50vp"-->
+        <!--            ohos:image_src="$media:gif_history"-->
+        <!--            ohos:layout_alignment="end"-->
+        <!--            ohos:right_margin="10vp"-->
+        <!--            ohos:bottom_margin="10vp"-->
+        <!--            ohos:right_of="$id:dl_history_today"-->
+        <!--            ohos:scale_mode="zoom_center"/>-->
     </DirectionalLayout>
 </DirectionalLayout>

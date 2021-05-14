@@ -1,6 +1,7 @@
 package com.example.timesequence.ability.dynasty.slice;
 
 import com.example.timesequence.ResourceTable;
+import com.example.timesequence.Utils.ToastUtil;
 import com.example.timesequence.ability.problem.slice.SelectProblemSlice;
 import com.example.timesequence.constant.ServiceConfig;
 import com.example.timesequence.entity.Dynasty;
@@ -52,20 +53,6 @@ public class DynastyIntroduceActivitySlice extends AbilitySlice {
     private Gson gson;//json解析
     private OkHttpClient okHttpClient;//网络访问请求对象
     private TaskDispatcher parallelTaskDispatcher;//并发任务分发器
-    private EventRunner eventRunner = EventRunner.create(true);//线程投递器
-    private final EventHandler eventHandler = new EventHandler(eventRunner) {
-        @Override
-        protected void processEvent(InnerEvent event) {
-            super.processEvent(event);
-            switch (event.eventId) {
-                case ServiceConfig.DYNASTY_INFO_THREAD:
-                    //将信息显示在页面上
-                    dynastyName.setText(dynasty.getDynastyName());
-                    dynastyIntroduction.setText(dynasty.getDynastyInfo());
-                    break;
-            }
-        }
-    };
 
 
     @Override
@@ -203,8 +190,8 @@ public class DynastyIntroduceActivitySlice extends AbilitySlice {
                     }.getType();
                     //2.反序列化
                     dynasty = gson.fromJson(json, Dynasty.class);
-                    eventHandler.sendEvent(ServiceConfig.DYNASTY_INFO_THREAD);
-
+                    getMainTaskDispatcher().syncDispatch(() -> dynastyName.setText(dynasty.getDynastyName()));
+                    getMainTaskDispatcher().syncDispatch(() -> dynastyIntroduction.setText(dynasty.getDynastyInfo()));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -236,18 +223,22 @@ public class DynastyIntroduceActivitySlice extends AbilitySlice {
                     startAbility(intent1);
                     break;
                 case ResourceTable.Id_problem:
-                    //跳转答题页面
-                    Intent intent2 = new Intent();
-                    Operation operation2 = new Intent.OperationBuilder()
-                            .withDeviceId("")
-                            .withBundleName("com.example.timesequence")
-                            .withAbilityName("com.example.timesequence.ability.problem.ProblemInfoAbility")
-                            .build();
-                    HiLog.info(SelectProblemSlice.LABEL_LOG, "跳转时的dynastyId：" + dynastyId);
-                    intent2.setParam("dynastyId", dynastyId + "");
-                    intent2.setParam("before", "types");
-                    intent2.setOperation(operation2);
-                    startAbility(intent2);
+                    if (dynastyId == 11) {
+                        //跳转答题页面
+                        Intent intent2 = new Intent();
+                        Operation operation2 = new Intent.OperationBuilder()
+                                .withDeviceId("")
+                                .withBundleName("com.example.timesequence")
+                                .withAbilityName("com.example.timesequence.ability.problem.ProblemInfoAbility")
+                                .build();
+                        HiLog.info(SelectProblemSlice.LABEL_LOG, "跳转时的dynastyId：" + dynastyId);
+                        intent2.setParam("dynastyId", dynastyId + "");
+                        intent2.setParam("before", "types");
+                        intent2.setOperation(operation2);
+                        startAbility(intent2);
+                    } else {
+                        ToastUtil.showEncourageToast(getContext(), "此朝代暂时未设置题目，去其他朝代看看吧~");
+                    }
                     break;
                 case ResourceTable.Id_event:
                     //跳转朝代事件页面

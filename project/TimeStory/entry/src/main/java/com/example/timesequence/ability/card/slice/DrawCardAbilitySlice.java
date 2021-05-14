@@ -77,6 +77,7 @@ public class DrawCardAbilitySlice extends AbilitySlice {
     public void onStart(Intent intent) {
         super.onStart(intent);
         super.setUIContent(ResourceTable.Layout_ability_draw_card);
+        System.out.println("初始化了界面");
         initComponent();
         setListener();
     }

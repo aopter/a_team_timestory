@@ -17,6 +17,7 @@ import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.ability.DataAbilityHelper;
 import ohos.aafwk.ability.DataAbilityRemoteException;
 import ohos.aafwk.content.Intent;
+import ohos.aafwk.content.Operation;
 import ohos.agp.components.*;
 import ohos.agp.window.dialog.CommonDialog;
 import ohos.eventhandler.EventHandler;
@@ -164,7 +165,14 @@ public class SettingAbilitySlice extends AbilitySlice implements Component.Click
                 });
                 break;
             case ResourceTable.Id_setting_exit_btn:
-                present(new LoginAbilitySlice(), new Intent());
+                Intent intent = new Intent();
+                Operation operation = new Intent.OperationBuilder()
+                        .withDeviceId("")
+                        .withBundleName("com.example.timesequence")
+                        .withAbilityName("com.example.timesequence.ability.user.LoginAbility")
+                        .build();
+                intent.setOperation(operation);
+                startAbility(intent, 0);
                 break;
             default:
                 getMainTaskDispatcher().syncDispatch(() -> ToastUtil.showCryToast(SettingAbilitySlice.this, "未知错误"));
