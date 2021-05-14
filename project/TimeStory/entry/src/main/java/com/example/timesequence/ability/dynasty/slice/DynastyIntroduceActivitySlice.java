@@ -241,17 +241,21 @@ public class DynastyIntroduceActivitySlice extends AbilitySlice {
                     }
                     break;
                 case ResourceTable.Id_event:
-                    //跳转朝代事件页面
-                    Intent intent = new Intent();
-                    Operation operation = new Intent.OperationBuilder()
-                            .withDeviceId("")
-                            .withBundleName("com.example.timesequence")
-                            .withAbilityName("com.example.timesequence.ability.dynasty.DetailsEventAbility")
-                            .build();
-                    intent.setParam("dynastyId", dynastyId);
-                    intent.setParam("dynastyName", dynasty.getDynastyName());
-                    intent.setOperation(operation);
-                    startAbility(intent);
+                    if (dynastyId == 11) {
+                        //跳转朝代事件页面
+                        Intent intent = new Intent();
+                        Operation operation = new Intent.OperationBuilder()
+                                .withDeviceId("")
+                                .withBundleName("com.example.timesequence")
+                                .withAbilityName("com.example.timesequence.ability.dynasty.DetailsEventAbility")
+                                .build();
+                        intent.setParam("dynastyId", dynastyId);
+                        intent.setParam("dynastyName", dynasty.getDynastyName());
+                        intent.setOperation(operation);
+                        startAbility(intent);
+                    } else {
+                        ToastUtil.showEncourageToast(getContext(), "此朝代还没有事件，去唐朝看看吧~");
+                    }
                     break;
                 case ResourceTable.Id_speech:
 

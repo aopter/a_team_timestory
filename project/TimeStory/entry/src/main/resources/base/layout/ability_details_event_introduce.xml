@@ -27,7 +27,6 @@
             ohos:height="match_content"
             ohos:width="35vp"
             ohos:multiple_lines="true"
-            ohos:text="贞观之治"
             ohos:text_alignment="center"
             ohos:text_color="$color:ourDynastyRed"
             ohos:text_size="25fp"

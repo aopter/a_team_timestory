@@ -63,12 +63,9 @@ public class DetailsEventIntroduceSlice extends AbilitySlice {
         super.onStart(intent);
         super.setUIContent(ResourceTable.Layout_ability_details_event_introduce);
         flag = false;
-        // 判断是否为迁移的数据
-        if (dynastyId == 0 || eventId == 0) {
-            //获取信息
-            dynastyId = intent.getIntParam("dynastyId", 1);
-            eventId = intent.getIntParam("eventId", 1);
-        }
+        //获取信息
+        dynastyId = intent.getIntParam("dynastyId", 1);
+        eventId = intent.getIntParam("eventId", 1);
 
         //初始化并发任务分发器
         parallelTaskDispatcher = createParallelTaskDispatcher("detailsEventIntroducePageParallelTaskDispatcher", TaskPriority.DEFAULT);
@@ -154,8 +151,7 @@ public class DetailsEventIntroduceSlice extends AbilitySlice {
                     incident = gson.fromJson(json, Incident.class);
                     //获取list集合
                     dialogList = incident.getIncidentDialog().split(Constant.DELIMITER);
-                    eventHandler.sendEvent(ServiceConfig.INCIDENT_DETAILS_URL_THREAD);
-
+                    getMainTaskDispatcher().syncDispatch(() -> setLayout());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
