@@ -3,18 +3,18 @@ ohos {
     signingConfigs {
         debug {
             storeFile file('D:\\HarmonyOS\\Key\\key.p12')
-            storePassword '0000001C914A2075208D99D7FADC9F3622562F111252FEADDBA713E3CA983315F735BE51AEC73535AC26674B'
+            storePassword '0000001CEB62AC5E648CE1A1A3FE2B7223815DE4BD5421FADE2A9925E9762D258F4F49A922991E9919D62738'
             keyAlias = 'key'
-            keyPassword '0000001C9748D89077962B16EFE378BA31366ED7643EA55CB110776454CC6F302E296B7F8BE46C4D45B2C70F'
+            keyPassword '0000001C800E787C61A36DEBE98F51CEF2BE8D329C2FF9E4F95E390B466B0B893AA086AF0AC3BD52F158CAF0'
             signAlg = 'SHA256withECDSA'
             profile file('D:\\HarmonyOS\\Key\\TimeSequenceProfileDebug.p7b')
             certpath file('D:\\HarmonyOS\\Key\\myApplication_debug.cer')
         }
         release {
             storeFile file('D:\\HarmonyOS\\Key\\key.p12')
-            storePassword '0000001C3C749BAA136366EBB9989D6124F37684CAA3FF15B92FC606F4076E58A49B1F05E291ECA01A6A39B0'
+            storePassword '0000001C0CDF8A5840CBEAB5C43C9B6268F1C77B020413637F2E61D840DF46E9399FC3F93281FC417687FAF9'
             keyAlias = 'key'
-            keyPassword '0000001C63507BB224DE8084C3FB7733DB76B82AC17446920C7353F64B62ECCAF1F59E601C55F55119D80D2A'
+            keyPassword '0000001C39D5A5A25F9C28D407CCA93D7123D9AF073734128068D85D7E331BC0A68EBA517E3E8BB79726CBC2'
             signAlg = 'SHA256withECDSA'
             profile file('D:\\HarmonyOS\\Key\\TimeSequenceProfileDebug.p7b')
             certpath file('D:\\HarmonyOS\\Key\\myApplication_debug.cer')

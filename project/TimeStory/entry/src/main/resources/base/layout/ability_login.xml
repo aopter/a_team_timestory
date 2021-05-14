@@ -27,6 +27,7 @@
             ohos:background_element="$graphic:login_textfield"
             ohos:hint="手机号"
             ohos:text_alignment="center"
+            ohos:text_input_type="pattern_number"
             ohos:text_size="12fp"/>
         <!--密码-->
         <TextField
@@ -36,6 +37,7 @@
             ohos:background_element="$graphic:login_textfield"
             ohos:hint="密码"
             ohos:text_alignment="center"
+            ohos:text_input_type="pattern_password"
             ohos:text_size="12fp"
             ohos:top_margin="12vp"/>
         <!--记住密码-->
@@ -46,8 +48,8 @@
             ohos:top_margin="10vp">
             <!--记住密码单选框，原始rb有点丑，加个边框-->
             <DirectionalLayout
-                ohos:height="15vp"
-                ohos:width="15vp"
+                ohos:height="20vp"
+                ohos:width="20vp"
                 ohos:background_element="$graphic:rb_save_password"
                 ohos:left_margin="15vp">
 
