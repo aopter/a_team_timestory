@@ -127,7 +127,6 @@
                 ohos:alpha="0.9"
                 ohos:padding="5vp"
                 ohos:right_of="$id:str_rl"
-                ohos:text="40"
                 ohos:text_alignment="center"
                 ohos:text_color="#AE5B41"
                 ohos:text_size="12fp"/>

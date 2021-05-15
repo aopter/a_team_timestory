@@ -106,7 +106,7 @@ public class UserCenterAbilitySlice extends AbilitySlice implements Component.Cl
         //等级
         mUserCenterTxLevel.setText(Constant.User.getUserStatus().getStatusName());
         //积分
-        mUserCenterTxPoint.setText(Constant.User.getUserCount());
+        mUserCenterTxPoint.setText(Constant.User.getUserCount() + "");
         //排行榜
         getUserRank();
         //历史上的今天
@@ -242,15 +242,14 @@ public class UserCenterAbilitySlice extends AbilitySlice implements Component.Cl
                 break;
             //抽卡
             case ResourceTable.Id_user_center_card_dl:
-                //抽卡
-                if (Constant.User.getUserCount() >= 60) {
+                if (Constant.User.getUserCount() >= 60){
                     Intent intent1 = new Intent();
-                    Operation operation1 = new Intent.OperationBuilder()
+                    Operation operation = new Intent.OperationBuilder()
                             .withDeviceId("")
                             .withBundleName("com.example.timesequence")
                             .withAbilityName("com.example.timesequence.ability.card.DrawCardAbility")
                             .build();
-                    intent1.setOperation(operation1);
+                    intent1.setOperation(operation);
                     startAbility(intent1, 0);
                 } else {
                     ToastUtil.showSickToast(getContext(), "您的积分不足");
